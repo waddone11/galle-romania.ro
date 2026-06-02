@@ -4,6 +4,116 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-forest: #024846;
+    --color-forest-dark: #013634;
+    --color-mint: #28eeaf;
+    --color-mint-soft: #b5f6dd;
+    --color-mist: #e0e1df;
+    --color-mist-warm: #f2f2ef;
+
+    --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-body);
+        color: var(--color-forest-dark);
+    }
+
+    body {
+        background-color: #fafaf8;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: var(--font-display);
+        letter-spacing: -0.01em;
+    }
+}
+
+/* ============================================================
+   Animations: clouds, conic badge, wheel orbit, dome line-art,
+   recycling arrow chase, footer layers.
+   Custom CSS retained for SVG/SMIL & motion that can't be
+   expressed as pure Tailwind utilities.
+   ============================================================ */
+
+@layer utilities {
+    /* Conic-gradient pill badge with rotating gradient angle (@property required) */
+    @property --ang {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    .badge-pill-conic {
+        background:
+            conic-gradient(from var(--ang),
+                var(--color-mint) 0%,
+                var(--color-forest) 25%,
+                var(--color-mint) 50%,
+                var(--color-forest) 75%,
+                var(--color-mint) 100%);
+        animation: spin-ang 8s linear infinite;
+    }
+
+    @keyframes spin-ang {
+        to { --ang: 360deg; }
+    }
+
+    /* Cloud zoom-in + fade keyframe per spec: scale(1)→scale(3), opacity 0→1→0 */
+    .cloud-anim {
+        animation: cloud-pulse 14s ease-in-out infinite;
+        will-change: transform, opacity;
+    }
+    .cloud-anim.delay-2  { animation-delay: -3.5s; }
+    .cloud-anim.delay-3  { animation-delay: -7s; }
+    .cloud-anim.delay-4  { animation-delay: -10.5s; }
+
+    @keyframes cloud-pulse {
+        0%   { transform: scale(1);   opacity: 0; }
+        50%  { transform: scale(2);   opacity: 1; }
+        100% { transform: scale(3);   opacity: 0; }
+    }
+
+    /* Orbit wheel: rotates the wheel; child chips counter-rotate to stay upright */
+    .wheel-orbit {
+        animation: wheel-spin 60s linear infinite;
+        will-change: transform;
+    }
+    .wheel-chip {
+        animation: wheel-spin-reverse 60s linear infinite;
+        will-change: transform;
+    }
+
+    @keyframes wheel-spin {
+        to { transform: rotate(360deg); }
+    }
+    @keyframes wheel-spin-reverse {
+        to { transform: rotate(-360deg); }
+    }
+
+    /* Dome line-art draw: stroke-dashoffset 0 over 4s */
+    .dome-stroke {
+        stroke-dasharray: 800;
+        stroke-dashoffset: 800;
+        animation: dome-draw 4s ease-out forwards;
+    }
+
+    @keyframes dome-draw {
+        to { stroke-dashoffset: 0; }
+    }
+
+    /* Recycling arrows chase: 3 arrows on arc with staggered opacity */
+    .recycle-arrow {
+        animation: recycle-chase 2.4s ease-in-out infinite;
+    }
+    .recycle-arrow.arr-2 { animation-delay: 0.8s; }
+    .recycle-arrow.arr-3 { animation-delay: 1.6s; }
+
+    @keyframes recycle-chase {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50%      { opacity: 1;    transform: scale(1.08); }
+    }
 }
