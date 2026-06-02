@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Contact — Galle Silva | lemn de foc si servicii forestiere"
+    metaDescription="Contacteaza Galle Silva pentru lemn de foc, servicii forestiere, peisagistica sau compostare. Raspundem in cel mult 24h. Prahova, Ilfov, Bucuresti."
+>
     @php
         $settings = app(\App\Settings\GeneralSettings::class);
     @endphp

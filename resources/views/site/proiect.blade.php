@@ -1,4 +1,24 @@
-<x-layouts.app>
+@php
+    $loc = app()->getLocale();
+    $pTitlu = $proiect->getTranslation('titlu', $loc) ?: $proiect->getTranslation('titlu', 'ro');
+    $pDesc = $proiect->getTranslation('descriere', $loc) ?: $proiect->getTranslation('descriere', 'ro');
+@endphp
+<x-layouts.app
+    :title="$pTitlu.' — Proiecte | Galle Silva'"
+    :metaDescription="\Illuminate\Support\Str::limit(strip_tags($pDesc), 155)"
+>
+    @push('seo')
+        <x-json-ld :data="[
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url('/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Proiecte', 'item' => url('/proiecte')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $pTitlu, 'item' => url()->current()],
+            ],
+        ]" />
+    @endpush
+
     <article class="py-16">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <a href="/proiecte" class="text-sm text-mint hover:text-forest">← Toate proiectele</a>

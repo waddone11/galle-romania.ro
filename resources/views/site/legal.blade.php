@@ -1,4 +1,12 @@
-<x-layouts.app>
+@php
+    $loc = app()->getLocale();
+    $legalTitlu = $pagina->getTranslation('titlu', $loc) ?: $pagina->getTranslation('titlu', 'ro');
+    $legalMeta = $pagina->getTranslation('meta_description', $loc) ?: null;
+@endphp
+<x-layouts.app
+    :title="$legalTitlu.' | Galle Silva'"
+    :metaDescription="$legalMeta"
+>
     <article class="py-16">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h1 class="font-display text-4xl md:text-5xl font-semibold mb-8">{{ $pagina->getTranslation('titlu', app()->getLocale()) ?: $pagina->getTranslation('titlu', 'ro') }}</h1>

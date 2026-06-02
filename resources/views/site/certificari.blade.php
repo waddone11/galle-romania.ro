@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Certificari — FSC, PEFC, ISO 9001/14001, RAL, DEKRA | Galle Silva"
+    metaDescription="Certificarile Galle Silva si ale partenerului Galle GmbH: FSC si PEFC in proces, ISO 9001, ISO 14001, RAL si DEKRA active. Calitate validata."
+>
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Certificari</h1>

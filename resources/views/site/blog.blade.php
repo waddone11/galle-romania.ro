@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Blog — ghiduri despre lemn de foc, padure si servicii | Galle Silva"
+    metaDescription="Ghiduri, studii si noutati despre lemn de foc, gestiunea padurii si servicii forestiere, de la echipa Galle Silva."
+>
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Blog</h1>

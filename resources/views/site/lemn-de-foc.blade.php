@@ -1,4 +1,51 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Lemn de foc — stejar uscat, livrare Prahova, Ilfov, Bucuresti | Galle Silva"
+    metaDescription="Lemn de foc de calitate: stejar uscat disponibil, fag si carpen in curand. Calculator de pret si comanda online. Livrare in Prahova, Ilfov si Bucuresti."
+>
+    @push('seo')
+        @php $loc = app()->getLocale(); @endphp
+        @foreach($species as $sp)
+            <x-json-ld :data="array_filter([
+                '@context' => 'https://schema.org',
+                '@type' => 'Product',
+                'name' => $sp->getTranslation('nume', $loc) ?: $sp->getTranslation('nume', 'ro'),
+                'description' => $sp->getTranslation('descriere', $loc) ?: $sp->getTranslation('descriere', 'ro'),
+                'category' => 'Lemn de foc',
+                'brand' => ['@type' => 'Brand', 'name' => 'Galle Silva'],
+                'offers' => $sp->status->value === 'disponibil' ? [
+                    '@type' => 'Offer',
+                    'price' => (string) (int) $sp->pret_pornire,
+                    'priceCurrency' => 'RON',
+                    'availability' => 'https://schema.org/InStock',
+                ] : ['@type' => 'Offer', 'availability' => 'https://schema.org/PreOrder', 'priceCurrency' => 'RON'],
+            ], fn ($v) => $v !== null && $v !== '')" />
+        @endforeach
+
+        @if($faqs->count() > 0)
+            <x-json-ld :data="[
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => $faqs->map(fn ($faq) => [
+                    '@type' => 'Question',
+                    'name' => $faq->getTranslation('intrebare', $loc) ?: $faq->getTranslation('intrebare', 'ro'),
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $faq->getTranslation('raspuns', $loc) ?: $faq->getTranslation('raspuns', 'ro'),
+                    ],
+                ])->values()->all(),
+            ]" />
+        @endif
+
+        <x-json-ld :data="[
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url('/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Lemn de foc', 'item' => url()->current()],
+            ],
+        ]" />
+    @endpush
+
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Lemn de foc</h1>

@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Proiecte — portofoliu Galle Silva"
+    metaDescription="Portofoliul Galle Silva: lucrari forestiere, peisagistica si compostare pentru primarii, proprietari privati si companii in Prahova, Ilfov si Bucuresti."
+>
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Proiecte</h1>

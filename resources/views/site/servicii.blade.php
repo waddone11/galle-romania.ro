@@ -1,4 +1,31 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Servicii forestiere, peisagistica si compostare | Galle Silva"
+    metaDescription="Servicii forestiere, peisagistica si compostare pentru primarii, institutii si companii. Standarde germane Galle GmbH, in Prahova, Ilfov si Bucuresti."
+>
+    @push('seo')
+        @php $loc = app()->getLocale(); @endphp
+        @foreach($servicii as $s)
+            <x-json-ld :data="array_filter([
+                '@context' => 'https://schema.org',
+                '@type' => 'Service',
+                'name' => $s->getTranslation('titlu', $loc) ?: $s->getTranslation('titlu', 'ro'),
+                'description' => $s->getTranslation('descriere', $loc) ?: $s->getTranslation('descriere', 'ro'),
+                'serviceType' => $s->categorie,
+                'areaServed' => ['Prahova', 'Ilfov', 'Bucuresti'],
+                'provider' => ['@type' => 'Organization', 'name' => 'Galle Silva SRL'],
+            ], fn ($v) => $v !== null && $v !== '')" />
+        @endforeach
+
+        <x-json-ld :data="[
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url('/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Servicii', 'item' => url('/servicii')],
+            ],
+        ]" />
+    @endpush
+
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Servicii</h1>

@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Despre Galle Silva — partener local Galle GmbH Germania"
+    metaDescription="Galle Silva aduce standardele germane Galle GmbH in gestiunea padurii din Romania: recoltare durabila, servicii forestiere si lemn de foc de calitate."
+>
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Despre Galle Silva</h1>

@@ -1,4 +1,7 @@
-<x-layouts.app>
+<x-layouts.app
+    title="Pentru institutii si primarii — Galle Silva"
+    metaDescription="Servicii forestiere, peisagistica si compostare cu factura si plata la termen pentru primarii, institutii si companii. Standarde germane Galle GmbH."
+>
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">
