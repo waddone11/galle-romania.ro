@@ -64,6 +64,18 @@ docker compose logs -f laravel.test       # tail logs
 - **Nume container app**: `galle-romaniaro-laravel.test-1` (auto-generated de Docker Compose pe baza folder name `galle-romania.ro` cu punctul si dash-ul stripped).
 - Runtime container: Windows native, NU WSL2 — user a cerut explicit `C:\work`.
 
+## Credentiale admin (seed local)
+
+```
+URL:      http://localhost/admin/login
+Email:    admin@galle-silva.ro
+Parola:   parola-temporara-galle-2026
+Rol:      super_admin (filament-shield)
+```
+
+> Roluri seed-uite: `super_admin`, `admin`, `editor` (vezi `database/seeders/AdminUserSeeder.php`).
+> Schimba parola la primul login (sau in `AdminUserSeeder` inainte de prod).
+
 ## TODO pentru sectiuni urmatoare
 
 Vezi commits + README updates pe parcurs.
