@@ -15,27 +15,97 @@ class PaginaSeeder extends Seeder
                 'titlu' => ['ro' => 'Acasa', 'de' => 'Startseite', 'en' => 'Home'],
                 'meta_title' => ['ro' => 'Galle Silva — partener local Galle GmbH Germania', 'de' => null, 'en' => null],
                 'meta_description' => ['ro' => 'Standarde germane in Romania: lemn de foc, servicii forestiere, peisagistica si compostare in Prahova, Ilfov si Bucuresti.', 'de' => null, 'en' => null],
-                // Sample Builder block — added to verify the CMS flow end-to-end.
-                // Editorul poate sterge / inlocui / adauga din /admin Pagina = home.
+                // Fluxul complet al template-ului (design/index.html), randat 1:1 din CMS.
+                // Editorul poate sterge / reordona / adauga din /admin Pagina = home.
+                // RO completat; DE/EN raman null (se completeaza din taburile admin).
                 'sectiuni' => [
+                    [
+                        'type' => 'hero',
+                        'data' => [
+                            'badge' => ['ro' => 'Servicii forestiere si lemn de foc', 'de' => null, 'en' => null],
+                            'badge_link' => ['ro' => 'Vezi serviciile', 'de' => null, 'en' => null],
+                            'badge_url' => '/servicii',
+                            'titlu' => ['ro' => 'Padurea, gestionata cu responsabilitate', 'de' => null, 'en' => null],
+                            'subtitlu' => ['ro' => 'Recoltare durabila, lemn de foc de calitate si servicii forestiere profesionale in Prahova, Ilfov si Bucuresti.', 'de' => null, 'en' => null],
+                            'cta_text' => ['ro' => 'Cere oferta', 'de' => null, 'en' => null],
+                            'cta_url' => '/contact',
+                            'chips' => [
+                                ['text' => ['ro' => 'Lemn de foc: stejar, fag, carpen', 'de' => null, 'en' => null]],
+                                ['text' => ['ro' => 'Servicii forestiere', 'de' => null, 'en' => null]],
+                                ['text' => ['ro' => 'Certificare FSC & PEFC', 'de' => null, 'en' => null]],
+                                ['text' => ['ro' => 'Livrare Prahova, Ilfov, Bucuresti', 'de' => null, 'en' => null]],
+                            ],
+                        ],
+                    ],
+                    [
+                        'type' => 'splitter',
+                        'data' => [],
+                    ],
+                    [
+                        'type' => 'carduri',
+                        'data' => [
+                            'eyebrow' => ['ro' => 'De ce Galle', 'de' => null, 'en' => null],
+                            'titlu' => ['ro' => 'Standarde germane, aplicate local', 'de' => null, 'en' => null],
+                            'items' => [
+                                [
+                                    'titlu' => ['ro' => 'Calitate germana', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Procese si standarde Galle GmbH, aplicate la fiecare comanda si proiect.', 'de' => null, 'en' => null],
+                                    'icon' => 'heroicon-o-check-badge',
+                                ],
+                                [
+                                    'titlu' => ['ro' => 'Recoltare durabila', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Paduri gestionate responsabil, certificari FSC si PEFC in lucru.', 'de' => null, 'en' => null],
+                                    'icon' => 'heroicon-o-globe-europe-africa',
+                                ],
+                                [
+                                    'titlu' => ['ro' => 'Livrare rapida', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Lemn de foc livrat in 2-5 zile in Prahova, Ilfov si Bucuresti.', 'de' => null, 'en' => null],
+                                    'icon' => 'heroicon-o-truck',
+                                ],
+                                [
+                                    'titlu' => ['ro' => 'Pentru firme si institutii', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Servicii forestiere, peisagistica si compostare, cu factura si plata la termen.', 'de' => null, 'en' => null],
+                                    'icon' => 'heroicon-o-building-office-2',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'type' => 'solutie_verde',
+                        'data' => [
+                            'titlu' => ['ro' => 'Solutia noastra verde', 'de' => null, 'en' => null],
+                            'text' => ['ro' => 'Tinem cont mereu de mediu, sustenabilitate si responsabilitate cand recoltam si livram. Padure gestionata durabil, certificari FSC si PEFC in lucru, lemn de foc de calitate.', 'de' => null, 'en' => null],
+                            'eyebrow' => ['ro' => 'Avem o viziune', 'de' => null, 'en' => null],
+                            'cta_text' => ['ro' => 'Despre noi', 'de' => null, 'en' => null],
+                            'cta_url' => '/despre',
+                        ],
+                    ],
+                    [
+                        'type' => 'durabilitate_stat',
+                        'data' => [
+                            'titlu' => ['ro' => 'Durabil & regenerabil', 'de' => null, 'en' => null],
+                            'text' => ['ro' => 'Lemnul de foc Galle Silva provine din paduri gestionate responsabil — o resursa regenerabila. Certificari FSC si PEFC in lucru, in acord cu principalele standarde de sustenabilitate.', 'de' => null, 'en' => null],
+                            'stat_number' => '100%',
+                            'stat_top' => ['ro' => 'natural', 'de' => null, 'en' => null],
+                            'stat_bottom' => ['ro' => '& regenerabil', 'de' => null, 'en' => null],
+                        ],
+                    ],
+                    [
+                        'type' => 'reciclare',
+                        'data' => [
+                            'titlu' => ['ro' => 'Resursa regenerabila', 'de' => null, 'en' => null],
+                            'text' => ['ro' => 'Padurea gestionata responsabil se regenereaza: ce recoltam, se replanteaza. Un ciclu sustenabil, certificat FSC si PEFC, care pastreaza resursa vie pentru generatiile urmatoare.', 'de' => null, 'en' => null],
+                            'eyebrow' => ['ro' => 'Solutii complete pentru lemn si padure', 'de' => null, 'en' => null],
+                            'cta_text' => ['ro' => 'Serviciile noastre', 'de' => null, 'en' => null],
+                            'cta_url' => '/servicii',
+                        ],
+                    ],
                     [
                         'type' => 'cta',
                         'data' => [
-                            'titlu' => [
-                                'ro' => 'Vrei o oferta personalizata?',
-                                'de' => null,
-                                'en' => null,
-                            ],
-                            'text' => [
-                                'ro' => 'Pentru lemn de foc, servicii forestiere sau peisagistica — spune-ne ce ai nevoie si te contactam in 24h.',
-                                'de' => null,
-                                'en' => null,
-                            ],
-                            'buton_text' => [
-                                'ro' => 'Cere oferta',
-                                'de' => null,
-                                'en' => null,
-                            ],
+                            'titlu' => ['ro' => 'Vrei o oferta personalizata?', 'de' => null, 'en' => null],
+                            'text' => ['ro' => 'Pentru lemn de foc, servicii forestiere sau peisagistica — spune-ne ce ai nevoie si te contactam in 24h.', 'de' => null, 'en' => null],
+                            'buton_text' => ['ro' => 'Cere oferta', 'de' => null, 'en' => null],
                             'buton_url' => '/contact',
                         ],
                     ],

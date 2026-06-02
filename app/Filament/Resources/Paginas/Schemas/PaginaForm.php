@@ -61,16 +61,27 @@ class PaginaForm
     {
         return [
             Block::make('hero')
-                ->label('Hero')
+                ->label('Hero (banner animat)')
                 ->icon('heroicon-o-rectangle-stack')
                 ->schema([
                     HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("badge.$loc")->label("Badge — text ($label)"),
+                        TextInput::make("badge_link.$loc")->label("Badge — link text ($label)"),
                         TextInput::make("titlu.$loc")->label("Titlu ($label)"),
                         TextInput::make("subtitlu.$loc")->label("Subtitlu ($label)"),
                         TextInput::make("cta_text.$loc")->label("Text buton ($label)"),
                     ]),
-                    TextInput::make('imagine')->label('URL imagine'),
+                    TextInput::make('badge_url')->label('Badge — URL'),
                     TextInput::make('cta_url')->label('URL buton'),
+                    Repeater::make('chips')
+                        ->label('Chip-uri pe roata (orbit)')
+                        ->schema([
+                            HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                                TextInput::make("text.$loc")->label("Text chip ($label)"),
+                            ]),
+                        ])
+                        ->defaultItems(0)
+                        ->columnSpanFull(),
                 ]),
 
             Block::make('text_imagine')
@@ -110,9 +121,13 @@ class PaginaForm
                 ]),
 
             Block::make('carduri')
-                ->label('Carduri (repeater)')
+                ->label('Carduri (De ce Galle)')
                 ->icon('heroicon-o-rectangle-group')
                 ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
                     Repeater::make('items')
                         ->label('Carduri')
                         ->schema([
@@ -124,6 +139,45 @@ class PaginaForm
                         ])
                         ->defaultItems(0)
                         ->columnSpanFull(),
+                ]),
+
+            Block::make('solutie_verde')
+                ->label('Solutia verde (dome line-art)')
+                ->icon('heroicon-o-globe-europe-africa')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        Textarea::make("text.$loc")->label("Text ($label)")->rows(3),
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("cta_text.$loc")->label("Text buton ($label)"),
+                    ]),
+                    TextInput::make('cta_url')->label('URL buton'),
+                ]),
+
+            Block::make('durabilitate_stat')
+                ->label('Durabilitate (statistica split)')
+                ->icon('heroicon-o-chart-bar-square')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        Textarea::make("text.$loc")->label("Text ($label)")->rows(3),
+                        TextInput::make("stat_top.$loc")->label("Stat — rand 1 ($label)"),
+                        TextInput::make("stat_bottom.$loc")->label("Stat — rand 2 ($label)"),
+                    ]),
+                    TextInput::make('stat_number')->label('Stat — numar (ex: 100%)'),
+                ]),
+
+            Block::make('reciclare')
+                ->label('Reciclare (simbol animat)')
+                ->icon('heroicon-o-arrow-path-rounded-square')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        Textarea::make("text.$loc")->label("Text ($label)")->rows(3),
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("cta_text.$loc")->label("Text buton ($label)"),
+                    ]),
+                    TextInput::make('cta_url')->label('URL buton'),
                 ]),
 
             Block::make('cta')
