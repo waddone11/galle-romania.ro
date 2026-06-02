@@ -10,8 +10,8 @@
 >
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navigatie principala">
         <div class="flex h-16 items-center justify-between">
-            <a href="{{ $prefix }}/" class="flex items-center gap-2 font-display text-2xl font-semibold">
-                <span class="text-forest">Galle</span><span class="text-mint">Silva</span>
+            <a href="{{ $prefix }}/" class="font-display text-2xl font-extrabold tracking-tight">
+                <span class="text-forest">Galle</span><span class="text-mint"> Silva</span>
             </a>
 
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
@@ -30,7 +30,7 @@
                     <span class="text-xs text-forest/60 uppercase tracking-wide">{{ $locale }}</span>
                 @endif
                 <a href="{{ $prefix }}/contact"
-                   class="inline-flex items-center rounded-full bg-forest px-5 py-2 text-sm font-medium text-mist-warm hover:bg-forest-dark transition-colors">
+                   class="inline-flex items-center rounded-full bg-mint px-6 py-2.5 text-sm font-semibold text-forest hover:brightness-105 transition">
                     {{ __('Cere oferta') }}
                 </a>
             </div>
@@ -61,7 +61,7 @@
                 @if($hasLanguageSwitcher)
                     <livewire:language-switcher />
                 @endif
-                <a href="{{ $prefix }}/contact" class="rounded-full bg-forest px-4 py-1.5 text-mist-warm">{{ __('Cere oferta') }}</a>
+                <a href="{{ $prefix }}/contact" class="rounded-full bg-mint px-4 py-1.5 font-semibold text-forest">{{ __('Cere oferta') }}</a>
             </div>
         </div>
     </nav>

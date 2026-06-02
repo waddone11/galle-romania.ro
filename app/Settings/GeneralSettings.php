@@ -6,13 +6,13 @@ use Spatie\LaravelSettings\Settings;
 
 class GeneralSettings extends Settings
 {
-    public string $telefon = '+40 700 000 000';
+    public string $telefon = '+40 729 961 082';
 
-    public string $whatsapp = '40700000000';
+    public string $whatsapp = '40729961082';
 
-    public string $email = 'contact@galle-silva.ro';
+    public string $email = 'info@galle-silva.ro';
 
-    public string $adresa = 'Romania';
+    public string $adresa = 'Manesti, Str. Principala 302, jud. Prahova';
 
     public string $program = 'Luni - Vineri, 09:00 - 18:00';
 
