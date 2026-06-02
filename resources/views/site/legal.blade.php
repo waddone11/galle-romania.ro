@@ -1,14 +1,16 @@
 <x-layouts.app>
     <article class="py-16">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold mb-8">{{ $pagina->getTranslation('titlu', 'ro') }}</h1>
+            <h1 class="font-display text-4xl md:text-5xl font-semibold mb-8">{{ $pagina->getTranslation('titlu', app()->getLocale()) ?: $pagina->getTranslation('titlu', 'ro') }}</h1>
 
-            @if($pagina->sectiuni)
-                @foreach((array) $pagina->getTranslation('sectiuni', 'ro') as $section)
-                    @if(is_array($section) && isset($section['continut']))
-                        <div class="prose prose-stone max-w-none mb-8">
-                            {!! nl2br(e($section['continut'])) !!}
-                        </div>
+            @if(is_array($pagina->sectiuni) && count($pagina->sectiuni) > 0)
+                @foreach($pagina->sectiuni as $block)
+                    @php
+                        $type = is_array($block) ? ($block['type'] ?? null) : null;
+                        $blockData = is_array($block) ? ($block['data'] ?? []) : [];
+                    @endphp
+                    @if($type && view()->exists("blocks.$type"))
+                        @include("blocks.$type", ['data' => $blockData])
                     @endif
                 @endforeach
             @else

@@ -2,40 +2,170 @@
 
 namespace App\Filament\Resources\Paginas\Schemas;
 
+use App\Filament\Concerns\HasTranslatableTabs;
+use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class PaginaForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('slug')
-                    ->required(),
-                Textarea::make('titlu')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('meta_title')
-                    ->default(null)
-                    ->columnSpanFull(),
-                Textarea::make('meta_description')
-                    ->default(null)
-                    ->columnSpanFull(),
-                FileUpload::make('og_image')
-                    ->image(),
-                Textarea::make('sectiuni')
-                    ->default(null)
-                    ->columnSpanFull(),
-                Toggle::make('is_published')
-                    ->required(),
-                TextInput::make('ordine')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-            ]);
+        return $schema->components([
+            Section::make('Identitate')
+                ->columns(2)
+                ->schema([
+                    TextInput::make('slug')
+                        ->required()
+                        ->unique(ignoreRecord: true)
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug((string) $state))),
+                    Toggle::make('is_published')->default(true),
+                    FileUpload::make('og_image')->image()->columnSpanFull(),
+                    TextInput::make('ordine')->numeric()->default(0),
+                ]),
+
+            Section::make('Titlu si SEO (traductibile)')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)")->required($loc === 'ro'),
+                        TextInput::make("meta_title.$loc")->label("Meta title ($label)"),
+                        Textarea::make("meta_description.$loc")->label("Meta description ($label)")->rows(2),
+                    ]),
+                ]),
+
+            Section::make('Continutul paginii (blocks)')
+                ->description('Adauga blocuri in ordinea dorita. Textul din fiecare bloc are taburi RO/DE/EN.')
+                ->schema([
+                    Builder::make('sectiuni')
+                        ->blocks(self::blocks())
+                        ->collapsible()
+                        ->collapsed()
+                        ->columnSpanFull(),
+                ]),
+        ]);
+    }
+
+    /**
+     * @return array<int, Block>
+     */
+    private static function blocks(): array
+    {
+        return [
+            Block::make('hero')
+                ->label('Hero')
+                ->icon('heroicon-o-rectangle-stack')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        TextInput::make("subtitlu.$loc")->label("Subtitlu ($label)"),
+                        TextInput::make("cta_text.$loc")->label("Text buton ($label)"),
+                    ]),
+                    TextInput::make('imagine')->label('URL imagine'),
+                    TextInput::make('cta_url')->label('URL buton'),
+                ]),
+
+            Block::make('text_imagine')
+                ->label('Text + Imagine')
+                ->icon('heroicon-o-photo')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        Textarea::make("continut.$loc")->label("Continut ($label)")->rows(5),
+                    ]),
+                    TextInput::make('imagine')->label('URL imagine'),
+                    Select::make('pozitie')
+                        ->options(['stanga' => 'Imagine stanga', 'dreapta' => 'Imagine dreapta'])
+                        ->default('stanga'),
+                ]),
+
+            Block::make('splitter')
+                ->label('Splitter (doua coloane CTA)')
+                ->icon('heroicon-o-squares-2x2')
+                ->schema([
+                    Section::make('Bloc A')->columns(1)->schema([
+                        HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                            TextInput::make("a_titlu.$loc")->label("Titlu A ($label)"),
+                            Textarea::make("a_text.$loc")->label("Text A ($label)")->rows(3),
+                            TextInput::make("a_cta_text.$loc")->label("CTA A text ($label)"),
+                        ]),
+                        TextInput::make('a_cta_url')->label('CTA A URL'),
+                    ]),
+                    Section::make('Bloc B')->columns(1)->schema([
+                        HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                            TextInput::make("b_titlu.$loc")->label("Titlu B ($label)"),
+                            Textarea::make("b_text.$loc")->label("Text B ($label)")->rows(3),
+                            TextInput::make("b_cta_text.$loc")->label("CTA B text ($label)"),
+                        ]),
+                        TextInput::make('b_cta_url')->label('CTA B URL'),
+                    ]),
+                ]),
+
+            Block::make('carduri')
+                ->label('Carduri (repeater)')
+                ->icon('heroicon-o-rectangle-group')
+                ->schema([
+                    Repeater::make('items')
+                        ->label('Carduri')
+                        ->schema([
+                            HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                                TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                                Textarea::make("text.$loc")->label("Text ($label)")->rows(2),
+                            ]),
+                            TextInput::make('icon')->label('Icon (heroicon-o-...)')->placeholder('heroicon-o-truck'),
+                        ])
+                        ->defaultItems(0)
+                        ->columnSpanFull(),
+                ]),
+
+            Block::make('cta')
+                ->label('Call to Action')
+                ->icon('heroicon-o-megaphone')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                        Textarea::make("text.$loc")->label("Text ($label)")->rows(2),
+                        TextInput::make("buton_text.$loc")->label("Text buton ($label)"),
+                    ]),
+                    TextInput::make('buton_url')->label('URL buton'),
+                ]),
+
+            Block::make('galerie')
+                ->label('Galerie imagini')
+                ->icon('heroicon-o-photo')
+                ->schema([
+                    Repeater::make('imagini')
+                        ->label('Imagini')
+                        ->simple(TextInput::make('url')->placeholder('https://... sau /storage/...'))
+                        ->defaultItems(0)
+                        ->columnSpanFull(),
+                ]),
+
+            Block::make('faq')
+                ->label('FAQ embed')
+                ->icon('heroicon-o-question-mark-circle')
+                ->schema([
+                    Select::make('categorie')
+                        ->label('Filtreaza FAQ dupa categorie (gol = toate)')
+                        ->options([
+                            'lemn_de_foc' => 'Lemn de foc',
+                            'livrare' => 'Livrare',
+                            'plata' => 'Plata',
+                            'servicii' => 'Servicii',
+                        ])
+                        ->nullable(),
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
+                ]),
+        ];
     }
 }

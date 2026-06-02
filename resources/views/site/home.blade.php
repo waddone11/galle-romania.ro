@@ -133,6 +133,20 @@
         </div>
     </section>
 
+    {{-- CMS-driven blocks: any extra content from Pagina[slug=home].sectiuni
+         is rendered before the blog preview. Editable via /admin Pagina Builder. --}}
+    @if($pagina && is_array($pagina->sectiuni))
+        @foreach($pagina->sectiuni as $block)
+            @php
+                $type = is_array($block) ? ($block['type'] ?? null) : null;
+                $blockData = is_array($block) ? ($block['data'] ?? []) : [];
+            @endphp
+            @if($type && view()->exists("blocks.$type"))
+                @include("blocks.$type", ['data' => $blockData])
+            @endif
+        @endforeach
+    @endif
+
     {{-- Articole recente --}}
     @if($articole->count() > 0)
         <section class="py-20">

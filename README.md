@@ -63,6 +63,10 @@ docker compose logs -f laravel.test       # tail logs
 - **`compose.yaml`** (nume modern, livrat de Sail) in loc de `docker-compose.yml`.
 - **Nume container app**: `galle-romaniaro-laravel.test-1` (auto-generated de Docker Compose pe baza folder name `galle-romania.ro` cu punctul si dash-ul stripped).
 - Runtime container: Windows native, NU WSL2 — user a cerut explicit `C:\work`.
+- **`public/build/` este comis in repo** — ALL-INKL nu are Node, deci deploy-ul = `git pull` clean. Workflow re-build local: `npm run build` apoi `git add public/build && git commit`. Vezi `DEPLOY.md §6`.
+- **Filament v5 + Translatable Tabs nativi** — pattern-ul `Filament\Schemas\Components\Tabs` cu camp-uri `field.{locale}` (ro/de/en) este aplicat pe toate 8 Resources de continut (Specie, Serviciu, Proiect, Articol, Certificare, Faq, ZonaLivrare, Pagina) prin helper-ul `App\Filament\Concerns\HasTranslatableTabs`. Editor poate trece intre RO/DE/EN si scrie direct in coloana JSON spatie/translatable.
+- **`Pagina.sectiuni` ruleaza pe Filament Builder** cu 7 blocuri (hero, text_imagine, splitter, carduri, cta, galerie, faq). Continut textual din fiecare bloc este traductibil. Front: `resources/views/blocks/*.blade.php`. `Pagina[slug=home]` are un block CTA sample seed-uit care apare pe `/` intre sectiunile hardcoded si blog.
+- **PHPStan level 5 = 0 erori** pe `app/` + `database/`. Pint trecut. Pest 10/10 verzi (8 site + 2 example).
 
 ## Credentiale admin (seed local)
 

@@ -1,0 +1,1 @@
+document.addEventListener(`DOMContentLoaded`,()=>{let e=document.querySelector(`[data-scroll-to-top]`);e&&e.addEventListener(`click`,()=>window.scrollTo({top:0,behavior:`smooth`}))});

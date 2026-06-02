@@ -121,20 +121,25 @@ php artisan view:cache
 
 (NU `event:cache` daca foloseste reflection complexa pe handlers.)
 
-## 6. Assets (Vite buildat local)
+## 6. Assets (Vite buildat local si comise in repo)
 
-ALL-INKL nu are Node. Build-ul Vite se face local sau in CI, apoi `public/build/` se urca:
+**Decizie:** ALL-INKL nu are Node — deci `public/build/` este **comis in repo** (vezi `.gitignore`).
+Avantaj: deploy-ul = `git pull` curat, fara upload separat de assets.
+Cost: cresc git diffs cand assets se schimba (acceptabil pentru un proiect cu schimbari rare de UI).
+
+Workflow re-build:
 
 ```bash
-# pe masina locala
+# pe masina locala / dev:
 npm ci
 npm run build
-
-# urca public/build pe server (rsync sau client SFTP)
-rsync -avz public/build/ w02183b4@w02183b4.kasserver.com:/www/htdocs/w02183b4/project/galle/public/build/
+git add public/build && git commit -m "build: refresh Vite assets"
+git push
 ```
 
-Sau, mai simplu, comite `public/build/` in repo si fa `git pull` pe server (greoi pentru istoric — recomandat rsync).
+Pe server, dupa `git pull`, assets sunt deja in `public/build/` — Vite manifest e citit de helper-ul `@vite()` la randare. **Nu mai e nevoie de rsync separat.**
+
+Daca preferi CI (GitHub Actions cu Node + git push automat al `public/build`), e o variatie posibila — dar pentru un proiect cu echipa mica, comiterea directa e cea mai simpla.
 
 ## 7. Cron unic ALL-INKL
 

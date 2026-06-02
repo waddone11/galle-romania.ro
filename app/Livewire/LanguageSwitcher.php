@@ -19,12 +19,13 @@ class LanguageSwitcher extends Component
             return null;
         }
 
-        // Redirige spre acelasi path dar cu/fara prefix corespunzator.
+        // Redirige spre acelasi path, dar cu/fara prefix corespunzator.
         $path = request()->path(); // ex: 'de/servicii' sau '/' (devine '/')
         $segments = explode('/', trim($path, '/'));
 
-        // Sterge un prefix de locale existent
-        if (! empty($segments) && in_array($segments[0], ['de', 'en'], true)) {
+        // Sterge un prefix de locale existent (daca primul segment e 'de' sau 'en').
+        // explode garanteaza non-empty-list, deci nu mai e nevoie de isset.
+        if (in_array($segments[0], ['de', 'en'], true)) {
             array_shift($segments);
         }
 

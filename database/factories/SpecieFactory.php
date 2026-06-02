@@ -15,27 +15,27 @@ class SpecieFactory extends Factory
 {
     protected $model = Specie::class;
 
+    /**
+     * @var array<string, array{de: string, en: string}>
+     */
+    private const TRANSLATIONS = [
+        'stejar' => ['de' => 'Eiche',     'en' => 'Oak'],
+        'fag' => ['de' => 'Buche',     'en' => 'Beech'],
+        'carpen' => ['de' => 'Hainbuche', 'en' => 'Hornbeam'],
+        'frasin' => ['de' => 'Esche',     'en' => 'Ash'],
+        'salcam' => ['de' => 'Robinie',   'en' => 'Locust'],
+    ];
+
     public function definition(): array
     {
-        $nume = $this->faker->randomElement(['stejar', 'fag', 'carpen', 'frasin', 'salcam']);
+        $nume = (string) array_rand(self::TRANSLATIONS);
+        $translations = self::TRANSLATIONS[$nume];
 
         return [
             'nume' => [
                 'ro' => ucfirst($nume),
-                'de' => match ($nume) {
-                    'stejar' => 'Eiche',
-                    'fag' => 'Buche',
-                    'carpen' => 'Hainbuche',
-                    'frasin' => 'Esche',
-                    'salcam' => 'Robinie',
-                },
-                'en' => match ($nume) {
-                    'stejar' => 'Oak',
-                    'fag' => 'Beech',
-                    'carpen' => 'Hornbeam',
-                    'frasin' => 'Ash',
-                    'salcam' => 'Locust',
-                },
+                'de' => $translations['de'],
+                'en' => $translations['en'],
             ],
             'slug' => Str::slug($nume).'-'.$this->faker->unique()->numberBetween(1, 9999),
             'status' => $this->faker->randomElement(SpecieStatus::cases()),

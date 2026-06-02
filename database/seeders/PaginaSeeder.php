@@ -15,7 +15,31 @@ class PaginaSeeder extends Seeder
                 'titlu' => ['ro' => 'Acasa', 'de' => 'Startseite', 'en' => 'Home'],
                 'meta_title' => ['ro' => 'Galle Silva — partener local Galle GmbH Germania', 'de' => null, 'en' => null],
                 'meta_description' => ['ro' => 'Standarde germane in Romania: lemn de foc, servicii forestiere, peisagistica si compostare in Prahova, Ilfov si Bucuresti.', 'de' => null, 'en' => null],
-                'sectiuni' => null,
+                // Sample Builder block — added to verify the CMS flow end-to-end.
+                // Editorul poate sterge / inlocui / adauga din /admin Pagina = home.
+                'sectiuni' => [
+                    [
+                        'type' => 'cta',
+                        'data' => [
+                            'titlu' => [
+                                'ro' => 'Vrei o oferta personalizata?',
+                                'de' => null,
+                                'en' => null,
+                            ],
+                            'text' => [
+                                'ro' => 'Pentru lemn de foc, servicii forestiere sau peisagistica — spune-ne ce ai nevoie si te contactam in 24h.',
+                                'de' => null,
+                                'en' => null,
+                            ],
+                            'buton_text' => [
+                                'ro' => 'Cere oferta',
+                                'de' => null,
+                                'en' => null,
+                            ],
+                            'buton_url' => '/contact',
+                        ],
+                    ],
+                ],
                 'is_published' => true,
                 'ordine' => 0,
             ],

@@ -31,13 +31,18 @@ class ContactForm extends Component
 
     public function submit(): void
     {
-        $data = $this->validate();
+        $this->validate();
 
-        Lead::create([
-            ...$data,
-            'status' => ComandaStatus::Nou,
-            'source' => 'contact_form',
-        ]);
+        $lead = new Lead;
+        $lead->nume = $this->nume;
+        $lead->firma = $this->firma;
+        $lead->email = $this->email;
+        $lead->telefon = $this->telefon;
+        $lead->serviciu = $this->serviciu;
+        $lead->mesaj = $this->mesaj;
+        $lead->status = ComandaStatus::Nou->value;
+        $lead->source = 'contact_form';
+        $lead->save();
 
         $this->submitted = true;
         $this->reset(['nume', 'firma', 'email', 'telefon', 'serviciu', 'mesaj']);

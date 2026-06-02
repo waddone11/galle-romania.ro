@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galle Silva — Template</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { forest: '#024846', mint: '#28eeaf', mist: '#e0e1df' },
+      fontFamily: {
+        display: ['"Bricolage Grotesque"', 'sans-serif'],
+        body:    ['"DM Sans"', 'sans-serif'],
+      },
+    }},
+  };
+</script>
+
+<style>
+  body { font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+
+  /* ---- BANNER ---- */
+  .banner {
+    position: relative; width: 100%;
+    height: 1092px; max-height: 100vh; min-height: 640px;
+    overflow: hidden; display: flex;
+    background: url('img/bg_nou.png') #e0e1df;
+    background-size: cover; background-position: center;
+  }
+  .brandbg { position: absolute; top: 0; left: 0; width: 90vw; opacity: 0.5; pointer-events: none; }
+
+  /* ---- NORI ---- */
+  .clouds { position: absolute; top: 0; left: 0; height: 100%; width: 100%; pointer-events: none; z-index: 2; }
+  .clouds img {
+    position: absolute; bottom: 0; max-width: 100%; opacity: 0;
+    will-change: transform, opacity;
+    animation: animate calc(4s * var(--i)) linear infinite;
+    animation-delay: calc(-1.3s * var(--i));
+  }
+  @keyframes animate {
+    0% { opacity: 0; transform: scale(1); }
+    25%, 75% { opacity: 1; }
+    100% { opacity: 0; transform: scale(3); }
+  }
+
+  /* ---- BADGE pill ---- */
+  .pill {
+    position: relative; border-radius: 999px; padding: 1px;
+    background: conic-gradient(from var(--ang), transparent 0deg, #28eeaf 90deg, #024846 180deg, transparent 320deg);
+    animation: spin-ang 4s linear infinite;
+  }
+  @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+  @keyframes spin-ang { to { --ang: 360deg; } }
+  .pill > .pill-inner { border-radius: 999px; background: #e7e8e6; }
+
+  /* ---- WHEEL ---- */
+  .wheel { position: absolute; top: 50%; right: -260px; width: 760px; height: 760px; transform: translateY(-50%); z-index: 1; pointer-events: none; }
+  .rotor { position: absolute; inset: 0; animation: spin 60s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .orbit { position: absolute; top: 50%; left: 50%; width: 0; height: 0; animation: orbit 60s linear infinite; animation-delay: var(--d); }
+  @keyframes orbit {
+    from { transform: rotate(0deg)   translateX(360px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(360px) rotate(-360deg); }
+  }
+  .orbit .chip { transform: translate(-50%, -50%); }
+
+  /* ---- FOOTER straturi ---- */
+  .forest-band { position: relative; width: 100%; aspect-ratio: 1920 / 683; background: url('img/forrest_back.webp') center 70% / cover no-repeat;height:850px; }
+  .forest-band .front-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: bottom; }
+
+  /* ---- SECTIUNE VERDE: ilustratie animata ---- */
+  .eco-svg .bird { animation: fly 16s linear infinite; }
+  @keyframes fly {
+    from { transform: translate(-70px, var(--y)); }
+    to   { transform: translate(1150px, var(--y)); }
+  }
+  .eco-svg .cloud { animation: cloud-drift var(--spd, 10s) ease-in-out infinite alternate; }
+  @keyframes cloud-drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-26px); }
+  }
+  .eco-svg .grid { stroke-dasharray: 1800; stroke-dashoffset: 1800; animation: draw 2.6s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  @media (max-width: 1024px) {
+    .wheel { display: none; }
+    .banner { height: auto; min-height: 100vh; }
+  }
+</style>
+</head>
+
+<body class="bg-mist text-forest antialiased">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="absolute top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl font-extrabold tracking-tight text-forest">
+        Galle<span class="text-mint"> Silva</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-9 text-sm font-medium text-forest/80">
+        <li><a href="#" class="hover:text-forest transition-colors">Acasa</a></li>
+        <li><a href="#" class="hover:text-forest transition-colors">Servicii</a></li>
+        <li><a href="#" class="hover:text-forest transition-colors">Despre</a></li>
+        <li><a href="#" class="hover:text-forest transition-colors">Contact</a></li>
+      </ul>
+      <a href="#" class="hidden md:inline-flex items-center rounded-full bg-mint px-6 py-2.5 text-sm font-semibold text-forest hover:brightness-105 transition">
+        Cere oferta
+      </a>
+      <button id="menuBtn" class="md:hidden text-forest" aria-label="Meniu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-mist/95 backdrop-blur border-t border-forest/10">
+      <ul class="flex flex-col px-6 py-4 gap-4 text-forest/90">
+        <li><a href="#" class="block hover:text-forest">Acasa</a></li>
+        <li><a href="#" class="block hover:text-forest">Servicii</a></li>
+        <li><a href="#" class="block hover:text-forest">Despre</a></li>
+        <li><a href="#" class="block hover:text-forest">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== BANNER ===================== -->
+  <section class="banner">
+    <img src="img/union.svg" class="brandbg" alt="">
+
+    <!-- WHEEL -->
+    <div class="wheel">
+      <div class="rotor">
+        <svg viewBox="0 0 760 760" class="absolute inset-0 w-full h-full">
+          <circle cx="380" cy="380" r="358" fill="none" stroke="#024846" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="2 8"/>
+          <circle cx="380" cy="380" r="358" fill="none" stroke="#024846" stroke-opacity="0.12" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="orbit" style="--d: 0s">
+        <div class="chip flex items-center gap-3 rounded-2xl bg-forest/95 backdrop-blur px-4 py-3 shadow-lg shadow-forest/20 whitespace-nowrap">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-mint/15"><svg width="22" height="14" viewBox="0 0 45 26" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.8 6.1C24.9 3.3 28.2 1.5 32 1.5 38.4 1.5 43.5 6.6 43.5 13S38.4 24.5 32 24.5c-3.8 0-7.1-1.8-9.2-4.6-.2.3-.4.6-.6.8C24.5 23.6 28 25.5 32 25.5 38.9 25.5 44.5 19.9 44.5 13S38.9.5 32 .5c-4 0-7.5 1.9-9.8 4.8.2.3.4.5.6.8z" fill="#28eeaf"/><circle cx="13" cy="13" r="12" stroke="#28eeaf"/></svg></span>
+          <span class="text-mist text-sm font-medium">Lemn de foc: stejar, fag, carpen</span>
+        </div>
+      </div>
+
+      <div class="orbit" style="--d: -15s">
+        <div class="chip flex items-center gap-3 rounded-2xl bg-forest/95 backdrop-blur px-4 py-3 shadow-lg shadow-forest/20 whitespace-nowrap">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-mint/15"><svg width="22" height="14" viewBox="0 0 45 26" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.8 6.1C24.9 3.3 28.2 1.5 32 1.5 38.4 1.5 43.5 6.6 43.5 13S38.4 24.5 32 24.5c-3.8 0-7.1-1.8-9.2-4.6-.2.3-.4.6-.6.8C24.5 23.6 28 25.5 32 25.5 38.9 25.5 44.5 19.9 44.5 13S38.9.5 32 .5c-4 0-7.5 1.9-9.8 4.8.2.3.4.5.6.8z" fill="#28eeaf"/><circle cx="13" cy="13" r="12" stroke="#28eeaf"/></svg></span>
+          <span class="text-mist text-sm font-medium">Servicii forestiere</span>
+        </div>
+      </div>
+
+      <div class="orbit" style="--d: -30s">
+        <div class="chip flex items-center gap-3 rounded-2xl bg-forest/95 backdrop-blur px-4 py-3 shadow-lg shadow-forest/20 whitespace-nowrap">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-mint/15"><svg width="22" height="14" viewBox="0 0 45 26" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.8 6.1C24.9 3.3 28.2 1.5 32 1.5 38.4 1.5 43.5 6.6 43.5 13S38.4 24.5 32 24.5c-3.8 0-7.1-1.8-9.2-4.6-.2.3-.4.6-.6.8C24.5 23.6 28 25.5 32 25.5 38.9 25.5 44.5 19.9 44.5 13S38.9.5 32 .5c-4 0-7.5 1.9-9.8 4.8.2.3.4.5.6.8z" fill="#28eeaf"/><circle cx="13" cy="13" r="12" stroke="#28eeaf"/></svg></span>
+          <span class="text-mist text-sm font-medium">Certificare FSC &amp; PEFC</span>
+        </div>
+      </div>
+
+      <div class="orbit" style="--d: -45s">
+        <div class="chip flex items-center gap-3 rounded-2xl bg-forest/95 backdrop-blur px-4 py-3 shadow-lg shadow-forest/20 whitespace-nowrap">
+          <span class="grid place-items-center h-9 w-9 rounded-full bg-mint/15"><svg width="22" height="14" viewBox="0 0 45 26" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.8 6.1C24.9 3.3 28.2 1.5 32 1.5 38.4 1.5 43.5 6.6 43.5 13S38.4 24.5 32 24.5c-3.8 0-7.1-1.8-9.2-4.6-.2.3-.4.6-.6.8C24.5 23.6 28 25.5 32 25.5 38.9 25.5 44.5 19.9 44.5 13S38.9.5 32 .5c-4 0-7.5 1.9-9.8 4.8.2.3.4.5.6.8z" fill="#28eeaf"/><circle cx="13" cy="13" r="12" stroke="#28eeaf"/></svg></span>
+          <span class="text-mist text-sm font-medium">Livrare Prahova, Ilfov, Bucuresti</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NORI -->
+    <div class="clouds">
+      <img src="img/cloud1.png" style="--i:1">
+      <img src="img/cloud2.png" style="--i:2">
+      <img src="img/cloud3.png" style="--i:3">
+      <img src="img/cloud4.png" style="--i:4">
+      <img src="img/cloud5.png" style="--i:5">
+      <img src="img/cloud5.png" style="--i:1">
+      <img src="img/cloud1.png" style="--i:5">
+      <img src="img/cloud2.png" style="--i:4">
+      <img src="img/cloud3.png" style="--i:3">
+      <img src="img/cloud4.png" style="--i:2">
+      <img src="img/cloud5.png" style="--i:1">
+    </div>
+
+    <!-- INTRO -->
+    <div class="relative z-10 w-[90%] max-w-7xl mx-auto flex items-center">
+      <div class="max-w-xl pt-24">
+        <div class="pill inline-flex">
+          <div class="pill-inner inline-flex items-center gap-3 px-4 py-1.5 text-sm">
+            <span class="text-forest/80">Servicii forestiere si lemn de foc</span>
+            <span class="text-forest font-semibold">Vezi serviciile →</span>
+          </div>
+        </div>
+
+        <h1 class="mt-7 font-display font-extrabold leading-[0.95] text-forest text-5xl sm:text-6xl lg:text-7xl">
+          Padurea, gestionata<br>cu responsabilitate
+        </h1>
+        <p class="mt-6 text-base sm:text-lg font-light text-forest/70 max-w-md">
+          Recoltare durabila, lemn de foc de calitate si servicii forestiere profesionale in Prahova, Ilfov si Bucuresti.
+        </p>
+        <div class="mt-9">
+          <a href="#" class="inline-flex rounded-full bg-mint px-8 py-3.5 font-semibold text-forest hover:brightness-105 transition">
+            Cere oferta
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ===================== SECTIUNE: SOLUTIA NOASTRA VERDE ===================== -->
+  <section class="bg-white py-20 lg:py-28 px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- text -->
+      <div>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold text-forest leading-tight">
+          Solutia noastra <span class="text-mint">verde</span>
+        </h2>
+        <p class="mt-6 text-lg font-light text-forest/70 max-w-md">
+          Tinem cont mereu de mediu, sustenabilitate si responsabilitate cand recoltam si livram. Padure gestionata durabil, certificari FSC si PEFC in lucru, lemn de foc de calitate.
+        </p>
+        <div class="mt-10">
+          <p class="text-sm uppercase tracking-[0.2em] text-forest/50">Avem o viziune</p>
+          <a href="#" class="mt-3 inline-flex items-center rounded-full border-2 border-forest px-7 py-3 text-sm font-semibold tracking-wide text-forest hover:bg-forest hover:text-mist transition">
+            DESPRE NOI
+          </a>
+        </div>
+      </div>
+
+      <!-- ilustratie animata (SVG propriu, fara librarii) -->
+      <div class="eco-svg">
+        <svg viewBox="0 0 1080 565" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+          <!-- dome + grila (se deseneaza la incarcare) -->
+          <g fill="none" stroke="#024846" stroke-width="2">
+            <path class="grid" style="animation-delay:0s"   d="M199,501 C255,303 430,159 639,159 C848,159 1023,303 1079,501"/>
+            <path class="grid" style="animation-delay:.2s" stroke-width="1.5" opacity="0.8" d="M260,501 C322,340 470,210 639,210 C808,210 956,340 1018,501"/>
+            <path class="grid" style="animation-delay:.35s" stroke-width="1.5" opacity="0.7" d="M330,501 C382,380 500,272 639,272 C778,272 896,380 948,501"/>
+            <path class="grid" style="animation-delay:.5s" stroke-width="1.5" opacity="0.6" d="M410,501 C452,420 540,338 639,338 C738,338 826,420 868,501"/>
+            <path class="grid" style="animation-delay:.65s" stroke-width="1.5" opacity="0.5" d="M500,501 C525,455 580,413 639,413 C698,413 753,455 778,501"/>
+            <path class="grid" style="animation-delay:.3s" stroke-width="1.5" opacity="0.7" d="M639,159 C520,232 360,360 322,501"/>
+            <path class="grid" style="animation-delay:.45s" stroke-width="1.5" opacity="0.7" d="M639,159 C560,250 470,380 470,501"/>
+            <path class="grid" style="animation-delay:.55s" stroke-width="1.5" opacity="0.6" d="M639,159 L639,501"/>
+            <path class="grid" style="animation-delay:.45s" stroke-width="1.5" opacity="0.7" d="M639,159 C720,250 810,380 810,501"/>
+            <path class="grid" style="animation-delay:.3s" stroke-width="1.5" opacity="0.7" d="M639,159 C760,232 920,360 958,501"/>
+          </g>
+
+          <!-- sol -->
+          <line x1="120" y1="501" x2="1060" y2="501" stroke="#28eeaf" stroke-width="2"/>
+          <line x1="430" y1="513" x2="510" y2="513" stroke="#28eeaf" stroke-width="2" opacity="0.6"/>
+          <line x1="820" y1="513" x2="900" y2="513" stroke="#28eeaf" stroke-width="2" opacity="0.6"/>
+
+          <!-- copaci line-art -->
+          <g transform="translate(470,501)" fill="none" stroke="#28eeaf" stroke-width="6.5" stroke-linejoin="round">
+            <path d="M0,-250 L46,-160 L26,-160 L66,-85 L42,-85 L86,0 L-86,0 L-42,-85 L-66,-85 L-26,-160 L-46,-160 Z"/>
+            <path d="M0,0 L0,46"/>
+          </g>
+          <g transform="translate(880,501) scale(0.78)" fill="none" stroke="#024846" stroke-width="6" stroke-linejoin="round">
+            <path d="M0,-250 L46,-160 L26,-160 L66,-85 L42,-85 L86,0 L-86,0 L-42,-85 L-66,-85 L-26,-160 L-46,-160 Z"/>
+            <path d="M0,0 L0,46"/>
+          </g>
+
+          <!-- nori (drift lent) -->
+          <g transform="translate(900,118)">
+            <g class="cloud" style="--spd:9s" fill="none" stroke="#024846" stroke-width="6.5">
+              <path d="M0,30 q-26,0 -26,-22 q0,-20 22,-22 q6,-26 38,-22 q18,-22 42,2 q26,-4 26,24 q0,22 -26,22 Z"/>
+            </g>
+          </g>
+          <g transform="translate(1000,182) scale(0.6)">
+            <g class="cloud" style="--spd:12s" fill="none" stroke="#28eeaf" stroke-width="6.5">
+              <path d="M0,30 q-26,0 -26,-22 q0,-20 22,-22 q6,-26 38,-22 q18,-22 42,2 q26,-4 26,24 q0,22 -26,22 Z"/>
+            </g>
+          </g>
+
+          <!-- pasari (bat din aripi SMIL + zboara CSS) -->
+          <g class="bird" style="--y:240px; animation-delay:0s">
+            <path fill="none" stroke="#024846" stroke-width="2.5" stroke-linecap="round" d="M0,0 Q9,-9 18,0 Q27,-9 36,0">
+              <animate attributeName="d" dur="0.7s" repeatCount="indefinite"
+                values="M0,0 Q9,-9 18,0 Q27,-9 36,0;M0,0 Q9,3 18,0 Q27,3 36,0;M0,0 Q9,-9 18,0 Q27,-9 36,0"/>
+            </path>
+          </g>
+          <g class="bird" style="--y:290px; animation-delay:-7s">
+            <path fill="none" stroke="#28eeaf" stroke-width="2.5" stroke-linecap="round" d="M0,0 Q7,-7 14,0 Q21,-7 28,0">
+              <animate attributeName="d" dur="0.6s" repeatCount="indefinite"
+                values="M0,0 Q7,-7 14,0 Q21,-7 28,0;M0,0 Q7,2 14,0 Q21,2 28,0;M0,0 Q7,-7 14,0 Q21,-7 28,0"/>
+            </path>
+          </g>
+          <g class="bird" style="--y:205px; animation-delay:-12s">
+            <path fill="none" stroke="#024846" stroke-width="2.5" stroke-linecap="round" d="M0,0 Q8,-8 16,0 Q24,-8 32,0">
+              <animate attributeName="d" dur="0.75s" repeatCount="indefinite"
+                values="M0,0 Q8,-8 16,0 Q24,-8 32,0;M0,0 Q8,3 16,0 Q24,3 32,0;M0,0 Q8,-8 16,0 Q24,-8 32,0"/>
+            </path>
+          </g>
+        </svg>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===================== SECTIUNE: SOLUTIA NOASTRA VERDE (dome line-art, ca duol) ===================== -->
+  <section class="bg-forest text-mist py-20 lg:py-28 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- text -->
+      <div>
+        <h2 class="font-display text-4xl lg:text-6xl font-extrabold leading-[0.95]">
+          Solutia noastra<br><span class="text-mint">verde</span>
+        </h2>
+        <p class="mt-7 text-lg font-light text-mist/75 max-w-md">
+          Tinem cont mereu de mediu, sustenabilitate si responsabilitate cand recoltam si livram. Padure gestionata durabil, certificari FSC si PEFC in lucru, lemn de foc de calitate.
+        </p>
+        <div class="mt-12">
+          <p class="text-sm font-semibold tracking-wide text-mist/90">Avem o viziune</p>
+          <a href="#" class="mt-4 inline-flex items-center gap-3 bg-mint px-8 py-4 text-sm font-bold tracking-[0.15em] text-forest hover:brightness-105 transition">
+            DESPRE NOI
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 7h17M12 1l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ilustratie: dome geodezic line-art (SVG propriu, fara librarii) -->
+      <div class="eco-svg">
+        <svg cache-id="45e636e4ff3e4449b538ad9662510cef" id="e3XQRyTiVzq1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 565" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><line id="e3XQRyTiVzq2" x1="271" y1="538" x2="423" y2="538" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><line id="e3XQRyTiVzq3" x1="600" y1="563" x2="680" y2="563" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><line id="e3XQRyTiVzq4" x1="151" y1="501" x2="199" y2="501" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><line id="e3XQRyTiVzq5" x1="56" y1="476" x2="264" y2="476" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><path id="e3XQRyTiVzq6" d="M181.388,270.486L209.133,270.486L160.694,347.015L190.675,347.015L140,423.544L341.025,423.544L281.137,347.015L314.419,347.015L257.172,270.486L287.813,270.486L230.166,187L181.388,270.486Z" fill="rgb(2,72,70)" stroke="rgb(40,238,175)" stroke-width="2"></path><line id="e3XQRyTiVzq7" x1="236.175" y1="373.615" x2="236.175" y2="482.995" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><path id="e3XQRyTiVzq8" d="M732.681,81.077L733.592,81.4905L733.29,82.1544L732.566,82.0703L732.681,81.077ZM770.387,61.1599L771.309,61.548L771,62.2813L770.216,62.1452L770.387,61.1599ZM866.474,59.3888L866.452,60.3886L865.83,60.3752L865.567,59.8108L866.474,59.3888ZM867.557,134.016L866.557,134.016L866.557,133.065L867.507,133.017L867.557,134.016ZM867.557,134.063L868.557,134.063L868.557,135.063L867.557,135.063L867.557,134.063ZM865.879,134.063L865.874,133.063L865.879,133.063L865.879,134.063ZM865.437,134.063L865.437,133.063L865.443,133.063L865.437,134.063ZM819.006,134.063L819.003,133.063L819.006,133.063L819.006,134.063ZM818.64,134.063L818.64,133.063L818.643,133.063L818.64,134.063ZM729.582,133.063C729.666,133.063,729.74,133.073,729.802,133.087C729.864,133.101,729.917,133.12,729.96,133.137C730.002,133.154,730.038,133.172,730.066,133.188C730.095,133.203,730.118,133.218,730.137,133.231C730.156,133.243,730.171,133.255,730.183,133.264C730.195,133.273,730.205,133.28,730.212,133.286C730.219,133.292,730.225,133.297,730.228,133.299C730.23,133.301,730.231,133.302,730.232,133.303C730.232,133.303,730.233,133.303,730.233,133.303C730.233,133.303,730.233,133.304,730.233,133.304C730.233,133.304,730.233,133.304,730.233,133.304C730.233,133.304,730.233,133.304,730.233,133.304L730.233,133.304C730.234,133.304,730.231,133.302,730.228,133.299C730.225,133.297,730.219,133.292,730.212,133.286C730.205,133.28,730.195,133.273,730.183,133.264C730.171,133.255,730.156,133.243,730.137,133.231C730.118,133.218,730.095,133.204,730.066,133.188C730.038,133.172,730.002,133.154,729.96,133.137C729.917,133.12,729.865,133.101,729.802,133.087C729.74,133.073,729.666,133.063,729.582,133.063L729.582,135.063C729.499,135.063,729.425,135.053,729.362,135.038C729.3,135.024,729.247,135.006,729.205,134.989C729.162,134.972,729.127,134.954,729.098,134.938C729.07,134.922,729.046,134.907,729.028,134.895C729.009,134.883,728.993,134.871,728.981,134.862C728.969,134.853,728.96,134.845,728.953,134.84C728.945,134.834,728.94,134.829,728.937,134.826C728.935,134.825,728.934,134.824,728.933,134.823C728.932,134.823,728.932,134.823,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822L728.932,134.822C728.931,134.822,728.934,134.824,728.937,134.826C728.94,134.829,728.945,134.834,728.952,134.84C728.96,134.845,728.969,134.853,728.981,134.862C728.993,134.871,729.009,134.882,729.028,134.895C729.046,134.907,729.07,134.922,729.098,134.938C729.126,134.953,729.162,134.971,729.205,134.989C729.247,135.006,729.3,135.024,729.362,135.038C729.425,135.052,729.499,135.063,729.582,135.063L729.582,133.063ZM704,107.481C704,121.609,715.454,133.063,729.582,133.063L729.582,135.063C714.349,135.063,702,122.714,702,107.481L704,107.481ZM729.582,81.8983C715.454,81.8983,704,93.3519,704,107.481L702,107.481C702,92.2473,714.349,79.8983,729.582,79.8983L729.582,81.8983ZM732.566,82.0703C731.587,81.9567,730.592,81.8983,729.582,81.8983L729.582,79.8983C730.669,79.8983,731.742,79.9612,732.797,80.0837L732.566,82.0703ZM764.392,61.6456C750.701,61.6456,738.908,69.7836,733.592,81.4905L731.771,80.6635C737.4,68.2686,749.888,59.6456,764.392,59.6456L764.392,61.6456ZM770.216,62.1452C768.325,61.8169,766.379,61.6456,764.392,61.6456L764.392,59.6456C766.494,59.6456,768.555,59.8268,770.558,60.1747L770.216,62.1452ZM818.823,30C797.451,30,779.115,43.0109,771.309,61.548L769.466,60.7718C777.573,41.5193,796.618,28,818.823,28L818.823,30ZM865.567,59.8108C857.371,42.2028,839.521,30,818.823,30L818.823,28C840.327,28,858.868,40.68,867.38,58.9668L865.567,59.8108ZM902,96.7218C902,76.9161,886.156,60.8106,866.452,60.3886L866.495,58.389C887.284,58.8344,904,75.8259,904,96.7218L902,96.7218ZM867.507,133.017C886.718,132.055,902,116.173,902,96.7218L904,96.7218C904,117.244,887.878,134,867.607,135.015L867.507,133.017ZM866.557,134.063L866.557,134.016L868.557,134.016L868.557,134.063L866.557,134.063ZM865.879,133.063L867.557,133.063L867.557,135.063L865.879,135.063L865.879,133.063ZM865.658,133.064C865.73,133.064,865.802,133.063,865.874,133.063L865.885,135.063C865.81,135.063,865.734,135.064,865.658,135.064L865.658,133.064ZM865.443,133.063C865.515,133.063,865.586,133.064,865.658,133.064L865.658,135.064C865.583,135.064,865.507,135.063,865.431,135.063L865.443,133.063ZM819.006,133.063L865.437,133.063L865.437,135.063L819.006,135.063L819.006,133.063ZM818.823,133.063C818.883,133.063,818.943,133.063,819.003,133.063L819.01,135.063C818.947,135.063,818.885,135.063,818.823,135.063L818.823,133.063ZM818.643,133.063C818.703,133.063,818.763,133.063,818.823,133.063L818.823,135.063C818.761,135.063,818.698,135.063,818.636,135.063L818.643,133.063ZM729.582,133.063L818.64,133.063L818.64,135.063L729.582,135.063L729.582,133.063Z" transform="matrix(1 0 0 1 -18.45 4.510142)" fill="rgb(40,238,175)" stroke="none" stroke-width="1" opacity="1"></path><path id="e3XQRyTiVzq9" d="M732.681,81.077L733.592,81.4905L733.29,82.1544L732.566,82.0703L732.681,81.077ZM770.387,61.1599L771.309,61.548L771,62.2813L770.216,62.1452L770.387,61.1599ZM866.474,59.3888L866.452,60.3886L865.83,60.3752L865.567,59.8108L866.474,59.3888ZM867.557,134.016L866.557,134.016L866.557,133.065L867.507,133.017L867.557,134.016ZM867.557,134.063L868.557,134.063L868.557,135.063L867.557,135.063L867.557,134.063ZM865.879,134.063L865.874,133.063L865.879,133.063L865.879,134.063ZM865.437,134.063L865.437,133.063L865.443,133.063L865.437,134.063ZM819.006,134.063L819.003,133.063L819.006,133.063L819.006,134.063ZM818.64,134.063L818.64,133.063L818.643,133.063L818.64,134.063ZM729.582,133.063C729.666,133.063,729.74,133.073,729.802,133.087C729.864,133.101,729.917,133.12,729.96,133.137C730.002,133.154,730.038,133.172,730.066,133.188C730.095,133.203,730.118,133.218,730.137,133.231C730.156,133.243,730.171,133.255,730.183,133.264C730.195,133.273,730.205,133.28,730.212,133.286C730.219,133.292,730.225,133.297,730.228,133.299C730.23,133.301,730.231,133.302,730.232,133.303C730.232,133.303,730.233,133.303,730.233,133.303C730.233,133.303,730.233,133.304,730.233,133.304C730.233,133.304,730.233,133.304,730.233,133.304C730.233,133.304,730.233,133.304,730.233,133.304L730.233,133.304C730.234,133.304,730.231,133.302,730.228,133.299C730.225,133.297,730.219,133.292,730.212,133.286C730.205,133.28,730.195,133.273,730.183,133.264C730.171,133.255,730.156,133.243,730.137,133.231C730.118,133.218,730.095,133.204,730.066,133.188C730.038,133.172,730.002,133.154,729.96,133.137C729.917,133.12,729.865,133.101,729.802,133.087C729.74,133.073,729.666,133.063,729.582,133.063L729.582,135.063C729.499,135.063,729.425,135.053,729.362,135.038C729.3,135.024,729.247,135.006,729.205,134.989C729.162,134.972,729.127,134.954,729.098,134.938C729.07,134.922,729.046,134.907,729.028,134.895C729.009,134.883,728.993,134.871,728.981,134.862C728.969,134.853,728.96,134.845,728.953,134.84C728.945,134.834,728.94,134.829,728.937,134.826C728.935,134.825,728.934,134.824,728.933,134.823C728.932,134.823,728.932,134.823,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822C728.932,134.822,728.932,134.822,728.932,134.822L728.932,134.822C728.931,134.822,728.934,134.824,728.937,134.826C728.94,134.829,728.945,134.834,728.952,134.84C728.96,134.845,728.969,134.853,728.981,134.862C728.993,134.871,729.009,134.882,729.028,134.895C729.046,134.907,729.07,134.922,729.098,134.938C729.126,134.953,729.162,134.971,729.205,134.989C729.247,135.006,729.3,135.024,729.362,135.038C729.425,135.052,729.499,135.063,729.582,135.063L729.582,133.063ZM704,107.481C704,121.609,715.454,133.063,729.582,133.063L729.582,135.063C714.349,135.063,702,122.714,702,107.481L704,107.481ZM729.582,81.8983C715.454,81.8983,704,93.3519,704,107.481L702,107.481C702,92.2473,714.349,79.8983,729.582,79.8983L729.582,81.8983ZM732.566,82.0703C731.587,81.9567,730.592,81.8983,729.582,81.8983L729.582,79.8983C730.669,79.8983,731.742,79.9612,732.797,80.0837L732.566,82.0703ZM764.392,61.6456C750.701,61.6456,738.908,69.7836,733.592,81.4905L731.771,80.6635C737.4,68.2686,749.888,59.6456,764.392,59.6456L764.392,61.6456ZM770.216,62.1452C768.325,61.8169,766.379,61.6456,764.392,61.6456L764.392,59.6456C766.494,59.6456,768.555,59.8268,770.558,60.1747L770.216,62.1452ZM818.823,30C797.451,30,779.115,43.0109,771.309,61.548L769.466,60.7718C777.573,41.5193,796.618,28,818.823,28L818.823,30ZM865.567,59.8108C857.371,42.2028,839.521,30,818.823,30L818.823,28C840.327,28,858.868,40.68,867.38,58.9668L865.567,59.8108ZM902,96.7218C902,76.9161,886.156,60.8106,866.452,60.3886L866.495,58.389C887.284,58.8344,904,75.8259,904,96.7218L902,96.7218ZM867.507,133.017C886.718,132.055,902,116.173,902,96.7218L904,96.7218C904,117.244,887.878,134,867.607,135.015L867.507,133.017ZM866.557,134.063L866.557,134.016L868.557,134.016L868.557,134.063L866.557,134.063ZM865.879,133.063L867.557,133.063L867.557,135.063L865.879,135.063L865.879,133.063ZM865.658,133.064C865.73,133.064,865.802,133.063,865.874,133.063L865.885,135.063C865.81,135.063,865.734,135.064,865.658,135.064L865.658,133.064ZM865.443,133.063C865.515,133.063,865.586,133.064,865.658,133.064L865.658,135.064C865.583,135.064,865.507,135.063,865.431,135.063L865.443,133.063ZM819.006,133.063L865.437,133.063L865.437,135.063L819.006,135.063L819.006,133.063ZM818.823,133.063C818.883,133.063,818.943,133.063,819.003,133.063L819.01,135.063C818.947,135.063,818.885,135.063,818.823,135.063L818.823,133.063ZM818.643,133.063C818.703,133.063,818.763,133.063,818.823,133.063L818.823,135.063C818.761,135.063,818.698,135.063,818.636,135.063L818.643,133.063ZM729.582,133.063L818.64,133.063L818.64,135.063L729.582,135.063L729.582,133.063Z" transform="matrix(1 0 0 1 135.49263 102.482738)" fill="rgb(40,238,175)" stroke="none" stroke-width="1" opacity="0"></path><path id="e3XQRyTiVzq10" d="M588.266,64.0097L589.266,64.0097L589.266,63.0586L588.316,63.011L588.266,64.0097ZM588.916,19.2333L588.937,20.2331L589.56,20.2197L589.822,19.6553L588.916,19.2333ZM646.568,20.2959L645.646,20.684L645.955,21.4172L646.739,21.2812L646.568,20.2959ZM669.191,32.2461L668.281,32.6596L668.582,33.3236L669.307,33.2395L669.191,32.2461ZM671.051,64.0376L671.051,63.0376L670.051,63.0376L670.051,64.0376L671.051,64.0376ZM671.051,64.0377L671.051,65.0377L672.051,65.0377L672.051,64.0377L671.051,64.0377ZM617.625,64.0377L617.625,63.0377L617.621,63.0377L617.625,64.0377ZM617.388,64.0377L617.392,63.0377L617.388,63.0377L617.388,64.0377ZM589.55,64.0377L589.55,63.0377L589.543,63.0377L589.55,64.0377ZM589.26,64.0377L589.267,63.0377L589.26,63.0377L589.26,64.0377ZM588.266,64.0377L587.266,64.0377L587.266,65.0377L588.266,65.0377L588.266,64.0377ZM588.316,63.011C577.001,62.4443,568,53.0895,568,41.6331L566,41.6331C566,54.1606,575.842,64.3887,588.216,65.0085L588.316,63.011ZM568,41.6331C568,29.9678,577.332,20.4817,588.937,20.2331L588.894,18.2335C576.204,18.5054,566,28.8775,566,41.6331L568,41.6331ZM589.822,19.6553C594.677,9.22622,605.249,2,617.506,2L617.506,0C604.442,0,593.18,7.70346,588.009,18.8113L589.822,19.6553ZM617.506,2C630.163,2,641.022,9.70484,645.646,20.684L647.489,19.9078C642.564,8.21323,630.996,0,617.506,0L617.506,2ZM646.739,21.2812C647.851,21.0881,648.996,20.9873,650.165,20.9873L650.165,18.9873C648.88,18.9873,647.621,19.098,646.396,19.3106L646.739,21.2812ZM650.165,20.9873C658.217,20.9873,665.153,25.7731,668.281,32.6596L670.102,31.8326C666.662,24.2581,659.03,18.9873,650.165,18.9873L650.165,20.9873ZM669.307,33.2395C669.878,33.1731,670.46,33.1389,671.051,33.1389L671.051,31.1389C670.383,31.1389,669.724,31.1776,669.076,31.2528L669.307,33.2395ZM671.051,33.1389C679.307,33.1389,686,39.832,686,48.0883L688,48.0883C688,38.7274,680.411,31.1389,671.051,31.1389L671.051,33.1389ZM686,48.0883C686,56.3446,679.307,63.0376,671.051,63.0376L671.051,65.0376C680.411,65.0376,688,57.4492,688,48.0883L686,48.0883ZM671.051,63.0376L671.051,63.0376L671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376L671.051,63.0376L671.051,65.0376L671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376L671.051,65.0376L671.051,65.0376L671.051,63.0376ZM670.051,64.0376L670.051,64.0377L672.051,64.0377L672.051,64.0376L670.051,64.0376ZM671.051,63.0377L617.625,63.0377L617.625,65.0377L671.051,65.0377L671.051,63.0377ZM617.621,63.0377C617.583,63.0379,617.544,63.0379,617.506,63.0379L617.506,65.0379C617.547,65.0379,617.588,65.0379,617.628,65.0377L617.621,63.0377ZM617.506,63.0379C617.468,63.0379,617.43,63.0379,617.392,63.0377L617.384,65.0377C617.425,65.0379,617.466,65.0379,617.506,65.0379L617.506,63.0379ZM617.388,63.0377L589.55,63.0377L589.55,65.0377L617.388,65.0377L617.388,63.0377ZM589.543,63.0377C589.497,63.038,589.451,63.0382,589.405,63.0382L589.405,65.0382C589.455,65.0382,589.506,65.038,589.556,65.0377L589.543,63.0377ZM589.405,63.0382C589.359,63.0382,589.313,63.038,589.267,63.0377L589.254,65.0377C589.304,65.038,589.355,65.0382,589.405,65.0382L589.405,63.0382ZM589.26,63.0377L588.266,63.0377L588.266,65.0377L589.26,65.0377L589.26,63.0377ZM589.266,64.0377L589.266,64.0097L587.266,64.0097L587.266,64.0377L589.266,64.0377Z" fill="rgb(40,238,175)" stroke="none" stroke-width="1" transform="matrix(1 0 0 1 45.566971 0)" opacity="0.293684"></path><path id="e3XQRyTiVzq11" d="M 61 107.24980000000001 C 50.797846310000004 102.051629186 44.163874432 100.798245826 36 112.7218 C 31.351986042 100.467945618 22.279683792 101.441692796 13 107.24980000000001" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></path><path id="e3XQRyTiVzq12" d="M 117 159.559886 C 128.26761146799998 157.991759582 134.556021664 161.86306794 137.833 168.333 C 139.675429582 163.488859674 148.708913974 156.20965196 157 159.559886" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></path><path id="e3XQRyTiVzq13" d="M 61 150.472 C 55.860950332 148.07222677200002 53.154249956 146.417559516 48.5 153 C 45.472280839999996 147.003928092 39.524601576 147.308328732 35.632 150.472" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></path><path id="e3XQRyTiVzq14" d="M 25 127.839968 C 18.52124365 126.17939836 13.612790708 130.70023297 12.5 133 C 12.017791286 130.187117032 6.490135218 125.840123074 0.658 127.736" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></path><line id="e3XQRyTiVzq15" x1="640.381" y1="479.962" x2="640.381" y2="564.002" fill="none" stroke="rgb(40,238,175)" stroke-width="2"></line><path id="e3XQRyTiVzq16" d="M588.266,64.0097L589.266,64.0097L589.266,63.0586L588.316,63.011L588.266,64.0097ZM588.916,19.2333L588.937,20.2331L589.56,20.2197L589.822,19.6553L588.916,19.2333ZM646.568,20.2959L645.646,20.684L645.955,21.4172L646.739,21.2812L646.568,20.2959ZM669.191,32.2461L668.281,32.6596L668.582,33.3236L669.307,33.2395L669.191,32.2461ZM671.051,64.0376L671.051,63.0376L670.051,63.0376L670.051,64.0376L671.051,64.0376ZM671.051,64.0377L671.051,65.0377L672.051,65.0377L672.051,64.0377L671.051,64.0377ZM617.625,64.0377L617.625,63.0377L617.621,63.0377L617.625,64.0377ZM617.388,64.0377L617.392,63.0377L617.388,63.0377L617.388,64.0377ZM589.55,64.0377L589.55,63.0377L589.543,63.0377L589.55,64.0377ZM589.26,64.0377L589.267,63.0377L589.26,63.0377L589.26,64.0377ZM588.266,64.0377L587.266,64.0377L587.266,65.0377L588.266,65.0377L588.266,64.0377ZM588.316,63.011C577.001,62.4443,568,53.0895,568,41.6331L566,41.6331C566,54.1606,575.842,64.3887,588.216,65.0085L588.316,63.011ZM568,41.6331C568,29.9678,577.332,20.4817,588.937,20.2331L588.894,18.2335C576.204,18.5054,566,28.8775,566,41.6331L568,41.6331ZM589.822,19.6553C594.677,9.22622,605.249,2,617.506,2L617.506,0C604.442,0,593.18,7.70346,588.009,18.8113L589.822,19.6553ZM617.506,2C630.163,2,641.022,9.70484,645.646,20.684L647.489,19.9078C642.564,8.21323,630.996,0,617.506,0L617.506,2ZM646.739,21.2812C647.851,21.0881,648.996,20.9873,650.165,20.9873L650.165,18.9873C648.88,18.9873,647.621,19.098,646.396,19.3106L646.739,21.2812ZM650.165,20.9873C658.217,20.9873,665.153,25.7731,668.281,32.6596L670.102,31.8326C666.662,24.2581,659.03,18.9873,650.165,18.9873L650.165,20.9873ZM669.307,33.2395C669.878,33.1731,670.46,33.1389,671.051,33.1389L671.051,31.1389C670.383,31.1389,669.724,31.1776,669.076,31.2528L669.307,33.2395ZM671.051,33.1389C679.307,33.1389,686,39.832,686,48.0883L688,48.0883C688,38.7274,680.411,31.1389,671.051,31.1389L671.051,33.1389ZM686,48.0883C686,56.3446,679.307,63.0376,671.051,63.0376L671.051,65.0376C680.411,65.0376,688,57.4492,688,48.0883L686,48.0883ZM671.051,63.0376L671.051,63.0376L671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376C671.051,63.0376,671.051,63.0376,671.051,63.0376L671.051,63.0376L671.051,65.0376L671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376C671.051,65.0376,671.051,65.0376,671.051,65.0376L671.051,65.0376L671.051,65.0376L671.051,63.0376ZM670.051,64.0376L670.051,64.0377L672.051,64.0377L672.051,64.0376L670.051,64.0376ZM671.051,63.0377L617.625,63.0377L617.625,65.0377L671.051,65.0377L671.051,63.0377ZM617.621,63.0377C617.583,63.0379,617.544,63.0379,617.506,63.0379L617.506,65.0379C617.547,65.0379,617.588,65.0379,617.628,65.0377L617.621,63.0377ZM617.506,63.0379C617.468,63.0379,617.43,63.0379,617.392,63.0377L617.384,65.0377C617.425,65.0379,617.466,65.0379,617.506,65.0379L617.506,63.0379ZM617.388,63.0377L589.55,63.0377L589.55,65.0377L617.388,65.0377L617.388,63.0377ZM589.543,63.0377C589.497,63.038,589.451,63.0382,589.405,63.0382L589.405,65.0382C589.455,65.0382,589.506,65.038,589.556,65.0377L589.543,63.0377ZM589.405,63.0382C589.359,63.0382,589.313,63.038,589.267,63.0377L589.254,65.0377C589.304,65.038,589.355,65.0382,589.405,65.0382L589.405,63.0382ZM589.26,63.0377L588.266,63.0377L588.266,65.0377L589.26,65.0377L589.26,63.0377ZM589.266,64.0377L589.266,64.0097L587.266,64.0097L587.266,64.0377L589.266,64.0377Z" transform="matrix(1 0 0 1 361.895789 4.9618)" opacity="1" fill="rgb(40,238,175)" stroke="none" stroke-width="1"></path><path id="e3XQRyTiVzq17" d="M639,159C847.487,159,1023.36,303.558,1079,501.325L199,501.325C254.638,303.558,430.513,159,639,159Z" fill="rgb(2,72,70)" stroke="rgb(40,238,175)" stroke-width="2"></path><g id="e3XQRyTiVzq18" transform="matrix(1 0 0 1 0.000001 0)"><path id="e3XQRyTiVzq19" d="M1027.93,382.07C1027.93,382.07,939.232,350.442,717.037,367.186C598.772,376.489,434.814,432.303,381.953,503" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq20" d="M925.793,263C925.793,263,732.268,217.419,557.558,283.465C427.019,332.768,344.323,423,333.571,503" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq21" d="M816.846,196.302C816.846,196.302,667.76,150.441,515.449,215.558C386.97,270.441,305.797,372.767,295.941,501.139" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq22" d="M621.171,159.746C621.171,159.746,744.812,191.653,815.592,292.769C891.747,401.607,887.267,502.072,887.267,502.072" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq23" d="M401.663,227.65C467.963,224.859,554.87,257.417,611.315,325.324C666.953,392.208,679.407,502.068,679.407,502.068" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq24" d="M269.959,351.371C306.693,345.79,367.886,358.999,399.871,382.999C476.923,440.673,493.05,502.999,493.05,502.999" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq25" d="M322.82,289.047C322.82,289.047,290.566,335.559,274.439,398.815C258.312,462.07,263.687,502.07,263.687,502.07" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq26" d="M233.225,411.836C233.225,411.836,233.763,444.302,235.017,460.208C235.734,469.139,239.945,499.092,240.393,502.069" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path><path id="e3XQRyTiVzq27" d="M210.827,463.929C210.827,463.929,212.439,473.325,214.41,481.604C216.202,489.046,219.786,502.069,219.786,502.069" fill="none" stroke="rgb(40,238,175)" stroke-width="2" stroke-miterlimit="10"></path></g><path id="e3XQRyTiVzq28" d="M599.041,402.615L619.85,402.615L583.52,460.011L606.006,460.011L568,517.408L718.769,517.408L673.852,460.011L698.814,460.011L655.879,402.615L678.86,402.615L635.624,340L599.041,402.615Z" fill="rgb(2,72,70)" stroke="rgb(40,238,175)" stroke-width="2"></path><script>!function(t,n){"object"==typeof exports&amp;&amp;"undefined"!=typeof module?module.exports=n():"function"==typeof define&amp;&amp;define.amd?define(n):(t="undefined"!=typeof globalThis?globalThis:t||self).__SVGATOR_PLAYER__=n()}(this,(function(){"use strict";function t(n){return(t="function"==typeof Symbol&amp;&amp;"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&amp;&amp;"function"==typeof Symbol&amp;&amp;t.constructor===Symbol&amp;&amp;t!==Symbol.prototype?"symbol":typeof t})(n)}function n(t,n){if(!(t instanceof n))throw new TypeError("Cannot call a class as a function")}function e(t,n){for(var e=0;e&lt;n.length;e++){var r=n[e];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&amp;&amp;(r.writable=!0),Object.defineProperty(t,r.key,r)}}function r(t,n,r){return n&amp;&amp;e(t.prototype,n),r&amp;&amp;e(t,r),t}function i(t){return(i=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function u(t,n){return(u=Object.setPrototypeOf||function(t,n){return t.__proto__=n,t})(t,n)}function o(t,n){return!n||"object"!=typeof n&amp;&amp;"function"!=typeof n?function(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}(t):n}function a(t){var n=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}();return function(){var e,r=i(t);if(n){var u=i(this).constructor;e=Reflect.construct(r,arguments,u)}else e=r.apply(this,arguments);return o(this,e)}}function l(t,n,e){return(l="undefined"!=typeof Reflect&amp;&amp;Reflect.get?Reflect.get:function(t,n,e){var r=function(t,n){for(;!Object.prototype.hasOwnProperty.call(t,n)&amp;&amp;null!==(t=i(t)););return t}(t,n);if(r){var u=Object.getOwnPropertyDescriptor(r,n);return u.get?u.get.call(e):u.value}})(t,n,e||t)}var s=f(Math.pow(10,-6));function f(t){var n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:6;if(Number.isInteger(t))return t;var e=Math.pow(10,n);return Math.round((+t+Number.EPSILON)*e)/e}function c(t,n){var e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:s;return Math.abs(t-n)&lt;e}var h=Math.PI/180;function v(t){return t}function d(t,n,e){var r=1-e;return 3*e*r*(t*r+n*e)+e*e*e}function y(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:0,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0,e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:1,r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:1;return t&lt;0||t&gt;1||e&lt;0||e&gt;1?null:c(t,n)&amp;&amp;c(e,r)?v:function(i){if(i&lt;=0)return t&gt;0?i*n/t:0===n&amp;&amp;e&gt;0?i*r/e:0;if(i&gt;=1)return e&lt;1?1+(i-1)*(r-1)/(e-1):1===e&amp;&amp;t&lt;1?1+(i-1)*(n-1)/(t-1):1;for(var u,o=0,a=1;o&lt;a;){var l=d(t,e,u=(o+a)/2);if(c(i,l))break;l&lt;i?o=u:a=u}return d(n,r,u)}}function g(){return 1}function p(t){return 1===t?1:0}function m(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:1,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0;if(1===t){if(0===n)return p;if(1===n)return g}var e=1/t;return function(t){return t&gt;=1?1:(t+=n*e)-t%e}}function b(t,n,e){return t&gt;=.5?e:n}function w(t,n,e){return 0===t||n===e?n:t*(e-n)+n}function x(t,n,e){var r=w(t,n,e);return r&lt;=0?0:r}function A(t,n,e){return 0===t?n:1===t?e:{x:w(t,n.x,e.x),y:w(t,n.y,e.y)}}function k(t,n,e){return 0===t?n:1===t?e:{x:x(t,n.x,e.x),y:x(t,n.y,e.y)}}function _(t,n,e){var r=function(t,n,e){return Math.round(w(t,n,e))}(t,n,e);return r&lt;=0?0:r&gt;=255?255:r}function S(t,n,e){return 0===t?n:1===t?e:{r:_(t,n.r,e.r),g:_(t,n.g,e.g),b:_(t,n.b,e.b),a:w(t,null==n.a?1:n.a,null==e.a?1:e.a)}}function M(t,n,e){if(0===t)return n;if(1===t)return e;var r=n.length;if(r!==e.length)return b(t,n,e);for(var i=[],u=0;u&lt;r;u++)i.push(S(t,n[u],e[u]));return i}function E(t,n,e){var r=n.length;if(r!==e.length)return b(t,n,e);for(var i=new Array(r),u=0;u&lt;r;u++)i[u]=w(t,n[u],e[u]);return i}function O(t,n){for(var e=[],r=0;r&lt;t;r++)e.push(n);return e}function B(t,n){if(--n&lt;=0)return t;var e=(t=Object.assign([],t)).length;do{for(var r=0;r&lt;e;r++)t.push(t[r])}while(--n&gt;0);return t}var I,P=function(){function t(e){n(this,t),this.list=e,this.length=e.length}return r(t,[{key:"setAttribute",value:function(t,n){for(var e=this.list,r=0;r&lt;this.length;r++)e[r].setAttribute(t,n)}},{key:"removeAttribute",value:function(t){for(var n=this.list,e=0;e&lt;this.length;e++)n[e].removeAttribute(t)}},{key:"style",value:function(t,n){for(var e=this.list,r=0;r&lt;this.length;r++)e[r].style[t]=n}}]),t}(),N=/-./g,j=function(t,n){return n.toUpperCase()};function T(t){return"function"==typeof t?t:b}function R(t){return t?"function"==typeof t?t:Array.isArray(t)?function(t){var n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:v;if(!Array.isArray(t))return n;switch(t.length){case 1:return m(t[0])||n;case 2:return m(t[0],t[1])||n;case 4:return y(t[0],t[1],t[2],t[3])||n}return n}(t,null):function(t,n){var e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:v;switch(t){case"linear":return v;case"steps":return m(n.steps||1,n.jump||0)||e;case"bezier":case"cubic-bezier":return y(n.x1||0,n.y1||0,n.x2||0,n.y2||0)||e}return e}(t.type,t.value,null):null}function F(t,n,e){var r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]&amp;&amp;arguments[3],i=n.length-1;if(t&lt;=n[0].t)return r?[0,0,n[0].v]:n[0].v;if(t&gt;=n[i].t)return r?[i,1,n[i].v]:n[i].v;var u,o=n[0],a=null;for(u=1;u&lt;=i;u++){if(!(t&gt;n[u].t)){a=n[u];break}o=n[u]}return null==a?r?[i,1,n[i].v]:n[i].v:o.t===a.t?r?[u,1,a.v]:a.v:(t=(t-o.t)/(a.t-o.t),o.e&amp;&amp;(t=o.e(t)),r?[u,t,e(t,o.v,a.v)]:e(t,o.v,a.v))}function C(t,n){var e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:null;return t&amp;&amp;t.length?"function"!=typeof n?null:("function"!=typeof e&amp;&amp;(e=null),function(r){var i=F(r,t,n);return null!=i&amp;&amp;e&amp;&amp;(i=e(i)),i}):null}function q(t,n){return t.t-n.t}function L(n,e,r,i,u){var o,a="@"===r[0],l="#"===r[0],s=I[r],f=b;switch(a?(o=r.substr(1),r=o.replace(N,j)):l&amp;&amp;(r=r.substr(1)),t(s)){case"function":if(f=s(i,u,F,R,r,a,e,n),l)return f;break;case"string":f=C(i,T(s));break;case"object":if((f=C(i,T(s.i),s.f))&amp;&amp;"function"==typeof s.u)return s.u(e,f,r,a,n)}return f?function(t,n,e){var r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]&amp;&amp;arguments[3];if(r)return t instanceof P?function(r){return t.style(n,e(r))}:function(r){return t.style[n]=e(r)};if(Array.isArray(n)){var i=n.length;return function(r){var u=e(r);if(null==u)for(var o=0;o&lt;i;o++)t[o].removeAttribute(n);else for(var a=0;a&lt;i;a++)t[a].setAttribute(n,u)}}return function(r){var i=e(r);null==i?t.removeAttribute(n):t.setAttribute(n,i)}}(e,r,f,a):null}function V(n,e,r,i){if(!i||"object"!==t(i))return null;var u=null,o=null;return Array.isArray(i)?o=function(t){if(!t||!t.length)return null;for(var n=0;n&lt;t.length;n++)t[n].e&amp;&amp;(t[n].e=R(t[n].e));return t.sort(q)}(i):(o=i.keys,u=i.data||null),o?L(n,e,r,o,u):null}function z(t,n,e){if(!e)return null;var r=[];for(var i in e)if(e.hasOwnProperty(i)){var u=V(t,n,i,e[i]);u&amp;&amp;r.push(u)}return r.length?r:null}function D(t,n){if(!n.duration||n.duration&lt;0)return null;var e=function(t,n){if(!n)return null;var e=[];if(Array.isArray(n))for(var r=n.length,i=0;i&lt;r;i++){var u=n[i];if(2===u.length){var o=null;if("string"==typeof u[0])o=t.getElementById(u[0]);else if(Array.isArray(u[0])){o=[];for(var a=0;a&lt;u[0].length;a++)if("string"==typeof u[0][a]){var l=t.getElementById(u[0][a]);l&amp;&amp;o.push(l)}o=o.length?1===o.length?o[0]:new P(o):null}if(o){var s=z(t,o,u[1]);s&amp;&amp;(e=e.concat(s))}}}else for(var f in n)if(n.hasOwnProperty(f)){var c=t.getElementById(f);if(c){var h=z(t,c,n[f]);h&amp;&amp;(e=e.concat(h))}}return e.length?e:null}(t,n.elements);return e?function(t,n){var e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:1/0,r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:1,i=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]&amp;&amp;arguments[4],u=arguments.length&gt;5&amp;&amp;void 0!==arguments[5]?arguments[5]:1,o=t.length,a=r&gt;0?n:0;i&amp;&amp;e%2==0&amp;&amp;(a=n-a);var l=null;return function(s,f){var c=s%n,h=1+(s-c)/n;f*=r,i&amp;&amp;h%2==0&amp;&amp;(f=-f);var v=!1;if(h&gt;e)c=a,v=!0,-1===u&amp;&amp;(c=r&gt;0?0:n);else if(f&lt;0&amp;&amp;(c=n-c),c===l)return!1;l=c;for(var d=0;d&lt;o;d++)t[d](c);return v}}(e,n.duration,n.iterations||1/0,n.direction||1,!!n.alternate,n.fill||1):null}Number.isInteger||(Number.isInteger=function(t){return"number"==typeof t&amp;&amp;isFinite(t)&amp;&amp;Math.floor(t)===t}),Number.EPSILON||(Number.EPSILON=2220446049250313e-31);var U=function(){function t(e,r){var i=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:{};n(this,t),this._id=0,this._running=!1,this._rollingBack=!1,this._animations=e,this.duration=r.duration,this.alternate=r.alternate,this.fill=r.fill,this.iterations=r.iterations,this.direction=i.direction||1,this.speed=i.speed||1,this.fps=i.fps||100,this.offset=i.offset||0,this.rollbackStartOffset=0}return r(t,[{key:"_rollback",value:function(){var t=this,n=1/0,e=null;this.rollbackStartOffset=this.offset,this._rollingBack||(this._rollingBack=!0,this._running=!0);this._id=window.requestAnimationFrame((function r(i){if(t._rollingBack){null==e&amp;&amp;(e=i);var u=i-e,o=t.rollbackStartOffset-u,a=Math.round(o*t.speed);if(a&gt;t.duration&amp;&amp;n!=1/0){var l=!!t.alternate&amp;&amp;a/t.duration%2&gt;1,s=a%t.duration;a=(s+=l?t.duration:0)||t.duration}var f=t.fps?1e3/t.fps:0,c=Math.max(0,a);if(c&lt;n-f){t.offset=c,n=c;for(var h=t._animations,v=h.length,d=0;d&lt;v;d++)h[d](c,t.direction)}var y=!1;if(t.iterations&gt;0&amp;&amp;-1===t.fill){var g=t.iterations*t.duration,p=g==a;a=p?0:a,t.offset=p?0:t.offset,y=a&gt;g}a&gt;0&amp;&amp;t.offset&gt;=a&amp;&amp;!y?t._id=window.requestAnimationFrame(r):t.stop()}}))}},{key:"_start",value:function(){var t=this,n=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:0,e=-1/0,r=null,i={},u=function u(o){t._running=!0,null==r&amp;&amp;(r=o);var a=Math.round((o-r+n)*t.speed),l=t.fps?1e3/t.fps:0;if(a&gt;e+l&amp;&amp;!t._rollingBack){t.offset=a,e=a;for(var s=t._animations,f=s.length,c=0,h=0;h&lt;f;h++)i[h]?c++:(i[h]=s[h](a,t.direction),i[h]&amp;&amp;c++);if(c===f)return void t._stop()}t._id=window.requestAnimationFrame(u)};this._id=window.requestAnimationFrame(u)}},{key:"_stop",value:function(){this._id&amp;&amp;window.cancelAnimationFrame(this._id),this._running=!1,this._rollingBack=!1}},{key:"play",value:function(){!this._rollingBack&amp;&amp;this._running||(this._rollingBack=!1,this.rollbackStartOffset&gt;this.duration&amp;&amp;(this.offset=this.rollbackStartOffset-(this.rollbackStartOffset-this.offset)%this.duration,this.rollbackStartOffset=0),this._start(this.offset))}},{key:"stop",value:function(){this._stop(),this.offset=0,this.rollbackStartOffset=0;var t=this.direction,n=this._animations;window.requestAnimationFrame((function(){for(var e=0;e&lt;n.length;e++)n[e](0,t)}))}},{key:"reachedToEnd",value:function(){return this.iterations&gt;0&amp;&amp;this.offset&gt;=this.iterations*this.duration}},{key:"restart",value:function(){this._stop(),this.offset=0,this._start()}},{key:"pause",value:function(){this._stop()}},{key:"reverse",value:function(){this.direction=-this.direction}}],[{key:"build",value:function(n,e){return(n=function(t,n){if(I=n,!t||!t.root||!Array.isArray(t.animations))return null;for(var e=document.getElementsByTagName("svg"),r=!1,i=0;i&lt;e.length;i++)if(e[i].id===t.root&amp;&amp;!e[i].svgatorAnimation){(r=e[i]).svgatorAnimation=!0;break}if(!r)return null;var u=t.animations.map((function(t){return D(r,t)})).filter((function(t){return!!t}));return u.length?{element:r,animations:u,animationSettings:t.animationSettings,options:t.options||void 0}:null}(n,e))?{el:n.element,options:n.options||{},player:new t(n.animations,n.animationSettings,n.options)}:null}}]),t}();!function(){for(var t=0,n=["ms","moz","webkit","o"],e=0;e&lt;n.length&amp;&amp;!window.requestAnimationFrame;++e)window.requestAnimationFrame=window[n[e]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[e]+"CancelAnimationFrame"]||window[n[e]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n){var e=Date.now(),r=Math.max(0,16-(e-t)),i=window.setTimeout((function(){n(e+r)}),r);return t=e+r,i},window.cancelAnimationFrame=window.clearTimeout)}();var W=function(t,n){var e=!1,r=null;return function(i){e&amp;&amp;clearTimeout(e),e=setTimeout((function(){return function(){for(var i=0,u=window.innerHeight,o=0,a=window.innerWidth,l=t.parentNode;l instanceof Element;){var s=window.getComputedStyle(l);if("visible"!==s.overflowY||"visible"!==s.overflowX){var f=l.getBoundingClientRect();"visible"!==s.overflowY&amp;&amp;(i=Math.max(i,f.top),u=Math.min(u,f.bottom)),"visible"!==s.overflowX&amp;&amp;(o=Math.max(o,f.left),a=Math.min(a,f.right))}if(l===l.parentNode)break;l=l.parentNode}e=!1;var c=t.getBoundingClientRect(),h=Math.min(c.height,Math.max(0,i-c.top)),v=Math.min(c.height,Math.max(0,c.bottom-u)),d=Math.min(c.width,Math.max(0,o-c.left)),y=Math.min(c.width,Math.max(0,c.right-a)),g=(c.height-h-v)/c.height,p=(c.width-d-y)/c.width,m=Math.round(g*p*100);null!==r&amp;&amp;r===m||(r=m,n(m))}()}),100)}},Y=function(){function t(e,r,i){n(this,t),r=Math.max(1,r||1),r=Math.min(r,100),this.el=e,this.onTresholdChange=i&amp;&amp;i.call?i:function(){},this.tresholdPercent=r||1,this.currentVisibility=null,this.visibilityCalculator=W(e,this.onVisibilityUpdate.bind(this)),this.bindScrollWatchers(),this.visibilityCalculator()}return r(t,[{key:"bindScrollWatchers",value:function(){for(var t=this.el.parentNode;t&amp;&amp;(t.addEventListener("scroll",this.visibilityCalculator),t!==t.parentNode&amp;&amp;t!==document);)t=t.parentNode}},{key:"onVisibilityUpdate",value:function(t){var n=this.currentVisibility&gt;=this.tresholdPercent,e=t&gt;=this.tresholdPercent;if(null===this.currentVisibility||n!==e)return this.currentVisibility=t,void this.onTresholdChange(e);this.currentVisibility=t}}]),t}();function G(t){return f(t)+""}function H(t){var n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:" ";return t&amp;&amp;t.length?t.map(G).join(n):""}function Q(t){return G(t.x)+","+G(t.y)}function X(t){return t?null==t.a||t.a&gt;=1?"rgb("+t.r+","+t.g+","+t.b+")":"rgba("+t.r+","+t.g+","+t.b+","+t.a+")":"transparent"}var Z={f:null,i:k,u:function(t,n){return function(e){var r=n(e);t.setAttribute("rx",G(r.x)),t.setAttribute("ry",G(r.y))}}},J={f:null,i:function(t,n,e){return 0===t?n:1===t?e:{width:x(t,n.width,e.width),height:x(t,n.height,e.height)}},u:function(t,n){return function(e){var r=n(e);t.setAttribute("width",G(r.width)),t.setAttribute("height",G(r.height))}}},K=Math.sin,$=Math.cos,tt=Math.acos,nt=Math.asin,et=Math.tan,rt=Math.atan2,it=Math.PI/180,ut=180/Math.PI,ot=Math.sqrt,at=function(){function t(){var e=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:1,r=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0,i=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:0,u=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:1,o=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]?arguments[4]:0,a=arguments.length&gt;5&amp;&amp;void 0!==arguments[5]?arguments[5]:0;n(this,t),this.m=[e,r,i,u,o,a],this.i=null,this.w=null,this.s=null}return r(t,[{key:"determinant",get:function(){var t=this.m;return t[0]*t[3]-t[1]*t[2]}},{key:"isIdentity",get:function(){if(null===this.i){var t=this.m;this.i=1===t[0]&amp;&amp;0===t[1]&amp;&amp;0===t[2]&amp;&amp;1===t[3]&amp;&amp;0===t[4]&amp;&amp;0===t[5]}return this.i}},{key:"point",value:function(t,n){var e=this.m;return{x:e[0]*t+e[2]*n+e[4],y:e[1]*t+e[3]*n+e[5]}}},{key:"translateSelf",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:0,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0;if(!t&amp;&amp;!n)return this;var e=this.m;return e[4]+=e[0]*t+e[2]*n,e[5]+=e[1]*t+e[3]*n,this.w=this.s=this.i=null,this}},{key:"rotateSelf",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:0;if(t%=360){var n=K(t*=it),e=$(t),r=this.m,i=r[0],u=r[1];r[0]=i*e+r[2]*n,r[1]=u*e+r[3]*n,r[2]=r[2]*e-i*n,r[3]=r[3]*e-u*n,this.w=this.s=this.i=null}return this}},{key:"scaleSelf",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:1,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:1;if(1!==t||1!==n){var e=this.m;e[0]*=t,e[1]*=t,e[2]*=n,e[3]*=n,this.w=this.s=this.i=null}return this}},{key:"skewSelf",value:function(t,n){if(n%=360,(t%=360)||n){var e=this.m,r=e[0],i=e[1],u=e[2],o=e[3];t&amp;&amp;(t=et(t*it),e[2]+=r*t,e[3]+=i*t),n&amp;&amp;(n=et(n*it),e[0]+=u*n,e[1]+=o*n),this.w=this.s=this.i=null}return this}},{key:"resetSelf",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:1,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0,e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:0,r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:1,i=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]?arguments[4]:0,u=arguments.length&gt;5&amp;&amp;void 0!==arguments[5]?arguments[5]:0,o=this.m;return o[0]=t,o[1]=n,o[2]=e,o[3]=r,o[4]=i,o[5]=u,this.w=this.s=this.i=null,this}},{key:"recomposeSelf",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:null,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:null,e=arguments.length&gt;2&amp;&amp;void 0!==arguments[2]?arguments[2]:null,r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:null,i=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]?arguments[4]:null;return this.isIdentity||this.resetSelf(),t&amp;&amp;(t.x||t.y)&amp;&amp;this.translateSelf(t.x,t.y),n&amp;&amp;this.rotateSelf(n),e&amp;&amp;(e.x&amp;&amp;this.skewSelf(e.x,0),e.y&amp;&amp;this.skewSelf(0,e.y)),!r||1===r.x&amp;&amp;1===r.y||this.scaleSelf(r.x,r.y),i&amp;&amp;(i.x||i.y)&amp;&amp;this.translateSelf(i.x,i.y),this}},{key:"decompose",value:function(){var t=arguments.length&gt;0&amp;&amp;void 0!==arguments[0]?arguments[0]:0,n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:0,e=this.m,r=e[0]*e[0]+e[1]*e[1],i=[[e[0],e[1]],[e[2],e[3]]],u=ot(r);if(0===u)return{origin:{x:f(e[4]),y:f(e[5])},translate:{x:f(t),y:f(n)},scale:{x:0,y:0},skew:{x:0,y:0},rotate:0};i[0][0]/=u,i[0][1]/=u;var o=e[0]*e[3]-e[1]*e[2]&lt;0;o&amp;&amp;(u=-u);var a=i[0][0]*i[1][0]+i[0][1]*i[1][1];i[1][0]-=i[0][0]*a,i[1][1]-=i[0][1]*a;var l=ot(i[1][0]*i[1][0]+i[1][1]*i[1][1]);if(0===l)return{origin:{x:f(e[4]),y:f(e[5])},translate:{x:f(t),y:f(n)},scale:{x:f(u),y:0},skew:{x:0,y:0},rotate:0};i[1][0]/=l,i[1][1]/=l,a/=l;var s=0;return i[1][1]&lt;0?(s=tt(i[1][1])*ut,i[0][1]&lt;0&amp;&amp;(s=360-s)):s=nt(i[0][1])*ut,o&amp;&amp;(s=-s),a=rt(a,ot(i[0][0]*i[0][0]+i[0][1]*i[0][1]))*ut,o&amp;&amp;(a=-a),{origin:{x:f(e[4]),y:f(e[5])},translate:{x:f(t),y:f(n)},scale:{x:f(u),y:f(l)},skew:{x:f(a),y:0},rotate:f(s)}}},{key:"toString",value:function(){return null===this.s&amp;&amp;(this.s="matrix("+this.m.map((function(t){return f(t)})).join(" ")+")"),this.s}}]),t}();Object.freeze({M:2,L:2,Z:0,H:1,V:1,C:6,Q:4,T:2,S:4,A:7});var lt={},st=null;function ft(n){var e=function(){if(st)return st;if("object"!==("undefined"==typeof document?"undefined":t(document))||!document.createElementNS)return{};var n=document.createElementNS("http://www.w3.org/2000/svg","svg");return n&amp;&amp;n.style?(n.style.position="absolute",n.style.opacity="0.01",n.style.zIndex="-9999",n.style.left="-9999px",n.style.width="1px",n.style.height="1px",st={svg:n}):{}}().svg;if(!e)return function(t){return null};var r=document.createElementNS(e.namespaceURI,"path");r.setAttributeNS(null,"d",n),r.setAttributeNS(null,"fill","none"),r.setAttributeNS(null,"stroke","none"),e.appendChild(r);var i=r.getTotalLength();return function(t){var n=r.getPointAtLength(i*t);return{x:n.x,y:n.y}}}function ct(t){return lt[t]?lt[t]:lt[t]=ft(t)}function ht(t,n,e,r){if(!t||!r)return!1;var i=["M",t.x,t.y];if(n&amp;&amp;e&amp;&amp;(i.push("C"),i.push(n.x),i.push(n.y),i.push(e.x),i.push(e.y)),n?!e:e){var u=n||e;i.push("Q"),i.push(u.x),i.push(u.y)}return n||e||i.push("L"),i.push(r.x),i.push(r.y),i.join(" ")}function vt(t,n,e,r){var i=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]?arguments[4]:1,u=ht(t,n,e,r),o=ct(u);try{return o(i)}catch(t){return null}}function dt(t,n,e,r){var i=1-r;return i*i*t+2*i*r*n+r*r*e}function yt(t,n,e,r){return 2*(1-r)*(n-t)+2*r*(e-n)}function gt(t,n,e,r){var i=arguments.length&gt;4&amp;&amp;void 0!==arguments[4]&amp;&amp;arguments[4],u=vt(t,n,null,e,r);return u||(u={x:dt(t.x,n.x,e.x,r),y:dt(t.y,n.y,e.y,r)}),i&amp;&amp;(u.a=pt(t,n,e,r)),u}function pt(t,n,e,r){return Math.atan2(yt(t.y,n.y,e.y,r),yt(t.x,n.x,e.x,r))}function mt(t,n,e,r,i){var u=i*i;return i*u*(r-t+3*(n-e))+3*u*(t+e-2*n)+3*i*(n-t)+t}function bt(t,n,e,r,i){var u=1-i;return 3*(u*u*(n-t)+2*u*i*(e-n)+i*i*(r-e))}function wt(t,n,e,r,i){var u=arguments.length&gt;5&amp;&amp;void 0!==arguments[5]&amp;&amp;arguments[5],o=vt(t,n,e,r,i);return o||(o={x:mt(t.x,n.x,e.x,r.x,i),y:mt(t.y,n.y,e.y,r.y,i)}),u&amp;&amp;(o.a=xt(t,n,e,r,i)),o}function xt(t,n,e,r,i){return Math.atan2(bt(t.y,n.y,e.y,r.y,i),bt(t.x,n.x,e.x,r.x,i))}function At(t,n,e){return t+(n-t)*e}function kt(t,n,e){var r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]&amp;&amp;arguments[3],i={x:At(t.x,n.x,e),y:At(t.y,n.y,e)};return r&amp;&amp;(i.a=_t(t,n)),i}function _t(t,n){return Math.atan2(n.y-t.y,n.x-t.x)}function St(t,n,e){var r=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]&amp;&amp;arguments[3];if(Et(n)){if(Ot(e))return gt(n,e.start,e,t,r)}else if(Et(e)){if(n.end)return gt(n,n.end,e,t,r)}else{if(n.end)return e.start?wt(n,n.end,e.start,e,t,r):gt(n,n.end,e,t,r);if(e.start)return gt(n,e.start,e,t,r)}return kt(n,e,t,r)}function Mt(t,n,e){var r=St(t,n,e,!0);return r.a=function(t){var n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]&amp;&amp;arguments[1];return n?t+Math.PI:t}(r.a)/h,r}function Et(t){return!t.type||"corner"===t.type}function Ot(t){return null!=t.start&amp;&amp;!Et(t)}var Bt=new at;var It={f:function(t){return t?t.join(" "):""},i:function(n,e,r){if(0===n)return e;if(1===n)return r;var i=e.length;if(i!==r.length)return b(n,e,r);for(var u,o=new Array(i),a=0;a&lt;i;a++){if((u=t(e[a]))!==t(r[a]))return b(n,e,r);if("number"===u)o[a]=w(n,e[a],r[a]);else{if(e[a]!==r[a])return b(n,e,r);o[a]=e[a]}}return o}},Pt={f:null,i:E,u:function(t,n){return function(e){var r=n(e);t.setAttribute("x1",G(r[0])),t.setAttribute("y1",G(r[1])),t.setAttribute("x2",G(r[2])),t.setAttribute("y2",G(r[3]))}}},Nt={f:G,i:w},jt={f:G,i:function(t,n,e){var r=w(t,n,e);return r&lt;=0?0:r&gt;=1?1:r}},Tt={f:function(t){var n=arguments.length&gt;1&amp;&amp;void 0!==arguments[1]?arguments[1]:" ";return t&amp;&amp;t.length&gt;0&amp;&amp;(t=t.map((function(t){return f(t,4)}))),H(t,n)},i:function(t,n,e){var r,i,u,o=n.length,a=e.length;if(o!==a)if(0===o)n=O(o=a,0);else if(0===a)a=o,e=O(o,0);else{var l=(u=(r=o)*(i=a)/function(t,n){for(var e;n;)e=n,n=t%n,t=e;return t||1}(r,i))&lt;0?-u:u;n=B(n,Math.floor(l/o)),e=B(e,Math.floor(l/a)),o=a=l}for(var s=[],c=0;c&lt;o;c++)s.push(f(x(t,n[c],e[c])));return s}};function Rt(t,n,e,r,i,u,o,a){return n=function(t,n,e){for(var r,i,u,o=t.length-1,a={},l=0;l&lt;=o;l++)(r=t[l]).e&amp;&amp;(r.e=n(r.e)),r.v&amp;&amp;"g"===(i=r.v).t&amp;&amp;i.r&amp;&amp;(u=e.getElementById(i.r))&amp;&amp;(a[i.r]=u.querySelectorAll("stop"));return a}(t,r,a),function(r){var i,u=e(r,t,Ft);return u?"c"===u.t?X(u.v):"g"===u.t?(n[u.r]&amp;&amp;function(t,n){for(var e=0,r=t.length;e&lt;r;e++)t[e].setAttribute("stop-color",X(n[e]))}(n[u.r],u.v),(i=u.r)?"url(#"+i+")":"none"):"none":"none"}}function Ft(t,n,e){if(0===t)return n;if(1===t)return e;if(n&amp;&amp;e){var r=n.t;if(r===e.t)switch(n.t){case"c":return{t:r,v:S(t,n.v,e.v)};case"g":if(n.r===e.r)return{t:r,v:M(t,n.v,e.v),r:n.r}}}return b(t,n,e)}var Ct={blur:k,brightness:x,contrast:x,"drop-shadow":function(t,n,e){return 0===t?n:1===t?e:{blur:k(t,n.blur,e.blur),offset:A(t,n.offset,e.offset),color:S(t,n.color,e.color)}},grayscale:x,"hue-rotate":w,invert:x,opacity:x,saturate:x,sepia:x};function qt(t,n,e){if(0===t)return n;if(1===t)return e;var r=n.length;if(r!==e.length)return b(t,n,e);for(var i,u=[],o=0;o&lt;r;o++){if(n[o].type!==e[o].type)return n;if(!(i=Ct[n[o].type]))return b(t,n,e);u.push({type:n.type,value:i(t,n[o].value,e[o].value)})}return u}var Lt={blur:function(t){return t?function(n){t.setAttribute("stdDeviation",Q(n))}:null},brightness:function(t,n,e){return(t=zt(e,n))?function(n){n=G(n),t.map((function(t){return t.setAttribute("slope",n)}))}:null},contrast:function(t,n,e){return(t=zt(e,n))?function(n){var e=G((1-n)/2);n=G(n),t.map((function(t){t.setAttribute("slope",n),t.setAttribute("intercept",e)}))}:null},"drop-shadow":function(t,n,e){var r=e.getElementById(n+"-blur");if(!r)return null;var i=e.getElementById(n+"-offset");if(!i)return null;var u=e.getElementById(n+"-flood");return u?function(t){r.setAttribute("stdDeviation",Q(t.blur)),i.setAttribute("dx",G(t.offset.x)),i.setAttribute("dy",G(t.offset.y)),u.setAttribute("flood-color",X(t.color))}:null},grayscale:function(t){return t?function(n){t.setAttribute("values",H(function(t){return[.2126+.7874*(t=1-t),.7152-.7152*t,.0722-.0722*t,0,0,.2126-.2126*t,.7152+.2848*t,.0722-.0722*t,0,0,.2126-.2126*t,.7152-.7152*t,.0722+.9278*t,0,0,0,0,0,1,0]}(n)))}:null},"hue-rotate":function(t){return t?function(n){return t.setAttribute("values",G(n))}:null},invert:function(t,n,e){return(t=zt(e,n))?function(n){n=G(n)+" "+G(1-n),t.map((function(t){return t.setAttribute("tableValues",n)}))}:null},opacity:function(t,n,e){return(t=e.getElementById(n+"-A"))?function(n){return t.setAttribute("tableValues","0 "+G(n))}:null},saturate:function(t){return t?function(n){return t.setAttribute("values",G(n))}:null},sepia:function(t){return t?function(n){return t.setAttribute("values",H(function(t){return[.393+.607*(t=1-t),.769-.769*t,.189-.189*t,0,0,.349-.349*t,.686+.314*t,.168-.168*t,0,0,.272-.272*t,.534-.534*t,.131+.869*t,0,0,0,0,0,1,0]}(n)))}:null}};var Vt=["R","G","B"];function zt(t,n){var e=Vt.map((function(e){return t.getElementById(n+"-"+e)||null}));return-1!==e.indexOf(null)?null:e}var Dt={fill:Rt,"fill-opacity":jt,stroke:Rt,"stroke-opacity":jt,"stroke-width":Nt,"stroke-dashoffset":{f:G,i:w},"stroke-dasharray":Tt,opacity:jt,transform:function(n,e,r,i){if(!(n=function(n,e){if(!n||"object"!==t(n))return null;var r=!1;for(var i in n)n.hasOwnProperty(i)&amp;&amp;(n[i]&amp;&amp;n[i].length?(n[i].forEach((function(t){t.e&amp;&amp;(t.e=e(t.e))})),r=!0):delete n[i]);return r?n:null}(n,i)))return null;var u=function(t,i,u){var o=arguments.length&gt;3&amp;&amp;void 0!==arguments[3]?arguments[3]:null;return n[t]?r(i,n[t],u):e&amp;&amp;e[t]?e[t]:o};return e&amp;&amp;e.a&amp;&amp;n.o?function(t){var e=r(t,n.o,Mt);return Bt.recomposeSelf(e,u("r",t,w,0)+e.a,u("k",t,A),u("s",t,A),u("t",t,A)).toString()}:function(t){return Bt.recomposeSelf(u("o",t,St,null),u("r",t,w,0),u("k",t,A),u("s",t,A),u("t",t,A)).toString()}},"#filter":function(t,n,e,r,i,u,o,a){if(!n.items||!t||!t.length)return null;var l=function(t,n){var e=(t=t.map((function(t){return t&amp;&amp;Lt[t[0]]?(n.getElementById(t[1]),Lt[t[0]](n.getElementById(t[1]),t[1],n)):null}))).length;return function(n){for(var r=0;r&lt;e;r++)t[r]&amp;&amp;t[r](n[r].value)}}(n.items,a);return l?(t=function(t,n){return t.map((function(t){return t.e=n(t.e),t}))}(t,r),function(n){l(e(n,t,qt))}):null},"#line":Pt,points:{f:H,i:E},d:It,r:Nt,"#size":J,"#radius":Z,_:function(t,n){if(Array.isArray(t))for(var e=0;e&lt;t.length;e++)this[t[e]]=n;else this[t]=n}};return function(t){!function(t,n){if("function"!=typeof n&amp;&amp;null!==n)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(n&amp;&amp;n.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),n&amp;&amp;u(t,n)}(o,t);var e=a(o);function o(){return n(this,o),e.apply(this,arguments)}return r(o,null,[{key:"build",value:function(t){var n=l(i(o),"build",this).call(this,t,Dt);if(!n)return null;var e=n.el,r=n.options,u=n.player;return function(t,n,e){if("click"===e.start){return void n.addEventListener("click",(function(){switch(e.click){case"freeze":return!t._running&amp;&amp;t.reachedToEnd()&amp;&amp;(t.offset=0),t._running?t.pause():t.play();case"restart":return t.offset&gt;0?t.restart():t.play();case"reverse":var n=!t._rollingBack&amp;&amp;t._running,r=t.reachedToEnd();return n||r&amp;&amp;1===t.fill?(t.pause(),r&amp;&amp;(t.offset=t.duration-1),t._rollback()):r?t.restart():t.play();case"none":default:return!t._running&amp;&amp;t.offset?t.restart():t.play()}}))}if("hover"===e.start)return n.addEventListener("mouseenter",(function(){return t.reachedToEnd()?t.restart():t.play()})),void n.addEventListener("mouseleave",(function(){switch(e.hover){case"freeze":return t.pause();case"reset":return t.stop();case"reverse":return t.pause(),t._rollback();case"none":default:return}}));if("scroll"===e.start)return void new Y(n,e.scroll||25,(function(n){n?t.reachedToEnd()?t.restart():t.play():t.pause()}));t.play()}(u,e,r),u}}]),o}(U)}));
+__SVGATOR_PLAYER__.build({"root":"e3XQRyTiVzq1","animations":[{"duration":12000,"direction":1,"iterations":0,"fill":1,"alternate":false,"speed":1,"elements":{"e3XQRyTiVzq8":{"transform":{"data":{"t":{"x":-803.213821,"y":-81.532}},"keys":{"o":[{"t":0,"v":{"x":751.213821,"y":87.56316,"type":"corner"}},{"t":4000,"v":{"x":651.213821,"y":88.201658,"type":"corner"}},{"t":6000,"v":{"x":901.213821,"y":86.024399,"type":"corner"}},{"t":8000,"v":{"x":851.213821,"y":86.024399,"type":"corner"}},{"t":12000,"v":{"x":751.213821,"y":86.0511,"type":"corner"}}]}},"opacity":[{"t":0,"v":1},{"t":1900,"v":1},{"t":4000,"v":0},{"t":6000,"v":0},{"t":8000,"v":1},{"t":12000,"v":1}]},"e3XQRyTiVzq9":{"transform":{"data":{"t":{"x":-803,"y":-81.531998}},"keys":{"o":[{"t":0,"v":{"x":1178.748086,"y":186.152936,"type":"corner"}},{"t":2400,"v":{"x":1101,"y":186.531998,"type":"corner"}},{"t":4400,"v":{"x":1023.650491,"y":186.153223,"type":"corner"}},{"t":7800,"v":{"x":909.702602,"y":184.700779,"type":"corner"}},{"t":10100,"v":{"x":838.074514,"y":183.715019,"type":"corner"}},{"t":12000,"v":{"x":1180,"y":184.73556,"type":"corner"}}]}},"opacity":[{"t":0,"v":1},{"t":7000,"v":1},{"t":8800,"v":0},{"t":12000,"v":0}]},"e3XQRyTiVzq10":{"transform":{"data":{"t":{"x":-627,"y":-32.5191}},"keys":{"o":[{"t":0,"v":{"x":627,"y":32.5191,"type":"corner"}},{"t":2000,"v":{"x":565.513871,"y":32.833702,"type":"corner"}},{"t":4000,"v":{"x":504,"y":32.5191,"type":"corner"}},{"t":6000,"v":{"x":442.504501,"y":32.5191,"type":"corner"}},{"t":8000,"v":{"x":381.504501,"y":32.5191,"type":"corner"}},{"t":10100,"v":{"x":690.682001,"y":32.5191,"type":"corner"}},{"t":12000,"v":{"x":629,"y":32.5191,"type":"corner"}}]}},"opacity":[{"t":0,"v":1},{"t":6000,"v":1},{"t":8000,"v":0},{"t":10100,"v":0},{"t":12000,"v":1}]},"e3XQRyTiVzq11":{"d":[{"t":0,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":1000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":2000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":3000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":4000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":5000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":6000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":7000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":8000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":9000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":10000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]},{"t":11000,"v":["M",61,112.7218,"C",54.071195,102.742817,48.407104,94.600897,36,112.7218,"C",28.936149,94.098921,20.346024,101.815862,13,112.7218]},{"t":12000,"v":["M",61,96.7218,"C",44.5,100.7218,36,112.7218,36,112.7218,"C",36,112.7218,26,100.7218,13,96.7218]}]},"e3XQRyTiVzq12":{"d":[{"t":0,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":1000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":2000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":3000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":4000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":5000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":6000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":7000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":8000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":9000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":10000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]},{"t":11000,"v":["M",117,155,"C",130.75,158.333,137.833,168.333,137.833,168.333,"C",137.833,168.333,146.167,158.333,157,155]},{"t":12000,"v":["M",117,168.333,"C",123.491554,157.335221,128.251192,149.41507,137.833,168.333,"C",143.220221,154.168847,153.599497,152.12438,157,168.333]}]},"e3XQRyTiVzq13":{"d":[{"t":0,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":1000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":1500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":2000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":2500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":3000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":3500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":4000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":4500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":5000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":5500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":6000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":6500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":7000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":7500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":8000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":8500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":9000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":9500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":10000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":10500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":11000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]},{"t":11500,"v":["M",61,153,"C",57.298173,148.567583,55.304459,143.376549,48.5,153,"C",44.07351,144.233813,37.688014,147.450773,35,153]},{"t":12000,"v":["M",61,145,"C",52.75,147,48.5,153,48.5,153,"C",48.5,153,43.5,147,37,145]}]},"e3XQRyTiVzq14":{"d":[{"t":0,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":1000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":2000,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":3000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":4000,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":5000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":6000,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":7000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":8000,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":9000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":10000,"v":["M",25,133.304,"C",21.929075,124.60058,15.753774,126.275535,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]},{"t":11000,"v":["M",25,125,"C",16.75,127,12.5,133,12.5,133,"C",12.5,133,7.5,127,1,125]},{"t":12000,"v":["M",28,134.016,"C",24.692135,124.364814,15.536714,125.407293,12.5,133,"C",11.090033,124.775196,4.547179,123.608547,0,133]}]},"e3XQRyTiVzq16":{"transform":{"data":{"t":{"x":-627,"y":-32.5191}},"keys":{"o":[{"t":0,"v":{"x":936,"y":37.4809,"type":"corner"}},{"t":4000,"v":{"x":1089,"y":37.4809,"type":"corner"}},{"t":6000,"v":{"x":1059,"y":37.4809,"type":"corner"}},{"t":8000,"v":{"x":1028,"y":37.4809,"type":"corner"}},{"t":10100,"v":{"x":998,"y":37.4809,"type":"corner"}},{"t":12000,"v":{"x":967,"y":37.4809,"type":"corner"}}]}},"opacity":[{"t":0,"v":0},{"t":4000,"v":0},{"t":6000,"v":1},{"t":8000,"v":1},{"t":12000,"v":1}]}}}],"options":{"start":"load","hover":null,"click":null,"scroll":null,"font":"embed","exportedIds":"unique","svgFormat":"animated","title":"dome and title"},"animationSettings":{"duration":12000,"direction":1,"iterations":0,"fill":1,"alternate":false,"speed":1}})</script></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative grid lg:grid-cols-2 overflow-hidden">
+
+  <!-- stanga: text pe verde inchis -->
+  <div class="bg-forest text-mist px-6 lg:px-16 py-20 lg:py-28 flex items-center">
+    <div class="max-w-md">
+      <h2 class="font-display text-5xl lg:text-6xl font-extrabold leading-[0.95]">
+        Durabil &amp;<br><span class="text-mint">regenerabil</span>
+      </h2>
+      <p class="mt-8 text-lg font-light text-mist/75 leading-relaxed">
+        Lemnul de foc Galle Silva provine din paduri gestionate responsabil — o resursa regenerabila. Certificari FSC si PEFC in lucru, in acord cu principalele standarde de sustenabilitate.
+      </p>
+    </div>
+  </div>
+
+  <!-- dreapta: statistica mare pe alb -->
+  <div class="bg-white px-6 lg:px-16 py-20 lg:py-28 flex items-center justify-center">
+    <div class="flex items-center gap-5">
+      <span class="font-display font-extrabold text-forest leading-none tracking-tight text-8xl sm:text-9xl lg:text-[12rem]">
+        100%
+      </span>
+      <div class="flex flex-col leading-none">
+        <span class="font-display font-extrabold text-mint text-4xl sm:text-5xl lg:text-6xl">natural</span>
+        <span class="font-display font-bold text-forest text-base sm:text-lg lg:text-2xl mt-2">&amp; regenerabil</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- buton scroll-top (coltul dreapta-jos, ca in atasament) -->
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+          class="absolute bottom-6 right-6 grid place-items-center h-12 w-12 border-2 border-mint text-mint hover:bg-mint hover:text-forest transition"
+          aria-label="Sus">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+
+</section>
+
+
+<section class="recycle-sec bg-white px-6 py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+    <!-- simbol reciclare animat (stanga, mai lat) -->
+    <div class="lg:col-span-7 order-2 lg:order-1 flex justify-center">
+      <svg class="recycle-svg w-full max-w-[420px] h-auto" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <g class="arrow">
+          <path d="M308.9,215.3 A110,110 0 0 1 173.4,306.7" fill="none" stroke="#28eeaf" stroke-width="24"/>
+          <polygon points="148.2,300.4 178.7,285.4 168.1,328.0" fill="#28eeaf"/>
+        </g>
+        <g class="arrow" transform="rotate(120 200 200)">
+          <path d="M308.9,215.3 A110,110 0 0 1 173.4,306.7" fill="none" stroke="#28eeaf" stroke-width="24"/>
+          <polygon points="148.2,300.4 178.7,285.4 168.1,328.0" fill="#28eeaf"/>
+        </g>
+        <g class="arrow" transform="rotate(240 200 200)">
+          <path d="M308.9,215.3 A110,110 0 0 1 173.4,306.7" fill="none" stroke="#28eeaf" stroke-width="24"/>
+          <polygon points="148.2,300.4 178.7,285.4 168.1,328.0" fill="#28eeaf"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- text (dreapta) -->
+    <div class="lg:col-span-5 order-1 lg:order-2">
+      <h2 class="font-display text-4xl lg:text-5xl font-bold text-forest leading-tight">
+        Resursa <span class="text-mint">regenerabila</span>
+      </h2>
+      <p class="mt-6 text-lg font-light text-forest/70 leading-relaxed max-w-md">
+        Padurea gestionata responsabil se regenereaza: ce recoltam, se replanteaza. Un ciclu sustenabil, certificat FSC si PEFC, care pastreaza resursa vie pentru generatiile urmatoare.
+      </p>
+      <div class="mt-10">
+        <p class="text-sm uppercase tracking-[0.2em] text-forest/50">Solutii complete pentru lemn si padure</p>
+        <a href="#" class="mt-4 inline-flex items-center gap-3 bg-mint px-8 py-4 text-sm font-bold tracking-[0.15em] text-forest hover:brightness-105 transition">
+          SERVICIILE NOASTRE
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 7h17M12 1l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ===================== FOOTER straturi ===================== -->
+  <footer class="bg-forest text-mist">
+    <div class="forest-band">
+      <picture>
+        <source srcset="img/forrest_front.webp" type="image/webp">
+        <source srcset="img/forrest_front.jpg" type="image/jpeg">
+        <img class="front-img" src="img/forrest_front.png" alt="">
+      </picture>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-14">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <span class="font-display text-2xl font-extrabold">Galle<span class="text-mint"> Silva</span></span>
+          <p class="mt-4 text-sm text-mist/60 max-w-xs font-light">
+            Servicii forestiere si lemn de foc, cu grija pentru padure si mediu.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-mint text-sm font-semibold uppercase tracking-wider">Companie</h4>
+          <ul class="mt-4 space-y-2 text-sm text-mist/70">
+            <li><a href="#" class="hover:text-mint transition">Despre</a></li>
+            <li><a href="#" class="hover:text-mint transition">Servicii</a></li>
+            <li><a href="#" class="hover:text-mint transition">Sustenabilitate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-mint text-sm font-semibold uppercase tracking-wider">Contact</h4>
+          <ul class="mt-4 space-y-2 text-sm text-mist/70">
+            <li><a href="#" class="hover:text-mint transition">Ploiesti, Prahova</a></li>
+            <li><a href="#" class="hover:text-mint transition">contact@galle-silva.ro</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-mist/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-mist/50">
+        <span>© 2026 Galle Silva SRL. Toate drepturile rezervate.</span>
+        <span>Construit cu Tailwind.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  </script>
+</body>
+</html>

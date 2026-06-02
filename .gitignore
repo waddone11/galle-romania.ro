@@ -14,7 +14,8 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+# /public/build is COMMITED — ALL-INKL prod has no Node, deploy = git pull only.
+# See DEPLOY.md §6. To re-build: `npm ci && npm run build` then commit changes.
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage

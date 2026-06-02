@@ -4,10 +4,12 @@ includes:
 parameters:
     paths:
         - app/
-        - config/
         - database/
 
     level: 5
 
     checkOctaneCompatibility: false
     checkModelProperties: true
+
+    # Vendor config files (config/) reference paid-tier classes (e.g. MediaLibrary Pro) that
+    # we don't install — analysing config/ adds noise without business value.

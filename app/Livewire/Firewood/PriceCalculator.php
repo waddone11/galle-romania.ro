@@ -4,9 +4,19 @@ namespace App\Livewire\Firewood;
 
 use App\Models\Specie;
 use App\Models\ZonaLivrare;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
+/**
+ * @property-read Collection<int, Specie>      $species
+ * @property-read Collection<int, ZonaLivrare> $zone
+ * @property-read ?Specie                      $specie
+ * @property-read ?ZonaLivrare                 $zona
+ * @property-read float                        $pretLemn
+ * @property-read float                        $costLivrare
+ * @property-read float                        $total
+ */
 class PriceCalculator extends Component
 {
     public ?int $specieId = null;
@@ -22,14 +32,16 @@ class PriceCalculator extends Component
         $this->zonaId = ZonaLivrare::where('is_active', true)->orderBy('ordine')->value('id');
     }
 
+    /** @return Collection<int, Specie> */
     #[Computed]
-    public function species()
+    public function species(): Collection
     {
         return Specie::where('is_active', true)->orderBy('ordine')->get();
     }
 
+    /** @return Collection<int, ZonaLivrare> */
     #[Computed]
-    public function zone()
+    public function zone(): Collection
     {
         return ZonaLivrare::where('is_active', true)->orderBy('ordine')->get();
     }
@@ -49,7 +61,8 @@ class PriceCalculator extends Component
     #[Computed]
     public function pretLemn(): float
     {
-        $pret = (float) ($this->specie?->pret_per_unitate ?? 0);
+        $specie = $this->specie;
+        $pret = $specie ? (float) $specie->pret_per_unitate : 0.0;
 
         return round($pret * max(0, $this->cantitate), 2);
     }
@@ -57,7 +70,9 @@ class PriceCalculator extends Component
     #[Computed]
     public function costLivrare(): float
     {
-        return (float) ($this->zona?->cost_livrare ?? 0);
+        $zona = $this->zona;
+
+        return $zona ? (float) $zona->cost_livrare : 0.0;
     }
 
     #[Computed]

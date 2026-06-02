@@ -20,8 +20,9 @@ class SiteController extends Controller
         $servicii = Serviciu::where('is_active', true)->orderBy('ordine')->get();
         $certificari = Certificare::where('is_active', true)->orderBy('ordine')->get();
         $articole = Articol::where('is_published', true)->orderByDesc('published_at')->limit(3)->get();
+        $pagina = Pagina::where('slug', 'home')->where('is_published', true)->first();
 
-        return view('site.home', compact('species', 'servicii', 'certificari', 'articole'));
+        return view('site.home', compact('species', 'servicii', 'certificari', 'articole', 'pagina'));
     }
 
     public function lemnDeFoc(): View

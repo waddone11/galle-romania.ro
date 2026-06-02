@@ -15,7 +15,7 @@ class ProiectFactory extends Factory
 
     public function definition(): array
     {
-        $titlu = $this->faker->catchPhrase();
+        $titlu = $this->faker->sentence(4);
 
         return [
             'titlu' => ['ro' => $titlu, 'de' => null, 'en' => null],
