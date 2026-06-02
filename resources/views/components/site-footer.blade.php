@@ -14,7 +14,7 @@
         <picture>
             <source srcset="{{ asset('images/galle/forrest_front.webp') }}" type="image/webp">
             <source srcset="{{ asset('images/galle/forrest_front.jpg') }}" type="image/jpeg">
-            <img class="front-img" src="{{ asset('images/galle/forrest_front.png') }}" alt="" loading="lazy">
+            <img class="front-img" src="{{ asset('images/galle/forrest_front.png') }}" alt="" width="1920" height="683" loading="lazy" decoding="async">
         </picture>
     </div>
 
