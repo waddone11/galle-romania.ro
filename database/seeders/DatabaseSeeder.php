@@ -13,8 +13,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
+            SpecieSeeder::class,
+            ServiciuSeeder::class,
+            CertificareSeeder::class,
+            ZonaLivrareSeeder::class,
+            FaqSeeder::class,
+            PaginaSeeder::class,
+            ProiectSeeder::class,
+            ArticolSeeder::class,
         ]);
-
-        // Domain seeders (Specie, Serviciu, Pagina, etc.) are added in §13.
     }
 }
