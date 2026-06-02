@@ -25,9 +25,9 @@ class Serviciu extends Model implements HasMedia
     {
         return [
             'categorie' => ServiciuCategorie::class,
-            'audienta'  => ServiciuAudienta::class,
+            'audienta' => ServiciuAudienta::class,
             'is_active' => 'boolean',
-            'ordine'    => 'integer',
+            'ordine' => 'integer',
         ];
     }
 

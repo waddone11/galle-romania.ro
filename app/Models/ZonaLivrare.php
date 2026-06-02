@@ -20,10 +20,10 @@ class ZonaLivrare extends Model
     protected function casts(): array
     {
         return [
-            'localitati'   => 'array',
+            'localitati' => 'array',
             'cost_livrare' => 'decimal:2',
-            'is_active'    => 'boolean',
-            'ordine'       => 'integer',
+            'is_active' => 'boolean',
+            'ordine' => 'integer',
         ];
     }
 }

@@ -19,9 +19,9 @@ class ComandaLemn extends Model
     protected function casts(): array
     {
         return [
-            'status'      => ComandaStatus::class,
-            'unitate'     => SpecieUnitate::class,
-            'cantitate'   => 'decimal:2',
+            'status' => ComandaStatus::class,
+            'unitate' => SpecieUnitate::class,
+            'cantitate' => 'decimal:2',
             'data_dorita' => 'date',
         ];
     }

@@ -67,7 +67,7 @@ class ComandaLemnResource extends Resource
     {
         return [
             'index' => ListComandaLemns::route('/'),
-            'edit'  => EditComandaLemn::route('/{record}/edit'),
+            'edit' => EditComandaLemn::route('/{record}/edit'),
         ];
     }
 }

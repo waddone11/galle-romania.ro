@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\SpecieStatus;
 use App\Enums\SpecieUnitate;
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -26,13 +25,13 @@ class Specie extends Model implements HasMedia
     protected function casts(): array
     {
         return [
-            'status'           => SpecieStatus::class,
-            'unitate'          => SpecieUnitate::class,
-            'pret_pornire'     => 'decimal:2',
+            'status' => SpecieStatus::class,
+            'unitate' => SpecieUnitate::class,
+            'pret_pornire' => 'decimal:2',
             'pret_per_unitate' => 'decimal:2',
-            'putere_calorica'  => 'decimal:2',
-            'is_active'        => 'boolean',
-            'ordine'           => 'integer',
+            'putere_calorica' => 'decimal:2',
+            'is_active' => 'boolean',
+            'ordine' => 'integer',
         ];
     }
 

@@ -16,14 +16,14 @@ class LeadFactory extends Factory
     public function definition(): array
     {
         return [
-            'nume'     => $this->faker->name(),
-            'firma'    => $this->faker->company(),
-            'email'    => $this->faker->safeEmail(),
-            'telefon'  => $this->faker->phoneNumber(),
+            'nume' => $this->faker->name(),
+            'firma' => $this->faker->company(),
+            'email' => $this->faker->safeEmail(),
+            'telefon' => $this->faker->phoneNumber(),
             'serviciu' => $this->faker->randomElement(['forestier', 'peisagistica', 'compostare']),
-            'mesaj'    => $this->faker->paragraph(2),
-            'status'   => ComandaStatus::Nou,
-            'source'   => 'contact_form',
+            'mesaj' => $this->faker->paragraph(2),
+            'status' => ComandaStatus::Nou,
+            'source' => 'contact_form',
         ];
     }
 }

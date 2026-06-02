@@ -18,15 +18,15 @@ class ProiectFactory extends Factory
         $titlu = $this->faker->catchPhrase();
 
         return [
-            'titlu'        => ['ro' => $titlu, 'de' => null, 'en' => null],
-            'slug'         => Str::slug($titlu) . '-' . $this->faker->unique()->numberBetween(1, 9999),
-            'descriere'    => ['ro' => $this->faker->sentence(20), 'de' => null, 'en' => null],
-            'continut'     => ['ro' => $this->faker->paragraph(5), 'de' => null, 'en' => null],
-            'locatie'      => $this->faker->randomElement(['Ploiesti', 'Bucuresti', 'Buftea', 'Campina']),
-            'an'           => $this->faker->numberBetween(2020, 2025),
-            'categorie'    => $this->faker->randomElement(['forestier', 'peisagistica', 'compostare']),
+            'titlu' => ['ro' => $titlu, 'de' => null, 'en' => null],
+            'slug' => Str::slug($titlu).'-'.$this->faker->unique()->numberBetween(1, 9999),
+            'descriere' => ['ro' => $this->faker->sentence(20), 'de' => null, 'en' => null],
+            'continut' => ['ro' => $this->faker->paragraph(5), 'de' => null, 'en' => null],
+            'locatie' => $this->faker->randomElement(['Ploiesti', 'Bucuresti', 'Buftea', 'Campina']),
+            'an' => $this->faker->numberBetween(2020, 2025),
+            'categorie' => $this->faker->randomElement(['forestier', 'peisagistica', 'compostare']),
             'is_published' => true,
-            'ordine'       => $this->faker->numberBetween(0, 100),
+            'ordine' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

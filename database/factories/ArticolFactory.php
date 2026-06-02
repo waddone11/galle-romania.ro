@@ -18,11 +18,11 @@ class ArticolFactory extends Factory
         $titlu = $this->faker->sentence(6);
 
         return [
-            'titlu'        => ['ro' => $titlu, 'de' => null, 'en' => null],
-            'slug'         => Str::slug($titlu) . '-' . $this->faker->unique()->numberBetween(1, 9999),
-            'excerpt'      => ['ro' => $this->faker->sentence(15), 'de' => null, 'en' => null],
-            'continut'     => ['ro' => $this->faker->paragraphs(4, true), 'de' => null, 'en' => null],
-            'categorie'    => $this->faker->randomElement(['ghid', 'studiu', 'noutati']),
+            'titlu' => ['ro' => $titlu, 'de' => null, 'en' => null],
+            'slug' => Str::slug($titlu).'-'.$this->faker->unique()->numberBetween(1, 9999),
+            'excerpt' => ['ro' => $this->faker->sentence(15), 'de' => null, 'en' => null],
+            'continut' => ['ro' => $this->faker->paragraphs(4, true), 'de' => null, 'en' => null],
+            'categorie' => $this->faker->randomElement(['ghid', 'studiu', 'noutati']),
             'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'is_published' => true,
         ];

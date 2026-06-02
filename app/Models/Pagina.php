@@ -21,7 +21,7 @@ class Pagina extends Model
     {
         return [
             'is_published' => 'boolean',
-            'ordine'       => 'integer',
+            'ordine' => 'integer',
         ];
     }
 

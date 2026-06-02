@@ -8,28 +8,28 @@ namespace App\Enums;
  */
 enum ComandaStatus: string
 {
-    case Nou        = 'nou';
-    case Contactat  = 'contactat';
-    case Finalizat  = 'finalizat';
-    case Anulat     = 'anulat';
+    case Nou = 'nou';
+    case Contactat = 'contactat';
+    case Finalizat = 'finalizat';
+    case Anulat = 'anulat';
 
     public function label(): string
     {
         return match ($this) {
-            self::Nou       => 'Nou',
+            self::Nou => 'Nou',
             self::Contactat => 'Contactat',
             self::Finalizat => 'Finalizat',
-            self::Anulat    => 'Anulat',
+            self::Anulat => 'Anulat',
         };
     }
 
     public function color(): string
     {
         return match ($this) {
-            self::Nou       => 'info',
+            self::Nou => 'info',
             self::Contactat => 'warning',
             self::Finalizat => 'success',
-            self::Anulat    => 'gray',
+            self::Anulat => 'gray',
         };
     }
 }

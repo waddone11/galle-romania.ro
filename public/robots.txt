@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /livewire/
+
+Sitemap: https://galle-silva.ro/sitemap.xml

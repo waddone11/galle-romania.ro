@@ -22,11 +22,11 @@ class Certificare extends Model
     protected function casts(): array
     {
         return [
-            'tip'          => CertificareTip::class,
-            'status'       => CertificareStatus::class,
+            'tip' => CertificareTip::class,
+            'status' => CertificareStatus::class,
             'data_emitere' => 'date',
-            'is_active'    => 'boolean',
-            'ordine'       => 'integer',
+            'is_active' => 'boolean',
+            'ordine' => 'integer',
         ];
     }
 }

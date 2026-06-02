@@ -30,9 +30,9 @@ class LeadsTable
                 SelectFilter::make('status')->options(ComandaStatus::class),
                 SelectFilter::make('serviciu')
                     ->options([
-                        'forestier'    => 'Forestier',
+                        'forestier' => 'Forestier',
                         'peisagistica' => 'Peisagistica',
-                        'compostare'   => 'Compostare',
+                        'compostare' => 'Compostare',
                     ]),
             ])
             ->recordActions([

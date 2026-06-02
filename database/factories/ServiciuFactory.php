@@ -25,14 +25,14 @@ class ServiciuFactory extends Factory
         ]);
 
         return [
-            'titlu'     => ['ro' => $titlu, 'de' => null, 'en' => null],
-            'slug'      => Str::slug($titlu) . '-' . $this->faker->unique()->numberBetween(1, 9999),
+            'titlu' => ['ro' => $titlu, 'de' => null, 'en' => null],
+            'slug' => Str::slug($titlu).'-'.$this->faker->unique()->numberBetween(1, 9999),
             'categorie' => $this->faker->randomElement(ServiciuCategorie::cases()),
-            'audienta'  => $this->faker->randomElement(ServiciuAudienta::cases()),
+            'audienta' => $this->faker->randomElement(ServiciuAudienta::cases()),
             'descriere' => ['ro' => $this->faker->sentence(15), 'de' => null, 'en' => null],
-            'continut'  => ['ro' => $this->faker->paragraph(4), 'de' => null, 'en' => null],
+            'continut' => ['ro' => $this->faker->paragraph(4), 'de' => null, 'en' => null],
             'is_active' => true,
-            'ordine'    => $this->faker->numberBetween(0, 100),
+            'ordine' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

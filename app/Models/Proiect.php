@@ -22,9 +22,9 @@ class Proiect extends Model implements HasMedia
     protected function casts(): array
     {
         return [
-            'an'           => 'integer',
+            'an' => 'integer',
             'is_published' => 'boolean',
-            'ordine'       => 'integer',
+            'ordine' => 'integer',
         ];
     }
 
