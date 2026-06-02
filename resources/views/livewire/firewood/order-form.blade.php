@@ -1,12 +1,24 @@
+@php
+    $settings = class_exists(\App\Settings\GeneralSettings::class) ? app(\App\Settings\GeneralSettings::class) : null;
+    $whatsapp = preg_replace('/[^0-9]/', '', $settings->whatsapp ?? '');
+@endphp
 <div>
     @if($submitted)
         <div class="bg-mint/20 border border-mint rounded-2xl p-6 text-forest-dark">
             <p class="font-display text-xl font-semibold mb-2">Multumim!</p>
-            <p>Comanda ta a fost preluata. Te contactam in cel mult 24h pentru confirmare. Pana atunci poti vorbi cu noi pe <a href="https://wa.me/40700000000" class="text-forest underline">WhatsApp</a>.</p>
+            <p>Comanda ta a fost preluata. Te contactam in cel mult 24h pentru confirmare.@if($whatsapp) Pana atunci poti vorbi cu noi pe <a href="https://wa.me/{{ $whatsapp }}" class="text-forest underline">WhatsApp</a>.@endif</p>
             <button type="button" wire:click="$set('submitted', false)" class="mt-4 text-sm text-forest hover:text-mint underline">Trimite alta comanda</button>
         </div>
     @else
         <form wire:submit.prevent="submit" class="bg-[#fafaf8] border border-mist rounded-2xl p-6 space-y-4">
+            {{-- Honeypot anti-spam — ascuns pentru oameni, completat doar de boti. --}}
+            <div class="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label for="of-website">Nu completa acest camp</label>
+                <input id="of-website" type="text" wire:model="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            @error('throttle') <p class="text-sm text-rose-600 bg-rose-50 border border-rose-200 rounded-lg px-3 py-2">{{ $message }}</p> @enderror
+
             <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                     <label for="of-nume" class="text-sm font-medium block mb-1">Nume *</label>

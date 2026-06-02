@@ -3,12 +3,15 @@
 namespace App\Livewire;
 
 use App\Enums\ComandaStatus;
+use App\Livewire\Concerns\HasSpamProtection;
 use App\Models\Lead;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ContactForm extends Component
 {
+    use HasSpamProtection;
+
     #[Validate('required|string|max:120')]
     public string $nume = '';
 
@@ -27,10 +30,38 @@ class ContactForm extends Component
     #[Validate('required|string|max:2000')]
     public string $mesaj = '';
 
-    public bool $submitted = false;
+    /** @return array<string, string> */
+    protected function messages(): array
+    {
+        return [
+            'nume.required' => 'Te rugam sa-ti scrii numele.',
+            'nume.max' => 'Numele este prea lung (max. 120 caractere).',
+            'email.required' => 'Avem nevoie de o adresa de email ca sa-ti raspundem.',
+            'email.email' => 'Adresa de email nu pare valida.',
+            'mesaj.required' => 'Scrie-ne cateva randuri despre ce ai nevoie.',
+            'mesaj.max' => 'Mesajul este prea lung (max. 2000 caractere).',
+        ];
+    }
+
+    /** @return array<string, string> */
+    protected function validationAttributes(): array
+    {
+        return [
+            'nume' => 'nume',
+            'firma' => 'firma',
+            'email' => 'email',
+            'telefon' => 'telefon',
+            'serviciu' => 'serviciu',
+            'mesaj' => 'mesaj',
+        ];
+    }
 
     public function submit(): void
     {
+        if (! $this->passesSpamGuard('contact-form')) {
+            return;
+        }
+
         $this->validate();
 
         $lead = new Lead;

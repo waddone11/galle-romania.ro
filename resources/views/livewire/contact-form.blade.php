@@ -7,6 +7,14 @@
         </div>
     @else
         <form wire:submit.prevent="submit" class="bg-mist-warm rounded-2xl p-6 space-y-4">
+            {{-- Honeypot anti-spam — ascuns pentru oameni, completat doar de boti. --}}
+            <div class="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label for="cf-website">Nu completa acest camp</label>
+                <input id="cf-website" type="text" wire:model="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            @error('throttle') <p class="text-sm text-rose-600 bg-rose-50 border border-rose-200 rounded-lg px-3 py-2">{{ $message }}</p> @enderror
+
             <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                     <label for="cf-nume" class="text-sm font-medium block mb-1">Nume *</label>

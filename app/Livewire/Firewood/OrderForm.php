@@ -4,6 +4,7 @@ namespace App\Livewire\Firewood;
 
 use App\Enums\ComandaStatus;
 use App\Enums\SpecieUnitate;
+use App\Livewire\Concerns\HasSpamProtection;
 use App\Models\ComandaLemn;
 use App\Models\Specie;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 class OrderForm extends Component
 {
+    use HasSpamProtection;
+
     #[Validate('required|string|max:120')]
     public string $nume = '';
 
@@ -39,11 +42,42 @@ class OrderForm extends Component
     #[Validate('nullable|string|max:2000')]
     public ?string $mesaj = null;
 
-    public bool $submitted = false;
-
     public function mount(): void
     {
         $this->specieId = Specie::where('is_active', true)->where('status', 'disponibil')->value('id');
+    }
+
+    /** @return array<string, string> */
+    protected function messages(): array
+    {
+        return [
+            'nume.required' => 'Te rugam sa-ti scrii numele.',
+            'nume.max' => 'Numele este prea lung (max. 120 caractere).',
+            'telefon.required' => 'Avem nevoie de un numar de telefon pentru confirmare.',
+            'telefon.max' => 'Numarul de telefon este prea lung.',
+            'email.email' => 'Adresa de email nu pare valida.',
+            'localitate.required' => 'Spune-ne in ce localitate livram.',
+            'cantitate.required' => 'Completeaza cantitatea dorita.',
+            'cantitate.numeric' => 'Cantitatea trebuie sa fie un numar.',
+            'cantitate.min' => 'Cantitatea minima este 0.5.',
+            'cantitate.max' => 'Pentru cantitati mari, te rugam sa ne contactezi direct.',
+            'data_dorita.after_or_equal' => 'Alege o data din viitor.',
+            'mesaj.max' => 'Mesajul este prea lung (max. 2000 caractere).',
+        ];
+    }
+
+    /** @return array<string, string> */
+    protected function validationAttributes(): array
+    {
+        return [
+            'nume' => 'nume',
+            'telefon' => 'telefon',
+            'email' => 'email',
+            'localitate' => 'localitate',
+            'cantitate' => 'cantitate',
+            'data_dorita' => 'data dorita',
+            'mesaj' => 'mesaj',
+        ];
     }
 
     /** @return Collection<int, Specie> */
@@ -54,6 +88,10 @@ class OrderForm extends Component
 
     public function submit(): void
     {
+        if (! $this->passesSpamGuard('order-form')) {
+            return;
+        }
+
         $this->validate();
 
         $comanda = new ComandaLemn;
