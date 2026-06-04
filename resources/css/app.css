@@ -75,8 +75,8 @@
 @keyframes spin   { to { transform: rotate(360deg); } }
 
 @keyframes orbit {
-    from { transform: rotate(0deg)   translateX(360px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(360px) rotate(-360deg); }
+    from { transform: rotate(0deg)   translateX(var(--orbit-r, 360px)) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(var(--orbit-r, 360px)) rotate(-360deg); }
 }
 
 /* Eco illustration (solutie_verde): line-art draw + cloud drift + birds */
@@ -235,7 +235,24 @@
     .recycle-svg .arrow:nth-of-type(3) { animation-delay: 1.4s; }
 
     @media (max-width: 1024px) {
-        .wheel  { display: none; }
-        .banner { height: auto; min-height: 100vh; }
+        .banner {
+            height: auto;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Roata orbitala si pe mobil: aceeasi animatie, raza redusa,
+           in flux sub textul din hero (cardurile devin discuri cu icon). */
+        .wheel {
+            position: relative;
+            top: auto;
+            right: auto;
+            transform: none;
+            width: 340px;
+            height: 340px;
+            margin: 2.5rem auto 4rem;
+            order: 1; /* in DOM e inaintea textului; pe mobil il asezam sub el */
+            --orbit-r: 150px;
+        }
     }
 }

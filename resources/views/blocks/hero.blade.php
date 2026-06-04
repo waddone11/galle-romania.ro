@@ -56,7 +56,7 @@
 <section class="banner">
     <img src="{{ asset('images/galle/union.svg') }}" class="brandbg" alt="">
 
-    {{-- WHEEL (hidden < 1024px via CSS) --}}
+    {{-- WHEEL — desktop: carduri cu eticheta + tooltip; mobil: discuri cu icon, raza redusa (CSS) --}}
     <div class="wheel" aria-hidden="true">
         <div class="rotor">
             <svg viewBox="0 0 760 760" class="absolute inset-0 w-full h-full">
@@ -67,14 +67,14 @@
 
         @foreach($chips as $i => $chip)
             <div class="orbit" style="--d: {{ -1 * round(60 / $chipCount * $i, 2) }}s">
-                <div class="chip group relative flex items-center gap-3 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-lg shadow-forest/10 py-2 pl-2 pr-5 whitespace-nowrap">
+                <div class="chip group relative flex items-center gap-3 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-lg shadow-forest/10 p-1 lg:py-2 lg:pl-2 lg:pr-5 whitespace-nowrap">
                     <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-forest text-white">
                         {!! $iconSvg($chip['icon']) !!}
                     </span>
-                    <span class="text-sm font-medium text-forest">{{ $chip['text'] }}</span>
+                    <span class="hidden lg:inline text-sm font-medium text-forest">{{ $chip['text'] }}</span>
 
                     @if($chip['tooltip'])
-                        <div class="pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-max max-w-64 -translate-x-1/2 whitespace-normal rounded-xl bg-white/70 backdrop-blur-md border border-white/40 px-3.5 py-2 text-xs font-medium text-forest shadow-lg opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        <div class="pointer-events-none hidden lg:block absolute left-1/2 top-full z-20 mt-2 w-max max-w-64 -translate-x-1/2 whitespace-normal rounded-xl bg-white/70 backdrop-blur-md border border-white/40 px-3.5 py-2 text-xs font-medium text-forest shadow-lg opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                             {{ $chip['tooltip'] }}
                         </div>
                     @endif
@@ -101,7 +101,7 @@
     {{-- INTRO --}}
     {{-- pointer-events-none: the container spans the banner and would block hover on the wheel (z-1) --}}
     <div class="pointer-events-none relative z-10 w-[90%] max-w-7xl mx-auto flex flex-col lg:flex-row items-start pt-24">
-        <div class="pointer-events-auto max-w-xl pt-24">
+        <div class="pointer-events-auto max-w-xl pt-6 md:pt-24">
             <a href="{{ $badgeUrl }}" class="pill inline-flex">
                 <span class="pill-inner inline-flex items-center gap-3 px-4 py-1.5 text-sm">
                     <span class="text-forest/80">{{ $badge }}</span>
@@ -122,18 +122,5 @@
             </div>
         </div>
 
-        {{-- MOBILE service cards: horizontal scroll-snap row (the wheel is desktop-only) --}}
-        <div class="pointer-events-auto lg:hidden w-full mt-12 pb-10">
-            <div class="no-scrollbar flex gap-3 overflow-x-auto snap-x snap-mandatory pr-10">
-                @foreach($chips as $chip)
-                    <div class="snap-start shrink-0 flex items-center gap-2.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-md shadow-forest/10 py-1.5 pl-1.5 pr-4 whitespace-nowrap">
-                        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-forest text-white">
-                            {!! $iconSvg($chip['icon'], 18) !!}
-                        </span>
-                        <span class="text-sm font-medium text-forest">{{ $chip['text'] }}</span>
-                    </div>
-                @endforeach
-            </div>
-        </div>
     </div>
 </section>
