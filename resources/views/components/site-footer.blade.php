@@ -88,6 +88,11 @@
                     <a href="https://www.galle-gmbh.de" target="_blank" rel="noopener" class="hover:text-mint underline-offset-4 hover:underline">Galle GmbH Germania</a>
                 </span>
             </div>
+            {{-- Linia legala (date publice registru — config/company.php) --}}
+            <p class="mt-3 text-center sm:text-left text-[11px] text-mist/40">
+                {{ config('company.denumire') }} · CUI {{ (config('company.tva') ? 'RO' : '').config('company.cui') }} · Reg. Com. {{ config('company.reg_com') }} ·
+                <a href="{{ $prefix }}/date-firma" class="hover:text-mint underline-offset-2 hover:underline">{{ __('Date firma') }}</a>
+            </p>
         </div>
     </div>
 </footer>

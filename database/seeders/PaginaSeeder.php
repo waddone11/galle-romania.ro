@@ -1411,7 +1411,20 @@ class PaginaSeeder extends Seeder
                         'type' => 'sectiune_text',
                         'data' => [
                             'titlu' => $t('Operatorul de date'),
-                            'continut' => $t('GALLE SILVA SRL, CUI 52771440, Reg. Com. J2025081738000, sediu in Str. Principala nr. 302, Sat Manesti, jud. Prahova, cod 107375. Ne poti contacta la info@galle-silva.ro sau la +40 729 961 082. Datele complete ale firmei sunt pe pagina [Date firma](/date-firma).'),
+                            // Datele legale vin din config/company.php (o singura sursa de adevar).
+                            'continut' => $t(sprintf(
+                                '%s, CUI %s, Reg. Com. %s, sediu in %s, %s, jud. %s, cod %s. Persoana de contact pentru protectia datelor: %s (administrator). Ne poti contacta la %s sau la %s. Datele complete ale firmei sunt pe pagina [Date firma](/date-firma).',
+                                config('company.denumire'),
+                                (config('company.tva') ? 'RO' : '').config('company.cui'),
+                                config('company.reg_com'),
+                                config('company.adresa'),
+                                config('company.localitate'),
+                                config('company.judet'),
+                                config('company.cod_postal'),
+                                config('company.administrator'),
+                                config('company.email'),
+                                config('company.telefon'),
+                            )),
                         ],
                     ],
                     [

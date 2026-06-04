@@ -68,23 +68,28 @@
     <link rel="alternate" hreflang="en" href="{{ $localePath('/en') }}">
     <link rel="alternate" hreflang="x-default" href="{{ $localePath('') }}">
 
-    {{-- Organization + LocalBusiness JSON-LD (NAP din Settings) --}}
+    {{-- Organization + LocalBusiness JSON-LD (NAP din Settings, date legale din config/company.php) --}}
     @php
+        $company = config('company');
         $localBusiness = [
             '@context' => 'https://schema.org',
             '@type' => 'LocalBusiness',
             'name' => 'Galle Silva SRL',
+            'legalName' => $company['denumire'],
+            'taxID' => ($company['tva'] ? 'RO' : '').$company['cui'],
+            'foundingDate' => $company['data_infiintare'],
             'url' => $hrefBase,
             'image' => $ogImageUrl,
-            'email' => $settings->email ?? 'info@galle-silva.ro',
-            'telephone' => $settings->telefon ?? null,
+            'email' => $settings->email ?? $company['email'],
+            'telephone' => $settings->telefon ?? $company['telefon'],
             'priceRange' => 'RON',
             'areaServed' => ['Prahova', 'Ilfov', 'Bucuresti'],
             'address' => [
                 '@type' => 'PostalAddress',
-                'streetAddress' => 'Str. Principala 302',
-                'addressLocality' => 'Manesti',
-                'addressRegion' => 'Prahova',
+                'streetAddress' => $company['adresa'],
+                'addressLocality' => $company['localitate'],
+                'addressRegion' => $company['judet'],
+                'postalCode' => $company['cod_postal'],
                 'addressCountry' => 'RO',
             ],
             'parentOrganization' => [
