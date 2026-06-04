@@ -97,6 +97,29 @@ class PaginaForm
                         ->columnSpanFull(),
                 ]),
 
+            Block::make('header_pagina')
+                ->label('Header pagina (H1 + intro)')
+                ->icon('heroicon-o-h1')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu H1 ($label)"),
+                        Textarea::make("intro.$loc")->label("Intro ($label)")->rows(3),
+                    ]),
+                ]),
+
+            Block::make('sectiune_text')
+                ->label('Sectiune text (H2 + continut)')
+                ->icon('heroicon-o-document-text')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu H2 ($label)"),
+                        Textarea::make("continut.$loc")
+                            ->label("Continut ($label)")
+                            ->helperText('Link-uri interne: [text](/url)')
+                            ->rows(5),
+                    ]),
+                ]),
+
             Block::make('manifest')
                 ->label('Manifest (statement mare)')
                 ->icon('heroicon-o-sparkles')
@@ -288,6 +311,11 @@ class PaginaForm
                             'livrare' => 'Livrare',
                             'plata' => 'Plata',
                             'servicii' => 'Servicii',
+                            'exploatare-forestiera' => 'Exploatare forestiera',
+                            'achizitie-masa-lemnoasa' => 'Achizitie masa lemnoasa',
+                            'curatare-terenuri' => 'Curatare terenuri',
+                            'transport-lemn' => 'Transport lemn',
+                            'lucrari-silvice' => 'Lucrari silvice',
                         ])
                         ->nullable(),
                     HasTranslatableTabs::for(fn (string $loc, string $label) => [
