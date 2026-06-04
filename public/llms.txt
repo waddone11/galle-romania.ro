@@ -1,17 +1,19 @@
 # Galle Silva — galle-silva.ro
 
-Partener local Galle GmbH Germania. Lemn de foc, servicii forestiere, peisagistica, compostare. Standarde germane in Romania.
+Reprezentanta in Romania a grupului german Galle GmbH. Lemn de foc, exploatare forestiera, achizitie masa lemnoasa, curatare terenuri, transport lemn, lucrari silvice. Standarde germane in Romania.
 
 ## Ce oferim
 
-- Lemn de foc: stejar (disponibil), fag (in curand), carpen (in curand). Pret 400-480 lei/metru ster, putere calorica 4.0-4.3 kWh/kg.
-- Servicii forestiere: planificare recoltari, regenerare naturala asistata, plan tehnic multianual.
-- Peisagistica: amenajari pentru primarii, institutii, companii.
-- Compostare: procesare deseuri organice conform standardelor Galle GmbH.
+- Lemn de foc: stejar (pe stoc), carpen (pe stoc), fag (in curand). De la 350 lei/m³, taiat si crapat, putere calorica 4.0-4.3 kWh/kg. Fara cantitate minima.
+- Exploatare forestiera: prestari servicii in paduri private si de stat, recoltare mecanizata cu harvester si forwarder, acte complete (APV, SUMAL).
+- Achizitie masa lemnoasa: cumparam padure pe picior sau lemn fasonat, evaluare corecta, plata transparenta.
+- Curatare terenuri: taiere vegetatie, scos cioate, frezare radacini, tocare — pentru constructii sau agricultura, fara suprafata minima.
+- Transport lemn: autospeciale proprii cu macara, documente de insotire SUMAL.
+- Lucrari silvice: curatiri, rarituri, taieri de igiena, conform amenajamentului silvic.
 
 ## Zone deservite
 
-Prahova, Ilfov, Bucuresti. Cost livrare 120-180 lei.
+Prahova, Ilfov, Bucuresti. Livrare lemn de foc in 1-3 zile (maximum 7). Cost livrare 120-180 lei.
 
 ## Certificari
 
@@ -31,6 +33,11 @@ Prahova, Ilfov, Bucuresti. Cost livrare 120-180 lei.
 - Acasa: /
 - Lemn de foc: /lemn-de-foc
 - Servicii: /servicii
+- Exploatare forestiera: /servicii/exploatare-forestiera
+- Achizitie masa lemnoasa: /servicii/achizitie-masa-lemnoasa
+- Curatare terenuri: /servicii/curatare-terenuri
+- Transport lemn: /servicii/transport-lemn
+- Lucrari silvice: /servicii/lucrari-silvice
 - Pentru institutii: /institutii
 - Despre noi: /despre
 - Certificari: /certificari
@@ -40,4 +47,4 @@ Prahova, Ilfov, Bucuresti. Cost livrare 120-180 lei.
 
 ## Cine suntem
 
-Galle Silva SRL este partenerul roman al Galle GmbH Germania (>30 ani experienta forestiera in Germania). Aplicam aceleasi proceduri tehnice si standarde de calitate, validate prin ISO 9001/14001/RAL/DEKRA, pe operatiunile noastre din Romania.
+Galle Silva SRL este reprezentanta in Romania a grupului Galle GmbH Germania (~25 de ani de experienta in silvicultura). Aplicam aceleasi proceduri tehnice si standarde de calitate, validate prin ISO 9001/14001/RAL/DEKRA, pe operatiunile noastre din Romania. Echipa: Razvan Solzaru (manager general), Ion Narcis Marin (manager operatiuni).
