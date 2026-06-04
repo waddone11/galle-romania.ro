@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+    <!-- Badge tipografic ISO 14001 — placeholder de sigiliu, nu logo-ul oficial ISO (trademark). -->
+    <circle cx="60" cy="60" r="56" stroke="#ffffff" stroke-width="2.5"/>
+    <circle cx="60" cy="60" r="48" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+    <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="bold" letter-spacing="2">ISO</text>
+    <text x="60" y="80" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="17" letter-spacing="2">14001</text>
+    <path d="M38 34h44" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+    <path d="M44 90h32" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+</svg>

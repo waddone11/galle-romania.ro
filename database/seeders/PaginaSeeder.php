@@ -280,6 +280,16 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
+                        // Banda de incredere: logo-uri certificari din modelul Certificare.
+                        // DE/EN null — se traduc separat (vezi roadmap traduceri).
+                        'type' => 'certificari',
+                        'data' => [
+                            'eyebrow' => $t('Standarde și certificări'),
+                            'titlu' => $t('Calitate certificată, responsabilitate dovedită'),
+                            'subtitlu' => $t('Lucrăm după standardele grupului Galle GmbH și suntem în proces de certificare FSC și PEFC.'),
+                        ],
+                    ],
+                    [
                         'type' => 'galerie',
                         'data' => [
                             'titlu' => $t('De la fața locului', 'Direkt vom Einsatzort', 'From the field'),

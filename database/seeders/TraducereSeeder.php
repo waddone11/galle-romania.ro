@@ -261,6 +261,11 @@ class TraducereSeeder extends Seeder
         'Peisagistica' => ['ro' => 'Peisagistică', 'de' => 'Landschaftsbau', 'en' => 'Landscaping'],
         'Compostare' => ['de' => 'Kompostierung', 'en' => 'Composting'],
 
+        // certificari (block marquee pe home)
+        'In curs de obtinere' => ['ro' => 'În curs de obținere', 'de' => 'In Beantragung', 'en' => 'In progress'],
+        'Certificat' => ['de' => 'Zertifiziert', 'en' => 'Certified'],
+        'prin' => ['de' => 'über', 'en' => 'via'],
+
         // certificari (pagina)
         'Certificari — FSC, PEFC, ISO 9001/14001, RAL, DEKRA | Galle Silva' => [
             'ro' => 'Certificări — FSC, PEFC, ISO 9001/14001, RAL, DEKRA | Galle Silva',

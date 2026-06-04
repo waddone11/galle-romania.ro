@@ -256,3 +256,34 @@
         }
     }
 }
+
+/* ---- CERTIFICARI MARQUEE: banda orizontala continua cu logo-uri ---- */
+.cert-marquee {
+    overflow: hidden;
+    /* Fade elegant pe margini — logo-urile apar/dispar gradual. */
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.cert-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: cert-marquee 32s linear infinite;
+}
+.cert-marquee:hover .cert-marquee-track {
+    animation-play-state: paused;
+}
+@keyframes cert-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cert-marquee-track {
+        animation: none;
+    }
+    /* Fara animatie, banda devine scroll orizontal accesibil. */
+    .cert-marquee {
+        overflow-x: auto;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+}

@@ -233,6 +233,17 @@ class PaginaForm
                         ->columnSpanFull(),
                 ]),
 
+            Block::make('certificari')
+                ->label('Certificari (marquee logo-uri)')
+                ->icon('heroicon-o-shield-check')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                        TextInput::make("subtitlu.$loc")->label("Subtitlu ($label)"),
+                    ]),
+                ]),
+
             Block::make('solutie_verde')
                 ->label('Solutia verde (dome line-art)')
                 ->icon('heroicon-o-globe-europe-africa')

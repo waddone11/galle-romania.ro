@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class CertificareForm
 {
@@ -21,12 +22,24 @@ class CertificareForm
             Section::make('Identitate')
                 ->columns(2)
                 ->schema([
-                    TextInput::make('nume')->required()->columnSpanFull(),
+                    TextInput::make('nume')->required(),
+                    TextInput::make('slug')
+                        ->required()
+                        ->unique(ignoreRecord: true)
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug((string) $state))),
                     Select::make('tip')->options(CertificareTip::class)->required(),
                     Select::make('status')->options(CertificareStatus::class)->default('in_proces')->required(),
+                    TextInput::make('logo')
+                        ->label('Logo (cale)')
+                        ->placeholder('/images/certificari/fsc.svg')
+                        ->columnSpanFull(),
                     TextInput::make('numar'),
                     DatePicker::make('data_emitere'),
                     TextInput::make('emitent'),
+                    TextInput::make('detinator')
+                        ->label('Detinator (ex. Galle GmbH)')
+                        ->helperText('Completeaza daca certificarea e detinuta de grup, nu de firma locala.'),
                     TextInput::make('ordine')->numeric()->default(0),
                     Toggle::make('is_active')->default(true),
                 ]),

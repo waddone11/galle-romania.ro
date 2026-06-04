@@ -13,10 +13,13 @@ class CertificareSeeder extends Seeder
     {
         $rows = [
             [
-                'nume' => 'FSC — lant de custodie',
+                'nume' => 'FSC',
+                'slug' => 'fsc',
+                'logo' => '/images/certificari/fsc.svg',
                 'tip' => CertificareTip::Fsc,
                 'status' => CertificareStatus::InProces,
                 'emitent' => 'Forest Stewardship Council',
+                'detinator' => null,
                 'descriere' => [
                     'ro' => 'Certificare in proces — vizeaza trasabilitatea lemnului si gestionarea responsabila a padurii.',
                     'de' => 'Zertifizierung läuft — Schwerpunkt: Rückverfolgbarkeit des Holzes und verantwortungsvolle Waldbewirtschaftung.',
@@ -26,10 +29,13 @@ class CertificareSeeder extends Seeder
                 'ordine' => 10,
             ],
             [
-                'nume' => 'PEFC — lant de custodie',
+                'nume' => 'PEFC',
+                'slug' => 'pefc',
+                'logo' => '/images/certificari/pefc.png',
                 'tip' => CertificareTip::Pefc,
                 'status' => CertificareStatus::InProces,
                 'emitent' => 'Programme for the Endorsement of Forest Certification',
+                'detinator' => null,
                 'descriere' => [
                     'ro' => 'Certificare in proces — focus pe gestionarea sustenabila a padurii la nivel european.',
                     'de' => 'Zertifizierung läuft — Fokus auf nachhaltiger Waldbewirtschaftung auf europäischer Ebene.',
@@ -39,10 +45,13 @@ class CertificareSeeder extends Seeder
                 'ordine' => 20,
             ],
             [
-                'nume' => 'ISO 9001 (Galle GmbH)',
+                'nume' => 'ISO 9001',
+                'slug' => 'iso-9001',
+                'logo' => '/images/certificari/iso-9001.svg',
                 'tip' => CertificareTip::Iso9001,
                 'status' => CertificareStatus::Activ,
                 'emitent' => 'DEKRA',
+                'detinator' => 'Galle GmbH',
                 'descriere' => [
                     'ro' => 'Calitate — detinuta de Galle GmbH, partenerul nostru german.',
                     'de' => 'Qualität — gehalten von der Galle GmbH, unserem deutschen Partner.',
@@ -52,10 +61,13 @@ class CertificareSeeder extends Seeder
                 'ordine' => 30,
             ],
             [
-                'nume' => 'ISO 14001 (Galle GmbH)',
+                'nume' => 'ISO 14001',
+                'slug' => 'iso-14001',
+                'logo' => '/images/certificari/iso-14001.svg',
                 'tip' => CertificareTip::Iso14001,
                 'status' => CertificareStatus::Activ,
                 'emitent' => 'DEKRA',
+                'detinator' => 'Galle GmbH',
                 'descriere' => [
                     'ro' => 'Mediu — managementul impactului ecologic. Detinuta de Galle GmbH.',
                     'de' => 'Umwelt — Management der ökologischen Auswirkungen. Gehalten von der Galle GmbH.',
@@ -65,10 +77,13 @@ class CertificareSeeder extends Seeder
                 'ordine' => 40,
             ],
             [
-                'nume' => 'RAL (Galle GmbH)',
+                'nume' => 'RAL',
+                'slug' => 'ral',
+                'logo' => '/images/certificari/ral.svg',
                 'tip' => CertificareTip::Ral,
                 'status' => CertificareStatus::Activ,
                 'emitent' => 'RAL Deutsches Institut fur Gutesicherung und Kennzeichnung',
+                'detinator' => 'Galle GmbH',
                 'descriere' => [
                     'ro' => 'Sigiliu de calitate german — detinut de Galle GmbH.',
                     'de' => 'Deutsches Gütesiegel — gehalten von der Galle GmbH.',
@@ -78,10 +93,13 @@ class CertificareSeeder extends Seeder
                 'ordine' => 50,
             ],
             [
-                'nume' => 'DEKRA (Galle GmbH)',
+                'nume' => 'DEKRA',
+                'slug' => 'dekra',
+                'logo' => '/images/certificari/dekra.svg',
                 'tip' => CertificareTip::Dekra,
                 'status' => CertificareStatus::Activ,
                 'emitent' => 'DEKRA SE',
+                'detinator' => 'Galle GmbH',
                 'descriere' => [
                     'ro' => 'Certificare independenta — Galle GmbH a fost auditat de DEKRA pentru procesele sale.',
                     'de' => 'Unabhängige Zertifizierung — die Prozesse der Galle GmbH wurden von DEKRA auditiert.',
@@ -93,10 +111,7 @@ class CertificareSeeder extends Seeder
         ];
 
         foreach ($rows as $row) {
-            Certificare::updateOrCreate(
-                ['tip' => $row['tip']->value, 'nume' => $row['nume']],
-                $row
-            );
+            Certificare::updateOrCreate(['slug' => $row['slug']], $row);
         }
     }
 }
