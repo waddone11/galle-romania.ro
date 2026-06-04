@@ -47,6 +47,10 @@ it('ships the key real photos in public', function (string $path) {
     'images/galle/proiecte/forwarder-drum-wide.webp',
     'images/galle/proiecte/depozit-utilaj.webp',
     'images/galle/proiecte/harvester-lucru-wide.webp',
+    'images/galle/proiecte/lemn-de-foc-paleti-wide.webp',
+    'images/galle/proiecte/lemn-de-foc-paleti-wide.jpg',
+    'images/galle/proiecte/lemn-de-foc-paleti.webp',
+    'images/galle/proiecte/lemn-de-foc-paleti.jpg',
 ]);
 
 /*
@@ -76,6 +80,24 @@ it('renders SEO tags + og:image from the header image on a service page', functi
         ->assertSee('hreflang="en"', false)
         ->assertSee('harvester-galle-wide.jpg', false)
         ->assertSee('"@type":"Service"', false);
+});
+
+it('renders the hero photo + og:image on lemn-de-foc and the local landings', function () {
+    $this->seed(PaginaSeeder::class);
+    $this->seed(LocalitateSeeder::class);
+
+    // Pagina principala: hero foto responsive (webp wide + patrat) + og:image jpg.
+    $this->get('/lemn-de-foc')
+        ->assertOk()
+        ->assertSee('lemn-de-foc-paleti-wide.webp', false)
+        ->assertSee('lemn-de-foc-paleti.webp', false)
+        ->assertSee('lemn-de-foc-paleti-wide.jpg', false);
+
+    // Landing-urile locale mostenesc acelasi hero + og:image.
+    $this->get('/lemn-de-foc/ploiesti')
+        ->assertOk()
+        ->assertSee('lemn-de-foc-paleti-wide.webp', false)
+        ->assertSee('lemn-de-foc-paleti-wide.jpg', false);
 });
 
 it('renders SEO tags on an article', function () {

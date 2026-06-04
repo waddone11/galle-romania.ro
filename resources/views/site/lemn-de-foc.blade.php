@@ -26,7 +26,7 @@
     :title="$metaTitle"
     :metaDescription="$metaDesc"
     :canonical="$canonical"
-    :ogImage="asset('images/galle/proiecte/gramada-busteni-wide.jpg')"
+    :ogImage="asset('images/galle/proiecte/lemn-de-foc-paleti-wide.jpg')"
 >
     @push('seo')
         @foreach($species as $sp)
@@ -72,10 +72,30 @@
         ]" />
     @endpush
 
+    {{-- Hero foto — acelasi tratament ca header_pagina de pe paginile de serviciu. --}}
+    @php
+        $heroImg = '/images/galle/proiecte/lemn-de-foc-paleti-wide.webp';
+        $heroImgSq = str_replace('-wide.', '.', $heroImg);
+        $heroJpg = preg_replace('/\.webp$/', '.jpg', $heroImg);
+        [$heroW, $heroH] = is_file(public_path(ltrim($heroImg, '/')))
+            ? (getimagesize(public_path(ltrim($heroImg, '/'))) ?: [1254, 705])
+            : [1254, 705];
+    @endphp
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ $h1 }}</h1>
             <p class="mt-4 text-lg text-mist max-w-3xl mx-auto">{{ $intro }}</p>
+
+            <picture>
+                {{-- desktop: cadrul lat --}}
+                <source media="(min-width: 768px)" srcset="{{ $heroImg }}" type="image/webp">
+                {{-- mobil: varianta patrata --}}
+                <source media="(max-width: 767px)" srcset="{{ $heroImgSq }}" type="image/webp">
+                <img src="{{ $heroJpg }}" alt="{{ $h1 }}"
+                     width="{{ $heroW }}" height="{{ $heroH }}"
+                     loading="lazy" decoding="async"
+                     class="mt-10 w-full max-h-[420px] rounded-3xl object-cover shadow-xl shadow-forest-dark/30">
+            </picture>
         </div>
     </section>
 
