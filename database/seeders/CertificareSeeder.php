@@ -21,9 +21,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'Forest Stewardship Council',
                 'detinator' => null,
                 'descriere' => [
-                    'ro' => 'Certificare in proces — vizeaza trasabilitatea lemnului si gestionarea responsabila a padurii.',
-                    'de' => 'Zertifizierung läuft — Schwerpunkt: Rückverfolgbarkeit des Holzes und verantwortungsvolle Waldbewirtschaftung.',
-                    'en' => 'Certification in progress — focused on timber traceability and responsible forest management.',
+                    'ro' => 'Forest Stewardship Council — standard internațional pentru gestionarea responsabilă a pădurilor și trasabilitatea lemnului. Galle Silva este în proces de certificare FSC.',
+                    'de' => 'Forest Stewardship Council — internationaler Standard für verantwortungsvolle Waldbewirtschaftung und die Rückverfolgbarkeit des Holzes. Galle Silva befindet sich im FSC-Zertifizierungsprozess.',
+                    'en' => 'Forest Stewardship Council — international standard for responsible forest management and timber traceability. Galle Silva is in the process of FSC certification.',
                 ],
                 'is_active' => true,
                 'ordine' => 10,
@@ -37,9 +37,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'Programme for the Endorsement of Forest Certification',
                 'detinator' => null,
                 'descriere' => [
-                    'ro' => 'Certificare in proces — focus pe gestionarea sustenabila a padurii la nivel european.',
-                    'de' => 'Zertifizierung läuft — Fokus auf nachhaltiger Waldbewirtschaftung auf europäischer Ebene.',
-                    'en' => 'Certification in progress — focused on sustainable forest management at European level.',
+                    'ro' => 'Programme for the Endorsement of Forest Certification — sistem internațional pentru gestionarea durabilă a pădurilor. În proces de certificare.',
+                    'de' => 'Programme for the Endorsement of Forest Certification — internationales System für nachhaltige Waldbewirtschaftung. Im Zertifizierungsprozess.',
+                    'en' => 'Programme for the Endorsement of Forest Certification — international system for sustainable forest management. Certification in progress.',
                 ],
                 'is_active' => true,
                 'ordine' => 20,
@@ -53,9 +53,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'DEKRA',
                 'detinator' => 'Galle GmbH',
                 'descriere' => [
-                    'ro' => 'Calitate — detinuta de Galle GmbH, partenerul nostru german.',
-                    'de' => 'Qualität — gehalten von der Galle GmbH, unserem deutschen Partner.',
-                    'en' => 'Quality — held by Galle GmbH, our German partner.',
+                    'ro' => 'Standard internațional pentru sisteme de management al calității. Certificare deținută de grupul Galle GmbH.',
+                    'de' => 'Internationale Norm für Qualitätsmanagementsysteme. Zertifizierung gehalten von der Galle GmbH Gruppe.',
+                    'en' => 'International standard for quality management systems. Certification held by the Galle GmbH group.',
                 ],
                 'is_active' => true,
                 'ordine' => 30,
@@ -69,9 +69,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'DEKRA',
                 'detinator' => 'Galle GmbH',
                 'descriere' => [
-                    'ro' => 'Mediu — managementul impactului ecologic. Detinuta de Galle GmbH.',
-                    'de' => 'Umwelt — Management der ökologischen Auswirkungen. Gehalten von der Galle GmbH.',
-                    'en' => 'Environment — managing ecological impact. Held by Galle GmbH.',
+                    'ro' => 'Standard internațional pentru managementul de mediu. Certificare deținută de grupul Galle GmbH.',
+                    'de' => 'Internationale Norm für Umweltmanagement. Zertifizierung gehalten von der Galle GmbH Gruppe.',
+                    'en' => 'International standard for environmental management. Certification held by the Galle GmbH group.',
                 ],
                 'is_active' => true,
                 'ordine' => 40,
@@ -85,9 +85,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'RAL Deutsches Institut fur Gutesicherung und Kennzeichnung',
                 'detinator' => 'Galle GmbH',
                 'descriere' => [
-                    'ro' => 'Sigiliu de calitate german — detinut de Galle GmbH.',
-                    'de' => 'Deutsches Gütesiegel — gehalten von der Galle GmbH.',
-                    'en' => 'German quality seal — held by Galle GmbH.',
+                    'ro' => 'Sigiliu de calitate RAL (Germania) pentru gestionarea pădurilor și a peisajului. Grupul Galle GmbH.',
+                    'de' => 'RAL-Gütesiegel (Deutschland) für Wald- und Landschaftspflege. Galle GmbH Gruppe.',
+                    'en' => 'RAL quality seal (Germany) for forest and landscape management. Galle GmbH group.',
                 ],
                 'is_active' => true,
                 'ordine' => 50,
@@ -101,9 +101,9 @@ class CertificareSeeder extends Seeder
                 'emitent' => 'DEKRA SE',
                 'detinator' => 'Galle GmbH',
                 'descriere' => [
-                    'ro' => 'Certificare independenta — Galle GmbH a fost auditat de DEKRA pentru procesele sale.',
-                    'de' => 'Unabhängige Zertifizierung — die Prozesse der Galle GmbH wurden von DEKRA auditiert.',
-                    'en' => 'Independent certification — Galle GmbH has been audited by DEKRA for its processes.',
+                    'ro' => 'Certificare și audit independent DEKRA pentru procesele grupului. Grupul Galle GmbH.',
+                    'de' => 'Unabhängige DEKRA-Zertifizierung und -Auditierung der Prozesse der Gruppe. Galle GmbH Gruppe.',
+                    'en' => 'Independent DEKRA certification and audit of the group\'s processes. Galle GmbH group.',
                 ],
                 'is_active' => true,
                 'ordine' => 60,
@@ -111,7 +111,19 @@ class CertificareSeeder extends Seeder
         ];
 
         foreach ($rows as $row) {
-            Certificare::updateOrCreate(['slug' => $row['slug']], $row);
+            $descriere = $row['descriere'];
+            unset($row['descriere']);
+
+            $cert = Certificare::updateOrCreate(['slug' => $row['slug']], $row);
+
+            // Descrierea se completeaza doar daca lipseste pe limba respectiva —
+            // editarile facute din admin nu sunt suprascrise la re-seed.
+            foreach ($descriere as $locale => $text) {
+                if (blank($cert->getTranslation('descriere', $locale, false))) {
+                    $cert->setTranslation('descriere', $locale, $text);
+                }
+            }
+            $cert->save();
         }
     }
 }

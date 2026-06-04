@@ -31,22 +31,17 @@
         </section>
     @endif
 
+    {{-- Banda compacta de certificari (element de incredere, langa povestea grupului Galle GmbH) --}}
     @if($certificari->count() > 0)
-        <section class="bg-mist-warm py-16">
+        <section class="bg-mist-warm py-12">
             <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="font-display text-2xl font-semibold mb-8">{{ __('Standarde si certificari') }}</h2>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <h2 class="font-display text-2xl font-semibold text-forest mb-6">{{ __('Standarde si certificari') }}</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                     @foreach($certificari as $cert)
-                        <div class="bg-[#fafaf8] rounded-xl p-4 text-left">
-                            <p class="text-xs uppercase tracking-widest text-mint font-medium mb-1">{{ $cert->tip->value }}</p>
-                            <h3 class="font-semibold text-sm mb-1">{{ $cert->nume }}</h3>
-                            <span class="text-xs px-2 py-0.5 rounded-full {{ $cert->status->value === 'activ' ? 'bg-mint/20 text-forest-dark' : 'bg-amber-100 text-amber-800' }}">
-                                {{ __($cert->status->label()) }}
-                            </span>
-                        </div>
+                        <x-certificare-card :cert="$cert" variant="compact" />
                     @endforeach
                 </div>
-                <a href="/certificari" class="inline-block mt-6 text-forest font-semibold hover:text-mint">{{ __('Vezi toate certificarile') }} →</a>
+                <a href="{{ route('certificari') }}" class="inline-block mt-6 text-forest font-semibold hover:text-mint">{{ __('Vezi toate certificarile') }} →</a>
             </div>
         </section>
     @endif

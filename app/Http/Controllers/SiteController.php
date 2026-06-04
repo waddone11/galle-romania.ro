@@ -179,8 +179,9 @@ class SiteController extends Controller
     public function certificari(): View
     {
         $certificari = Certificare::where('is_active', true)->orderBy('ordine')->get();
+        $pagina = Pagina::where('slug', 'certificari')->first();
 
-        return view('site.certificari', compact('certificari'));
+        return view('site.certificari', compact('certificari', 'pagina'));
     }
 
     public function proiecte(): View

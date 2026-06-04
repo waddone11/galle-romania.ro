@@ -28,43 +28,8 @@
         <div class="cert-marquee-track gap-5 pr-5">
             @for($copie = 0; $copie < $copii; $copie++)
                 @foreach($certificari as $cert)
-                    @php $inCurs = $cert->status === \App\Enums\CertificareStatus::InProces; @endphp
-                    <article
-                        @if($copie > 0) aria-hidden="true" @endif
-                        class="group/card flex w-48 sm:w-56 shrink-0 flex-col items-center rounded-2xl bg-forest ring-1 ring-forest-dark/40 shadow-sm px-5 py-6 transition hover:bg-forest-dark"
-                    >
-                        {{-- Zona logo cu inaltime fixa (anti-CLS). Logo-urile sunt variante albe pe fundal inchis. --}}
-                        <div class="flex h-14 sm:h-16 w-full items-center justify-center">
-                            @if($cert->logo)
-                                <img src="{{ asset(ltrim($cert->logo, '/')) }}"
-                                     alt="{{ $cert->nume }}"
-                                     width="160" height="64"
-                                     loading="lazy" decoding="async"
-                                     class="h-full w-auto max-w-full object-contain transition {{ $inCurs ? 'opacity-50 group-hover/card:opacity-75' : 'opacity-85 group-hover/card:opacity-100' }}">
-                            @endif
-                        </div>
-
-                        <p class="mt-4 font-medium text-mist-warm">{{ $cert->nume }}</p>
-
-                        @if($inCurs)
-                            <span class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-800 ring-1 ring-amber-200">
-                                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .27.14.52.37.65l3.5 2a.75.75 0 1 0 .76-1.3l-3.13-1.79V5Z" clip-rule="evenodd"/>
-                                </svg>
-                                {{ __('In curs de obtinere') }}
-                            </span>
-                        @else
-                            <span class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-mint/15 px-3 py-1 text-xs font-medium text-mint ring-1 ring-mint/40">
-                                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4L8.5 12l6.8-6.7a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/>
-                                </svg>
-                                {{ __('Certificat') }}
-                            </span>
-                            @if($cert->detinator)
-                                <span class="mt-1.5 text-xs text-mist/60">{{ __('prin') }} {{ $cert->detinator }}</span>
-                            @endif
-                        @endif
-                    </article>
+                    {{-- Card partajat cu /certificari si /despre (x-certificare-card). --}}
+                    <x-certificare-card :cert="$cert" variant="marquee" :aria-hidden="$copie > 0" />
                 @endforeach
             @endfor
         </div>

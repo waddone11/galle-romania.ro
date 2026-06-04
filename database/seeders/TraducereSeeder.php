@@ -301,6 +301,11 @@ class TraducereSeeder extends Seeder
             'en' => 'FSC and PEFC — in progress. ISO 9001, ISO 14001, RAL and DEKRA — held by Galle GmbH, our German partner.',
         ],
         'Emis de' => ['de' => 'Ausgestellt von', 'en' => 'Issued by'],
+        'Certificari ale grupului Galle GmbH' => [
+            'ro' => 'Certificări ale grupului Galle GmbH',
+            'de' => 'Zertifizierungen der Galle GmbH Gruppe',
+            'en' => 'Certifications of the Galle GmbH group',
+        ],
         'Educational' => ['ro' => 'Educațional', 'de' => 'Zum Verständnis', 'en' => 'Educational'],
         'De ce FSC / PEFC e mai important decat ISO pentru lemn?' => [
             'ro' => 'De ce FSC / PEFC e mai important decât ISO pentru lemn?',
