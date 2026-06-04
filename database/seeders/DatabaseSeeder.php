@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ZonaLivrareSeeder::class,
             LocalitateSeeder::class,
             FaqSeeder::class,
+            MembruSeeder::class,
             PaginaSeeder::class,
             ProiectSeeder::class,
             ArticolSeeder::class,

@@ -42,6 +42,7 @@
                         <li><a href="{{ $prefix }}/lemn-de-foc" class="hover:text-mint transition">{{ __('Lemn de foc') }}</a></li>
                         <li><a href="{{ $prefix }}/certificari" class="hover:text-mint transition">{{ __('Certificari') }}</a></li>
                         <li><a href="{{ $prefix }}/proiecte" class="hover:text-mint transition">{{ __('Proiecte') }}</a></li>
+                        <li><a href="{{ $prefix }}/blog" class="hover:text-mint transition">{{ __('Blog') }}</a></li>
                         <li><a href="{{ $prefix }}/intrebari-frecvente" class="hover:text-mint transition">{{ __('Intrebari frecvente') }}</a></li>
                     </ul>
                 </div>

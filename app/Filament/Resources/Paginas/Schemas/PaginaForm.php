@@ -317,6 +317,36 @@ class PaginaForm
                         ->placeholder('/images/galle/proiecte/...webp'),
                 ]),
 
+            Block::make('echipa')
+                ->label('Echipa (membri din admin)')
+                ->icon('heroicon-o-user-group')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
+                ]),
+
+            Block::make('proiecte_recente')
+                ->label('Proiecte recente (teaser home)')
+                ->icon('heroicon-o-briefcase')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
+                ]),
+
+            Block::make('blog_recent')
+                ->label('Articole recente (teaser blog)')
+                ->icon('heroicon-o-newspaper')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
+                ]),
+
             Block::make('recenzii')
                 ->label('Recenzii clienti')
                 ->icon('heroicon-o-star')

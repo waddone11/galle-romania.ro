@@ -84,5 +84,37 @@ class ProiectSeeder extends Seeder
         foreach ($rows as $row) {
             Proiect::updateOrCreate(['slug' => $row['slug']], $row);
         }
+
+        $this->attachGalerie();
+    }
+
+    /**
+     * Ataseaza idempotent poze reale (din public/images/galle/proiecte) la colectia
+     * medialibrary `galerie`. `preservingOriginal` pastreaza fisierele sursa in git;
+     * copiile medialibrary ajung pe discul `public` (storage/app/public).
+     */
+    private function attachGalerie(): void
+    {
+        $galerii = [
+            'parcul-central-buftea-amenajare' => ['forwarder-drum.jpg', 'gramada-busteni.jpg'],
+            'gestiune-padure-domeniu-prahova' => ['harvester-lucru.jpg', 'busteni-marcati.jpg', 'harvester-galle.jpg'],
+            'platforma-compostare-magurele' => ['depozit-utilaj.jpg', 'depozit-amurg.jpg', 'camion-incarcat.jpg'],
+        ];
+
+        foreach ($galerii as $slug => $fisiere) {
+            $proiect = Proiect::where('slug', $slug)->first();
+
+            if (! $proiect || $proiect->getMedia('galerie')->isNotEmpty()) {
+                continue;
+            }
+
+            foreach ($fisiere as $fisier) {
+                $cale = public_path('images/galle/proiecte/'.$fisier);
+
+                if (is_file($cale)) {
+                    $proiect->addMedia($cale)->preservingOriginal()->toMediaCollection('galerie');
+                }
+            }
+        }
     }
 }

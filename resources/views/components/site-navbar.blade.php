@@ -28,8 +28,32 @@
                 <a href="{{ $prefix }}/servicii" class="hover:text-mint transition-colors">{{ __('Servicii') }}</a>
                 <a href="{{ $prefix }}/lemn-de-foc" class="hover:text-mint transition-colors">{{ __('Lemn de foc') }}</a>
                 <a href="{{ $prefix }}/despre" class="hover:text-mint transition-colors">{{ __('Despre') }}</a>
-                <a href="{{ $prefix }}/certificari" class="hover:text-mint transition-colors">{{ __('Certificari') }}</a>
-                <a href="{{ $prefix }}/intrebari-frecvente" class="hover:text-mint transition-colors">{{ __('FAQ') }}</a>
+                {{-- Secundarele (portofoliu, blog, certificari, FAQ) stau grupate ca sa nu aglomereze bara. --}}
+                <div x-data="{ resurse: false }" @click.outside="resurse = false" class="relative">
+                    <button
+                        type="button"
+                        @click="resurse = !resurse"
+                        class="inline-flex items-center gap-1 hover:text-mint transition-colors"
+                        :aria-expanded="resurse"
+                        aria-haspopup="true"
+                    >
+                        {{ __('Resurse') }}
+                        <svg class="size-4 transition-transform" :class="resurse ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div
+                        x-show="resurse"
+                        x-cloak
+                        x-transition.opacity.duration.150ms
+                        class="absolute right-0 top-full mt-3 w-60 rounded-xl bg-white border border-mist shadow-lg shadow-forest/10 py-2"
+                    >
+                        <a href="{{ $prefix }}/proiecte" class="block px-4 py-2 hover:bg-mist/60 hover:text-mint transition-colors">{{ __('Proiecte') }}</a>
+                        <a href="{{ $prefix }}/blog" class="block px-4 py-2 hover:bg-mist/60 hover:text-mint transition-colors">{{ __('Blog') }}</a>
+                        <a href="{{ $prefix }}/certificari" class="block px-4 py-2 hover:bg-mist/60 hover:text-mint transition-colors">{{ __('Certificari') }}</a>
+                        <a href="{{ $prefix }}/intrebari-frecvente" class="block px-4 py-2 hover:bg-mist/60 hover:text-mint transition-colors">{{ __('Intrebari frecvente') }}</a>
+                    </div>
+                </div>
                 <a href="{{ $prefix }}/contact" class="hover:text-mint transition-colors">{{ __('Contact') }}</a>
             </div>
 
@@ -70,9 +94,12 @@
             <a href="{{ $prefix }}/servicii" class="block py-2">{{ __('Servicii') }}</a>
             <a href="{{ $prefix }}/lemn-de-foc" class="block py-2">{{ __('Lemn de foc') }}</a>
             <a href="{{ $prefix }}/despre" class="block py-2">{{ __('Despre') }}</a>
+            <a href="{{ $prefix }}/contact" class="block py-2">{{ __('Contact') }}</a>
+            <p class="pt-2 text-xs uppercase tracking-widest text-forest/50">{{ __('Resurse') }}</p>
+            <a href="{{ $prefix }}/proiecte" class="block py-2">{{ __('Proiecte') }}</a>
+            <a href="{{ $prefix }}/blog" class="block py-2">{{ __('Blog') }}</a>
             <a href="{{ $prefix }}/certificari" class="block py-2">{{ __('Certificari') }}</a>
             <a href="{{ $prefix }}/intrebari-frecvente" class="block py-2">{{ __('Intrebari frecvente') }}</a>
-            <a href="{{ $prefix }}/contact" class="block py-2">{{ __('Contact') }}</a>
             <div class="pt-2 border-t border-mist flex items-center justify-end">
                 <a href="{{ $prefix }}/contact" class="rounded-full bg-mint px-4 py-1.5 font-semibold text-forest">{{ __('Cere oferta') }}</a>
             </div>

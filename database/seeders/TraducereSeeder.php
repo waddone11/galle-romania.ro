@@ -51,6 +51,10 @@ class TraducereSeeder extends Seeder
         'Acasa' => ['ro' => 'Acasă', 'de' => 'Startseite', 'en' => 'Home'],
         'Cere oferta' => ['ro' => 'Cere ofertă', 'de' => 'Angebot anfordern', 'en' => 'Request a quote'],
         'Certificari' => ['ro' => 'Certificări', 'de' => 'Zertifizierungen', 'en' => 'Certifications'],
+        'Resurse' => ['de' => 'Ressourcen', 'en' => 'Resources'],
+        'Blog' => ['de' => 'Blog', 'en' => 'Blog'],
+        'Vezi toate proiectele' => ['de' => 'Alle Projekte ansehen', 'en' => 'View all projects'],
+        'Vezi blogul' => ['de' => 'Zum Blog', 'en' => 'View the blog'],
 
         // blocks
         'Sus' => ['de' => 'Nach oben', 'en' => 'Back to top'],

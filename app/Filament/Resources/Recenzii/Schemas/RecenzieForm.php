@@ -33,7 +33,7 @@ class RecenzieForm
                         ->columnSpanFull(),
                     Select::make('rating')
                         ->label('Rating (optional)')
-                        ->options(array_combine(range(1, 5), range(1, 5)))
+                        ->options(array_combine(range(1, 5), array_map(strval(...), range(1, 5))))
                         ->nullable(),
                     Select::make('serviciu')
                         ->label('Serviciu (context)')

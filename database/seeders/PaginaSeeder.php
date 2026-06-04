@@ -314,6 +314,15 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
+                        // Teaser portofoliu — ultimele 3 proiecte publicate (modelul Proiect).
+                        // DE/EN null — se traduc separat din /admin.
+                        'type' => 'proiecte_recente',
+                        'data' => [
+                            'eyebrow' => $t('Portofoliu'),
+                            'titlu' => $t('Proiecte recente'),
+                        ],
+                    ],
+                    [
                         'type' => 'durabilitate_stat',
                         'data' => [
                             'titlu' => $t('Durabil & regenerabil', 'Nachhaltig & erneuerbar', 'Sustainable & renewable'),
@@ -335,6 +344,15 @@ class PaginaSeeder extends Seeder
                             'categorie' => 'lemn-de-foc',
                             'limita' => 6,
                             'link_toate' => true,
+                        ],
+                    ],
+                    [
+                        // Teaser blog — ultimele 3 articole publicate (modelul Articol).
+                        // DE/EN null — se traduc separat din /admin.
+                        'type' => 'blog_recent',
+                        'data' => [
+                            'eyebrow' => $t('Blog'),
+                            'titlu' => $t('Ghiduri și noutăți'),
                         ],
                     ],
                     [
@@ -1238,32 +1256,12 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
-                        'type' => 'carduri',
+                        // Echipa vine din modelul Membru (gestionabil din admin, cu poze).
+                        // Membrii sunt seed-uiti de MembruSeeder.
+                        'type' => 'echipa',
                         'data' => [
                             'eyebrow' => $t('Oamenii Galle Silva', 'Die Menschen hinter Galle Silva', 'The people of Galle Silva'),
                             'titlu' => $t('Echipa', 'Das Team', 'The team'),
-                            'items' => [
-                                [
-                                    'titlu' => $t('Răzvan Solzaru', 'Răzvan Solzaru', 'Răzvan Solzaru'),
-                                    'text' => $t('Manager general', 'Geschäftsführer', 'General Manager'),
-                                    'icon' => 'heroicon-o-user',
-                                ],
-                                [
-                                    'titlu' => $t('Ion Narcis Marin', 'Ion Narcis Marin', 'Ion Narcis Marin'),
-                                    'text' => $t('Manager operațiuni', 'Betriebsleiter', 'Operations Manager'),
-                                    'icon' => 'heroicon-o-user',
-                                ],
-                                [
-                                    'titlu' => $t('Dragici Dumitru', 'Dragici Dumitru', 'Dragici Dumitru'),
-                                    'text' => $t('Operator harvester', 'Harvester-Fahrer', 'Harvester operator'),
-                                    'icon' => 'heroicon-o-user',
-                                ],
-                                [
-                                    'titlu' => $t('Roată Alexandru', 'Roată Alexandru', 'Roată Alexandru'),
-                                    'text' => $t('Muncitor în silvicultură', 'Forstwirt', 'Forestry worker'),
-                                    'icon' => 'heroicon-o-user',
-                                ],
-                            ],
                         ],
                     ],
                 ],

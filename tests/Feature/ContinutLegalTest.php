@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\MembruSeeder;
 use Database\Seeders\PaginaSeeder;
 use Database\Seeders\TraducereSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -53,6 +54,9 @@ it('renders despre with the corrected group story in all locales', function () {
 });
 
 it('keeps the despre team section intact', function () {
+    // Echipa vine acum din modelul Membru (blocul CMS `echipa`), nu din Pagina.
+    $this->seed(MembruSeeder::class);
+
     $this->get('/despre')
         ->assertOk()
         ->assertSeeText('Răzvan Solzaru')

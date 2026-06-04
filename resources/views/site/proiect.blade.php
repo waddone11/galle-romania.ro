@@ -27,11 +27,38 @@
             @if($proiect->locatie)
                 <p class="text-forest-dark/60 mb-8">{{ $proiect->locatie }}</p>
             @endif
-            <div class="aspect-video rounded-2xl bg-forest/10 mb-8"></div>
+            @php $galerie = $proiect->getMedia('galerie'); @endphp
+            @if($galerie->isNotEmpty())
+                <div class="aspect-video rounded-2xl bg-forest/10 mb-8 overflow-hidden">
+                    <img src="{{ $galerie->first()->getUrl('mare') }}"
+                         alt="{{ $pTitlu }}"
+                         width="1600" height="900" fetchpriority="high" decoding="async"
+                         class="w-full h-full object-cover">
+                </div>
+            @else
+                <div class="aspect-video rounded-2xl bg-forest/10 mb-8 grid place-items-center">
+                    <svg class="size-12 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 19.5h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5z"/>
+                    </svg>
+                </div>
+            @endif
             <p class="text-lg text-forest-dark/80 mb-6">{{ $pDesc }}</p>
             <div class="prose prose-stone max-w-none">
                 {!! nl2br(e($proiect->getTranslation('continut', $loc) ?: $proiect->getTranslation('continut', 'ro'))) !!}
             </div>
+
+            @if($galerie->count() > 1)
+                <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    @foreach($galerie->slice(1) as $media)
+                        <div class="aspect-square rounded-xl overflow-hidden bg-forest/10">
+                            <img src="{{ $media->getUrl('card') }}"
+                                 alt="{{ $pTitlu }} — {{ $loop->iteration }}"
+                                 width="800" height="450" loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </article>
 </x-layouts.app>
