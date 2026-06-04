@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\SetLocale;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +51,20 @@ $siteRoutes = function () {
     Route::get('/blog/{slug}', [SiteController::class, 'articol'])->name('articol');
 
     Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
+
+    // Auth front-end (Livewire). Numele standard `login` face sa mearga
+    // redirectul Laravel pentru rutele protejate.
+    Route::get('/autentificare', fn () => view('site.auth.login'))->name('login');
+    Route::get('/inregistrare', fn () => view('site.auth.register'))->name('register');
+    Route::post('/logout', function (Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        $prefix = app()->getLocale() === 'ro' ? '' : '/'.app()->getLocale();
+
+        return redirect()->to($prefix ?: '/');
+    })->name('logout');
 
     Route::get('/date-firma', [SiteController::class, 'dateFirma'])->name('date-firma');
     Route::get('/termeni', fn () => app(SiteController::class)->legalPage('termeni'))->name('termeni');

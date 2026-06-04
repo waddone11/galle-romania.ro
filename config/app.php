@@ -17,6 +17,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin seed-uit
+    |--------------------------------------------------------------------------
+    |
+    | Credentialele userului admin creat de AdminUserSeeder. FLAG: inainte de
+    | productie scoate fallback-urile si seteaza-le doar in .env (necomis) —
+    | vezi README, sectiunea "Flag-uri de securitate".
+    |
+    */
+
+    'admin_email' => env('ADMIN_EMAIL', 'avasilescu1985@gmail.com'),
+    'admin_password' => env('ADMIN_PASSWORD', 'jamaica6'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

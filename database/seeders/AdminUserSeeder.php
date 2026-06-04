@@ -17,14 +17,23 @@ class AdminUserSeeder extends Seeder
         Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         Role::firstOrCreate(['name' => 'editor', 'guard_name' => 'web']);
 
-        $admin = User::firstOrCreate(
-            ['email' => 'admin@galle-silva.ro'],
+        // Credentiale din .env via config (compatibil cu config:cache). FLAG:
+        // inainte de productie scoate fallback-ul de parola din config/app.php
+        // si seteaza ADMIN_PASSWORD doar in .env — vezi README.
+        $admin = User::updateOrCreate(
+            ['email' => config('app.admin_email')],
             [
-                'name' => 'Admin Galle Silva',
-                'password' => Hash::make('parola-temporara-galle-2026'),
-                'email_verified_at' => now(),
+                'name' => 'Adrian Vasilescu',
+                'password' => Hash::make(config('app.admin_password')),
             ]
         );
+
+        // email_verified_at si role nu sunt mass-assignable (role ramane in afara
+        // Fillable ca sa nu poata fi escaladat la inregistrare) — le setam explicit.
+        $admin->forceFill([
+            'email_verified_at' => $admin->email_verified_at ?? now(),
+            'role' => 'admin',
+        ])->save();
 
         $admin->assignRole($superRole);
     }

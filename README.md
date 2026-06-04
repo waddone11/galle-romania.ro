@@ -81,14 +81,33 @@ docker compose logs -f laravel.test       # tail logs
 ## Credentiale admin (seed local)
 
 ```
-URL:      http://localhost/admin/login
-Email:    admin@galle-silva.ro
-Parola:   parola-temporara-galle-2026
-Rol:      super_admin (filament-shield)
+URL:      http://localhost/admin (sau /autentificare — login front-end cu redirect pe rol)
+Email:    ADMIN_EMAIL din .env (fallback: avasilescu1985@gmail.com)
+Parola:   ADMIN_PASSWORD din .env (fallback: jamaica6)
+Nume:     Adrian Vasilescu
+Rol:      role=admin (gate panou) + super_admin (filament-shield, permisiuni per-resursa)
 ```
 
-> Roluri seed-uite: `super_admin`, `admin`, `editor` (vezi `database/seeders/AdminUserSeeder.php`).
-> Schimba parola la primul login (sau in `AdminUserSeeder` inainte de prod).
+> Seeder: `database/seeders/AdminUserSeeder.php` (`updateOrCreate` — idempotent, nu duplica la re-seed).
+> Decizie: promptul cerea un `UserSeeder` nou, dar exista deja `AdminUserSeeder` apelat din
+> `DatabaseSeeder` si referit in teste — l-am refolosit, nu l-am dublat.
+> Roluri Spatie seed-uite: `super_admin`, `admin`, `editor`.
+
+### Auth front-end (login + register, Livewire)
+
+- **Rute** (in `$siteRoutes`, deci si pe `/de` `/en`): `/autentificare` (name `login`), `/inregistrare` (name `register`), `/logout` (POST, name `logout`).
+- **Rol — o singura sursa de adevar pentru gate-ul panoului:** coloana `users.role` (`admin` | `client`, default `client`); `canAccessPanel()` = `role === 'admin'`. Permisiunile fine din panou raman pe Spatie/Shield (adminul seed-uit are si rolul `super_admin`). `role` NU e mass-assignable (anti escaladare la register).
+- **Login** (`App\Livewire\Auth\Login`): throttle 5 incercari/min pe email+IP, mesaje generice (nu dezvaluie daca emailul exista), `session()->regenerate()`, redirect pe rol: admin → `/admin`, client → home in locale-ul curent.
+- **Register** (`App\Livewire\Auth\Register`): nume + email unic + parola min 8 confirmata; user nou = `client`; login automat + redirect home.
+- **Footer**: linkuri discrete pe stare — guest: Autentificare + Cont nou; client: Iesire; admin: Admin + Iesire (logout = form POST cu `@csrf`).
+
+### ⚠️ Flag-uri de securitate (de rezolvat inainte de productie)
+
+- **Parola fallback (`jamaica6`) e slaba si e comisa in git** (seeder + acest README). Inainte de productie: seteaza `ADMIN_PASSWORD` doar in `.env` (necomis), scoate fallback-ul plaintext din `AdminUserSeeder`, si **schimba parola dupa primul login**.
+- **Linkul „Admin" din footer** apare doar pentru admini autentificati, dar `/admin` ramane accesibil public (pagina de login Filament). Recomandat la lansare: rate-limit/IP-allowlist pe `/admin`.
+- **Inregistrarea publica e activa**; conturile `client` nu au inca o zona dedicata (ajung pe home) — utila pe viitor (ex. istoric comenzi). Daca nu vrei register public la lansare, scoate ruta `/inregistrare` + linkul din footer.
+- **Verificarea email si resetarea parolei NU sunt incluse** (optionale) — se adauga cand e configurat SMTP. `email_verified_at` e setat din seeder doar pentru admin.
+- Un client autentificat care intra pe `/admin` primeste 403 (Filament, `canAccessPanel` false) — redirectul spre home era optional, nu l-am implementat.
 
 - **T3 — Poze reale + SEO/GEO final + Blog (deploy-ready).** Cele 8 poze procesate (1:1, 1254px, persoane eliminate) sunt optimizate in `public/images/galle/proiecte/` (webp q80 + jpg fallback, varianta patrata 1200px + crop lat 16:9 `-wide`), git-tracked. Mapare: `harvester-galle` (hero exploatare + og:image home), `harvester-lucru` (lucrari silvice), `camion-incarcat` (transport + Cine suntem), `depozit-utilaj` (despre + galerie), `depozit-amurg` (achizitie), `gramada-busteni` (lemn de foc), `busteni-marcati` (achizitie), `forwarder-drum` (curatare). `header_pagina` are camp `imagine` (lat pe desktop, patrat pe mobil prin `<picture media>`); paginile de serviciu + despre au hero foto. **Decizie hero home**: fundalul foto sub stratul de nori animati e invizibil (testat vizual) — hero-ul pastreaza ilustratia custom, poza GALLE e og:image-ul home si hero-ul paginii de exploatare. Blog: 6 articole reale (~350-500 cuvinte, diacritice, interlinking `[text](/url)`, `Article` schema + imagine + og:image). SEO: `WebSite` JSON-LD global, og:image per pagina (camp `og_image` sau imaginea din `header_pagina`), sitemap 39 URL-uri (servicii + 12 landing-uri locale + blog + date-firma). Diacritizare completa: continutul home (seed) + valorile RO ale stringurilor UI (cheile `__()` raman ASCII, `TraducereSeeder` seteaza `valoare.ro` cu diacritice — stabil pentru cod, corect pentru vizitator); textul splitter nu mai contine jargon („flow-uri" → „directii"). Pozele vechi din `proiecte/` (cu persoane vizibile) au fost eliminate; video-ul de depozit ramane.
 

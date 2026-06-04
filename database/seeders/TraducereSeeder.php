@@ -32,7 +32,8 @@ class TraducereSeeder extends Seeder
             }
 
             foreach (['de', 'en'] as $loc) {
-                if (blank($traducere->getTranslation('valoare', $loc, false))) {
+                // Cheile noi pot avea doar RO — DE/EN raman null (de completat din /admin).
+                if (isset($valori[$loc]) && blank($traducere->getTranslation('valoare', $loc, false))) {
                     $traducere->setTranslation('valoare', $loc, $valori[$loc]);
                 }
             }
@@ -73,6 +74,23 @@ class TraducereSeeder extends Seeder
         'Cookies' => ['de' => 'Cookies', 'en' => 'Cookies'],
         'Date firma' => ['ro' => 'Date firmă', 'de' => 'Impressum', 'en' => 'Legal notice'],
         'Setari cookies' => ['ro' => 'Setări cookies', 'de' => 'Cookie-Einstellungen', 'en' => 'Cookie settings'],
+        'Admin' => ['de' => 'Admin', 'en' => 'Admin'],
+
+        // auth front-end (footer + pagini login/register) — RO; DE/EN de completat din /admin
+        'Autentificare' => ['ro' => 'Autentificare'],
+        'Cont nou' => ['ro' => 'Cont nou'],
+        'Iesire' => ['ro' => 'Ieșire'],
+        'Parola' => ['ro' => 'Parolă'],
+        'Confirma parola' => ['ro' => 'Confirmă parola'],
+        'Tine-ma minte' => ['ro' => 'Ține-mă minte'],
+        'Creeaza cont' => ['ro' => 'Creează cont'],
+        'Nu ai cont?' => ['ro' => 'Nu ai cont?'],
+        'Ai deja cont?' => ['ro' => 'Ai deja cont?'],
+        'Minim 8 caractere.' => ['ro' => 'Minim 8 caractere.'],
+        'Email sau parola gresite.' => ['ro' => 'Email sau parolă greșite.'],
+        'Prea multe incercari. Reincearca peste un minut.' => ['ro' => 'Prea multe încercări. Reîncearcă peste un minut.'],
+        'Intra in contul tau Galle Silva.' => ['ro' => 'Intră în contul tău Galle Silva.'],
+        'Creeaza-ti un cont Galle Silva.' => ['ro' => 'Creează-ți un cont Galle Silva.'],
         'Toate drepturile rezervate.' => ['de' => 'Alle Rechte vorbehalten.', 'en' => 'All rights reserved.'],
         'Partener local' => ['de' => 'Lokaler Partner', 'en' => 'Local partner'],
 

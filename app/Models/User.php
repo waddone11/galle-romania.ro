@@ -20,6 +20,16 @@ class User extends Authenticatable implements FilamentUser
     use HasFactory, HasRoles, Notifiable;
 
     /**
+     * Default in-memory identic cu default-ul coloanei, ca modelele noi
+     * (ne-refresh-uite) sa aiba rolul corect.
+     *
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'role' => 'client',
+    ];
+
+    /**
      * @return array<string, string>
      */
     protected function casts(): array
@@ -32,8 +42,9 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Only authenticated users with at least one role may access the admin panel.
-        // The exact authorisation is enforced per-resource by shield policies.
-        return $this->roles()->exists();
+        // Gate-ul panoului e coloana `role` (admin|client) — o singura sursa de
+        // adevar pentru front-end si Filament. Autorizarea per-resursa ramane
+        // pe shield policies (roluri Spatie).
+        return $this->role === 'admin';
     }
 }

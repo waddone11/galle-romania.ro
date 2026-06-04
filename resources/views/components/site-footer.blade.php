@@ -60,6 +60,18 @@
                         <a href="{{ $prefix }}/confidentialitate" class="hover:text-mint">{{ __('Confidentialitate') }}</a>
                         <a href="{{ $prefix }}/cookies" class="hover:text-mint">{{ __('Cookies') }}</a>
                         <a href="{{ $prefix }}/date-firma" class="hover:text-mint">{{ __('Date firma') }}</a>
+                        @auth
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ url('/admin') }}" class="hover:text-mint">{{ __('Admin') }}</a>
+                            @endif
+                            <form method="POST" action="{{ $prefix }}/logout" class="inline">
+                                @csrf
+                                <button type="submit" class="hover:text-mint">{{ __('Iesire') }}</button>
+                            </form>
+                        @else
+                            <a href="{{ $prefix }}/autentificare" class="hover:text-mint">{{ __('Autentificare') }}</a>
+                            <a href="{{ $prefix }}/inregistrare" class="hover:text-mint">{{ __('Cont nou') }}</a>
+                        @endauth
                         <button type="button"
                                 onclick="window.dispatchEvent(new CustomEvent('galle-open-cookie-settings'))"
                                 class="hover:text-mint underline-offset-2 hover:underline">
