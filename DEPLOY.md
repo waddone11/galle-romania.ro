@@ -92,7 +92,17 @@ MAIL_PASSWORD=             # din panoul KAS
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=noreply@galle-silva.ro
 MAIL_FROM_NAME="Galle Silva"
+
+# Social media (optionale — iconitele apar in footer/contact/despre doar pentru cele setate)
+SOCIAL_FACEBOOK=
+SOCIAL_INSTAGRAM=
+SOCIAL_YOUTUBE=
+SOCIAL_TIKTOK=
+SOCIAL_WHATSAPP=           # URL complet, ex. https://wa.me/40729961082
+SOCIAL_LINKEDIN=
 ```
+
+> **Nota:** valorile `SOCIAL_*` sunt citite prin `config/social.php`. Dupa orice modificare in `.env` pe server ruleaza `php artisan config:cache` (sau `config:clear`) ca sa se aplice.
 
 Apoi:
 

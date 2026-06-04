@@ -55,6 +55,7 @@
                         @endif
                         <li>{{ $program }}</li>
                     </ul>
+                    <x-social-links variant="footer" class="mt-3 -ml-2.5" />
                     <div class="mt-4 flex flex-wrap gap-3 text-xs">
                         <a href="{{ $prefix }}/termeni" class="hover:text-mint">{{ __('Termeni') }}</a>
                         <a href="{{ $prefix }}/confidentialitate" class="hover:text-mint">{{ __('Confidentialitate') }}</a>

@@ -45,4 +45,14 @@
             </div>
         </section>
     @endif
+
+    {{-- Urmareste-ne — randat doar daca exista cel putin un link social in config --}}
+    @if(array_filter(config('social', []), fn ($url) => filled($url)))
+        <section class="py-10">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
+                <span class="text-sm text-forest-dark/60 uppercase tracking-widest">{{ __('Urmareste-ne') }}</span>
+                <x-social-links variant="inline" />
+            </div>
+        </section>
+    @endif
 </x-layouts.app>

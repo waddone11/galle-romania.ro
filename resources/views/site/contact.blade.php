@@ -36,6 +36,8 @@
                     </div>
                 </dl>
 
+                <x-social-links variant="inline" class="mt-6 -ml-2.5" />
+
                 <div class="mt-8 rounded-xl bg-mist-warm p-4 text-sm">
                     <p class="text-forest-dark/70">{{ __('Pentru o discutie rapida —') }} <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings->whatsapp) }}" target="_blank" rel="noopener" class="text-mint hover:text-forest font-medium">WhatsApp</a> {{ __('sau email direct.') }}</p>
                 </div>
