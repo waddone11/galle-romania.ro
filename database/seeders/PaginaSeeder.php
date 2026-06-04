@@ -337,22 +337,32 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
-                        // Teaser FAQ — un set scurt despre lemnul de foc + link spre pagina dedicata.
+                        // Teaser FAQ — split 50/50 in stilul durabilitate_stat, verde pe DREAPTA.
                         'type' => 'faq',
                         'data' => [
                             'titlu' => $t('Întrebări frecvente', 'Häufige Fragen', 'Frequently asked questions'),
+                            'subtitlu' => $t(
+                                'Răspunsuri rapide despre lemn de foc, livrare și servicii.',
+                                'Schnelle Antworten zu Brennholz, Lieferung und Leistungen.',
+                                'Quick answers about firewood, delivery and services.',
+                            ),
                             'categorie' => 'lemn-de-foc',
                             'limita' => 6,
                             'link_toate' => true,
+                            'split' => true,
                         ],
                     ],
                     [
-                        // Teaser blog — ultimele 3 articole publicate (modelul Articol).
-                        // DE/EN null — se traduc separat din /admin.
+                        // Teaser blog — split 50/50 in oglinda (verde pe STANGA), ultimele 4 articole.
                         'type' => 'blog_recent',
                         'data' => [
                             'eyebrow' => $t('Blog'),
-                            'titlu' => $t('Ghiduri și noutăți'),
+                            'titlu' => $t('Ghiduri & noutăți', 'Ratgeber & Neuigkeiten', 'Guides & news'),
+                            'subtitlu' => $t(
+                                'Despre lemn de foc, pădure și lucrări făcute corect — pe înțelesul tuturor.',
+                                'Über Brennholz, Wald und fachgerechte Arbeiten — für alle verständlich.',
+                                'About firewood, forests and work done right — in plain language.',
+                            ),
                         ],
                     ],
                     [

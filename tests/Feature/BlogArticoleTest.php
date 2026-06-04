@@ -80,12 +80,34 @@ it('renders markdown-lite as HTML (headings + internal links), not literal markd
 });
 
 it('handles imagine = null without errors and keeps Article schema', function () {
-    $articol = Articol::where('slug', 'scos-cioate-metode-utilaje-cand-este-necesar')->firstOrFail();
+    // Independent de starea seed-ului (pozele pot exista deja in public/images/blog).
+    $articol = Articol::create([
+        'titlu' => ['ro' => 'Articol de test fără imagine'],
+        'slug' => 'articol-test-fara-imagine',
+        'excerpt' => ['ro' => 'Excerpt de test.'],
+        'continut' => ['ro' => "Prima frază.\n\n## Subtitlu\n\nConținut de test cu [link](/lemn-de-foc)."],
+        'categorie' => 'test',
+        'imagine' => null,
+        'published_at' => now(),
+        'is_published' => true,
+    ]);
     expect($articol->imagine)->toBeNull();
 
     $r = $this->get("/blog/{$articol->slug}");
     $r->assertOk();
     $r->assertSee('"@type":"Article"', false);
+});
+
+it('attaches images automatically when files exist in public/images/blog', function () {
+    foreach (ARTICOLE_NOI as $slug) {
+        $articol = Articol::where('slug', $slug)->firstOrFail();
+
+        if (is_file(public_path("images/blog/{$slug}.webp"))) {
+            expect($articol->imagine)->toBe("/images/blog/{$slug}.webp", "Articolul {$slug} nu are imaginea atasata");
+        } else {
+            expect($articol->imagine)->toBeNull();
+        }
+    }
 });
 
 it('respects accuracy rules in the new content', function () {

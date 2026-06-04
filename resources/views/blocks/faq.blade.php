@@ -1,6 +1,8 @@
 @php
     $loc = app()->getLocale();
     $prefix = $loc === 'ro' ? '' : '/'.$loc;
+    $t = fn (string $key) => $data[$key][$loc] ?? $data[$key]['ro'] ?? null;
+
     $query = \App\Models\Faq::where('is_published', true)->orderBy('ordine');
     if (! empty($data['categorie'])) {
         $query->where('categorie', $data['categorie']);
@@ -10,58 +12,47 @@
         $query->limit((int) $data['limita']);
     }
     $faqs = $query->get();
+
+    // Stil "split": jumatate panou forest cu typo mare (in stilul durabilitate_stat,
+    // verde pe DREAPTA — in oglinda), jumatate acordeon pe alb. Doar la teaser (home).
+    $split = ! empty($data['split']);
+
+    $subtitlu = $t('subtitlu') ?? 'Răspunsuri rapide despre lemn de foc, livrare și servicii.';
 @endphp
 
+@if($split)
+<section class="grid lg:grid-cols-2 overflow-hidden">
+    {{-- Panou verde (dreapta pe desktop, sus pe mobil) — full-bleed, ca durabilitate_stat. --}}
+    <div class="bg-forest text-mist px-6 lg:px-16 py-14 lg:py-28 flex items-center lg:order-2">
+        <div class="max-w-md">
+            <p class="font-display font-extrabold leading-[0.9] tracking-tight text-7xl sm:text-8xl lg:text-[10rem]" aria-hidden="true">
+                FAQ<span class="text-mint">?</span>
+            </p>
+            <h2 class="sr-only">{{ $t('titlu') ?? __('Întrebări frecvente') }}</h2>
+            <p class="mt-6 lg:mt-8 text-lg font-light text-mist/75 leading-relaxed">{{ $subtitlu }}</p>
+            <a href="{{ $prefix }}/intrebari-frecvente"
+               class="mt-8 inline-flex items-center rounded-full bg-mint px-6 py-2.5 text-sm font-semibold text-forest hover:brightness-105 transition">
+                {{ __('Vezi toate intrebarile') }}
+            </a>
+        </div>
+    </div>
+
+    {{-- Acordeon pe alb (stanga pe desktop) — acelasi card ca pe /intrebari-frecvente. --}}
+    <div class="bg-white px-4 sm:px-6 lg:px-16 py-14 lg:py-24 flex items-center lg:order-1">
+        <div class="w-full max-w-2xl mx-auto lg:mx-0 lg:ml-auto space-y-3">
+            @include('blocks.partials.faq-card-list', ['faqs' => $faqs, 'loc' => $loc, 'idPrefix' => 'faq-split'])
+        </div>
+    </div>
+</section>
+@else
 <section class="bg-mist-warm py-16">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        @if($titlu = ($data['titlu'][$loc] ?? $data['titlu']['ro'] ?? null))
+        @if($titlu = $t('titlu'))
             <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ $titlu }}</h2>
         @endif
         {{-- Acelasi stil de card acordeon ca pe /intrebari-frecvente (consecventa). --}}
         <div class="space-y-3">
-            @foreach($faqs as $faq)
-                @php
-                    $intrebare = $faq->getTranslation('intrebare', $loc) ?: $faq->getTranslation('intrebare', 'ro');
-                    $raspuns = $faq->getTranslation('raspuns', $loc) ?: $faq->getTranslation('raspuns', 'ro');
-                    $idRaspuns = 'faq-teaser-raspuns-'.$faq->id;
-                @endphp
-                <article
-                    x-data="{ open: false }"
-                    data-faq-card
-                    class="group rounded-2xl border-l-2 bg-white shadow-sm ring-1 transition motion-safe:hover:-translate-y-0.5 hover:shadow-md"
-                    :class="open ? 'border-mint ring-mint/30' : 'border-transparent ring-forest/10'"
-                >
-                    <h3>
-                        <button
-                            type="button"
-                            @click="open = !open"
-                            aria-expanded="false"
-                            :aria-expanded="open.toString()"
-                            aria-controls="{{ $idRaspuns }}"
-                            class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
-                        >
-                            <span class="font-medium text-forest">{{ $intrebare }}</span>
-                            <span
-                                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition motion-safe:duration-300"
-                                :class="open ? 'bg-mint text-white motion-safe:rotate-180' : 'bg-mint/15 text-forest'"
-                            >
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="m6 9 6 6 6-6"/>
-                                </svg>
-                            </span>
-                        </button>
-                    </h3>
-                    <div
-                        id="{{ $idRaspuns }}"
-                        class="grid grid-rows-[0fr] motion-safe:transition-[grid-template-rows] motion-safe:duration-300 motion-safe:ease-out"
-                        :class="open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
-                    >
-                        <div class="overflow-hidden">
-                            <p class="px-5 pb-5 text-sm leading-relaxed text-forest-dark/75 sm:px-6 sm:pb-6">{{ $raspuns }}</p>
-                        </div>
-                    </div>
-                </article>
-            @endforeach
+            @include('blocks.partials.faq-card-list', ['faqs' => $faqs, 'loc' => $loc, 'idPrefix' => 'faq-teaser'])
         </div>
         @if(! empty($data['link_toate']))
             <div class="mt-8 text-center">
@@ -73,3 +64,4 @@
         @endif
     </div>
 </section>
+@endif
