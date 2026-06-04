@@ -22,6 +22,12 @@ class SetLocale
 
         app()->setLocale($locale);
 
+        // Persistat in sesiune ca update-urile Livewire (care nu trec prin acest
+        // middleware de ruta) sa primeasca acelasi locale via RestoreLocale.
+        if ($request->hasSession()) {
+            $request->session()->put('locale', $locale);
+        }
+
         return $next($request);
     }
 }

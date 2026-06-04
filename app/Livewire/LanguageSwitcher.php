@@ -2,15 +2,34 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class LanguageSwitcher extends Component
 {
     public string $current = 'ro';
 
+    /**
+     * Numele rutei curente FARA prefixul de locale (ex. 'servicii', 'proiect').
+     * Capturat la incarcarea initiala a paginii — request()->path() nu e de
+     * incredere in timpul unui update Livewire (e endpoint-ul de update).
+     */
+    public string $routeName = 'home';
+
+    /** @var array<string, string> */
+    public array $routeParams = [];
+
     public function mount(): void
     {
         $this->current = app()->getLocale();
+
+        $route = request()->route();
+        $name = $route?->getName() ?? 'home';
+        $this->routeName = (string) preg_replace('/^(de|en)\./', '', $name);
+
+        // Doar parametrii scalari (slug-uri) — suficient pentru rutele publice.
+        $params = $route?->parameters() ?? [];
+        $this->routeParams = array_filter($params, fn ($v) => is_string($v));
     }
 
     public function switch(string $locale)
@@ -19,20 +38,14 @@ class LanguageSwitcher extends Component
             return null;
         }
 
-        // Redirige spre acelasi path, dar cu/fara prefix corespunzator.
-        $path = request()->path(); // ex: 'de/servicii' sau '/' (devine '/')
-        $segments = explode('/', trim($path, '/'));
+        // Toate rutele publice au variante echivalente 'de.*' / 'en.*'.
+        $name = ($locale === 'ro' ? '' : "$locale.").$this->routeName;
 
-        // Sterge un prefix de locale existent (daca primul segment e 'de' sau 'en').
-        // explode garanteaza non-empty-list, deci nu mai e nevoie de isset.
-        if (in_array($segments[0], ['de', 'en'], true)) {
-            array_shift($segments);
+        if (! Route::has($name)) {
+            $name = $locale === 'ro' ? 'home' : "$locale.home";
         }
 
-        $newPath = ($locale === 'ro' ? '' : "/$locale").'/'.implode('/', $segments);
-        $newPath = rtrim($newPath, '/') ?: '/';
-
-        return $this->redirect($newPath);
+        return $this->redirect(route($name, $this->routeParams));
     }
 
     public function render()

@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Dupa StartSession (append = la coada grupului web): da update-urilor
+        // Livewire locale-ul sesiunii; pe rutele site SetLocale suprascrie apoi.
+        $middleware->web(append: [
+            \App\Http\Middleware\RestoreLocale::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
