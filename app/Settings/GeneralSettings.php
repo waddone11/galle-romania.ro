@@ -10,7 +10,7 @@ class GeneralSettings extends Settings
 
     public string $whatsapp = '40729961082';
 
-    public string $email = 'info@galle-silva.ro';
+    public string $email = 'info@galle-silva.com';
 
     public string $adresa = 'Manesti, Str. Principala 302, jud. Prahova';
 

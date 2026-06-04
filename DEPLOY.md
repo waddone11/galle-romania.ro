@@ -1,4 +1,4 @@
-# DEPLOY — galle-silva.ro pe ALL-INKL
+# DEPLOY — galle-silva.com pe ALL-INKL
 
 > Acest document NU declanseaza deploy. E un runbook pas-cu-pas pentru deployerul uman.
 
@@ -47,14 +47,14 @@ composer install --no-dev --optimize-autoloader
 
 Doua optiuni in panoul KAS — alege una:
 
-**Optiunea A (cleaner):** Configureaza in KAS `Domains → galle-silva.ro → Document root` ca fiind `/project/galle/public`.
+**Optiunea A (cleaner):** Configureaza in KAS `Domains → galle-silva.com → Document root` ca fiind `/project/galle/public`.
 
 **Optiunea B (symlink):** Daca KAS nu permite path custom:
 
 ```bash
 cd /www/htdocs/w02183b4/
-rm -rf galle-silva.ro              # cu grija — sterge orice exista acolo!
-ln -s project/galle/public galle-silva.ro
+rm -rf galle-silva.com              # cu grija — sterge orice exista acolo!
+ln -s project/galle/public galle-silva.com
 ```
 
 ## 3. `.env.production`
@@ -66,7 +66,7 @@ APP_NAME="Galle Silva"
 APP_ENV=production
 APP_KEY=                  # genereaza cu: php artisan key:generate
 APP_DEBUG=false
-APP_URL=https://galle-silva.ro
+APP_URL=https://galle-silva.com
 APP_LOCALE=ro
 APP_FALLBACK_LOCALE=ro
 
@@ -87,10 +87,10 @@ CACHE_STORE=database
 MAIL_MAILER=smtp
 MAIL_HOST=w02183b4.kasserver.com
 MAIL_PORT=587
-MAIL_USERNAME=noreply@galle-silva.ro
+MAIL_USERNAME=noreply@galle-silva.com
 MAIL_PASSWORD=             # din panoul KAS
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@galle-silva.ro
+MAIL_FROM_ADDRESS=noreply@galle-silva.com
 MAIL_FROM_NAME="Galle Silva"
 
 # Social media (optionale — iconitele apar in footer/contact/despre doar pentru cele setate)
@@ -119,7 +119,7 @@ php artisan db:seed --class=Database\\Seeders\\AdminUserSeeder --force
 php artisan db:seed --force        # poate include seedere existente (idempotent)
 ```
 
-Verifica admin: `https://galle-silva.ro/admin/login` cu `admin@galle-silva.ro` / parola seed. **Schimba parola imediat dupa primul login.**
+Verifica admin: `https://galle-silva.com/admin/login` cu `admin@galle-silva.com` / parola seed. **Schimba parola imediat dupa primul login.**
 
 ## 5. Caches productie
 
@@ -170,7 +170,7 @@ Schedule::command('queue:work --stop-when-empty --tries=3 --timeout=120')->every
 
 ## 8. HTTPS
 
-Din panoul KAS → SSL → Let's Encrypt → activeaza pentru `galle-silva.ro` si `www.galle-silva.ro`. Inroleaza si re-emiterea automata.
+Din panoul KAS → SSL → Let's Encrypt → activeaza pentru `galle-silva.com` si `www.galle-silva.com`. Inroleaza si re-emiterea automata.
 
 ## 9. Release workflow ulterior
 
@@ -192,7 +192,7 @@ php artisan config:cache route:cache view:cache
 
 ## 10. Verificari post-deploy
 
-- `https://galle-silva.ro/` — 200, cu hero si splitter
+- `https://galle-silva.com/` — 200, cu hero si splitter
 - `/lemn-de-foc` — calculator + form livreaza in DB
 - `/admin/login` — autentificare functionala
 - `/sitemap.xml` — generat (sau ruleaza manual `php artisan sitemap:generate`)

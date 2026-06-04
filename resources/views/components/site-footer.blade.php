@@ -2,7 +2,7 @@
     $locale = app()->getLocale();
     $prefix = $locale === 'ro' ? '' : '/' . $locale;
     $settings = class_exists(\App\Settings\GeneralSettings::class) ? app(\App\Settings\GeneralSettings::class) : null;
-    $email = $settings->email ?? 'info@galle-silva.ro';
+    $email = $settings->email ?? 'info@galle-silva.com';
     $telefon = $settings->telefon ?? null;
     $adresa = $settings->adresa ?? 'Manesti, Str. Principala 302, jud. Prahova';
     $program = $settings->program ?? __('Luni - Vineri, 09:00 - 18:00');
@@ -130,7 +130,7 @@
           <h4 class="text-mint text-sm font-semibold uppercase tracking-wider">Contact</h4>
           <ul class="mt-4 space-y-2 text-sm text-mist/70">
             <li><a href="#" class="hover:text-mint transition">Ploiesti, Prahova</a></li>
-            <li><a href="#" class="hover:text-mint transition">contact@galle-silva.ro</a></li>
+            <li><a href="#" class="hover:text-mint transition">contact@galle-silva.com</a></li>
           </ul>
         </div>
       </div>

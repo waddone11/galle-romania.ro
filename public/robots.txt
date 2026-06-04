@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /livewire/
 
-Sitemap: https://galle-silva.ro/sitemap.xml
+Sitemap: https://galle-silva.com/sitemap.xml

@@ -25,7 +25,7 @@
 
 Conform regulilor, nu am inventat continut pentru urmatoarele. Raman placeholder-ele din seed/Settings, de confirmat cu clientul inainte de prod:
 
-- **Email exact firma** — folosit consecvent `info@galle-silva.ro` (din `GeneralSettings`). De confirmat adresa finala. (Inainte exista inconsecventa: layout/llms foloseau `contact@galle-silva.ro`; standardizat pe valoarea din Settings.)
+- **Email exact firma** — folosit consecvent `info@galle-silva.com` (din `GeneralSettings`). De confirmat adresa finala. (Inainte exista inconsecventa: layout/llms foloseau `contact@galle-silva.com`; standardizat pe valoarea din Settings.)
 - **Unitate & nivel pret lemn** — „lei/metru ster" si intervalele de pret (400–480 lei) raman cele seed-uite; de validat unitatea oficiala si grila finala.
 - **Formularea „livrare prin firma lui Razvan"** — neformulata in continut; nu am introdus text despre acest aranjament. De decis copy-ul oficial.
 - **Numar telefon/WhatsApp** — `+40 729 961 082` / `40729961082` din Settings (README il marcheaza ca real). Folosit ca atare; de confirmat la go-live.

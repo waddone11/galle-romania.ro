@@ -1478,9 +1478,9 @@ class PaginaSeeder extends Seeder
                         'data' => [
                             'titlu' => $t('Contact', 'Kontakt', 'Contact'),
                             'continut' => $t(
-                                'Pentru orice intrebare: info@galle-silva.ro, +40 729 961 082.',
-                                'Bei Fragen erreichen Sie uns unter: info@galle-silva.ro, +40 729 961 082.',
-                                'For any questions: info@galle-silva.ro, +40 729 961 082.',
+                                'Pentru orice intrebare: info@galle-silva.com, +40 729 961 082.',
+                                'Bei Fragen erreichen Sie uns unter: info@galle-silva.com, +40 729 961 082.',
+                                'For any questions: info@galle-silva.com, +40 729 961 082.',
                             ),
                         ],
                     ],
@@ -1584,9 +1584,9 @@ class PaginaSeeder extends Seeder
                         'data' => [
                             'titlu' => $t('Drepturile tale', 'Ihre Rechte', 'Your rights'),
                             'continut' => $t(
-                                'Ai dreptul de acces, rectificare, stergere, restrictionare a prelucrarii, opozitie, portabilitate a datelor si dreptul de a-ti retrage consimtamantul oricand. Le poti exercita scriindu-ne la info@galle-silva.ro. Ai, de asemenea, dreptul de a depune o plangere la Autoritatea Nationala de Supraveghere a Prelucrarii Datelor cu Caracter Personal (ANSPDCP).',
-                                'Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch, Datenübertragbarkeit sowie das Recht, Ihre Einwilligung jederzeit zu widerrufen. Sie können diese Rechte ausüben, indem Sie uns an info@galle-silva.ro schreiben. Sie haben außerdem das Recht, eine Beschwerde bei der rumänischen Datenschutzbehörde (ANSPDCP) einzureichen.',
-                                'You have the right to access, rectification, erasure, restriction of processing, objection, data portability and the right to withdraw your consent at any time. You can exercise them by writing to us at info@galle-silva.ro. You also have the right to lodge a complaint with the Romanian data protection authority (ANSPDCP).',
+                                'Ai dreptul de acces, rectificare, stergere, restrictionare a prelucrarii, opozitie, portabilitate a datelor si dreptul de a-ti retrage consimtamantul oricand. Le poti exercita scriindu-ne la info@galle-silva.com. Ai, de asemenea, dreptul de a depune o plangere la Autoritatea Nationala de Supraveghere a Prelucrarii Datelor cu Caracter Personal (ANSPDCP).',
+                                'Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch, Datenübertragbarkeit sowie das Recht, Ihre Einwilligung jederzeit zu widerrufen. Sie können diese Rechte ausüben, indem Sie uns an info@galle-silva.com schreiben. Sie haben außerdem das Recht, eine Beschwerde bei der rumänischen Datenschutzbehörde (ANSPDCP) einzureichen.',
+                                'You have the right to access, rectification, erasure, restriction of processing, objection, data portability and the right to withdraw your consent at any time. You can exercise them by writing to us at info@galle-silva.com. You also have the right to lodge a complaint with the Romanian data protection authority (ANSPDCP).',
                             ),
                         ],
                     ],

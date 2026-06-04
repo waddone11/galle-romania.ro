@@ -23,7 +23,7 @@
                 @endforeach
             @else
                 <div class="prose prose-stone max-w-none">
-                    <p>{{ __('Continut in pregatire. Pentru detalii contactati-ne la') }} <a href="mailto:contact@galle-silva.ro">contact@galle-silva.ro</a>.</p>
+                    <p>{{ __('Continut in pregatire. Pentru detalii contactati-ne la') }} <a href="mailto:contact@galle-silva.com">contact@galle-silva.com</a>.</p>
                 </div>
             @endif
         </div>

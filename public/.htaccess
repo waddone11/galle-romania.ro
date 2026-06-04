@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+    # Canonical: www -> non-www (doar pe domeniul live; nu afecteaza localhost/dev).
+    RewriteCond %{HTTP_HOST} ^www\.galle-silva\.com$ [NC]
+    RewriteRule ^ https://galle-silva.com%{REQUEST_URI} [L,R=301]
+
+    # Forteaza HTTPS doar pe domeniul live (SSL e terminat pe webserver la ALL-INKL,
+    # deci %{HTTPS} e setat corect — fara risc de bucla; localhost nu e atins).
+    RewriteCond %{HTTP_HOST} ^galle-silva\.com$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://galle-silva.com%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

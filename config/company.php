@@ -25,5 +25,5 @@ return [
     'tara' => env('COMPANY_COUNTRY', 'Romania'),
     'administrator' => env('COMPANY_ADMIN', 'Ion Narcis Marin'),
     'telefon' => env('COMPANY_PHONE', '+40 729 961 082'),
-    'email' => env('COMPANY_EMAIL', 'info@galle-silva.ro'),
+    'email' => env('COMPANY_EMAIL', 'info@galle-silva.com'),
 ];

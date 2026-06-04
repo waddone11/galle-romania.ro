@@ -1,11 +1,11 @@
-# Galle Silva — galle-silva.ro
+# Galle Silva — galle-silva.com
 
 Site multilingv (RO/DE/EN) + admin Filament pentru **Galle Silva SRL** — partener local **Galle GmbH Germania**.
 
 - **Client privat** → flow lemn de foc (stejar disponibil; fag, carpen în curând).
 - **Firma / institutie** → servicii forestiere, peisagistica, compostare; sectiune dedicata primariilor/institutiilor.
 
-> Productie: `galle-silva.ro` (shared hosting ALL-INKL, PHP 8.3, MariaDB 10.11, fara Redis).
+> Productie: `galle-silva.com` (shared hosting ALL-INKL, PHP 8.4, MariaDB 10.11, fara Redis).
 > Repo: `waddone11/galle-romania.ro` (nume istoric, diferit de domeniu).
 
 ## Stack
@@ -68,7 +68,7 @@ docker compose logs -f laravel.test       # tail logs
 - **`Pagina.sectiuni` ruleaza pe Filament Builder** cu 10 blocuri: `hero`, `text_imagine`, `splitter`, `carduri`, `cta`, `galerie`, `faq` + cele 3 sectiuni-semnatura `solutie_verde` (dome line-art), `durabilitate_stat` (split + stat 100%) si `reciclare` (simbol animat). Continut textual din fiecare bloc este traductibil (taburi RO/DE/EN). Front: `resources/views/blocks/*.blade.php`.
 - **Homepage = 100% CMS-driven.** `resources/views/site/home.blade.php` randeaza exclusiv `Pagina[slug=home].sectiuni`. Fluxul seed-uit (1:1 cu `design/index.html`): `hero → splitter → carduri → solutie_verde → durabilitate_stat → reciclare → cta`. Editabil din `/admin → Pagina = home`.
 - **Design real portat (P-FRONT, fidelitate 1:1).** Sursa: `design/index.html` + `design/img/`. Asset-uri reale in `public/images/galle/` (`bg_nou.png`, `forrest_back.webp`, `forrest_front.{webp,jpg,png}`, `cloud1..5.png`, `union.svg`). Animatiile (nori `@keyframes animate`, pill conic-gradient `@property --ang`, wheel `orbit`, footer `forest-band`, eco-svg line-art `draw`, reciclare `rec-chase`) sunt CSS pur in `app.css`, fara librarii externe. Wheel-ul e ascuns sub 1024px. Dome-ul "verde" foloseste varianta hand-coded line-art (nu export-ul SVGator cu JS embed din template) ca sa respecte regula "fara librarii de animatie".
-- **NAP/contact din `GeneralSettings`** (footer + WhatsApp flotant): tel/WhatsApp `+40 729 961 082`, email `info@galle-silva.ro`, adresa `Manesti, Str. Principala 302, jud. Prahova`.
+- **NAP/contact din `GeneralSettings`** (footer + WhatsApp flotant): tel/WhatsApp `+40 729 961 082`, email `info@galle-silva.com`, adresa `Manesti, Str. Principala 302, jud. Prahova`.
 - **SEO/GEO complet (P-QA+).** Layout cu `@props` per-pagina (title, meta description, canonical, OG + Twitter, og:image default `forrest_front.jpg`), hreflang ro/de/en + x-default. JSON-LD: `LocalBusiness` global (NAP din Settings) + `Product`/`FAQPage`/`BreadcrumbList` pe `/lemn-de-foc`, `Service` pe `/servicii`, `Article` pe blog, breadcrumb pe detalii. Componenta reutilizabila `<x-json-ld>`. `sitemap:generate` (spatie) programat zilnic; `robots.txt` + `public/llms.txt` factual (NAP corectat).
 - **Hardening publice (P-QA+).** Anti-spam pe OrderForm/ContactForm: honeypot `website` + rate-limit 5/min/IP (trait `App\Livewire\Concerns\HasSpamProtection`), mesaje de validare in RO. Banner GDPR cookies (Alpine + localStorage, fara tracking). Pagini eroare in brand (`errors/404,403,419,429,500,503`). `:focus-visible` global + skip-link + `[x-cloak]`.
 - **PHPStan level 5 = 0 erori** pe `app/` + `database/`. Pint trecut. Pest 21/21 verzi (8 site + 11 QA hardening + 2 example).

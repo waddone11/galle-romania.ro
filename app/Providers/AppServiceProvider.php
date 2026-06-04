@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Pe prod toate URL-urile generate (asset/canonical/hreflang) sunt https —
+        // dubleaza redirectul 301 din public/.htaccess, fara risc de bucla.
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
