@@ -2,8 +2,11 @@
 
 use App\Http\Middleware\RestoreLocale;
 use App\Livewire\LanguageSwitcher;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Livewire\Livewire;
+
+uses(RefreshDatabase::class);
 
 it('persists the locale in session via SetLocale', function (string $uri, string $expected) {
     $this->get($uri)->assertOk();

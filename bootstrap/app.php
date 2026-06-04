@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\LoadTraduceri;
+use App\Http\Middleware\RestoreLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,7 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // Dupa StartSession (append = la coada grupului web): da update-urilor
         // Livewire locale-ul sesiunii; pe rutele site SetLocale suprascrie apoi.
         $middleware->web(append: [
-            \App\Http\Middleware\RestoreLocale::class,
+            RestoreLocale::class,
+            LoadTraduceri::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

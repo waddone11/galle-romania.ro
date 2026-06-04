@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PaginaSeeder::class,
             ProiectSeeder::class,
             ArticolSeeder::class,
+            TraducereSeeder::class,
         ]);
     }
 }
