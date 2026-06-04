@@ -30,10 +30,36 @@ class PaginaSeeder extends Seeder
                             'cta_text' => ['ro' => 'Cere oferta', 'de' => null, 'en' => null],
                             'cta_url' => '/contact',
                             'chips' => [
-                                ['text' => ['ro' => 'Lemn de foc: stejar, fag, carpen', 'de' => null, 'en' => null]],
-                                ['text' => ['ro' => 'Servicii forestiere', 'de' => null, 'en' => null]],
-                                ['text' => ['ro' => 'Certificare FSC & PEFC', 'de' => null, 'en' => null]],
-                                ['text' => ['ro' => 'Livrare Prahova, Ilfov, Bucuresti', 'de' => null, 'en' => null]],
+                                [
+                                    'icon' => 'flacara',
+                                    'text' => ['ro' => 'Lemn de foc', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Esente tari (stejar, carpen, fag), livrate acasa.', 'de' => null, 'en' => null],
+                                ],
+                                [
+                                    'icon' => 'copaci',
+                                    'text' => ['ro' => 'Exploatare forestiera', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Prestari servicii in paduri private si de stat.', 'de' => null, 'en' => null],
+                                ],
+                                [
+                                    'icon' => 'handshake',
+                                    'text' => ['ro' => 'Achizitie masa lemnoasa', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Pe picior sau fasonata — evaluare corecta.', 'de' => null, 'en' => null],
+                                ],
+                                [
+                                    'icon' => 'excavator',
+                                    'text' => ['ro' => 'Curatare terenuri', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Defrisare controlata, fara suprafata minima.', 'de' => null, 'en' => null],
+                                ],
+                                [
+                                    'icon' => 'frunza',
+                                    'text' => ['ro' => 'Certificare FSC & PEFC', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Surse responsabile, in proces de certificare.', 'de' => null, 'en' => null],
+                                ],
+                                [
+                                    'icon' => 'camion',
+                                    'text' => ['ro' => 'Livrare locala', 'de' => null, 'en' => null],
+                                    'tooltip' => ['ro' => 'Prahova, Ilfov, Bucuresti · 1-3 zile.', 'de' => null, 'en' => null],
+                                ],
                             ],
                         ],
                     ],

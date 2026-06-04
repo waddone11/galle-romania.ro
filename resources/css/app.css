@@ -179,7 +179,25 @@
         animation: orbit 60s linear infinite;
         animation-delay: var(--d);
     }
-    .orbit .chip { transform: translate(-50%, -50%); }
+    .orbit .chip {
+        transform: translate(-50%, -50%);
+        /* .orbit is a 0x0 anchor — size the card to its content. */
+        width: max-content;
+        /* The wheel is pointer-events:none; re-enable on cards for the hover tooltip. */
+        pointer-events: auto;
+    }
+    /* Pause the orbit while a card is hovered, so the tooltip can be read. */
+    .wheel:has(.chip:hover) .rotor,
+    .wheel:has(.chip:hover) .orbit {
+        animation-play-state: paused;
+    }
+
+    /* ---- Hidden scrollbar for the mobile hero card row ---- */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
 
     /* ---- FOOTER layered forest ---- */
     .forest-band {

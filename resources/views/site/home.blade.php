@@ -5,6 +5,7 @@
 <x-layouts.app
     :title="$metaTitle"
     :metaDescription="$metaDesc"
+    :flush-header="true"
 >
     {{-- Homepage is rendered 1:1 from the CMS Builder (Pagina[slug=home].sectiuni).
          Default flow seeded: hero → splitter → carduri → solutie_verde →

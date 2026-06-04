@@ -5,6 +5,8 @@
     'ogImage' => null,
     'ogType' => 'website',
     'noindex' => false,
+    // Pulls the page content under the transparent navbar (hero pages, e.g. home).
+    'flushHeader' => false,
 ])
 @php
     $settings = class_exists(\App\Settings\GeneralSettings::class) ? app(\App\Settings\GeneralSettings::class) : null;
@@ -103,7 +105,7 @@
 
     <x-site-navbar />
 
-    <main id="main" class="-mt-16">
+    <main id="main" @class(['-mt-16' => $flushHeader])>
         {{ $slot }}
     </main>
 

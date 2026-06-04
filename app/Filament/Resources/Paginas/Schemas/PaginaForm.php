@@ -74,10 +74,23 @@ class PaginaForm
                     TextInput::make('badge_url')->label('Badge — URL'),
                     TextInput::make('cta_url')->label('URL buton'),
                     Repeater::make('chips')
-                        ->label('Chip-uri pe roata (orbit)')
+                        ->label('Carduri pe roata (orbit)')
                         ->schema([
+                            Select::make('icon')
+                                ->label('Icon')
+                                ->options([
+                                    'flacara' => 'Flacara (lemn de foc)',
+                                    'copaci' => 'Copaci (exploatare forestiera)',
+                                    'handshake' => 'Handshake (achizitie masa lemnoasa)',
+                                    'excavator' => 'Excavator (curatare terenuri)',
+                                    'frunza' => 'Frunza (certificare)',
+                                    'camion' => 'Camion (livrare)',
+                                ])
+                                ->default('frunza')
+                                ->required(),
                             HasTranslatableTabs::for(fn (string $loc, string $label) => [
-                                TextInput::make("text.$loc")->label("Text chip ($label)"),
+                                TextInput::make("text.$loc")->label("Eticheta ($label)"),
+                                TextInput::make("tooltip.$loc")->label("Descriere / tooltip ($label)"),
                             ]),
                         ])
                         ->defaultItems(0)
