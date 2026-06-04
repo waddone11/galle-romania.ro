@@ -9,8 +9,8 @@ class ArticolSeeder extends Seeder
 {
     /**
      * 6 articole de blog cu continut SEO real (RO cu diacritice + DE/EN complete),
-     * plus 10 articole extinse (RO, ~1000-1400 cuvinte) incarcate din
-     * database/seeders/data/blog.json + database/seeders/data/blog/{slug}.md.
+     * plus 10 articole extinse (~1000-1400 cuvinte, RO + DE/EN) incarcate din
+     * database/seeders/data/blog.json + database/seeders/data/blog/{slug}[.de|.en].md.
      * Link-urile interne folosesc sintaxa [text](/url) — randata de site/articol.
      */
     public function run(): void
@@ -160,10 +160,11 @@ class ArticolSeeder extends Seeder
     }
 
     /**
-     * Articolele extinse: metadatele vin din blog.json, corpul (markdown RO)
-     * din data/blog/{slug}.md. DE/EN raman null — front-end-ul face fallback pe RO.
-     * Imaginea se seteaza doar daca fisierul exista in public/ (altfel null,
-     * iar slug-ul e listat in docs/blog-imagini-necesare.md).
+     * Articolele extinse: metadatele (RO + DE/EN: titlu_de/titlu_en/excerpt_de/excerpt_en)
+     * vin din blog.json, corpul (markdown) din data/blog/{slug}.md (RO),
+     * {slug}.de.md si {slug}.en.md. Imaginea se seteaza doar daca fisierul
+     * exista in public/ (altfel null, iar slug-ul e listat in
+     * docs/blog-imagini-necesare.md).
      */
     private function seedFromDataFiles(): void
     {
@@ -171,9 +172,16 @@ class ArticolSeeder extends Seeder
         /** @var array<int, array<string, string>> $meta */
         $meta = $json === false ? [] : (array) json_decode($json, true);
 
+        // Corpul markdown pentru o limba; null daca fisierul lipseste (fallback RO).
+        $corp = function (string $slug, string $sufix = ''): ?string {
+            $path = database_path("seeders/data/blog/{$slug}{$sufix}.md");
+
+            return is_file($path) ? trim((string) file_get_contents($path)) : null;
+        };
+
         foreach (array_values($meta) as $i => $articol) {
-            $continutPath = database_path("seeders/data/blog/{$articol['slug']}.md");
-            if (! is_file($continutPath)) {
+            $continutRo = $corp($articol['slug']);
+            if ($continutRo === null) {
                 continue;
             }
 
@@ -183,9 +191,9 @@ class ArticolSeeder extends Seeder
             }
 
             Articol::updateOrCreate(['slug' => $articol['slug']], [
-                'titlu' => ['ro' => $articol['titlu']],
-                'excerpt' => ['ro' => $articol['excerpt']],
-                'continut' => ['ro' => trim((string) file_get_contents($continutPath))],
+                'titlu' => ['ro' => $articol['titlu'], 'de' => $articol['titlu_de'] ?? null, 'en' => $articol['titlu_en'] ?? null],
+                'excerpt' => ['ro' => $articol['excerpt'], 'de' => $articol['excerpt_de'] ?? null, 'en' => $articol['excerpt_en'] ?? null],
+                'continut' => ['ro' => $continutRo, 'de' => $corp($articol['slug'], '.de'), 'en' => $corp($articol['slug'], '.en')],
                 'categorie' => $articol['categorie'],
                 'imagine' => $imagine,
                 // Esalonat, inaintea celor 6 articole istorice (34..2 zile).

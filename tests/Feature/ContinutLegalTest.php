@@ -14,19 +14,19 @@ beforeEach(function () {
 });
 
 /*
- * ---------- Pagini legale (CMS, seed RO; DE/EN fallback pe RO) ----------
+ * ---------- Pagini legale (CMS, seed RO + DE/EN traduse) ----------
  */
 
-it('renders each legal page with seeded content in all locales', function (string $slug, string $marker) {
-    foreach (['', '/de', '/en'] as $prefix) {
+it('renders each legal page with seeded content in all locales', function (string $slug, array $markers) {
+    foreach ($markers as $prefix => $marker) {
         $this->get("{$prefix}/{$slug}")
             ->assertOk()
             ->assertSee($marker, false);
     }
 })->with([
-    'confidentialitate' => ['confidentialitate', 'Operatorul de date'],
-    'cookies' => ['cookies', 'Ce cookie-uri folosim'],
-    'termeni' => ['termeni', 'Preturi si comenzi'],
+    'confidentialitate' => ['confidentialitate', ['' => 'Operatorul de date', '/de' => 'Der Verantwortliche', '/en' => 'The data controller']],
+    'cookies' => ['cookies', ['' => 'Ce cookie-uri folosim', '/de' => 'Welche Cookies wir verwenden', '/en' => 'Which cookies we use']],
+    'termeni' => ['termeni', ['' => 'Preturi si comenzi', '/de' => 'Preise und Bestellungen', '/en' => 'Prices and orders']],
 ]);
 
 it('links legal pages internally to date-firma and cookies', function () {
@@ -45,10 +45,16 @@ it('links legal pages internally to date-firma and cookies', function () {
  */
 
 it('renders despre with the corrected group story in all locales', function () {
-    foreach (['', '/de', '/en'] as $prefix) {
+    $markers = [
+        '' => 'Parte din grupul Galle GmbH',
+        '/de' => 'Teil der Galle GmbH Gruppe',
+        '/en' => 'Part of the Galle GmbH group',
+    ];
+
+    foreach ($markers as $prefix => $marker) {
         $this->get("{$prefix}/despre")
             ->assertOk()
-            ->assertSee('Parte din grupul Galle GmbH')
+            ->assertSee($marker)
             ->assertDontSee('25 de ani');
     }
 });

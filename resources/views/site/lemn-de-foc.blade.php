@@ -13,11 +13,14 @@
     $canonical = null;
 
     if ($localitate) {
+        // Exonime pe DE/EN (Bukarest/Bucharest); restul localitatilor raman netraduse.
+        $numeLoc = $localitate->numeLocalizat($loc);
+        $judetLoc = \App\Models\Localitate::exonim($localitate->judet, $loc);
         $localIntro = $localitate->getTranslation('intro', $loc) ?: $localitate->getTranslation('intro', 'ro');
-        $h1 = __('Lemn de foc in :localitate — fag, stejar, carpen', ['localitate' => $localitate->nume]);
-        $intro = $localIntro ?: __('Livram lemn de foc taiat si crapat in :localitate — de la 350 lei/m³, in 1–3 zile lucratoare.', ['localitate' => $localitate->nume]);
-        $metaTitle = __('Lemn de foc :localitate — livrare la domiciliu | Galle Silva', ['localitate' => $localitate->nume]);
-        $metaDesc = __('Lemn de foc de esenta tare in :localitate, judetul :judet — stejar si carpen pe stoc, taiat si crapat, de la 350 lei/m³. Livrare in 1–3 zile, fara cantitate minima.', ['localitate' => $localitate->nume, 'judet' => $localitate->judet]);
+        $h1 = __('Lemn de foc in :localitate — fag, stejar, carpen', ['localitate' => $numeLoc]);
+        $intro = $localIntro ?: __('Livram lemn de foc taiat si crapat in :localitate — de la 350 lei/m³, in 1–3 zile lucratoare.', ['localitate' => $numeLoc]);
+        $metaTitle = __('Lemn de foc :localitate — livrare la domiciliu | Galle Silva', ['localitate' => $numeLoc]);
+        $metaDesc = __('Lemn de foc de esenta tare in :localitate, judetul :judet — stejar si carpen pe stoc, taiat si crapat, de la 350 lei/m³. Livrare in 1–3 zile, fara cantitate minima.', ['localitate' => $numeLoc, 'judet' => $judetLoc]);
         // Continutul e mostenit de pe pagina principala — canonical acolo.
         $canonical = url($prefix.'/lemn-de-foc');
     }
@@ -65,9 +68,9 @@
             '@context' => 'https://schema.org',
             '@type' => 'BreadcrumbList',
             'itemListElement' => array_values(array_filter([
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url($prefix.'/')],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Lemn de foc', 'item' => url($prefix.'/lemn-de-foc')],
-                $localitate ? ['@type' => 'ListItem', 'position' => 3, 'name' => $localitate->nume, 'item' => url()->current()] : null,
+                ['@type' => 'ListItem', 'position' => 1, 'name' => __('Acasa'), 'item' => url($prefix.'/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => __('Lemn de foc'), 'item' => url($prefix.'/lemn-de-foc')],
+                $localitate ? ['@type' => 'ListItem', 'position' => 3, 'name' => $localitate->numeLocalizat($loc), 'item' => url()->current()] : null,
             ])),
         ]" />
     @endpush

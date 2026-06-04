@@ -13,6 +13,21 @@ class PaginaSeeder extends Seeder
         // Owner-ul poate ajusta orice valoare din taburile admin.
         $t = fn (?string $ro, ?string $de = null, ?string $en = null): array => ['ro' => $ro, 'de' => $de, 'en' => $en];
 
+        // Argumentele pentru sectiunea „Operatorul de date" (RO/DE/EN folosesc aceleasi valori
+        // din config/company.php, scrise o singura data; formatul difera per limba).
+        $operatorArgs = [
+            config('company.denumire'),
+            (config('company.tva') ? 'RO' : '').config('company.cui'),
+            config('company.reg_com'),
+            config('company.adresa'),
+            config('company.localitate'),
+            config('company.judet'),
+            config('company.cod_postal'),
+            config('company.administrator'),
+            config('company.email'),
+            config('company.telefon'),
+        ];
+
         /** @var array<int, array<string, mixed>> $rows */
         $rows = [
             [
@@ -281,12 +296,19 @@ class PaginaSeeder extends Seeder
                     ],
                     [
                         // Banda de incredere: logo-uri certificari din modelul Certificare.
-                        // DE/EN null — se traduc separat (vezi roadmap traduceri).
                         'type' => 'certificari',
                         'data' => [
-                            'eyebrow' => $t('Standarde și certificări'),
-                            'titlu' => $t('Calitate certificată, responsabilitate dovedită'),
-                            'subtitlu' => $t('Lucrăm după standardele grupului Galle GmbH și suntem în proces de certificare FSC și PEFC.'),
+                            'eyebrow' => $t('Standarde și certificări', 'Standards und Zertifizierungen', 'Standards and certifications'),
+                            'titlu' => $t(
+                                'Calitate certificată, responsabilitate dovedită',
+                                'Zertifizierte Qualität, nachgewiesene Verantwortung',
+                                'Certified quality, proven responsibility',
+                            ),
+                            'subtitlu' => $t(
+                                'Lucrăm după standardele grupului Galle GmbH și suntem în proces de certificare FSC și PEFC.',
+                                'Wir arbeiten nach den Standards der Galle GmbH und befinden uns im Zertifizierungsprozess für FSC und PEFC.',
+                                'We work to the standards of the Galle GmbH group and are in the process of FSC and PEFC certification.',
+                            ),
                         ],
                     ],
                     [
@@ -315,11 +337,10 @@ class PaginaSeeder extends Seeder
                     ],
                     [
                         // Teaser portofoliu — ultimele 3 proiecte publicate (modelul Proiect).
-                        // DE/EN null — se traduc separat din /admin.
                         'type' => 'proiecte_recente',
                         'data' => [
-                            'eyebrow' => $t('Portofoliu'),
-                            'titlu' => $t('Proiecte recente'),
+                            'eyebrow' => $t('Portofoliu', 'Portfolio', 'Portfolio'),
+                            'titlu' => $t('Proiecte recente', 'Aktuelle Projekte', 'Recent projects'),
                         ],
                     ],
                     [
@@ -356,7 +377,7 @@ class PaginaSeeder extends Seeder
                         // Teaser blog — split 50/50 in oglinda (verde pe STANGA), ultimele 4 articole.
                         'type' => 'blog_recent',
                         'data' => [
-                            'eyebrow' => $t('Blog'),
+                            'eyebrow' => $t('Blog', 'Blog', 'Blog'),
                             'titlu' => $t('Ghiduri & noutăți', 'Ratgeber & Neuigkeiten', 'Guides & news'),
                             'subtitlu' => $t(
                                 'Despre lemn de foc, pădure și lucrări făcute corect — pe înțelesul tuturor.',
@@ -1239,14 +1260,27 @@ class PaginaSeeder extends Seeder
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            // DE/EN se traduc + se revizuiesc ulterior din /admin (fallback pe RO).
-                            'titlu' => $t('Parte din grupul Galle GmbH'),
+                            'titlu' => $t(
+                                'Parte din grupul Galle GmbH',
+                                'Teil der Galle GmbH Gruppe',
+                                'Part of the Galle GmbH group',
+                            ),
                             'continut' => $t(
                                 'Galle Silva aduce în România experiența grupului german Galle GmbH. Fondată în 1990, în districtul Elbe-Elster (Brandenburg, Germania), Galle GmbH activează de peste 30 de ani în servicii forestiere, peisagistică, compostare și producție de sol. De-a lungul timpului și-a modernizat parcul de utilaje și a dezvoltat zona de servicii forestiere, ajungând la o echipă de aproximativ 38 de angajați.'
                                 ."\n\n"
                                 .'Grupul lucrează după standarde înalte de mediu: este certificat cu sigiliile de calitate RAL pentru gestionarea pădurilor și pentru compostare, ca firmă autorizată de management al deșeurilor, folosește uleiuri hidraulice biodegradabile și recoltează lemnul complet mecanizat, valorificând inclusiv resturile (vârfuri și cioate) ca lemn energetic.'
                                 ."\n\n"
                                 .'În România, Galle Silva preia această experiență și aceste standarde și le aplică local — concentrându-se pe servicii forestiere și lemn de foc în Prahova, Ilfov și București.',
+                                'Galle Silva bringt die Erfahrung der deutschen Galle GmbH Gruppe nach Rumänien. 1990 im Landkreis Elbe-Elster (Brandenburg, Deutschland) gegründet, ist die Galle GmbH seit über 30 Jahren in den Bereichen Forstdienstleistungen, Landschaftsbau, Kompostierung und Bodenproduktion tätig. Im Laufe der Zeit hat sie ihren Maschinenpark modernisiert und den Bereich der Forstdienstleistungen ausgebaut und beschäftigt heute ein Team von rund 38 Mitarbeitern.'
+                                ."\n\n"
+                                .'Die Gruppe arbeitet nach hohen Umweltstandards: Sie ist mit den RAL-Gütezeichen für die Waldbewirtschaftung und für die Kompostierung als zugelassener Entsorgungsfachbetrieb zertifiziert, verwendet biologisch abbaubare Hydrauliköle und erntet das Holz vollmechanisiert, wobei sie auch die Reste (Wipfel und Stöcke) als Energieholz verwertet.'
+                                ."\n\n"
+                                .'In Rumänien übernimmt Galle Silva diese Erfahrung und diese Standards und wendet sie vor Ort an — mit Schwerpunkt auf Forstdienstleistungen und Brennholz in Prahova, Ilfov und Bukarest.',
+                                'Galle Silva brings the experience of the German Galle GmbH group to Romania. Founded in 1990 in the Elbe-Elster district (Brandenburg, Germany), Galle GmbH has been active for over 30 years in forestry services, landscaping, composting and soil production. Over time it has modernised its machinery fleet and developed its forestry services division, growing to a team of around 38 employees.'
+                                ."\n\n"
+                                .'The group works to high environmental standards: it is certified with the RAL quality marks for forest management and for composting, as an authorised waste management company, uses biodegradable hydraulic oils and harvests timber in fully mechanised operations, also making use of the residues (tops and stumps) as energy wood.'
+                                ."\n\n"
+                                .'In Romania, Galle Silva takes on this experience and these standards and applies them locally — focusing on forestry services and firewood in Prahova, Ilfov and Bucharest.',
                             ),
                         ],
                     ],
@@ -1335,7 +1369,7 @@ class PaginaSeeder extends Seeder
             ],
             // Textele legale de mai jos sunt un DRAFT de lucru (nu consultanta juridica) —
             // se revizuiesc de cineva competent inainte de lansarea publica (vezi README).
-            // DE/EN raman null (fallback pe RO) si se traduc + se revizuiesc ulterior din /admin.
+            // DE/EN sunt seed-uite (traducere de lucru) si pot fi revizuite din /admin.
             [
                 'slug' => 'termeni',
                 'titlu' => ['ro' => 'Termeni si conditii', 'de' => 'Allgemeine Geschäftsbedingungen', 'en' => 'Terms and Conditions'],
@@ -1344,70 +1378,110 @@ class PaginaSeeder extends Seeder
                         'type' => 'sectiune_text',
                         'data' => [
                             'titlu' => null,
-                            'continut' => $t('Prin folosirea acestui site si prin transmiterea unei solicitari sau comenzi catre GALLE SILVA SRL, esti de acord cu termenii de mai jos.'),
+                            'continut' => $t(
+                                'Prin folosirea acestui site si prin transmiterea unei solicitari sau comenzi catre GALLE SILVA SRL, esti de acord cu termenii de mai jos.',
+                                'Mit der Nutzung dieser Website und der Übermittlung einer Anfrage oder Bestellung an die GALLE SILVA SRL erklären Sie sich mit den nachstehenden Bedingungen einverstanden.',
+                                'By using this website and by submitting a request or order to GALLE SILVA SRL, you agree to the terms set out below.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Cine suntem'),
-                            'continut' => $t('GALLE SILVA SRL, CUI 52771440, Reg. Com. J2025081738000, sediu in Str. Principala nr. 302, Sat Manesti, jud. Prahova. Date complete pe pagina [Date firma](/date-firma).'),
+                            'titlu' => $t('Cine suntem', 'Wer wir sind', 'Who we are'),
+                            'continut' => $t(
+                                'GALLE SILVA SRL, CUI 52771440, Reg. Com. J2025081738000, sediu in Str. Principala nr. 302, Sat Manesti, jud. Prahova. Date complete pe pagina [Date firma](/date-firma).',
+                                'GALLE SILVA SRL, CUI (Steuernummer) 52771440, Handelsregister-Nr. J2025081738000, Sitz in Str. Principala Nr. 302, Sat Manesti, Kreis Prahova. Vollständige Angaben finden Sie auf der Seite [Impressum](/date-firma).',
+                                'GALLE SILVA SRL, CUI (tax ID) 52771440, Trade Register No. J2025081738000, registered office at Str. Principala nr. 302, Sat Manesti, Prahova county. Full details on the [Legal notice](/date-firma) page.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Despre site si servicii'),
-                            'continut' => $t('Site-ul prezinta serviciile noastre forestiere si oferta de lemn de foc, in Prahova, Ilfov si Bucuresti. Informatiile au caracter de prezentare; nu reprezinta o oferta ferma de pret.'),
+                            'titlu' => $t('Despre site si servicii', 'Über die Website und die Leistungen', 'About the website and services'),
+                            'continut' => $t(
+                                'Site-ul prezinta serviciile noastre forestiere si oferta de lemn de foc, in Prahova, Ilfov si Bucuresti. Informatiile au caracter de prezentare; nu reprezinta o oferta ferma de pret.',
+                                'Die Website stellt unsere Forstdienstleistungen und unser Brennholzangebot in Prahova, Ilfov und Bukarest vor. Die Informationen dienen der Darstellung; sie stellen kein verbindliches Preisangebot dar.',
+                                'The website presents our forestry services and firewood offer in Prahova, Ilfov and Bucharest. The information is for presentation purposes only; it does not constitute a binding price offer.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Preturi si comenzi'),
-                            'continut' => $t('Preturile afisate (de exemplu, de la 350 lei/m³ pentru lemnul de foc) sunt orientative, de pornire, si pot varia in functie de esenta, cantitate, mod de preluare si zona de livrare. Pretul final si disponibilitatea se confirma in oferta, telefonic sau prin email, inainte de livrare. O comanda transmisa prin formular reprezinta o solicitare; contractul se incheie la confirmarea noastra.'),
+                            'titlu' => $t('Preturi si comenzi', 'Preise und Bestellungen', 'Prices and orders'),
+                            'continut' => $t(
+                                'Preturile afisate (de exemplu, de la 350 lei/m³ pentru lemnul de foc) sunt orientative, de pornire, si pot varia in functie de esenta, cantitate, mod de preluare si zona de livrare. Pretul final si disponibilitatea se confirma in oferta, telefonic sau prin email, inainte de livrare. O comanda transmisa prin formular reprezinta o solicitare; contractul se incheie la confirmarea noastra.',
+                                'Die angegebenen Preise (zum Beispiel ab 350 Lei/m³ für Brennholz) sind Richt- und Startpreise und können je nach Holzart, Menge, Art der Abnahme und Liefergebiet variieren. Der endgültige Preis und die Verfügbarkeit werden im Angebot, telefonisch oder per E-Mail, vor der Lieferung bestätigt. Eine über das Formular übermittelte Bestellung stellt eine Anfrage dar; der Vertrag kommt mit unserer Bestätigung zustande.',
+                                'The prices shown (for example, from 350 lei/m³ for firewood) are indicative starting prices and may vary depending on the wood species, quantity, method of collection and delivery area. The final price and availability are confirmed in the offer, by phone or email, before delivery. An order submitted through the form constitutes a request; the contract is concluded upon our confirmation.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Livrare si plata'),
-                            'continut' => $t('Livram, de regula, in 1–3 zile lucratoare (maxim 7), in functie de zona. Oferim si livrare la domiciliu. Plata se poate face la livrare, numerar, cu cardul (POS) sau prin transfer bancar.'),
+                            'titlu' => $t('Livrare si plata', 'Lieferung und Zahlung', 'Delivery and payment'),
+                            'continut' => $t(
+                                'Livram, de regula, in 1–3 zile lucratoare (maxim 7), in functie de zona. Oferim si livrare la domiciliu. Plata se poate face la livrare, numerar, cu cardul (POS) sau prin transfer bancar.',
+                                'Wir liefern in der Regel innerhalb von 1–3 Werktagen (maximal 7), je nach Gebiet. Wir bieten auch Lieferung bis zur Haustür an. Die Zahlung kann bei Lieferung in bar, mit Karte (POS) oder per Banküberweisung erfolgen.',
+                                'We usually deliver within 1–3 working days (maximum 7), depending on the area. We also offer home delivery. Payment can be made on delivery, in cash, by card (POS) or by bank transfer.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Dreptul de retragere (consumatori)'),
-                            'continut' => $t('Daca esti consumator, beneficiezi de drepturile prevazute de legislatia privind protectia consumatorilor, inclusiv, acolo unde se aplica, dreptul de a te retrage in conditiile legii. Te rugam sa ne contactezi pentru detalii legate de situatia concreta.'),
+                            'titlu' => $t('Dreptul de retragere (consumatori)', 'Widerrufsrecht (Verbraucher)', 'Right of withdrawal (consumers)'),
+                            'continut' => $t(
+                                'Daca esti consumator, beneficiezi de drepturile prevazute de legislatia privind protectia consumatorilor, inclusiv, acolo unde se aplica, dreptul de a te retrage in conditiile legii. Te rugam sa ne contactezi pentru detalii legate de situatia concreta.',
+                                'Wenn Sie Verbraucher sind, stehen Ihnen die im Verbraucherschutzrecht vorgesehenen Rechte zu, einschließlich, soweit anwendbar, des Widerrufsrechts nach Maßgabe des Gesetzes. Bitte kontaktieren Sie uns für Einzelheiten zu Ihrem konkreten Fall.',
+                                'If you are a consumer, you are entitled to the rights provided by consumer protection legislation, including, where applicable, the right to withdraw under the conditions set by law. Please contact us for details regarding your specific situation.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Raspundere'),
-                            'continut' => $t('Ne straduim ca informatiile de pe site sa fie corecte si actualizate, dar nu garantam ca sunt complete sau lipsite de erori in orice moment.'),
+                            'titlu' => $t('Raspundere', 'Haftung', 'Liability'),
+                            'continut' => $t(
+                                'Ne straduim ca informatiile de pe site sa fie corecte si actualizate, dar nu garantam ca sunt complete sau lipsite de erori in orice moment.',
+                                'Wir bemühen uns, die Informationen auf der Website korrekt und aktuell zu halten, übernehmen jedoch keine Gewähr dafür, dass sie jederzeit vollständig oder fehlerfrei sind.',
+                                'We strive to keep the information on the website correct and up to date, but we do not guarantee that it is complete or free of errors at all times.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Proprietate intelectuala'),
-                            'continut' => $t('Continutul site-ului (texte, imagini, logo-uri) apartine GALLE SILVA SRL sau partenerilor sai si nu poate fi folosit fara acord.'),
+                            'titlu' => $t('Proprietate intelectuala', 'Geistiges Eigentum', 'Intellectual property'),
+                            'continut' => $t(
+                                'Continutul site-ului (texte, imagini, logo-uri) apartine GALLE SILVA SRL sau partenerilor sai si nu poate fi folosit fara acord.',
+                                'Die Inhalte der Website (Texte, Bilder, Logos) gehören der GALLE SILVA SRL oder ihren Partnern und dürfen nicht ohne Zustimmung verwendet werden.',
+                                'The content of the website (texts, images, logos) belongs to GALLE SILVA SRL or its partners and may not be used without consent.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Lege aplicabila si litigii'),
-                            'continut' => $t('Acestor termeni li se aplica legea romana. Eventualele neintelegeri se solutioneaza pe cale amiabila; in caz contrar, sunt competente instantele din Romania. Consumatorii pot apela si la platforma SOL a Comisiei Europene sau la ANPC.'),
+                            'titlu' => $t('Lege aplicabila si litigii', 'Anwendbares Recht und Streitigkeiten', 'Applicable law and disputes'),
+                            'continut' => $t(
+                                'Acestor termeni li se aplica legea romana. Eventualele neintelegeri se solutioneaza pe cale amiabila; in caz contrar, sunt competente instantele din Romania. Consumatorii pot apela si la platforma SOL a Comisiei Europene sau la ANPC.',
+                                'Auf diese Bedingungen findet rumänisches Recht Anwendung. Etwaige Streitigkeiten werden gütlich beigelegt; andernfalls sind die Gerichte in Rumänien zuständig. Verbraucher können sich auch an die OS-Plattform (SOL) der Europäischen Kommission oder an die rumänische Verbraucherschutzbehörde (ANPC) wenden.',
+                                'These terms are governed by Romanian law. Any disputes shall be settled amicably; otherwise, the courts in Romania have jurisdiction. Consumers may also turn to the European Commission\'s ODR platform (SOL) or to the Romanian consumer protection authority (ANPC).',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Contact'),
-                            'continut' => $t('Pentru orice intrebare: info@galle-silva.ro, +40 729 961 082.'),
+                            'titlu' => $t('Contact', 'Kontakt', 'Contact'),
+                            'continut' => $t(
+                                'Pentru orice intrebare: info@galle-silva.ro, +40 729 961 082.',
+                                'Bei Fragen erreichen Sie uns unter: info@galle-silva.ro, +40 729 961 082.',
+                                'For any questions: info@galle-silva.ro, +40 729 961 082.',
+                            ),
                         ],
                     ],
                 ],
@@ -1422,90 +1496,131 @@ class PaginaSeeder extends Seeder
                         'type' => 'sectiune_text',
                         'data' => [
                             'titlu' => null,
-                            'continut' => $t('Aceasta politica explica modul in care GALLE SILVA SRL prelucreaza datele cu caracter personal ale persoanelor care folosesc acest site, in conformitate cu Regulamentul (UE) 2016/679 (GDPR).'),
+                            'continut' => $t(
+                                'Aceasta politica explica modul in care GALLE SILVA SRL prelucreaza datele cu caracter personal ale persoanelor care folosesc acest site, in conformitate cu Regulamentul (UE) 2016/679 (GDPR).',
+                                'Diese Erklärung beschreibt, wie die GALLE SILVA SRL die personenbezogenen Daten der Personen verarbeitet, die diese Website nutzen, in Übereinstimmung mit der Verordnung (EU) 2016/679 (DSGVO).',
+                                'This policy explains how GALLE SILVA SRL processes the personal data of people who use this website, in accordance with Regulation (EU) 2016/679 (GDPR).',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Operatorul de date'),
+                            'titlu' => $t('Operatorul de date', 'Der Verantwortliche', 'The data controller'),
                             // Datele legale vin din config/company.php (o singura sursa de adevar).
-                            'continut' => $t(sprintf(
-                                '%s, CUI %s, Reg. Com. %s, sediu in %s, %s, jud. %s, cod %s. Persoana de contact pentru protectia datelor: %s (administrator). Ne poti contacta la %s sau la %s. Datele complete ale firmei sunt pe pagina [Date firma](/date-firma).',
-                                config('company.denumire'),
-                                (config('company.tva') ? 'RO' : '').config('company.cui'),
-                                config('company.reg_com'),
-                                config('company.adresa'),
-                                config('company.localitate'),
-                                config('company.judet'),
-                                config('company.cod_postal'),
-                                config('company.administrator'),
-                                config('company.email'),
-                                config('company.telefon'),
-                            )),
+                            'continut' => $t(
+                                sprintf(
+                                    '%s, CUI %s, Reg. Com. %s, sediu in %s, %s, jud. %s, cod %s. Persoana de contact pentru protectia datelor: %s (administrator). Ne poti contacta la %s sau la %s. Datele complete ale firmei sunt pe pagina [Date firma](/date-firma).',
+                                    ...$operatorArgs,
+                                ),
+                                sprintf(
+                                    '%s, CUI (Steuernummer) %s, Handelsregister-Nr. %s, Sitz in %s, %s, Kreis %s, PLZ %s. Ansprechpartner für den Datenschutz: %s (Geschäftsführer). Sie können uns unter %s oder %s erreichen. Die vollständigen Angaben zum Unternehmen finden Sie auf der Seite [Impressum](/date-firma).',
+                                    ...$operatorArgs,
+                                ),
+                                sprintf(
+                                    '%s, CUI (tax ID) %s, Trade Register No. %s, registered office at %s, %s, %s county, postal code %s. Data protection contact: %s (administrator). You can reach us at %s or %s. The full company details are on the [Legal notice](/date-firma) page.',
+                                    ...$operatorArgs,
+                                ),
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Ce date colectam'),
-                            'continut' => $t('Colectam doar datele pe care ni le furnizezi prin formularele de pe site (formularul de contact si formularul de comanda): nume, adresa de email, numar de telefon, localitatea/adresa pentru livrare si detaliile mesajului sau ale comenzii tale. Nu colectam mai multe date decat sunt necesare.'),
+                            'titlu' => $t('Ce date colectam', 'Welche Daten wir erheben', 'What data we collect'),
+                            'continut' => $t(
+                                'Colectam doar datele pe care ni le furnizezi prin formularele de pe site (formularul de contact si formularul de comanda): nume, adresa de email, numar de telefon, localitatea/adresa pentru livrare si detaliile mesajului sau ale comenzii tale. Nu colectam mai multe date decat sunt necesare.',
+                                'Wir erheben nur die Daten, die Sie uns über die Formulare auf der Website (Kontaktformular und Bestellformular) bereitstellen: Name, E-Mail-Adresse, Telefonnummer, Ort/Lieferadresse sowie die Angaben zu Ihrer Nachricht oder Bestellung. Wir erheben nicht mehr Daten als erforderlich.',
+                                'We only collect the data you provide to us through the forms on the website (the contact form and the order form): name, email address, phone number, locality/delivery address and the details of your message or order. We do not collect more data than necessary.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('In ce scop si pe ce temei legal'),
-                            'continut' => $t('Folosim aceste date pentru a raspunde solicitarilor tale, a-ti transmite oferte si a procesa si livra comenzile. Temeiul legal este, dupa caz: executarea unui contract sau demersuri precontractuale la cererea ta (art. 6 alin. 1 lit. b GDPR), consimtamantul tau pentru formularul de contact (art. 6 alin. 1 lit. a) si interesul nostru legitim de a raspunde si a ne desfasura activitatea (art. 6 alin. 1 lit. f). Pentru facturare si evidenta, prelucrarea se face si in baza obligatiilor legale (art. 6 alin. 1 lit. c).'),
+                            'titlu' => $t('In ce scop si pe ce temei legal', 'Zu welchem Zweck und auf welcher Rechtsgrundlage', 'For what purpose and on what legal basis'),
+                            'continut' => $t(
+                                'Folosim aceste date pentru a raspunde solicitarilor tale, a-ti transmite oferte si a procesa si livra comenzile. Temeiul legal este, dupa caz: executarea unui contract sau demersuri precontractuale la cererea ta (art. 6 alin. 1 lit. b GDPR), consimtamantul tau pentru formularul de contact (art. 6 alin. 1 lit. a) si interesul nostru legitim de a raspunde si a ne desfasura activitatea (art. 6 alin. 1 lit. f). Pentru facturare si evidenta, prelucrarea se face si in baza obligatiilor legale (art. 6 alin. 1 lit. c).',
+                                'Wir verwenden diese Daten, um auf Ihre Anfragen zu antworten, Ihnen Angebote zu übermitteln sowie Bestellungen zu bearbeiten und zu liefern. Die Rechtsgrundlage ist je nach Fall: die Erfüllung eines Vertrags oder vorvertragliche Maßnahmen auf Ihre Anfrage hin (Art. 6 Abs. 1 lit. b DSGVO), Ihre Einwilligung für das Kontaktformular (Art. 6 Abs. 1 lit. a) und unser berechtigtes Interesse, zu antworten und unsere Tätigkeit auszuüben (Art. 6 Abs. 1 lit. f). Für Rechnungsstellung und Buchführung erfolgt die Verarbeitung zudem auf Grundlage gesetzlicher Pflichten (Art. 6 Abs. 1 lit. c).',
+                                'We use this data to respond to your requests, send you offers and process and deliver orders. The legal basis is, as the case may be: the performance of a contract or pre-contractual steps taken at your request (Art. 6(1)(b) GDPR), your consent for the contact form (Art. 6(1)(a)) and our legitimate interest in responding and carrying out our business (Art. 6(1)(f)). For invoicing and record-keeping, processing is also based on legal obligations (Art. 6(1)(c)).',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Cat timp pastram datele'),
-                            'continut' => $t('Pastram datele doar atat cat este necesar scopului pentru care au fost colectate si pentru respectarea obligatiilor legale (de exemplu, documentele financiar-contabile, conform legii). Dupa expirarea acestor termene, datele sunt sterse sau anonimizate.'),
+                            'titlu' => $t('Cat timp pastram datele', 'Wie lange wir die Daten speichern', 'How long we keep the data'),
+                            'continut' => $t(
+                                'Pastram datele doar atat cat este necesar scopului pentru care au fost colectate si pentru respectarea obligatiilor legale (de exemplu, documentele financiar-contabile, conform legii). Dupa expirarea acestor termene, datele sunt sterse sau anonimizate.',
+                                'Wir speichern die Daten nur so lange, wie es für den Zweck, zu dem sie erhoben wurden, und zur Erfüllung gesetzlicher Pflichten erforderlich ist (zum Beispiel Finanz- und Buchhaltungsunterlagen gemäß den gesetzlichen Vorgaben). Nach Ablauf dieser Fristen werden die Daten gelöscht oder anonymisiert.',
+                                'We keep the data only for as long as necessary for the purpose for which it was collected and to comply with legal obligations (for example, financial and accounting documents, as required by law). After these periods expire, the data is deleted or anonymised.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Cui dezvaluim datele'),
-                            'continut' => $t('Nu vindem datele tale. Le putem dezvalui doar furnizorilor care ne ajuta sa operam site-ul si serviciul (furnizorul de gazduire web si de email — ALL-INKL.com, cu servere in Germania/Uniunea Europeana), care prelucreaza datele in numele nostru, pe baza de contract, si autoritatilor publice doar cand legea ne obliga. Datele tale sunt stocate pe servere in Uniunea Europeana; nu efectuam transferuri in afara UE.'),
+                            'titlu' => $t('Cui dezvaluim datele', 'An wen wir die Daten weitergeben', 'To whom we disclose the data'),
+                            'continut' => $t(
+                                'Nu vindem datele tale. Le putem dezvalui doar furnizorilor care ne ajuta sa operam site-ul si serviciul (furnizorul de gazduire web si de email — ALL-INKL.com, cu servere in Germania/Uniunea Europeana), care prelucreaza datele in numele nostru, pe baza de contract, si autoritatilor publice doar cand legea ne obliga. Datele tale sunt stocate pe servere in Uniunea Europeana; nu efectuam transferuri in afara UE.',
+                                'Wir verkaufen Ihre Daten nicht. Wir geben sie nur an Dienstleister weiter, die uns beim Betrieb der Website und des Dienstes unterstützen (der Webhosting- und E-Mail-Anbieter — ALL-INKL.com, mit Servern in Deutschland/der Europäischen Union), die die Daten in unserem Auftrag auf vertraglicher Grundlage verarbeiten, sowie an Behörden nur dann, wenn das Gesetz uns dazu verpflichtet. Ihre Daten werden auf Servern in der Europäischen Union gespeichert; wir führen keine Übermittlungen außerhalb der EU durch.',
+                                'We do not sell your data. We may only disclose it to providers who help us operate the website and the service (the web hosting and email provider — ALL-INKL.com, with servers in Germany/the European Union), who process the data on our behalf on a contractual basis, and to public authorities only when required by law. Your data is stored on servers in the European Union; we do not carry out transfers outside the EU.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Cookie-uri'),
-                            'continut' => $t('Folosim doar cookie-uri necesare functionarii site-ului. Detalii in [Politica de cookies](/cookies).'),
+                            'titlu' => $t('Cookie-uri', 'Cookies', 'Cookies'),
+                            'continut' => $t(
+                                'Folosim doar cookie-uri necesare functionarii site-ului. Detalii in [Politica de cookies](/cookies).',
+                                'Wir verwenden nur Cookies, die für den Betrieb der Website erforderlich sind. Einzelheiten finden Sie in der [Cookie-Richtlinie](/cookies).',
+                                'We use only cookies necessary for the operation of the website. Details in the [Cookie Policy](/cookies).',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Drepturile tale'),
-                            'continut' => $t('Ai dreptul de acces, rectificare, stergere, restrictionare a prelucrarii, opozitie, portabilitate a datelor si dreptul de a-ti retrage consimtamantul oricand. Le poti exercita scriindu-ne la info@galle-silva.ro. Ai, de asemenea, dreptul de a depune o plangere la Autoritatea Nationala de Supraveghere a Prelucrarii Datelor cu Caracter Personal (ANSPDCP).'),
+                            'titlu' => $t('Drepturile tale', 'Ihre Rechte', 'Your rights'),
+                            'continut' => $t(
+                                'Ai dreptul de acces, rectificare, stergere, restrictionare a prelucrarii, opozitie, portabilitate a datelor si dreptul de a-ti retrage consimtamantul oricand. Le poti exercita scriindu-ne la info@galle-silva.ro. Ai, de asemenea, dreptul de a depune o plangere la Autoritatea Nationala de Supraveghere a Prelucrarii Datelor cu Caracter Personal (ANSPDCP).',
+                                'Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch, Datenübertragbarkeit sowie das Recht, Ihre Einwilligung jederzeit zu widerrufen. Sie können diese Rechte ausüben, indem Sie uns an info@galle-silva.ro schreiben. Sie haben außerdem das Recht, eine Beschwerde bei der rumänischen Datenschutzbehörde (ANSPDCP) einzureichen.',
+                                'You have the right to access, rectification, erasure, restriction of processing, objection, data portability and the right to withdraw your consent at any time. You can exercise them by writing to us at info@galle-silva.ro. You also have the right to lodge a complaint with the Romanian data protection authority (ANSPDCP).',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Securitate'),
-                            'continut' => $t('Aplicam masuri tehnice si organizatorice rezonabile pentru a proteja datele tale. Transmisiile pe internet nu pot fi insa garantate complet impotriva oricarui risc.'),
+                            'titlu' => $t('Securitate', 'Sicherheit', 'Security'),
+                            'continut' => $t(
+                                'Aplicam masuri tehnice si organizatorice rezonabile pentru a proteja datele tale. Transmisiile pe internet nu pot fi insa garantate complet impotriva oricarui risc.',
+                                'Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre Daten zu schützen. Übertragungen über das Internet können jedoch nicht vollständig gegen jedes Risiko abgesichert werden.',
+                                'We apply reasonable technical and organisational measures to protect your data. However, transmissions over the internet cannot be fully guaranteed against any risk.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Minori'),
-                            'continut' => $t('Site-ul nu se adreseaza minorilor si nu colectam cu intentie date de la persoane sub 16 ani.'),
+                            'titlu' => $t('Minori', 'Minderjährige', 'Minors'),
+                            'continut' => $t(
+                                'Site-ul nu se adreseaza minorilor si nu colectam cu intentie date de la persoane sub 16 ani.',
+                                'Die Website richtet sich nicht an Minderjährige, und wir erheben nicht absichtlich Daten von Personen unter 16 Jahren.',
+                                'The website is not aimed at minors, and we do not intentionally collect data from persons under the age of 16.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Modificari'),
-                            'continut' => $t('Putem actualiza aceasta politica; versiunea curenta este cea publicata pe aceasta pagina.'),
+                            'titlu' => $t('Modificari', 'Änderungen', 'Changes'),
+                            'continut' => $t(
+                                'Putem actualiza aceasta politica; versiunea curenta este cea publicata pe aceasta pagina.',
+                                'Wir können diese Erklärung aktualisieren; die aktuelle Fassung ist die auf dieser Seite veröffentlichte.',
+                                'We may update this policy; the current version is the one published on this page.',
+                            ),
                         ],
                     ],
                 ],
@@ -1520,42 +1635,66 @@ class PaginaSeeder extends Seeder
                         'type' => 'sectiune_text',
                         'data' => [
                             'titlu' => null,
-                            'continut' => $t('Aceasta pagina explica ce cookie-uri folosim pe site-ul GALLE SILVA SRL si cum iti poti gestiona preferintele.'),
+                            'continut' => $t(
+                                'Aceasta pagina explica ce cookie-uri folosim pe site-ul GALLE SILVA SRL si cum iti poti gestiona preferintele.',
+                                'Diese Seite erklärt, welche Cookies wir auf der Website der GALLE SILVA SRL verwenden und wie Sie Ihre Einstellungen verwalten können.',
+                                'This page explains which cookies we use on the GALLE SILVA SRL website and how you can manage your preferences.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Ce sunt cookie-urile'),
-                            'continut' => $t('Cookie-urile sunt fisiere mici stocate pe dispozitivul tau, care ajuta site-ul sa functioneze si sa-ti retina preferintele.'),
+                            'titlu' => $t('Ce sunt cookie-urile', 'Was Cookies sind', 'What cookies are'),
+                            'continut' => $t(
+                                'Cookie-urile sunt fisiere mici stocate pe dispozitivul tau, care ajuta site-ul sa functioneze si sa-ti retina preferintele.',
+                                'Cookies sind kleine Dateien, die auf Ihrem Gerät gespeichert werden und dem Betrieb der Website sowie der Speicherung Ihrer Einstellungen dienen.',
+                                'Cookies are small files stored on your device that help the website function and remember your preferences.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Ce cookie-uri folosim'),
-                            'continut' => $t('Folosim doar cookie-uri necesare (strict necesare) pentru functionarea site-ului — de exemplu pentru sesiune si pentru a retine optiunea ta privind cookie-urile. Acestea nu necesita consimtamant. Nu folosim in prezent cookie-uri de analiza sau de marketing si nu incarcam servicii terte de urmarire. Daca vom introduce in viitor cookie-uri de analiza sau marketing, acestea vor fi activate doar cu consimtamantul tau explicit, prin bannerul de cookie-uri.'),
+                            'titlu' => $t('Ce cookie-uri folosim', 'Welche Cookies wir verwenden', 'Which cookies we use'),
+                            'continut' => $t(
+                                'Folosim doar cookie-uri necesare (strict necesare) pentru functionarea site-ului — de exemplu pentru sesiune si pentru a retine optiunea ta privind cookie-urile. Acestea nu necesita consimtamant. Nu folosim in prezent cookie-uri de analiza sau de marketing si nu incarcam servicii terte de urmarire. Daca vom introduce in viitor cookie-uri de analiza sau marketing, acestea vor fi activate doar cu consimtamantul tau explicit, prin bannerul de cookie-uri.',
+                                'Wir verwenden nur notwendige (unbedingt erforderliche) Cookies für den Betrieb der Website — zum Beispiel für die Sitzung und um Ihre Cookie-Auswahl zu speichern. Diese erfordern keine Einwilligung. Derzeit verwenden wir keine Analyse- oder Marketing-Cookies und laden keine Tracking-Dienste Dritter. Sollten wir künftig Analyse- oder Marketing-Cookies einführen, werden diese nur mit Ihrer ausdrücklichen Einwilligung über das Cookie-Banner aktiviert.',
+                                'We use only necessary (strictly necessary) cookies for the operation of the website — for example for the session and to remember your cookie choice. These do not require consent. We currently do not use analytics or marketing cookies and we do not load third-party tracking services. If we introduce analytics or marketing cookies in the future, they will be activated only with your explicit consent, through the cookie banner.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Fonturile si continutul'),
-                            'continut' => $t('Fonturile sunt gazduite local, pe propriul nostru server — nu apelam servicii externe de fonturi, deci nu se transmit date catre terti prin acestea.'),
+                            'titlu' => $t('Fonturile si continutul', 'Schriftarten und Inhalte', 'Fonts and content'),
+                            'continut' => $t(
+                                'Fonturile sunt gazduite local, pe propriul nostru server — nu apelam servicii externe de fonturi, deci nu se transmit date catre terti prin acestea.',
+                                'Die Schriftarten werden lokal auf unserem eigenen Server gehostet — wir rufen keine externen Schriftdienste auf, sodass darüber keine Daten an Dritte übermittelt werden.',
+                                'The fonts are hosted locally, on our own server — we do not call external font services, so no data is transmitted to third parties through them.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Cum iti gestionezi preferintele'),
-                            'continut' => $t('Iti poti exprima sau retrage consimtamantul oricand din bannerul de cookie-uri sau din optiunea Setari cookies din subsolul site-ului. Poti, de asemenea, sterge sau bloca cookie-urile din setarile browser-ului; unele functii ale site-ului pot fi afectate.'),
+                            'titlu' => $t('Cum iti gestionezi preferintele', 'Wie Sie Ihre Einstellungen verwalten', 'How to manage your preferences'),
+                            'continut' => $t(
+                                'Iti poti exprima sau retrage consimtamantul oricand din bannerul de cookie-uri sau din optiunea Setari cookies din subsolul site-ului. Poti, de asemenea, sterge sau bloca cookie-urile din setarile browser-ului; unele functii ale site-ului pot fi afectate.',
+                                'Sie können Ihre Einwilligung jederzeit über das Cookie-Banner oder über die Option „Cookie-Einstellungen" im Footer der Website erteilen oder widerrufen. Sie können Cookies außerdem in den Einstellungen Ihres Browsers löschen oder blockieren; einige Funktionen der Website können dadurch beeinträchtigt werden.',
+                                'You can give or withdraw your consent at any time from the cookie banner or from the Cookie settings option in the website footer. You can also delete or block cookies in your browser settings; some website functions may be affected.',
+                            ),
                         ],
                     ],
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t('Modificari'),
-                            'continut' => $t('Putem actualiza aceasta politica; versiunea curenta este cea de pe aceasta pagina.'),
+                            'titlu' => $t('Modificari', 'Änderungen', 'Changes'),
+                            'continut' => $t(
+                                'Putem actualiza aceasta politica; versiunea curenta este cea de pe aceasta pagina.',
+                                'Wir können diese Erklärung aktualisieren; die aktuelle Fassung ist die auf dieser Seite.',
+                                'We may update this policy; the current version is the one on this page.',
+                            ),
                         ],
                     ],
                 ],
@@ -1570,15 +1709,27 @@ class PaginaSeeder extends Seeder
              */
             [
                 'slug' => 'intrebari-frecvente',
-                'titlu' => $t('Întrebări frecvente'),
-                'meta_title' => $t('Întrebări frecvente — lemn de foc, livrare, servicii forestiere | Galle Silva'),
-                'meta_description' => $t('Răspunsuri la cele mai frecvente întrebări despre lemn de foc, livrare, plată, achiziție de masă lemnoasă, exploatare forestieră și curățare de terenuri, în Prahova, Ilfov și București.'),
+                'titlu' => $t('Întrebări frecvente', 'Häufige Fragen', 'Frequently asked questions'),
+                'meta_title' => $t(
+                    'Întrebări frecvente — lemn de foc, livrare, servicii forestiere | Galle Silva',
+                    'Häufige Fragen — Brennholz, Lieferung, Forstdienstleistungen | Galle Silva',
+                    'Frequently asked questions — firewood, delivery, forestry services | Galle Silva',
+                ),
+                'meta_description' => $t(
+                    'Răspunsuri la cele mai frecvente întrebări despre lemn de foc, livrare, plată, achiziție de masă lemnoasă, exploatare forestieră și curățare de terenuri, în Prahova, Ilfov și București.',
+                    'Antworten auf die häufigsten Fragen zu Brennholz, Lieferung, Zahlung, Holzankauf, Holzernte und Geländeräumung in Prahova, Ilfov und Bukarest.',
+                    'Answers to the most frequently asked questions about firewood, delivery, payment, timber purchasing, timber harvesting and land clearing in Prahova, Ilfov and Bucharest.',
+                ),
                 'sectiuni' => [
                     [
                         'type' => 'header_pagina',
                         'data' => [
-                            'titlu' => $t('Întrebări frecvente'),
-                            'intro' => $t('Tot ce trebuie să știi despre lemnul de foc, livrare, plată și serviciile forestiere Galle Silva — în Prahova, Ilfov și București.'),
+                            'titlu' => $t('Întrebări frecvente', 'Häufige Fragen', 'Frequently asked questions'),
+                            'intro' => $t(
+                                'Tot ce trebuie să știi despre lemnul de foc, livrare, plată și serviciile forestiere Galle Silva — în Prahova, Ilfov și București.',
+                                'Alles, was Sie über Brennholz, Lieferung, Zahlung und die Forstdienstleistungen von Galle Silva wissen müssen — in Prahova, Ilfov und Bukarest.',
+                                'Everything you need to know about firewood, delivery, payment and Galle Silva\'s forestry services — in Prahova, Ilfov and Bucharest.',
+                            ),
                         ],
                     ],
                 ],

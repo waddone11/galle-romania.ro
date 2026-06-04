@@ -52,11 +52,11 @@ it('renders every new article at /blog/{slug}', function (string $slug) {
     $this->get("/blog/{$slug}")->assertOk();
 })->with(ARTICOLE_NOI);
 
-it('falls back to RO content on /de and /en article pages', function () {
+it('serves translated DE/EN content on article pages (nu fallback RO)', function () {
     $slug = 'lemn-uscat-vs-lemn-verde-cum-recunosti';
 
-    $this->get("/de/blog/{$slug}")->assertOk()->assertSeeText('Lemnul bun pentru foc');
-    $this->get("/en/blog/{$slug}")->assertOk()->assertSeeText('Lemnul bun pentru foc');
+    $this->get("/de/blog/{$slug}")->assertOk()->assertSeeText('Gutes Brennholz ist ausreichend trockenes Holz');
+    $this->get("/en/blog/{$slug}")->assertOk()->assertSeeText('Good firewood is sufficiently dry wood');
 });
 
 it('gives every new article a substantial body (~1000+ cuvinte)', function () {

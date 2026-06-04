@@ -522,8 +522,7 @@ class FaqSeeder extends Seeder
 
     /**
      * FAQ-uri suplimentare (SEO/GEO, cercetate extern) — database/seeders/data/faq.json.
-     * Doar RO; DE/EN raman null (de completat din /admin). Idempotent:
-     * cheia stabila e intrebarea RO + categoria.
+     * RO + DE/EN traduse in JSON. Idempotent: cheia stabila e intrebarea RO + categoria.
      */
     private function seedFromJson(): void
     {
@@ -532,7 +531,7 @@ class FaqSeeder extends Seeder
             return;
         }
 
-        /** @var array<int, array{intrebare: string, raspuns: string, categorie: string}> $items */
+        /** @var array<int, array{intrebare: string, raspuns: string, categorie: string, intrebare_de?: ?string, raspuns_de?: ?string, intrebare_en?: ?string, raspuns_en?: ?string}> $items */
         $items = json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
 
         // Ordine incrementala per categorie, deterministic, dupa cele hardcodate de mai sus.
@@ -544,8 +543,8 @@ class FaqSeeder extends Seeder
             Faq::updateOrCreate(
                 ['intrebare->ro' => $item['intrebare'], 'categorie' => $categorie],
                 [
-                    'intrebare' => ['ro' => $item['intrebare'], 'de' => null, 'en' => null],
-                    'raspuns' => ['ro' => $item['raspuns'], 'de' => null, 'en' => null],
+                    'intrebare' => ['ro' => $item['intrebare'], 'de' => $item['intrebare_de'] ?? null, 'en' => $item['intrebare_en'] ?? null],
+                    'raspuns' => ['ro' => $item['raspuns'], 'de' => $item['raspuns_de'] ?? null, 'en' => $item['raspuns_en'] ?? null],
                     'ordine' => $ordine[$categorie],
                     'is_published' => true,
                 ],

@@ -34,8 +34,8 @@
             '@context' => 'https://schema.org',
             '@type' => 'BreadcrumbList',
             'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url('/')],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => url('/blog')],
+                ['@type' => 'ListItem', 'position' => 1, 'name' => __('Acasa'), 'item' => url((app()->getLocale() === 'ro' ? '' : '/'.app()->getLocale()).'/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => __('Blog'), 'item' => url((app()->getLocale() === 'ro' ? '' : '/'.app()->getLocale()).'/blog')],
                 ['@type' => 'ListItem', 'position' => 3, 'name' => $aTitlu, 'item' => url()->current()],
             ],
         ]" />

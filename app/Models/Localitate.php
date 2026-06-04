@@ -29,4 +29,27 @@ class Localitate extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Numele localitatii pentru locale-ul dat. Localitatile raman netraduse
+     * (nume proprii), dar Bucurestiul are exonime consacrate: Bukarest/Bucharest.
+     */
+    public function numeLocalizat(?string $locale = null): string
+    {
+        return self::exonim($this->nume, $locale ?? app()->getLocale());
+    }
+
+    /** Exonimul unui toponim (folosit si pentru judet). */
+    public static function exonim(string $nume, string $locale): string
+    {
+        if ($nume === 'București') {
+            return match ($locale) {
+                'de' => 'Bukarest',
+                'en' => 'Bucharest',
+                default => $nume,
+            };
+        }
+
+        return $nume;
+    }
 }

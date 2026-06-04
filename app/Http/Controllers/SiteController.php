@@ -85,7 +85,7 @@ class SiteController extends Controller
         }
 
         $schemas[] = $this->breadcrumbSchema([
-            ['Acasa', url('/')],
+            [__('Acasa'), url('/')],
             [$pagina->getTranslation('titlu', $loc) ?: 'Servicii', url()->current()],
         ]);
 
@@ -130,7 +130,7 @@ class SiteController extends Controller
 
         $prefix = $loc === 'ro' ? '' : '/'.$loc;
         $schemas[] = $this->breadcrumbSchema([
-            ['Acasa', url($prefix.'/')],
+            [__('Acasa'), url($prefix.'/')],
             ['Servicii', url($prefix.'/servicii')],
             [$titlu, url()->current()],
         ]);
@@ -254,7 +254,7 @@ class SiteController extends Controller
 
         $prefix = $loc === 'ro' ? '' : '/'.$loc;
         $schemas[] = $this->breadcrumbSchema([
-            ['Acasa', url($prefix.'/')],
+            [__('Acasa'), url($prefix.'/')],
             [($pagina?->getTranslation('titlu', $loc) ?: $pagina?->getTranslation('titlu', 'ro')) ?: 'Intrebari frecvente', url()->current()],
         ]);
 

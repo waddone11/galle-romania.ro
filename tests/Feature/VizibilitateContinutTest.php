@@ -48,7 +48,7 @@ it('renders the proiecte and blog teasers on home', function () {
     $r->assertSeeText('Proiect teaser test');
     $r->assertSeeText('Vezi toate proiectele');
     // Blocul blog_recent (CMS) + linkul spre blog.
-    $r->assertSeeText('Ghiduri și noutăți');
+    $r->assertSeeText('Ghiduri & noutăți');
     $r->assertSeeText('Articol teaser test');
     $r->assertSeeText('Vezi blogul');
 });

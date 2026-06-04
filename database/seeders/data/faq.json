@@ -3,108 +3,180 @@
     "intrebare": "Lemnul de foc este uscat sau trebuie lăsat la uscat?",
     "raspuns": "Lemnul de foc poate fi livrat în stadii diferite de uscare, iar acest lucru trebuie confirmat înainte de comandă. Galle Silva livrează lemn de foc de esență tare — stejar, carpen și fag — în Prahova, Ilfov și București, iar la ofertare îți spunem clar ce tip de lemn este disponibil.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn de foc uscat"
+    "keyword": "lemn de foc uscat",
+    "intrebare_de": "Ist das Brennholz trocken oder muss es noch getrocknet werden?",
+    "raspuns_de": "Brennholz kann in unterschiedlichen Trocknungsstadien geliefert werden, was vor der Bestellung zu klären ist. Galle Silva liefert Brennholz aus Hartholz — Eiche, Hainbuche und Buche — in Prahova, Ilfov und Bukarest, und bei der Angebotserstellung teilen wir Ihnen klar mit, welche Holzart verfügbar ist.",
+    "intrebare_en": "Is the firewood dry or does it still need to season?",
+    "raspuns_en": "Firewood can be delivered at different stages of drying, and this should be confirmed before ordering. Galle Silva delivers hardwood firewood — oak, hornbeam and beech — in Prahova, Ilfov and Bucharest, and when we quote we tell you clearly which type of wood is available."
   },
   {
     "intrebare": "Pot arde lemn proaspăt tăiat în sobă sau centrală?",
     "raspuns": "Lemnul proaspăt tăiat nu este ideal pentru ardere imediată, deoarece conține mai multă umiditate, pornește mai greu și poate produce mai mult fum. Pentru randament mai bun, lemnul trebuie crăpat, depozitat aerisit și lăsat să se usuce înainte de folosire.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn proaspăt tăiat foc"
+    "keyword": "lemn proaspăt tăiat foc",
+    "intrebare_de": "Kann ich frisch geschlagenes Holz im Ofen oder in der Heizung verbrennen?",
+    "raspuns_de": "Frisch geschlagenes Holz ist für die sofortige Verbrennung nicht ideal, da es mehr Feuchtigkeit enthält, schwerer entzündet und mehr Rauch erzeugen kann. Für eine bessere Ausbeute sollte das Holz gespalten, luftig gelagert und vor der Verwendung getrocknet werden.",
+    "intrebare_en": "Can I burn freshly cut wood in a stove or boiler?",
+    "raspuns_en": "Freshly cut wood is not ideal for immediate burning because it contains more moisture, is harder to light and can produce more smoke. For better efficiency, the wood should be split, stored with good airflow and allowed to dry before use."
   },
   {
     "intrebare": "De ce scoate lemnul mult fum când îl bag pe foc?",
     "raspuns": "Lemnul scoate mult fum de obicei când este prea umed, când focarul nu are tiraj bun sau când lemnul este așezat prea compact. Lemnul de esență tare arde bine doar dacă este depozitat corect și are suficient aer în timpul arderii.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn de foc fum mult"
+    "keyword": "lemn de foc fum mult",
+    "intrebare_de": "Warum erzeugt das Holz viel Rauch, wenn ich es ins Feuer lege?",
+    "raspuns_de": "Holz erzeugt in der Regel viel Rauch, wenn es zu feucht ist, wenn die Feuerstelle keinen guten Zug hat oder wenn das Holz zu dicht geschichtet ist. Hartholz brennt nur dann gut, wenn es richtig gelagert wird und während der Verbrennung ausreichend Luft hat.",
+    "intrebare_en": "Why does the wood produce so much smoke when I put it on the fire?",
+    "raspuns_en": "Wood usually produces a lot of smoke when it is too damp, when the firebox does not have a good draught, or when the wood is stacked too tightly. Hardwood only burns well if it is stored correctly and has enough air during combustion."
   },
   {
     "intrebare": "Cum depozitez lemnul de foc afară fără să mucegăiască?",
     "raspuns": "Lemnul de foc se depozitează ridicat de la sol, acoperit deasupra și lăsat deschis lateral pentru aerisire. Nu este recomandat să fie învelit complet în folie, deoarece umezeala rămâne blocată și poate apărea mucegai.",
     "categorie": "lemn-de-foc",
-    "keyword": "cum depozitez lemnul de foc"
+    "keyword": "cum depozitez lemnul de foc",
+    "intrebare_de": "Wie lagere ich Brennholz im Freien, ohne dass es schimmelt?",
+    "raspuns_de": "Brennholz wird vom Boden erhöht gelagert, oben abgedeckt und seitlich zur Belüftung offen gehalten. Es ist nicht ratsam, es vollständig in Folie einzuwickeln, da die Feuchtigkeit eingeschlossen bleibt und Schimmel entstehen kann.",
+    "intrebare_en": "How do I store firewood outdoors without it going mouldy?",
+    "raspuns_en": "Firewood should be stored raised off the ground, covered on top and left open on the sides for ventilation. Wrapping it completely in plastic is not recommended, as the moisture stays trapped and mould can appear."
   },
   {
     "intrebare": "Lemnul de foc se cumpără mai bine la volum sau la greutate?",
     "raspuns": "Pentru lemnul de foc, volumul este de obicei mai relevant decât greutatea, deoarece lemnul verde cântărește mai mult din cauza apei. Când compari oferte, cere clar unitatea de măsură, forma de livrare și dacă transportul este inclus.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn de foc volum sau greutate"
+    "keyword": "lemn de foc volum sau greutate",
+    "intrebare_de": "Kauft man Brennholz besser nach Volumen oder nach Gewicht?",
+    "raspuns_de": "Bei Brennholz ist das Volumen in der Regel aussagekräftiger als das Gewicht, da grünes Holz aufgrund des Wassers mehr wiegt. Wenn Sie Angebote vergleichen, erfragen Sie klar die Maßeinheit, die Lieferform und ob der Transport inbegriffen ist.",
+    "intrebare_en": "Is it better to buy firewood by volume or by weight?",
+    "raspuns_en": "For firewood, volume is usually more meaningful than weight, because green wood weighs more due to its water content. When comparing offers, clearly ask for the unit of measure, the form of delivery and whether transport is included."
   },
   {
     "intrebare": "Cât ține un metru cub de lemn de foc?",
     "raspuns": "Un metru cub de lemn poate ține foarte diferit în funcție de casă, izolație, sobă sau centrală, temperatură și cât de uscat este lemnul. Galle Silva poate livra fără cantitate minimă, astfel încât poți comanda gradual în funcție de consum.",
     "categorie": "lemn-de-foc",
-    "keyword": "cat tine un metru cub de lemn"
+    "keyword": "cat tine un metru cub de lemn",
+    "intrebare_de": "Wie lange reicht ein Kubikmeter Brennholz?",
+    "raspuns_de": "Ein Kubikmeter Holz kann sehr unterschiedlich lange reichen, je nach Haus, Dämmung, Ofen oder Heizung, Temperatur und wie trocken das Holz ist. Galle Silva kann ohne Mindestmenge liefern, sodass Sie schrittweise nach Verbrauch bestellen können.",
+    "intrebare_en": "How long does a cubic meter of firewood last?",
+    "raspuns_en": "A cubic meter of wood can last very differently depending on the house, insulation, stove or boiler, temperature and how dry the wood is. Galle Silva can deliver with no minimum quantity, so you can order gradually according to your consumption."
   },
   {
     "intrebare": "Câte lăzi sau paleți înseamnă un metru cub de lemn?",
     "raspuns": "Numărul de lăzi sau paleți depinde de dimensiunea ambalajului și de modul în care este așezat lemnul. Cel mai corect este să verifici volumul declarat pentru fiecare ladă/palet, nu doar numărul de bucăți sau greutatea.",
     "categorie": "lemn-de-foc",
-    "keyword": "cate lazi intr-un metru cub lemn"
+    "keyword": "cate lazi intr-un metru cub lemn",
+    "intrebare_de": "Wie vielen Kisten oder Paletten entspricht ein Kubikmeter Holz?",
+    "raspuns_de": "Die Anzahl der Kisten oder Paletten hängt von der Größe der Verpackung und davon ab, wie das Holz geschichtet ist. Am genauesten ist es, das angegebene Volumen pro Kiste/Palette zu prüfen und nicht nur die Stückzahl oder das Gewicht.",
+    "intrebare_en": "How many crates or pallets make up a cubic meter of wood?",
+    "raspuns_en": "The number of crates or pallets depends on the size of the packaging and how the wood is stacked. The most accurate approach is to check the declared volume for each crate or pallet, not just the number of pieces or the weight."
   },
   {
     "intrebare": "Care este diferența dintre lemn de foc și lemn pentru construcții?",
     "raspuns": "Lemnul de foc este destinat arderii și se vinde pentru putere calorică, esență, dimensiune și grad de uscare. Lemnul pentru construcții trebuie să respecte alte cerințe de calitate, uscare, debitare și rezistență, deci nu trebuie confundat cu lemnul de foc.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn de foc vs lemn constructii"
+    "keyword": "lemn de foc vs lemn constructii",
+    "intrebare_de": "Was ist der Unterschied zwischen Brennholz und Bauholz?",
+    "raspuns_de": "Brennholz ist zum Verbrennen bestimmt und wird nach Heizwert, Holzart, Größe und Trocknungsgrad verkauft. Bauholz muss andere Anforderungen an Qualität, Trocknung, Zuschnitt und Festigkeit erfüllen und darf daher nicht mit Brennholz verwechselt werden.",
+    "intrebare_en": "What is the difference between firewood and construction timber?",
+    "raspuns_en": "Firewood is intended for burning and is sold according to calorific value, species, size and degree of drying. Construction timber has to meet different requirements for quality, drying, cutting and strength, so it should not be confused with firewood."
   },
   {
     "intrebare": "Pot comanda lemn de foc și cantitate mică?",
     "raspuns": "Da, Galle Silva nu impune cantitate minimă pentru lemnul de foc. Livrăm în Prahova, Ilfov și București, iar prețul pornește de la 350 lei/m³, în funcție de comandă, disponibilitate și transport.",
     "categorie": "lemn-de-foc",
-    "keyword": "lemn de foc fara cantitate minima"
+    "keyword": "lemn de foc fara cantitate minima",
+    "intrebare_de": "Kann ich Brennholz auch in kleinen Mengen bestellen?",
+    "raspuns_de": "Ja, Galle Silva setzt keine Mindestmenge für Brennholz voraus. Wir liefern in Prahova, Ilfov und Bukarest, und der Preis beginnt bei 350 lei/m³, je nach Bestellung, Verfügbarkeit und Transport.",
+    "intrebare_en": "Can I order firewood in small quantities too?",
+    "raspuns_en": "Yes, Galle Silva does not require a minimum quantity for firewood. We deliver in Prahova, Ilfov and Bucharest, and the price starts from 350 lei/m³, depending on the order, availability and transport."
   },
   {
     "intrebare": "În cât timp se poate livra lemnul de foc?",
     "raspuns": "Timpul de livrare depinde de stoc, localitate, cantitate și traseul de transport. Galle Silva oferă livrare pentru lemn de foc în Prahova, Ilfov și București, iar termenul concret se confirmă la comandă.",
     "categorie": "livrare",
-    "keyword": "livrare lemn de foc"
+    "keyword": "livrare lemn de foc",
+    "intrebare_de": "Wie schnell kann das Brennholz geliefert werden?",
+    "raspuns_de": "Die Lieferzeit hängt vom Lagerbestand, dem Ort, der Menge und der Transportstrecke ab. Galle Silva bietet die Lieferung von Brennholz in Prahova, Ilfov und Bukarest an, und der konkrete Termin wird bei der Bestellung bestätigt.",
+    "intrebare_en": "How quickly can the firewood be delivered?",
+    "raspuns_en": "The delivery time depends on stock, location, quantity and the transport route. Galle Silva offers firewood delivery in Prahova, Ilfov and Bucharest, and the specific deadline is confirmed when you place the order."
   },
   {
     "intrebare": "Primesc factură pentru lemnul de foc?",
     "raspuns": "Da, pentru comenzile de lemn de foc se poate emite factură. Este recomandat să ceri factura și documentele aferente livrării, mai ales când comanzi cantități mai mari sau cumperi pentru firmă.",
     "categorie": "plata",
-    "keyword": "factura lemn de foc"
+    "keyword": "factura lemn de foc",
+    "intrebare_de": "Bekomme ich eine Rechnung für das Brennholz?",
+    "raspuns_de": "Ja, für Brennholzbestellungen kann eine Rechnung ausgestellt werden. Es ist ratsam, die Rechnung und die zur Lieferung gehörenden Unterlagen anzufordern, besonders wenn Sie größere Mengen bestellen oder für ein Unternehmen kaufen.",
+    "intrebare_en": "Do I get an invoice for the firewood?",
+    "raspuns_en": "Yes, an invoice can be issued for firewood orders. It is advisable to request the invoice and the documents accompanying the delivery, especially when you order larger quantities or purchase for a company."
   },
   {
     "intrebare": "Se poate descărca lemnul direct în curte?",
     "raspuns": "Descărcarea în curte depinde de acces, spațiul disponibil, tipul mașinii și condițiile terenului. Galle Silva poate discuta aceste detalii înainte de livrare, ca să evităm blocaje la poartă, drum îngust sau teren moale.",
     "categorie": "livrare",
-    "keyword": "descarcare lemn in curte"
+    "keyword": "descarcare lemn in curte",
+    "intrebare_de": "Kann das Holz direkt im Hof abgeladen werden?",
+    "raspuns_de": "Das Abladen im Hof hängt von der Zufahrt, dem verfügbaren Platz, dem Fahrzeugtyp und den Bodenverhältnissen ab. Galle Silva kann diese Details vor der Lieferung besprechen, damit wir Blockaden am Tor, schmale Wege oder weichen Boden vermeiden.",
+    "intrebare_en": "Can the wood be unloaded directly in the yard?",
+    "raspuns_en": "Unloading in the yard depends on access, available space, the type of vehicle and the ground conditions. Galle Silva can discuss these details before delivery so that we avoid blockages at the gate, narrow roads or soft ground."
   },
   {
     "intrebare": "Cumpărați și lemn fasonat, nu doar masă lemnoasă pe picior?",
     "raspuns": "Da, Galle Silva poate analiza atât masă lemnoasă pe picior, cât și lemn fasonat, în funcție de specie, volum, calitate, locație și documente. Pentru o evaluare corectă sunt necesare detalii despre lemn, acte și accesul pentru transport.",
     "categorie": "achizitie-masa-lemnoasa",
-    "keyword": "cumparare lemn fasonat"
+    "keyword": "cumparare lemn fasonat",
+    "intrebare_de": "Kaufen Sie auch aufbereitetes Holz, nicht nur Holz auf dem Stamm?",
+    "raspuns_de": "Ja, Galle Silva kann sowohl Holz auf dem Stamm als auch aufbereitetes Holz prüfen, abhängig von Art, Volumen, Qualität, Standort und Unterlagen. Für eine korrekte Bewertung sind Angaben zum Holz, die Dokumente und die Zufahrt für den Transport erforderlich.",
+    "intrebare_en": "Do you also buy processed wood, not just standing timber?",
+    "raspuns_en": "Yes, Galle Silva can assess both standing timber and processed wood, depending on the species, volume, quality, location and documents. For an accurate valuation we need details about the wood, the paperwork and access for transport."
   },
   {
     "intrebare": "Ce este o partidă sau un parchet de exploatare?",
     "raspuns": "O partidă este un lot de masă lemnoasă identificat pentru exploatare, iar parchetul este zona de pădure în care se face recoltarea. În practică, acești termeni apar în documentele silvice și ajută la organizarea legală a lucrării.",
     "categorie": "exploatare-forestiera",
-    "keyword": "partida parchet exploatare"
+    "keyword": "partida parchet exploatare",
+    "intrebare_de": "Was ist eine „partidă\" oder ein „parchet de exploatare\"?",
+    "raspuns_de": "Eine „partidă\" ist ein für die Holzernte ausgewiesenes Los an Holz, und das „parchet\" ist das Waldgebiet, in dem die Ernte erfolgt. In der Praxis erscheinen diese Begriffe in den forstlichen Dokumenten und helfen, die Arbeit rechtlich zu organisieren.",
+    "intrebare_en": "What is a harvesting lot („partidă\") or a cutting area („parchet\")?",
+    "raspuns_en": "A „partidă\" is a batch of timber identified for harvesting, while the „parchet\" is the forest area where the harvesting takes place. In practice, these terms appear in forestry documents and help organise the work legally."
   },
   {
     "intrebare": "Am pădure privată. Am nevoie de ocol silvic?",
     "raspuns": "Da, pentru terenurile forestiere private este necesară administrare sau prestare de servicii silvice printr-un ocol silvic autorizat. Exploatarea masei lemnoase se face cu documente și marcări corespunzătoare, nu doar prin înțelegere directă cu o firmă de tăiere.",
     "categorie": "achizitie-masa-lemnoasa",
-    "keyword": "ocol silvic padure privata"
+    "keyword": "ocol silvic padure privata",
+    "intrebare_de": "Ich habe Privatwald. Brauche ich ein Forstamt?",
+    "raspuns_de": "Ja, für private Waldflächen sind eine Verwaltung oder forstliche Dienstleistungen durch ein autorisiertes Forstamt erforderlich. Die Holzernte erfolgt mit den entsprechenden Dokumenten und Markierungen, nicht nur durch eine direkte Vereinbarung mit einem Fällunternehmen.",
+    "intrebare_en": "I have private forest. Do I need a forest district office?",
+    "raspuns_en": "Yes, private forest land requires management or forestry services through an authorised forest district office. Timber harvesting is carried out with the appropriate documents and markings, not just through a direct arrangement with a felling company."
   },
   {
     "intrebare": "Faceți lucrări pe terenuri în pantă sau greu accesibile?",
     "raspuns": "Da, dar lucrările pe terenuri în pantă sau cu acces dificil trebuie evaluate înainte. Galle Silva verifică accesul, tipul terenului, volumul de lemn și utilajele potrivite înainte de a confirma exploatarea, curățarea sau transportul.",
     "categorie": "servicii",
-    "keyword": "lucrari forestiere teren in panta"
+    "keyword": "lucrari forestiere teren in panta",
+    "intrebare_de": "Führen Sie Arbeiten auf Hanggrundstücken oder schwer zugänglichem Gelände aus?",
+    "raspuns_de": "Ja, aber Arbeiten auf Hanggrundstücken oder mit schwierigem Zugang müssen vorab bewertet werden. Galle Silva prüft die Zufahrt, die Geländeart, das Holzvolumen und die geeigneten Maschinen, bevor wir die Holzernte, die Räumung oder den Transport bestätigen.",
+    "intrebare_en": "Do you carry out work on sloped or hard-to-reach land?",
+    "raspuns_en": "Yes, but work on sloped or difficult-to-access land must be assessed beforehand. Galle Silva checks the access, the type of terrain, the volume of wood and the suitable machinery before confirming the harvesting, clearing or transport."
   },
   {
     "intrebare": "Faceți și toaletare de copaci în curți sau doar defrișări?",
     "raspuns": "Galle Silva poate analiza lucrări de curățare terenuri, tăiere vegetație și intervenții asupra arborilor, dar în zone urbane pot fi necesare avize locale. Pentru București, Ilfov și Prahova, este bine să verifici înainte dacă arborele este pe proprietate privată, spațiu verde public sau teren cu regim special.",
     "categorie": "curatare-terenuri",
-    "keyword": "toaletare copaci curte"
+    "keyword": "toaletare copaci curte",
+    "intrebare_de": "Führen Sie auch Baumpflege in Höfen durch oder nur Rodungen?",
+    "raspuns_de": "Galle Silva kann Arbeiten zur Grundstücksräumung, zum Vegetationsschnitt und Eingriffe an Bäumen prüfen, jedoch können in städtischen Gebieten lokale Genehmigungen erforderlich sein. Für Bukarest, Ilfov und Prahova ist es ratsam, vorab zu prüfen, ob der Baum auf Privatgrund, öffentlicher Grünfläche oder einem Gelände mit Sonderstatus steht.",
+    "intrebare_en": "Do you also do tree pruning in yards or only land clearing?",
+    "raspuns_en": "Galle Silva can assess land clearing work, vegetation cutting and interventions on trees, but in urban areas local permits may be required. For Bucharest, Ilfov and Prahova, it is wise to check beforehand whether the tree is on private property, a public green space or land with a special status."
   },
   {
     "intrebare": "Lucrați și cu firme sau instituții publice?",
     "raspuns": "Da, serviciile Galle Silva pot fi discutate și pentru firme, dezvoltatori, administratori de terenuri sau instituții, în funcție de lucrare și documentație. Pentru instituții publice, procedura poate depinde de achiziție, ofertare sau platforme de tip SEAP/SICAP.",
     "categorie": "general",
-    "keyword": "servicii forestiere firme institutii"
+    "keyword": "servicii forestiere firme institutii",
+    "intrebare_de": "Arbeiten Sie auch mit Unternehmen oder öffentlichen Einrichtungen?",
+    "raspuns_de": "Ja, die Leistungen von Galle Silva können auch für Unternehmen, Bauträger, Grundstücksverwalter oder Einrichtungen besprochen werden, je nach Arbeit und Dokumentation. Für öffentliche Einrichtungen kann das Verfahren von der Vergabe, der Angebotsabgabe oder Plattformen wie SEAP/SICAP abhängen.",
+    "intrebare_en": "Do you also work with companies or public institutions?",
+    "raspuns_en": "Yes, Galle Silva's services can also be discussed for companies, developers, land administrators or institutions, depending on the work and documentation. For public institutions, the procedure may depend on procurement, tendering or platforms such as SEAP/SICAP."
   }
 ]
