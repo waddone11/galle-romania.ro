@@ -17,7 +17,7 @@
         ->values();
 @endphp
 
-<section class="bg-white py-20 lg:py-28 px-6">
+<section class="bg-white py-6 lg:py-28 px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.25em] text-forest/50">{{ $eyebrow }}</p>
@@ -34,7 +34,7 @@
                         ? (getimagesize(public_path(ltrim($webp, '/'))) ?: [1600, 900])
                         : [1600, 900];
                 @endphp
-                <article class="group flex flex-col overflow-hidden rounded-3xl border border-mist bg-[#fafaf8] transition hover:-translate-y-1 hover:shadow-lg hover:shadow-forest/10">
+                <article class="group flex flex-col overflow-hidden rounded-3xl border border-forest bg-[#fafaf8] transition hover:-translate-y-1 hover:shadow-lg hover:shadow-forest/10">
                     @if($webp)
                         <picture>
                             <source srcset="{{ asset(ltrim($webp, '/')) }}" type="image/webp">
@@ -55,7 +55,7 @@
                         </div>
 
                         @if($item['text'])
-                            <p class="mt-4 text-sm font-light leading-relaxed text-forest/70">{{ $item['text'] }}</p>
+                            <p class="mt-4 text-sm font-light leading-relaxed text-forest/90">{{ $item['text'] }}</p>
                         @endif
 
                         @if($item['url'])
