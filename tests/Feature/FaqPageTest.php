@@ -91,7 +91,7 @@ it('shows the FAQ teaser on home and the nav/footer links', function () {
 
 it('renders the restyled FAQ page with search, anchors, rail and accessible accordions', function () {
     $html = $this->get('/intrebari-frecvente')->assertOk()->getContent();
-    $total = App\Models\Faq::where('is_published', true)->count();
+    $total = Faq::where('is_published', true)->count();
 
     expect($html)
         // search + contor live (valoarea initiala randata pe server)
