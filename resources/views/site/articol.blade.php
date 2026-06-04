@@ -62,17 +62,9 @@
             @endif
 
             <p class="text-lg text-forest-dark/80 mb-6 font-medium">{{ $aExcerpt }}</p>
-            @php
-                // Acelasi pattern ca blocks/sectiune_text: escapam tot, permitem
-                // DOAR link-uri interne markdown [text](/url) pentru interlinking.
-                $aHtml = nl2br((string) preg_replace(
-                    '/\[([^\]]+)\]\((\/[^)\s]*)\)/',
-                    '<a href="$2" class="font-semibold text-forest underline underline-offset-2 hover:text-mint transition-colors">$1</a>',
-                    e((string) $aContinut)
-                ));
-            @endphp
-            <div class="prose prose-stone max-w-none text-forest-dark/80 leading-relaxed">
-                {!! $aHtml !!}
+            {{-- Markdown-lite securizat (##/###, liste, **bold**, link-uri interne) — vezi App\Support\BlogMarkdown. --}}
+            <div class="max-w-none text-forest-dark/80 leading-relaxed">
+                {!! \App\Support\BlogMarkdown::toHtml((string) $aContinut) !!}
             </div>
         </div>
     </article>

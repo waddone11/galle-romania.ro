@@ -8,7 +8,9 @@ use Illuminate\Database\Seeder;
 class ArticolSeeder extends Seeder
 {
     /**
-     * 6 articole de blog cu continut SEO real (RO cu diacritice + DE/EN complete).
+     * 6 articole de blog cu continut SEO real (RO cu diacritice + DE/EN complete),
+     * plus 10 articole extinse (RO, ~1000-1400 cuvinte) incarcate din
+     * database/seeders/data/blog.json + database/seeders/data/blog/{slug}.md.
      * Link-urile interne folosesc sintaxa [text](/url) — randata de site/articol.
      */
     public function run(): void
@@ -152,6 +154,44 @@ class ArticolSeeder extends Seeder
 
         foreach ($rows as $row) {
             Articol::updateOrCreate(['slug' => $row['slug']], $row);
+        }
+
+        $this->seedFromDataFiles();
+    }
+
+    /**
+     * Articolele extinse: metadatele vin din blog.json, corpul (markdown RO)
+     * din data/blog/{slug}.md. DE/EN raman null — front-end-ul face fallback pe RO.
+     * Imaginea se seteaza doar daca fisierul exista in public/ (altfel null,
+     * iar slug-ul e listat in docs/blog-imagini-necesare.md).
+     */
+    private function seedFromDataFiles(): void
+    {
+        $json = file_get_contents(database_path('seeders/data/blog.json'));
+        /** @var array<int, array<string, string>> $meta */
+        $meta = $json === false ? [] : (array) json_decode($json, true);
+
+        foreach (array_values($meta) as $i => $articol) {
+            $continutPath = database_path("seeders/data/blog/{$articol['slug']}.md");
+            if (! is_file($continutPath)) {
+                continue;
+            }
+
+            $imagine = "/images/blog/{$articol['slug']}.webp";
+            if (! is_file(public_path(ltrim($imagine, '/')))) {
+                $imagine = null;
+            }
+
+            Articol::updateOrCreate(['slug' => $articol['slug']], [
+                'titlu' => ['ro' => $articol['titlu']],
+                'excerpt' => ['ro' => $articol['excerpt']],
+                'continut' => ['ro' => trim((string) file_get_contents($continutPath))],
+                'categorie' => $articol['categorie'],
+                'imagine' => $imagine,
+                // Esalonat, inaintea celor 6 articole istorice (34..2 zile).
+                'published_at' => now()->subDays(70 - $i * 3),
+                'is_published' => true,
+            ]);
         }
     }
 }
