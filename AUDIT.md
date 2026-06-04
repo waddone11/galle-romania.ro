@@ -81,3 +81,12 @@ docker exec galle-romaniaro-laravel.test-1 ./vendor/bin/phpstan analyse --no-pro
 docker exec galle-romaniaro-laravel.test-1 php artisan sitemap:generate
 docker exec galle-romaniaro-laravel.test-1 npm run build
 ```
+
+## Stare finala T3 (2026-06-04) — deploy-ready
+
+- **Poze reale integrate**: 34 fisiere in `public/images/galle/proiecte/` (8 cadre × webp+jpg × patrat+lat, + video mp4 + poster), toate git-tracked si servite 200. Lazy + `width/height` anti-CLS peste tot (carduri, galerie, header pagini, blog).
+- **SEO per pagina**: title/meta/canonical/OG/Twitter/hreflang+x-default global; og:image per pagina (og_image sau imaginea header-ului); JSON-LD: LocalBusiness + WebSite globale, Service+FAQPage+Breadcrumb pe servicii, Product+FAQPage pe lemn-de-foc, Article pe blog. Sitemap 39 URL-uri (6 servicii, 12 landing-uri locale, 6 articole, date-firma); robots.txt + llms.txt cu NAP.
+- **Blog**: 6 articole reale publicate, esalonate, cu schema, imagine si interlinking intern.
+- **Diacritice**: continut home + stringuri UI (prin stratul de traduceri) — complet.
+- **Verificare**: Pest 75/75, PHPStan lvl 5 = 0 erori, Pint clean, `migrate:fresh --seed` curat.
+- **Hero home**: pastreaza ilustratia animata (poza sub nori e invizibila — testat); poza „GALLE" e og:image home + hero exploatare-forestiera.

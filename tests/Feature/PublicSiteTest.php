@@ -33,7 +33,7 @@ beforeEach(function () {
 it('renders home page with seeded species in the wheel', function () {
     $r = $this->get('/');
     $r->assertOk();
-    $r->assertSeeText('Padurea, ');
+    $r->assertSeeText('Pădurea, ');
     $r->assertSeeText('Stejar');
 });
 
