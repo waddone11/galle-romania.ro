@@ -105,6 +105,10 @@ class PaginaForm
                         TextInput::make("titlu.$loc")->label("Titlu H1 ($label)"),
                         Textarea::make("intro.$loc")->label("Intro ($label)")->rows(3),
                     ]),
+                    TextInput::make('imagine')
+                        ->label('Imagine hero (optional)')
+                        ->placeholder('/images/galle/proiecte/...-wide.webp')
+                        ->helperText('Varianta -wide pe desktop; pe mobil se foloseste automat varianta patrata (acelasi nume fara -wide).'),
                 ]),
 
             Block::make('sectiune_text')
