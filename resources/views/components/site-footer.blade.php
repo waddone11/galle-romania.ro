@@ -21,7 +21,14 @@
         <div class="max-w-7xl mx-auto px-6 py-14 bg-forest">
             <div class="grid gap-10 md:grid-cols-4">
                 <div class="md:col-span-2">
-                    <span class="font-display text-2xl font-extrabold">Galle<span class="text-mint"> Silva</span></span>
+                    <img
+                        src="{{ asset('images/galle/logo/logo-galle-footer.png') }}"
+                        srcset="{{ asset('images/galle/logo/logo-galle-footer.png') }} 1x, {{ asset('images/galle/logo/logo-galle-footer@2x.png') }} 2x"
+                        alt="Galle Silva"
+                        class="h-24 w-auto"
+                        width="481" height="200"
+                        loading="lazy" decoding="async"
+                    >
                     <p class="mt-4 text-sm text-mist/60 max-w-xs font-light">
                         {{ __('Servicii forestiere si lemn de foc, cu grija pentru padure si mediu. Partener local Galle GmbH Germania.') }}
                     </p>

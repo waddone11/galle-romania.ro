@@ -11,10 +11,16 @@
     class="sticky top-0 z-40 transition-colors duration-300"
     :class="scrolled ? 'bg-white/90 backdrop-blur-md border-b border-mist shadow-sm' : 'bg-transparent border-b border-transparent'"
 >
-    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navigatie principala">
+    <nav class="mx-auto max-w-7xl px-4 md:px-0" aria-label="Navigatie principala">
         <div class="flex h-16 items-center justify-between">
-            <a href="{{ $prefix }}/" class="font-display text-2xl font-extrabold tracking-tight">
-                <span class="text-forest">Galle</span><span class="text-mint"> Silva</span>
+            <a href="{{ $prefix }}/" class="flex items-center" aria-label="Galle Silva - Acasa">
+                <img
+                    src="{{ asset('images/galle/logo/logo-nav-96.png') }}"
+                    srcset="{{ asset('images/galle/logo/logo-nav-96.png') }} 1x, {{ asset('images/galle/logo/logo-nav-192.png') }} 2x"
+                    alt="Galle Silva"
+                    class="h-10 w-auto"
+                    width="370" height="96"
+                >
             </a>
 
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
@@ -38,19 +44,24 @@
                 </a>
             </div>
 
-            <button
-                @click="open = !open"
-                class="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-forest hover:bg-mist"
-                aria-label="Meniu mobil"
-                :aria-expanded="open"
-            >
-                <svg x-show="!open" class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-                <svg x-show="open" x-cloak class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+            <div class="lg:hidden flex items-center gap-2">
+                <button
+                    @click="open = !open"
+                    class="inline-flex items-center justify-center rounded-md p-2 text-forest hover:bg-mist"
+                    aria-label="Meniu mobil"
+                    :aria-expanded="open"
+                >
+                    <svg x-show="!open" class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg x-show="open" x-cloak class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                @if($hasLanguageSwitcher)
+                    <livewire:language-switcher />
+                @endif
+            </div>
         </div>
 
         <div x-show="open" x-cloak class="lg:hidden pb-4 space-y-2 text-sm">
@@ -60,10 +71,7 @@
             <a href="{{ $prefix }}/despre" class="block py-2">{{ __('Despre') }}</a>
             <a href="{{ $prefix }}/certificari" class="block py-2">{{ __('Certificari') }}</a>
             <a href="{{ $prefix }}/contact" class="block py-2">{{ __('Contact') }}</a>
-            <div class="pt-2 border-t border-mist flex items-center justify-between">
-                @if($hasLanguageSwitcher)
-                    <livewire:language-switcher />
-                @endif
+            <div class="pt-2 border-t border-mist flex items-center justify-end">
                 <a href="{{ $prefix }}/contact" class="rounded-full bg-mint px-4 py-1.5 font-semibold text-forest">{{ __('Cere oferta') }}</a>
             </div>
         </div>

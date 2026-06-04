@@ -257,6 +257,29 @@
     }
 }
 
+/* ---- LOGO GLOSS (manifest): sheen care trece periodic peste logo ---- */
+.logo-gloss {
+    position: relative;
+    overflow: hidden;
+    border-radius: 9999px;
+}
+.logo-gloss::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg,
+        transparent 38%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 62%);
+    transform: translateX(-160%);
+    animation: logo-shine 4.2s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes logo-shine {
+    0%, 55%  { transform: translateX(-160%); }
+    100%     { transform: translateX(160%); }
+}
+
 /* ---- CERTIFICARI MARQUEE: banda orizontala continua cu logo-uri ---- */
 .cert-marquee {
     overflow: hidden;
