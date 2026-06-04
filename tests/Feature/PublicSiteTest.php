@@ -14,6 +14,7 @@ use Database\Seeders\FaqSeeder;
 use Database\Seeders\PaginaSeeder;
 use Database\Seeders\ServiciuSeeder;
 use Database\Seeders\SpecieSeeder;
+use Database\Seeders\TraducereSeeder;
 use Database\Seeders\ZonaLivrareSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -28,6 +29,8 @@ beforeEach(function () {
     $this->seed(ZonaLivrareSeeder::class);
     $this->seed(FaqSeeder::class);
     $this->seed(PaginaSeeder::class);
+    // Diacriticele RO pentru cheile UI vin din stratul de traduceri.
+    $this->seed(TraducereSeeder::class);
 });
 
 it('renders home page with seeded species in the wheel', function () {
