@@ -1,9 +1,33 @@
+@php
+    $loc = app()->getLocale();
+    $prefix = $loc === 'ro' ? '' : '/'.$loc;
+    $localitate = $localitate ?? null;
+
+    $metaTitle = ($pagina?->getTranslation('meta_title', $loc) ?: $pagina?->getTranslation('meta_title', 'ro'))
+        ?: 'Lemn de foc Prahova — stejar, carpen, fag, cu livrare | Galle Silva';
+    $metaDesc = ($pagina?->getTranslation('meta_description', $loc) ?: $pagina?->getTranslation('meta_description', 'ro'))
+        ?: 'Lemn de foc de esență tare (stejar, carpen, fag), tăiat și crăpat, de la 350 lei/m³. Livrare în Prahova, Ilfov și București. Fără cantitate minimă.';
+
+    $h1 = 'Lemn de foc în Prahova, București și Ilfov — fag, stejar, carpen';
+    $intro = 'Vindem lemn de foc de esență tare — stejar și carpen pe stoc — de la 350 lei/m³, tăiat și crăpat, cu livrare în Prahova, Ilfov și București, fără cantitate minimă.';
+    $canonical = null;
+
+    if ($localitate) {
+        $localIntro = $localitate->getTranslation('intro', $loc) ?: $localitate->getTranslation('intro', 'ro');
+        $h1 = 'Lemn de foc în '.$localitate->nume.' — fag, stejar, carpen';
+        $intro = $localIntro ?: 'Livrăm lemn de foc tăiat și crăpat în '.$localitate->nume.' — de la 350 lei/m³, în 1–3 zile lucrătoare.';
+        $metaTitle = 'Lemn de foc '.$localitate->nume.' — livrare la domiciliu | Galle Silva';
+        $metaDesc = 'Lemn de foc de esență tare în '.$localitate->nume.', județul '.$localitate->judet.': stejar și carpen pe stoc, tăiat și crăpat, de la 350 lei/m³. Livrare în 1–3 zile, fără cantitate minimă.';
+        // Continutul e mostenit de pe pagina principala — canonical acolo.
+        $canonical = url($prefix.'/lemn-de-foc');
+    }
+@endphp
 <x-layouts.app
-    title="Lemn de foc — stejar uscat, livrare Prahova, Ilfov, Bucuresti | Galle Silva"
-    metaDescription="Lemn de foc de calitate: stejar uscat disponibil, fag si carpen in curand. Calculator de pret si comanda online. Livrare in Prahova, Ilfov si Bucuresti."
+    :title="$metaTitle"
+    :metaDescription="$metaDesc"
+    :canonical="$canonical"
 >
     @push('seo')
-        @php $loc = app()->getLocale(); @endphp
         @foreach($species as $sp)
             <x-json-ld :data="array_filter([
                 '@context' => 'https://schema.org',
@@ -39,19 +63,18 @@
         <x-json-ld :data="[
             '@context' => 'https://schema.org',
             '@type' => 'BreadcrumbList',
-            'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url('/')],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Lemn de foc', 'item' => url()->current()],
-            ],
+            'itemListElement' => array_values(array_filter([
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Acasa', 'item' => url($prefix.'/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Lemn de foc', 'item' => url($prefix.'/lemn-de-foc')],
+                $localitate ? ['@type' => 'ListItem', 'position' => 3, 'name' => $localitate->nume, 'item' => url()->current()] : null,
+            ])),
         ]" />
     @endpush
 
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold">Lemn de foc</h1>
-            <p class="mt-4 text-lg text-mist max-w-2xl mx-auto">
-                Stejar uscat disponibil acum. Fag si carpen — in curand. Livrare in Prahova, Ilfov si Bucuresti.
-            </p>
+            <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ $h1 }}</h1>
+            <p class="mt-4 text-lg text-mist max-w-3xl mx-auto">{{ $intro }}</p>
         </div>
     </section>
 
@@ -69,11 +92,11 @@
                     <p class="text-sm text-forest-dark/80 mb-4">{{ $sp->getTranslation('descriere', 'ro') }}</p>
                     <dl class="grid grid-cols-2 gap-2 text-sm pt-4 border-t border-forest/10">
                         <div>
-                            <dt class="text-forest-dark/60 text-xs">Pret pornire</dt>
+                            <dt class="text-forest-dark/60 text-xs">Preț pornire</dt>
                             <dd class="font-semibold">{{ number_format($sp->pret_pornire, 0) }} lei</dd>
                         </div>
                         <div>
-                            <dt class="text-forest-dark/60 text-xs">Putere calorica</dt>
+                            <dt class="text-forest-dark/60 text-xs">Putere calorică</dt>
                             <dd class="font-semibold">{{ $sp->putere_calorica }} kWh/kg</dd>
                         </div>
                     </dl>
@@ -82,17 +105,32 @@
         </div>
     </section>
 
+    {{-- Sectiuni CMS (pret, esente, cum vindem, livrare & plata, ster vs cub) --}}
+    @if($pagina && is_array($pagina->sectiuni))
+        <div class="pb-8">
+            @foreach($pagina->sectiuni as $block)
+                @php
+                    $type = is_array($block) ? ($block['type'] ?? null) : null;
+                    $blockData = is_array($block) ? ($block['data'] ?? []) : [];
+                @endphp
+                @if($type && view()->exists("blocks.$type"))
+                    @include("blocks.$type", ['data' => $blockData])
+                @endif
+            @endforeach
+        </div>
+    @endif
+
     {{-- Calculator + Order form --}}
     <section class="bg-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
             <div>
-                <h2 class="font-display text-3xl font-semibold mb-3">Calculator pret</h2>
-                <p class="text-forest-dark/70 mb-6">Estimam in timp real costul total. Comanda direct sau pe WhatsApp.</p>
+                <h2 class="font-display text-3xl font-semibold mb-3">Calculator preț</h2>
+                <p class="text-forest-dark/70 mb-6">Estimăm în timp real costul total. Comandă direct sau pe WhatsApp.</p>
                 <livewire:firewood.price-calculator />
             </div>
             <div>
-                <h2 class="font-display text-3xl font-semibold mb-3">Comanda lemn</h2>
-                <p class="text-forest-dark/70 mb-6">Trimite-ne datele tale si te contactam in cel mult 24h pentru confirmare.</p>
+                <h2 class="font-display text-3xl font-semibold mb-3">Comandă lemn</h2>
+                <p class="text-forest-dark/70 mb-6">Trimite-ne datele tale și te contactăm în cel mult 24h pentru confirmare.</p>
                 <livewire:firewood.order-form />
             </div>
         </div>
@@ -101,7 +139,7 @@
     {{-- Zone livrare --}}
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 class="font-display text-3xl font-semibold mb-8 text-center">Unde livram</h2>
+            <h2 class="font-display text-3xl font-semibold mb-8 text-center">Unde livrăm</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 @foreach($zone as $z)
                     <div class="bg-[#fafaf8] border border-mist rounded-2xl p-6">
@@ -120,7 +158,7 @@
     @if($faqs->count() > 0)
         <section class="bg-mist-warm py-16">
             <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-                <h2 class="font-display text-3xl font-semibold mb-8 text-center">Intrebari frecvente</h2>
+                <h2 class="font-display text-3xl font-semibold mb-8 text-center">Întrebări frecvente</h2>
                 <div class="space-y-4">
                     @foreach($faqs as $faq)
                         <details class="bg-[#fafaf8] rounded-xl p-4 group">

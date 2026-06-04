@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ServiciuSeeder::class,
             CertificareSeeder::class,
             ZonaLivrareSeeder::class,
+            LocalitateSeeder::class,
             FaqSeeder::class,
             PaginaSeeder::class,
             ProiectSeeder::class,

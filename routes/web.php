@@ -17,11 +17,26 @@ $siteRoutes = function () {
     Route::get('/', [SiteController::class, 'home'])->name('home');
 
     Route::get('/lemn-de-foc', [SiteController::class, 'lemnDeFoc'])->name('lemn-de-foc');
+    Route::get('/lemn-de-foc/{localitate}', [SiteController::class, 'lemnDeFocLocal'])->name('lemn-de-foc.local');
 
     Route::get('/servicii', [SiteController::class, 'servicii'])->name('servicii');
-    Route::get('/servicii/forestiere', fn () => app(SiteController::class)->servicii('forestiere'))->name('servicii.forestiere');
-    Route::get('/servicii/peisagistica', fn () => app(SiteController::class)->servicii('peisagistica'))->name('servicii.peisagistica');
-    Route::get('/servicii/compostare', fn () => app(SiteController::class)->servicii('compostare'))->name('servicii.compostare');
+
+    // Cele 6 servicii — pagini CMS randate prin slug.
+    foreach (['exploatare-forestiera', 'achizitie-masa-lemnoasa', 'curatare-terenuri', 'transport-lemn', 'lucrari-silvice'] as $serviciuSlug) {
+        Route::get("/servicii/{$serviciuSlug}", fn () => app(SiteController::class)->serviciuPage($serviciuSlug))->name("servicii.{$serviciuSlug}");
+    }
+
+    // 301 din vechea structura (forestiere/peisagistica/compostare).
+    $redirect301 = function (string $to) {
+        return function () use ($to) {
+            $prefix = app()->getLocale() === 'ro' ? '' : '/'.app()->getLocale();
+
+            return redirect()->to($prefix.$to, 301);
+        };
+    };
+    Route::get('/servicii/forestiere', $redirect301('/servicii/exploatare-forestiera'))->name('servicii.forestiere');
+    Route::get('/servicii/peisagistica', $redirect301('/servicii'))->name('servicii.peisagistica');
+    Route::get('/servicii/compostare', $redirect301('/servicii'))->name('servicii.compostare');
 
     Route::get('/institutii', [SiteController::class, 'institutii'])->name('institutii');
     Route::get('/despre', [SiteController::class, 'despre'])->name('despre');

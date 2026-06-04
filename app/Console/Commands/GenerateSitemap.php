@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Articol;
+use App\Models\Localitate;
 use App\Models\Pagina;
 use App\Models\Proiect;
-use App\Models\Serviciu;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -22,9 +22,11 @@ class GenerateSitemap extends Command
             ->add(Url::create('/')->setPriority(1.0)->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY))
             ->add(Url::create('/lemn-de-foc')->setPriority(0.9)->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY))
             ->add(Url::create('/servicii')->setPriority(0.8))
-            ->add(Url::create('/servicii/forestiere')->setPriority(0.7))
-            ->add(Url::create('/servicii/peisagistica')->setPriority(0.7))
-            ->add(Url::create('/servicii/compostare')->setPriority(0.7))
+            ->add(Url::create('/servicii/exploatare-forestiera')->setPriority(0.7))
+            ->add(Url::create('/servicii/achizitie-masa-lemnoasa')->setPriority(0.7))
+            ->add(Url::create('/servicii/curatare-terenuri')->setPriority(0.7))
+            ->add(Url::create('/servicii/transport-lemn')->setPriority(0.7))
+            ->add(Url::create('/servicii/lucrari-silvice')->setPriority(0.7))
             ->add(Url::create('/institutii')->setPriority(0.7))
             ->add(Url::create('/despre')->setPriority(0.6))
             ->add(Url::create('/certificari')->setPriority(0.6))
@@ -33,14 +35,20 @@ class GenerateSitemap extends Command
             ->add(Url::create('/contact')->setPriority(0.5));
 
         Pagina::where('is_published', true)->get()->each(function (Pagina $p) use ($sitemap) {
-            if (in_array($p->slug, ['home', 'despre', 'institutii', 'certificari'], true)) {
-                return; // covered explicitly above
+            // Pagini acoperite explicit mai sus sau servite sub alt prefix (/servicii/...).
+            $explicit = [
+                'home', 'despre', 'institutii', 'certificari', 'servicii', 'lemn-de-foc',
+                'exploatare-forestiera', 'achizitie-masa-lemnoasa', 'curatare-terenuri',
+                'transport-lemn', 'lucrari-silvice',
+            ];
+            if (in_array($p->slug, $explicit, true)) {
+                return;
             }
             $sitemap->add(Url::create("/{$p->slug}")->setPriority(0.4));
         });
 
-        Serviciu::where('is_active', true)->get()->each(function (Serviciu $s) use ($sitemap) {
-            $sitemap->add(Url::create("/servicii/{$s->slug}")->setPriority(0.6));
+        Localitate::where('is_active', true)->get()->each(function (Localitate $l) use ($sitemap) {
+            $sitemap->add(Url::create("/lemn-de-foc/{$l->slug}")->setPriority(0.6));
         });
 
         Proiect::where('is_published', true)->get()->each(function (Proiect $p) use ($sitemap) {
