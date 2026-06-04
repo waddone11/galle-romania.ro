@@ -26,6 +26,7 @@
     :title="$metaTitle"
     :metaDescription="$metaDesc"
     :canonical="$canonical"
+    :ogImage="asset('images/galle/proiecte/gramada-busteni-wide.jpg')"
 >
     @push('seo')
         @foreach($species as $sp)

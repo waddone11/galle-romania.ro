@@ -93,6 +93,16 @@
     @endphp
     <x-json-ld :data="array_filter($localBusiness, fn ($v) => $v !== null)" />
 
+    {{-- WebSite (global) — numele site-ului + locale-urile disponibile --}}
+    <x-json-ld :data="[
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => 'Galle Silva',
+        'url' => $hrefBase,
+        'inLanguage' => ['ro', 'de', 'en'],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Galle Silva SRL'],
+    ]" />
+
     @stack('seo')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

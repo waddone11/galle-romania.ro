@@ -8,10 +8,25 @@
     $loc = app()->getLocale();
     $metaTitle = $pagina->getTranslation('meta_title', $loc) ?: $pagina->getTranslation('meta_title', 'ro') ?: null;
     $metaDesc = $pagina->getTranslation('meta_description', $loc) ?: $pagina->getTranslation('meta_description', 'ro') ?: null;
+
+    // og:image: campul og_image al paginii sau imaginea din primul header_pagina (jpg, absolut).
+    $ogImage = $pagina->og_image;
+    if (! $ogImage && is_array($pagina->sectiuni)) {
+        foreach ($pagina->sectiuni as $ogBlock) {
+            if (is_array($ogBlock) && ($ogBlock['type'] ?? null) === 'header_pagina' && ! empty($ogBlock['data']['imagine'])) {
+                $ogImage = $ogBlock['data']['imagine'];
+                break;
+            }
+        }
+    }
+    if ($ogImage) {
+        $ogImage = asset(ltrim((string) preg_replace('/\.webp$/', '.jpg', $ogImage), '/'));
+    }
 @endphp
 <x-layouts.app
     :title="$metaTitle"
     :metaDescription="$metaDesc"
+    :ogImage="$ogImage"
 >
     @push('seo')
         @foreach($schemas ?? [] as $schema)

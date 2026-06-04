@@ -5,6 +5,7 @@
 <x-layouts.app
     :title="$metaTitle"
     :metaDescription="$metaDesc"
+    :ogImage="asset('images/galle/proiecte/harvester-galle-wide.jpg')"
     :flush-header="true"
 >
     {{-- Homepage is rendered 1:1 from the CMS Builder (Pagina[slug=home].sectiuni).
