@@ -290,6 +290,15 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
+                        // Recenzii reale (modelul Recenzie, doar is_published=true).
+                        // Sectiunea dispare automat cand nu exista recenzii publicate.
+                        'type' => 'recenzii',
+                        'data' => [
+                            'eyebrow' => $t('Recenzii', 'Bewertungen', 'Reviews'),
+                            'titlu' => $t('Ce spun clienții', 'Was unsere Kunden sagen', 'What our clients say'),
+                        ],
+                    ],
+                    [
                         'type' => 'galerie',
                         'data' => [
                             'titlu' => $t('De la fața locului', 'Direkt vom Einsatzort', 'From the field'),

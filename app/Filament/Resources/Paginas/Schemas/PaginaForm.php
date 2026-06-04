@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Paginas\Schemas;
 
 use App\Filament\Concerns\HasTranslatableTabs;
+use App\Models\Recenzie;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
@@ -313,6 +314,24 @@ class PaginaForm
                     TextInput::make('video_poster')
                         ->label('Poster video (optional)')
                         ->placeholder('/images/galle/proiecte/...webp'),
+                ]),
+
+            Block::make('recenzii')
+                ->label('Recenzii clienti')
+                ->icon('heroicon-o-star')
+                ->schema([
+                    Select::make('serviciu')
+                        ->label('Filtreaza dupa serviciu (gol = toate)')
+                        ->options(Recenzie::SERVICII)
+                        ->nullable(),
+                    TextInput::make('limita')
+                        ->label('Numar maxim de recenzii (gol = toate)')
+                        ->numeric()
+                        ->nullable(),
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
                 ]),
 
             Block::make('faq')
