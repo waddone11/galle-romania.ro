@@ -9,6 +9,7 @@ class PaginaSeeder extends Seeder
 {
     public function run(): void
     {
+        /** @var array<int, array<string, mixed>> $rows */
         $rows = [
             [
                 'slug' => 'home',
@@ -64,8 +65,79 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
+                        'type' => 'manifest',
+                        'data' => [
+                            'eyebrow' => ['ro' => 'GALLE SILVA', 'de' => null, 'en' => null],
+                            'titlu_mare' => ['ro' => 'Scoatem padurea din ceata.', 'de' => null, 'en' => null],
+                            'tagline' => ['ro' => 'Limpede, de la padure pana la tine.', 'de' => null, 'en' => null],
+                            'intro' => ['ro' => 'Suntem partenerul tau forestier din Prahova: recoltam responsabil, transportam si livram lemn de calitate — cu experienta si standardele grupului german Galle. Fara batai de cap, fara surprize.', 'de' => null, 'en' => null],
+                        ],
+                    ],
+                    [
                         'type' => 'splitter',
                         'data' => [],
+                    ],
+                    [
+                        'type' => 'text_imagine',
+                        'data' => [
+                            'titlu' => ['ro' => 'Cine suntem', 'de' => null, 'en' => null],
+                            'continut' => ['ro' => 'Galle Silva aduce in Romania experienta grupului german Galle GmbH — aproape 25 de ani in silvicultura. Lucram cu utilaje moderne (harvester si forwarder), echipa specializata si autospeciale proprii, in paduri private si de stat. De la recoltare la livrare, ducem lucrarea cap-coada, corect si transparent.', 'de' => null, 'en' => null],
+                            'cta_text' => ['ro' => 'Despre noi', 'de' => null, 'en' => null],
+                            'imagine' => '/images/galle/proiecte/harvester-padure.webp',
+                            'cta_url' => '/despre',
+                            'pozitie' => 'dreapta',
+                        ],
+                    ],
+                    [
+                        'type' => 'servicii',
+                        'data' => [
+                            'eyebrow' => ['ro' => 'Ce facem', 'de' => null, 'en' => null],
+                            'titlu' => ['ro' => 'Servicii forestiere complete', 'de' => null, 'en' => null],
+                            'items' => [
+                                [
+                                    'icon' => 'copaci',
+                                    'titlu' => ['ro' => 'Exploatare forestiera', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Recoltam lemnul cu harvester si forwarder, in paduri private si de stat. Taiere, fasonare si scos-apropiat — lucrare completa.', 'de' => null, 'en' => null],
+                                    'imagine' => '/images/galle/proiecte/harvester-exploatare.webp',
+                                    'url' => '/servicii/forestiere',
+                                ],
+                                [
+                                    'icon' => 'handshake',
+                                    'titlu' => ['ro' => 'Achizitie masa lemnoasa', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Cumparam masa lemnoasa pe picior sau fasonata. Evaluam corect si platim transparent. Ai padure de valorificat? Vorbeste cu noi.', 'de' => null, 'en' => null],
+                                    'imagine' => '/images/galle/proiecte/depozit-busteni.webp',
+                                    'url' => '/servicii',
+                                ],
+                                [
+                                    'icon' => 'excavator',
+                                    'titlu' => ['ro' => 'Curatare si defrisare terenuri', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Curatam terenul de copaci, arbusti si cioate — pentru constructii sau agricultura. Fara suprafata minima.', 'de' => null, 'en' => null],
+                                    'imagine' => null,
+                                    'url' => '/servicii',
+                                ],
+                                [
+                                    'icon' => 'camion',
+                                    'titlu' => ['ro' => 'Transport lemn', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Transportam lemnul cu autospeciale proprii, din padure pana la depozit sau la tine.', 'de' => null, 'en' => null],
+                                    'imagine' => '/images/galle/proiecte/camion-transport-lemn.webp',
+                                    'url' => '/servicii',
+                                ],
+                                [
+                                    'icon' => 'flacara',
+                                    'titlu' => ['ro' => 'Lemn de foc', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Esente tari — stejar, carpen, fag — livrate in Prahova, Ilfov si Bucuresti.', 'de' => null, 'en' => null],
+                                    'imagine' => null,
+                                    'url' => '/lemn-de-foc',
+                                ],
+                                [
+                                    'icon' => 'frunza',
+                                    'titlu' => ['ro' => 'Lucrari silvice & documentatie', 'de' => null, 'en' => null],
+                                    'text' => ['ro' => 'Rarituri, curatiri si actele aferente (APV, documente de insotire). Te ghidam de la cap la coada.', 'de' => null, 'en' => null],
+                                    'imagine' => null,
+                                    'url' => '/servicii',
+                                ],
+                            ],
+                        ],
                     ],
                     [
                         'type' => 'carduri',
@@ -97,13 +169,18 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
-                        'type' => 'solutie_verde',
+                        'type' => 'galerie',
                         'data' => [
-                            'titlu' => ['ro' => 'Solutia noastra verde', 'de' => null, 'en' => null],
-                            'text' => ['ro' => 'Tinem cont mereu de mediu, sustenabilitate si responsabilitate cand recoltam si livram. Padure gestionata durabil, certificari FSC si PEFC in lucru, lemn de foc de calitate.', 'de' => null, 'en' => null],
-                            'eyebrow' => ['ro' => 'Avem o viziune', 'de' => null, 'en' => null],
-                            'cta_text' => ['ro' => 'Despre noi', 'de' => null, 'en' => null],
-                            'cta_url' => '/despre',
+                            'titlu' => ['ro' => 'De la fata locului', 'de' => null, 'en' => null],
+                            'imagini' => [
+                                '/images/galle/proiecte/forwarder-panta.webp',
+                                '/images/galle/proiecte/depozit-busteni.webp',
+                                '/images/galle/proiecte/forwarder-camp.webp',
+                                '/images/galle/proiecte/harvester-padure.webp',
+                                '/images/galle/proiecte/camion-transport-lemn.webp',
+                            ],
+                            'video' => '/images/galle/proiecte/depozit-video.mp4',
+                            'video_poster' => '/images/galle/proiecte/depozit-video-poster.webp',
                         ],
                     ],
                     [
@@ -114,16 +191,6 @@ class PaginaSeeder extends Seeder
                             'stat_number' => '100%',
                             'stat_top' => ['ro' => 'natural', 'de' => null, 'en' => null],
                             'stat_bottom' => ['ro' => '& regenerabil', 'de' => null, 'en' => null],
-                        ],
-                    ],
-                    [
-                        'type' => 'reciclare',
-                        'data' => [
-                            'titlu' => ['ro' => 'Resursa regenerabila', 'de' => null, 'en' => null],
-                            'text' => ['ro' => 'Padurea gestionata responsabil se regenereaza: ce recoltam, se replanteaza. Un ciclu sustenabil, certificat FSC si PEFC, care pastreaza resursa vie pentru generatiile urmatoare.', 'de' => null, 'en' => null],
-                            'eyebrow' => ['ro' => 'Solutii complete pentru lemn si padure', 'de' => null, 'en' => null],
-                            'cta_text' => ['ro' => 'Serviciile noastre', 'de' => null, 'en' => null],
-                            'cta_url' => '/servicii',
                         ],
                     ],
                     [

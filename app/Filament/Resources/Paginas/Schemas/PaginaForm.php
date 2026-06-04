@@ -97,6 +97,56 @@ class PaginaForm
                         ->columnSpanFull(),
                 ]),
 
+            Block::make('manifest')
+                ->label('Manifest (statement mare)')
+                ->icon('heroicon-o-sparkles')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu_mare.$loc")->label("Titlu mare ($label)"),
+                        TextInput::make("tagline.$loc")->label("Tagline ($label)"),
+                        Textarea::make("intro.$loc")->label("Intro ($label)")->rows(3),
+                    ]),
+                ]),
+
+            Block::make('servicii')
+                ->label('Servicii (grid carduri)')
+                ->icon('heroicon-o-wrench-screwdriver')
+                ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("eyebrow.$loc")->label("Eyebrow ($label)"),
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
+                    Repeater::make('items')
+                        ->label('Servicii')
+                        ->schema([
+                            Select::make('icon')
+                                ->label('Icon')
+                                ->options([
+                                    'flacara' => 'Flacara (lemn de foc)',
+                                    'copaci' => 'Copaci (exploatare forestiera)',
+                                    'handshake' => 'Handshake (achizitie masa lemnoasa)',
+                                    'excavator' => 'Excavator (curatare terenuri)',
+                                    'frunza' => 'Frunza (lucrari silvice)',
+                                    'camion' => 'Camion (transport)',
+                                    'topor' => 'Topor (taiere)',
+                                    'forwarder' => 'Forwarder (utilaj)',
+                                ])
+                                ->default('frunza')
+                                ->required(),
+                            HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                                TextInput::make("titlu.$loc")->label("Titlu ($label)"),
+                                Textarea::make("text.$loc")->label("Text ($label)")->rows(2),
+                            ]),
+                            TextInput::make('imagine')
+                                ->label('Imagine (optional)')
+                                ->placeholder('/images/galle/proiecte/...webp'),
+                            TextInput::make('url')->label('URL'),
+                        ])
+                        ->defaultItems(0)
+                        ->columnSpanFull(),
+                ]),
+
             Block::make('text_imagine')
                 ->label('Text + Imagine')
                 ->icon('heroicon-o-photo')
@@ -104,8 +154,10 @@ class PaginaForm
                     HasTranslatableTabs::for(fn (string $loc, string $label) => [
                         TextInput::make("titlu.$loc")->label("Titlu ($label)"),
                         Textarea::make("continut.$loc")->label("Continut ($label)")->rows(5),
+                        TextInput::make("cta_text.$loc")->label("Text buton ($label)"),
                     ]),
                     TextInput::make('imagine')->label('URL imagine'),
+                    TextInput::make('cta_url')->label('URL buton'),
                     Select::make('pozitie')
                         ->options(['stanga' => 'Imagine stanga', 'dreapta' => 'Imagine dreapta'])
                         ->default('stanga'),
@@ -209,11 +261,20 @@ class PaginaForm
                 ->label('Galerie imagini')
                 ->icon('heroicon-o-photo')
                 ->schema([
+                    HasTranslatableTabs::for(fn (string $loc, string $label) => [
+                        TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
+                    ]),
                     Repeater::make('imagini')
                         ->label('Imagini')
                         ->simple(TextInput::make('url')->placeholder('https://... sau /storage/...'))
                         ->defaultItems(0)
                         ->columnSpanFull(),
+                    TextInput::make('video')
+                        ->label('Video (mp4, optional)')
+                        ->placeholder('/images/galle/proiecte/...mp4'),
+                    TextInput::make('video_poster')
+                        ->label('Poster video (optional)')
+                        ->placeholder('/images/galle/proiecte/...webp'),
                 ]),
 
             Block::make('faq')
