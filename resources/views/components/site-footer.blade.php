@@ -52,6 +52,12 @@
                     <a href="{{ $prefix }}/termeni" class="hover:text-mint">{{ __('Termeni') }}</a>
                     <a href="{{ $prefix }}/confidentialitate" class="hover:text-mint">{{ __('Confidentialitate') }}</a>
                     <a href="{{ $prefix }}/cookies" class="hover:text-mint">{{ __('Cookies') }}</a>
+                    <a href="{{ $prefix }}/date-firma" class="hover:text-mint">{{ __('Date firma') }}</a>
+                    <button type="button"
+                            onclick="window.dispatchEvent(new CustomEvent('galle-open-cookie-settings'))"
+                            class="hover:text-mint underline-offset-2 hover:underline">
+                        {{ __('Setari cookies') }}
+                    </button>
                 </div>
             </div>
         </div>

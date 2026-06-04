@@ -234,6 +234,15 @@ class PaginaSeeder extends Seeder
                 'ordine' => 30,
             ],
             [
+                'slug' => 'date-firma',
+                'titlu' => ['ro' => 'Date firma', 'de' => 'Impressum', 'en' => 'Legal notice'],
+                'meta_title' => ['ro' => 'Date firma / Impressum — Galle Silva SRL', 'de' => null, 'en' => null],
+                'meta_description' => ['ro' => 'Datele de identificare ale Galle Silva SRL: CUI, Registrul Comertului, sediu social, contact si reprezentant legal.', 'de' => null, 'en' => null],
+                'sectiuni' => null,
+                'is_published' => true,
+                'ordine' => 90,
+            ],
+            [
                 'slug' => 'termeni',
                 'titlu' => ['ro' => 'Termeni si conditii', 'de' => 'AGB', 'en' => 'Terms'],
                 'sectiuni' => null,

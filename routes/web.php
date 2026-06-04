@@ -35,6 +35,7 @@ $siteRoutes = function () {
 
     Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
+    Route::get('/date-firma', [SiteController::class, 'dateFirma'])->name('date-firma');
     Route::get('/termeni', fn () => app(SiteController::class)->legalPage('termeni'))->name('termeni');
     Route::get('/confidentialitate', fn () => app(SiteController::class)->legalPage('confidentialitate'))->name('confidentialitate');
     Route::get('/cookies', fn () => app(SiteController::class)->legalPage('cookies'))->name('cookies');

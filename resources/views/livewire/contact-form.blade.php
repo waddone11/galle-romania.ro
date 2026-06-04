@@ -57,6 +57,14 @@
                 @error('mesaj') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
             </div>
 
+            <div>
+                <label for="cf-gdpr" class="flex items-start gap-2 text-sm text-forest-dark/80">
+                    <input id="cf-gdpr" type="checkbox" wire:model="gdpr" class="mt-0.5 rounded border-mist text-forest focus:ring-mint">
+                    <span>{{ __('Sunt de acord cu prelucrarea datelor conform') }} <a href="{{ app()->getLocale() === 'ro' ? '' : '/'.app()->getLocale() }}/confidentialitate" class="underline hover:text-forest" target="_blank">{{ __('Politicii de confidentialitate') }}</a>.</span>
+                </label>
+                @error('gdpr') <p class="mt-1 text-sm text-red-700">{{ $message }}</p> @enderror
+            </div>
+
             <div class="flex flex-wrap items-center gap-3 pt-2">
                 <button type="submit" class="rounded-full bg-forest px-6 py-2.5 text-mist-warm hover:bg-forest-dark font-medium">
                     Trimite mesajul

@@ -42,6 +42,9 @@ class OrderForm extends Component
     #[Validate('nullable|string|max:2000')]
     public ?string $mesaj = null;
 
+    #[Validate('accepted')]
+    public bool $gdpr = false;
+
     public function mount(): void
     {
         $this->specieId = Specie::where('is_active', true)->where('status', 'disponibil')->value('id');
@@ -51,6 +54,7 @@ class OrderForm extends Component
     protected function messages(): array
     {
         return [
+            'gdpr.accepted' => 'Pentru a trimite comanda, trebuie sa fii de acord cu prelucrarea datelor.',
             'nume.required' => 'Te rugam sa-ti scrii numele.',
             'nume.max' => 'Numele este prea lung (max. 120 caractere).',
             'telefon.required' => 'Avem nevoie de un numar de telefon pentru confirmare.',
@@ -109,7 +113,7 @@ class OrderForm extends Component
         $comanda->save();
 
         $this->submitted = true;
-        $this->reset(['nume', 'telefon', 'email', 'localitate', 'cantitate', 'data_dorita', 'mesaj']);
+        $this->reset(['nume', 'telefon', 'email', 'localitate', 'cantitate', 'data_dorita', 'mesaj', 'gdpr']);
     }
 
     public function render()

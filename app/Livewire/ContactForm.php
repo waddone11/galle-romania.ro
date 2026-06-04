@@ -30,10 +30,14 @@ class ContactForm extends Component
     #[Validate('required|string|max:2000')]
     public string $mesaj = '';
 
+    #[Validate('accepted')]
+    public bool $gdpr = false;
+
     /** @return array<string, string> */
     protected function messages(): array
     {
         return [
+            'gdpr.accepted' => 'Pentru a trimite mesajul, trebuie sa fii de acord cu prelucrarea datelor.',
             'nume.required' => 'Te rugam sa-ti scrii numele.',
             'nume.max' => 'Numele este prea lung (max. 120 caractere).',
             'email.required' => 'Avem nevoie de o adresa de email ca sa-ti raspundem.',
@@ -76,7 +80,7 @@ class ContactForm extends Component
         $lead->save();
 
         $this->submitted = true;
-        $this->reset(['nume', 'firma', 'email', 'telefon', 'serviciu', 'mesaj']);
+        $this->reset(['nume', 'firma', 'email', 'telefon', 'serviciu', 'mesaj', 'gdpr']);
     }
 
     public function render()

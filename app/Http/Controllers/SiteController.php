@@ -109,6 +109,13 @@ class SiteController extends Controller
         return view('site.contact');
     }
 
+    public function dateFirma(): View
+    {
+        $pagina = Pagina::where('slug', 'date-firma')->where('is_published', true)->first();
+
+        return view('site.date-firma', compact('pagina'));
+    }
+
     public function legalPage(string $slug): View
     {
         $pagina = Pagina::where('slug', $slug)->where('is_published', true)->firstOrFail();
