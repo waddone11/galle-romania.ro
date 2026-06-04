@@ -66,7 +66,7 @@
     </div>
 
     {{-- INTRO --}}
-    <div class="relative z-10 w-[90%] max-w-7xl mx-auto flex items-center">
+    <div class="relative z-10 w-[90%] max-w-7xl mx-auto flex items-start">
         <div class="max-w-xl pt-24">
             <a href="{{ $badgeUrl }}" class="pill inline-flex">
                 <span class="pill-inner inline-flex items-center gap-3 px-4 py-1.5 text-sm">

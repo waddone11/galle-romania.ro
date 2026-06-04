@@ -103,7 +103,7 @@
 
     <x-site-navbar />
 
-    <main id="main">
+    <main id="main" class="-mt-16">
         {{ $slot }}
     </main>
 

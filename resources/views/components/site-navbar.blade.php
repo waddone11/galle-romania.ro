@@ -5,8 +5,11 @@
 @endphp
 
 <header
-    x-data="{ open: false }"
-    class="sticky top-0 z-40 bg-[#fafaf8]/85 backdrop-blur-md border-b border-mist"
+    x-data="{ open: false, scrolled: false }"
+    x-init="scrolled = window.scrollY > 20"
+    @scroll.window="scrolled = window.scrollY > 20"
+    class="sticky top-0 z-40 transition-colors duration-300"
+    :class="scrolled ? 'bg-white/90 backdrop-blur-md border-b border-mist shadow-sm' : 'bg-transparent border-b border-transparent'"
 >
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navigatie principala">
         <div class="flex h-16 items-center justify-between">
