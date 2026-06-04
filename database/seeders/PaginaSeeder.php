@@ -141,9 +141,9 @@ class PaginaSeeder extends Seeder
                         'data' => [
                             'titlu' => $t('Cine suntem', 'Wer wir sind', 'Who we are'),
                             'continut' => $t(
-                                'Galle Silva aduce în România experiența grupului german Galle GmbH — aproape 25 de ani în silvicultură. Lucrăm cu utilaje moderne (harvester și forwarder), echipă specializată și autospeciale proprii, în păduri private și de stat. De la recoltare la livrare, ducem lucrarea cap-coadă, corect și transparent.',
-                                'Galle Silva bringt die Erfahrung der deutschen Galle GmbH nach Rumänien — fast 25 Jahre Forstwirtschaft. Wir arbeiten mit modernen Maschinen (Harvester und Forwarder), einem spezialisierten Team und eigenen LKW, in Privat- und Staatswäldern. Von der Ernte bis zur Lieferung führen wir jede Arbeit vollständig aus — korrekt und transparent.',
-                                'Galle Silva brings to Romania the experience of the German group Galle GmbH — almost 25 years in forestry. We work with modern machinery (harvester and forwarder), a specialised team and our own trucks, in private and state forests. From harvesting to delivery, we see every job through — done right and transparently.',
+                                'Galle Silva aduce în România experiența grupului german Galle GmbH — peste 30 de ani în servicii forestiere, din 1990. Lucrăm cu utilaje moderne (harvester și forwarder), echipă specializată și autospeciale proprii, în păduri private și de stat. De la recoltare la livrare, ducem lucrarea cap-coadă, corect și transparent.',
+                                'Galle Silva bringt die Erfahrung der deutschen Galle GmbH nach Rumänien — über 30 Jahre Forstwirtschaft, seit 1990. Wir arbeiten mit modernen Maschinen (Harvester und Forwarder), einem spezialisierten Team und eigenen LKW, in Privat- und Staatswäldern. Von der Ernte bis zur Lieferung führen wir jede Arbeit vollständig aus — korrekt und transparent.',
+                                'Galle Silva brings to Romania the experience of the German group Galle GmbH — over 30 years in forestry, since 1990. We work with modern machinery (harvester and forwarder), a specialised team and our own trucks, in private and state forests. From harvesting to delivery, we see every job through — done right and transparently.',
                             ),
                             'cta_text' => $t('Despre noi', 'Über uns', 'About us'),
                             'imagine' => '/images/galle/proiecte/camion-incarcat.webp',
@@ -1192,15 +1192,14 @@ class PaginaSeeder extends Seeder
                     [
                         'type' => 'sectiune_text',
                         'data' => [
-                            'titlu' => $t(
-                                'Galle GmbH — grupul-mamă din Germania',
-                                'Galle GmbH — die Muttergesellschaft in Deutschland',
-                                'Galle GmbH — the parent group in Germany',
-                            ),
+                            // DE/EN se traduc + se revizuiesc ulterior din /admin (fallback pe RO).
+                            'titlu' => $t('Parte din grupul Galle GmbH'),
                             'continut' => $t(
-                                'Galle GmbH lucrează în silvicultură de aproape 25 de ani: gestionează păduri, recoltează și comercializează material lemnos în Germania. Deține certificările ISO 9001, ISO 14001, RAL și DEKRA — standardele care definesc calitatea germană în domeniu.',
-                                'Die Galle GmbH ist seit fast 25 Jahren in der Forstwirtschaft tätig: Sie bewirtschaftet Wälder, erntet und vermarktet Holz in Deutschland. Sie hält die Zertifizierungen ISO 9001, ISO 14001, RAL und DEKRA — die Standards, die deutsche Qualität in der Branche definieren.',
-                                'Galle GmbH has worked in forestry for almost 25 years: it manages forests, harvests and trades timber in Germany. It holds ISO 9001, ISO 14001, RAL and DEKRA certifications — the standards that define German quality in the field.',
+                                'Galle Silva aduce în România experiența grupului german Galle GmbH. Fondată în 1990, în districtul Elbe-Elster (Brandenburg, Germania), Galle GmbH activează de peste 30 de ani în servicii forestiere, peisagistică, compostare și producție de sol. De-a lungul timpului și-a modernizat parcul de utilaje și a dezvoltat zona de servicii forestiere, ajungând la o echipă de aproximativ 38 de angajați.'
+                                ."\n\n"
+                                .'Grupul lucrează după standarde înalte de mediu: este certificat cu sigiliile de calitate RAL pentru gestionarea pădurilor și pentru compostare, ca firmă autorizată de management al deșeurilor, folosește uleiuri hidraulice biodegradabile și recoltează lemnul complet mecanizat, valorificând inclusiv resturile (vârfuri și cioate) ca lemn energetic.'
+                                ."\n\n"
+                                .'În România, Galle Silva preia această experiență și aceste standarde și le aplică local — concentrându-se pe servicii forestiere și lemn de foc în Prahova, Ilfov și București.',
                             ),
                         ],
                     ],
@@ -1307,24 +1306,219 @@ class PaginaSeeder extends Seeder
                 'is_published' => true,
                 'ordine' => 90,
             ],
+            // Textele legale de mai jos sunt un DRAFT de lucru (nu consultanta juridica) —
+            // se revizuiesc de cineva competent inainte de lansarea publica (vezi README).
+            // DE/EN raman null (fallback pe RO) si se traduc + se revizuiesc ulterior din /admin.
             [
                 'slug' => 'termeni',
                 'titlu' => ['ro' => 'Termeni si conditii', 'de' => 'Allgemeine Geschäftsbedingungen', 'en' => 'Terms and Conditions'],
-                'sectiuni' => null,
+                'sectiuni' => [
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => null,
+                            'continut' => $t('Prin folosirea acestui site si prin transmiterea unei solicitari sau comenzi catre GALLE SILVA SRL, esti de acord cu termenii de mai jos.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Cine suntem'),
+                            'continut' => $t('GALLE SILVA SRL, CUI 52771440, Reg. Com. J2025081738000, sediu in Str. Principala nr. 302, Sat Manesti, jud. Prahova. Date complete pe pagina [Date firma](/date-firma).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Despre site si servicii'),
+                            'continut' => $t('Site-ul prezinta serviciile noastre forestiere si oferta de lemn de foc, in Prahova, Ilfov si Bucuresti. Informatiile au caracter de prezentare; nu reprezinta o oferta ferma de pret.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Preturi si comenzi'),
+                            'continut' => $t('Preturile afisate (de exemplu, de la 350 lei/m³ pentru lemnul de foc) sunt orientative, de pornire, si pot varia in functie de esenta, cantitate, mod de preluare si zona de livrare. Pretul final si disponibilitatea se confirma in oferta, telefonic sau prin email, inainte de livrare. O comanda transmisa prin formular reprezinta o solicitare; contractul se incheie la confirmarea noastra.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Livrare si plata'),
+                            'continut' => $t('Livram, de regula, in 1–3 zile lucratoare (maxim 7), in functie de zona. Oferim si livrare la domiciliu. Plata se poate face la livrare, numerar, cu cardul (POS) sau prin transfer bancar.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Dreptul de retragere (consumatori)'),
+                            'continut' => $t('Daca esti consumator, beneficiezi de drepturile prevazute de legislatia privind protectia consumatorilor, inclusiv, acolo unde se aplica, dreptul de a te retrage in conditiile legii. Te rugam sa ne contactezi pentru detalii legate de situatia concreta.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Raspundere'),
+                            'continut' => $t('Ne straduim ca informatiile de pe site sa fie corecte si actualizate, dar nu garantam ca sunt complete sau lipsite de erori in orice moment.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Proprietate intelectuala'),
+                            'continut' => $t('Continutul site-ului (texte, imagini, logo-uri) apartine GALLE SILVA SRL sau partenerilor sai si nu poate fi folosit fara acord.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Lege aplicabila si litigii'),
+                            'continut' => $t('Acestor termeni li se aplica legea romana. Eventualele neintelegeri se solutioneaza pe cale amiabila; in caz contrar, sunt competente instantele din Romania. Consumatorii pot apela si la platforma SOL a Comisiei Europene sau la ANPC.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Contact'),
+                            'continut' => $t('Pentru orice intrebare: info@galle-silva.ro, +40 729 961 082.'),
+                        ],
+                    ],
+                ],
                 'is_published' => true,
                 'ordine' => 100,
             ],
             [
                 'slug' => 'confidentialitate',
                 'titlu' => ['ro' => 'Politica de confidentialitate', 'de' => 'Datenschutzerklärung', 'en' => 'Privacy Policy'],
-                'sectiuni' => null,
+                'sectiuni' => [
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => null,
+                            'continut' => $t('Aceasta politica explica modul in care GALLE SILVA SRL prelucreaza datele cu caracter personal ale persoanelor care folosesc acest site, in conformitate cu Regulamentul (UE) 2016/679 (GDPR).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Operatorul de date'),
+                            'continut' => $t('GALLE SILVA SRL, CUI 52771440, Reg. Com. J2025081738000, sediu in Str. Principala nr. 302, Sat Manesti, jud. Prahova, cod 107375. Ne poti contacta la info@galle-silva.ro sau la +40 729 961 082. Datele complete ale firmei sunt pe pagina [Date firma](/date-firma).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Ce date colectam'),
+                            'continut' => $t('Colectam doar datele pe care ni le furnizezi prin formularele de pe site (formularul de contact si formularul de comanda): nume, adresa de email, numar de telefon, localitatea/adresa pentru livrare si detaliile mesajului sau ale comenzii tale. Nu colectam mai multe date decat sunt necesare.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('In ce scop si pe ce temei legal'),
+                            'continut' => $t('Folosim aceste date pentru a raspunde solicitarilor tale, a-ti transmite oferte si a procesa si livra comenzile. Temeiul legal este, dupa caz: executarea unui contract sau demersuri precontractuale la cererea ta (art. 6 alin. 1 lit. b GDPR), consimtamantul tau pentru formularul de contact (art. 6 alin. 1 lit. a) si interesul nostru legitim de a raspunde si a ne desfasura activitatea (art. 6 alin. 1 lit. f). Pentru facturare si evidenta, prelucrarea se face si in baza obligatiilor legale (art. 6 alin. 1 lit. c).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Cat timp pastram datele'),
+                            'continut' => $t('Pastram datele doar atat cat este necesar scopului pentru care au fost colectate si pentru respectarea obligatiilor legale (de exemplu, documentele financiar-contabile, conform legii). Dupa expirarea acestor termene, datele sunt sterse sau anonimizate.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Cui dezvaluim datele'),
+                            'continut' => $t('Nu vindem datele tale. Le putem dezvalui doar furnizorilor care ne ajuta sa operam site-ul si serviciul (furnizorul de gazduire web si de email — ALL-INKL.com, cu servere in Germania/Uniunea Europeana), care prelucreaza datele in numele nostru, pe baza de contract, si autoritatilor publice doar cand legea ne obliga. Datele tale sunt stocate pe servere in Uniunea Europeana; nu efectuam transferuri in afara UE.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Cookie-uri'),
+                            'continut' => $t('Folosim doar cookie-uri necesare functionarii site-ului. Detalii in [Politica de cookies](/cookies).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Drepturile tale'),
+                            'continut' => $t('Ai dreptul de acces, rectificare, stergere, restrictionare a prelucrarii, opozitie, portabilitate a datelor si dreptul de a-ti retrage consimtamantul oricand. Le poti exercita scriindu-ne la info@galle-silva.ro. Ai, de asemenea, dreptul de a depune o plangere la Autoritatea Nationala de Supraveghere a Prelucrarii Datelor cu Caracter Personal (ANSPDCP).'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Securitate'),
+                            'continut' => $t('Aplicam masuri tehnice si organizatorice rezonabile pentru a proteja datele tale. Transmisiile pe internet nu pot fi insa garantate complet impotriva oricarui risc.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Minori'),
+                            'continut' => $t('Site-ul nu se adreseaza minorilor si nu colectam cu intentie date de la persoane sub 16 ani.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Modificari'),
+                            'continut' => $t('Putem actualiza aceasta politica; versiunea curenta este cea publicata pe aceasta pagina.'),
+                        ],
+                    ],
+                ],
                 'is_published' => true,
                 'ordine' => 110,
             ],
             [
                 'slug' => 'cookies',
                 'titlu' => ['ro' => 'Politica cookies', 'de' => 'Cookie-Richtlinie', 'en' => 'Cookie Policy'],
-                'sectiuni' => null,
+                'sectiuni' => [
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => null,
+                            'continut' => $t('Aceasta pagina explica ce cookie-uri folosim pe site-ul GALLE SILVA SRL si cum iti poti gestiona preferintele.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Ce sunt cookie-urile'),
+                            'continut' => $t('Cookie-urile sunt fisiere mici stocate pe dispozitivul tau, care ajuta site-ul sa functioneze si sa-ti retina preferintele.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Ce cookie-uri folosim'),
+                            'continut' => $t('Folosim doar cookie-uri necesare (strict necesare) pentru functionarea site-ului — de exemplu pentru sesiune si pentru a retine optiunea ta privind cookie-urile. Acestea nu necesita consimtamant. Nu folosim in prezent cookie-uri de analiza sau de marketing si nu incarcam servicii terte de urmarire. Daca vom introduce in viitor cookie-uri de analiza sau marketing, acestea vor fi activate doar cu consimtamantul tau explicit, prin bannerul de cookie-uri.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Fonturile si continutul'),
+                            'continut' => $t('Fonturile sunt gazduite local, pe propriul nostru server — nu apelam servicii externe de fonturi, deci nu se transmit date catre terti prin acestea.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Cum iti gestionezi preferintele'),
+                            'continut' => $t('Iti poti exprima sau retrage consimtamantul oricand din bannerul de cookie-uri sau din optiunea Setari cookies din subsolul site-ului. Poti, de asemenea, sterge sau bloca cookie-urile din setarile browser-ului; unele functii ale site-ului pot fi afectate.'),
+                        ],
+                    ],
+                    [
+                        'type' => 'sectiune_text',
+                        'data' => [
+                            'titlu' => $t('Modificari'),
+                            'continut' => $t('Putem actualiza aceasta politica; versiunea curenta este cea de pe aceasta pagina.'),
+                        ],
+                    ],
+                ],
                 'is_published' => true,
                 'ordine' => 120,
             ],
