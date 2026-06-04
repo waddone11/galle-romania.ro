@@ -17,8 +17,8 @@ class SpecieSeeder extends Seeder
                 'nume' => ['ro' => 'Stejar', 'de' => 'Eiche',     'en' => 'Oak'],
                 'descriere' => [
                     'ro' => 'Lemn de stejar uscat la nivelul de umiditate cerut pentru ardere eficienta. Putere calorica mare, fum putin, jar persistent. Recomandare clasica pentru sezonul rece in Romania.',
-                    'de' => null,
-                    'en' => null,
+                    'de' => 'Eichenholz, getrocknet auf die für effizientes Brennen erforderliche Restfeuchte. Hoher Heizwert, wenig Rauch, langanhaltende Glut. Der Klassiker für die kalte Jahreszeit in Rumänien.',
+                    'en' => 'Oak firewood dried to the moisture level required for efficient burning. High heating value, little smoke, long-lasting embers. The classic choice for the cold season in Romania.',
                 ],
                 'status' => SpecieStatus::Disponibil,
                 'pret_pornire' => 450.00,
@@ -33,8 +33,8 @@ class SpecieSeeder extends Seeder
                 'nume' => ['ro' => 'Fag', 'de' => 'Buche', 'en' => 'Beech'],
                 'descriere' => [
                     'ro' => 'Lemn de fag — alternativa premium la stejar pentru ardere indelungata. Va fi disponibil in urmatoarea recolta.',
-                    'de' => null,
-                    'en' => null,
+                    'de' => 'Buchenholz — die Premium-Alternative zur Eiche für langanhaltendes Feuer. Mit der nächsten Ernte wieder verfügbar.',
+                    'en' => 'Beech firewood — the premium alternative to oak for a long-lasting fire. Available with the next harvest.',
                 ],
                 'status' => SpecieStatus::InCurand,
                 'pret_pornire' => 420.00,
@@ -49,8 +49,8 @@ class SpecieSeeder extends Seeder
                 'nume' => ['ro' => 'Carpen', 'de' => 'Hainbuche', 'en' => 'Hornbeam'],
                 'descriere' => [
                     'ro' => 'Lemn de carpen, dens, cu ardere lentă și putere calorică foarte bună — pe stoc, tăiat și crăpat la dimensiunea dorită.',
-                    'de' => null,
-                    'en' => null,
+                    'de' => 'Hainbuchenholz: dicht, mit langsamem Abbrand und sehr gutem Heizwert — auf Lager, gesägt und gespalten auf Wunschmaß.',
+                    'en' => 'Hornbeam firewood: dense, slow-burning, with a very good heating value — in stock, cut and split to the size you need.',
                 ],
                 'status' => SpecieStatus::Disponibil,
                 'pret_pornire' => 350.00,
