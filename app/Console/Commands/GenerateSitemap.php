@@ -32,6 +32,7 @@ class GenerateSitemap extends Command
             ->add(Url::create('/certificari')->setPriority(0.6))
             ->add(Url::create('/proiecte')->setPriority(0.6))
             ->add(Url::create('/blog')->setPriority(0.6))
+            ->add(Url::create('/intrebari-frecvente')->setPriority(0.6))
             ->add(Url::create('/contact')->setPriority(0.5));
 
         Pagina::where('is_published', true)->get()->each(function (Pagina $p) use ($sitemap) {
@@ -39,7 +40,7 @@ class GenerateSitemap extends Command
             $explicit = [
                 'home', 'despre', 'institutii', 'certificari', 'servicii', 'lemn-de-foc',
                 'exploatare-forestiera', 'achizitie-masa-lemnoasa', 'curatare-terenuri',
-                'transport-lemn', 'lucrari-silvice',
+                'transport-lemn', 'lucrari-silvice', 'intrebari-frecvente',
             ];
             if (in_array($p->slug, $explicit, true)) {
                 return;

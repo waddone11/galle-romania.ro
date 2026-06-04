@@ -268,6 +268,40 @@ class TraducereSeeder extends Seeder
         'Cost livrare:' => ['de' => 'Lieferkosten:', 'en' => 'Delivery cost:'],
         'Intrebari frecvente' => ['ro' => 'Întrebări frecvente', 'de' => 'Häufige Fragen', 'en' => 'Frequently asked questions'],
 
+        // pagina FAQ (/intrebari-frecvente) + teaser pe home; etichetele de
+        // categorie sunt chei dinamice (__(Faq::CATEGORII[...])) — create aici.
+        'FAQ' => ['de' => 'FAQ', 'en' => 'FAQ'],
+        'Vezi toate intrebarile' => ['ro' => 'Vezi toate întrebările', 'de' => 'Alle Fragen ansehen', 'en' => 'See all questions'],
+        'Cauta o intrebare...' => ['ro' => 'Caută o întrebare…', 'de' => 'Frage suchen…', 'en' => 'Search a question…'],
+        'Nu ai gasit raspunsul?' => ['ro' => 'Nu ai găsit răspunsul?', 'de' => 'Antwort nicht gefunden?', 'en' => 'Did not find the answer?'],
+        'Scrie-ne si te contactam in 24h.' => ['ro' => 'Scrie-ne și te contactăm în 24h.', 'de' => 'Schreiben Sie uns — wir melden uns innerhalb von 24 Stunden.', 'en' => 'Write to us and we will get back to you within 24 hours.'],
+        'Plata' => ['ro' => 'Plată', 'de' => 'Zahlung', 'en' => 'Payment'],
+        'Exploatare forestiera' => ['ro' => 'Exploatare forestieră', 'de' => 'Holzernte', 'en' => 'Timber harvesting'],
+        'Achizitie masa lemnoasa' => ['ro' => 'Achiziție masă lemnoasă', 'de' => 'Holzankauf', 'en' => 'Timber purchasing'],
+        'Curatare terenuri' => ['ro' => 'Curățare terenuri', 'de' => 'Flächenräumung', 'en' => 'Land clearing'],
+        'Transport lemn' => ['de' => 'Holztransport', 'en' => 'Timber transport'],
+        'Lucrari silvice' => ['ro' => 'Lucrări silvice', 'de' => 'Waldpflegearbeiten', 'en' => 'Silvicultural works'],
+        'Intrebari generale' => ['ro' => 'Întrebări generale', 'de' => 'Allgemeine Fragen', 'en' => 'General questions'],
+        'Raspunsuri despre lemn de foc, servicii forestiere, livrare si documente.' => [
+            'ro' => 'Răspunsuri despre lemn de foc, servicii forestiere, livrare și documente.',
+            'de' => 'Antworten zu Brennholz, Forstdienstleistungen, Lieferung und Unterlagen.',
+            'en' => 'Answers about firewood, forestry services, delivery and documents.',
+        ],
+        'Categorii de intrebari' => ['ro' => 'Categorii de întrebări', 'de' => 'Fragenkategorien', 'en' => 'Question categories'],
+        'intrebare' => ['ro' => 'întrebare', 'de' => 'Frage', 'en' => 'question'],
+        'intrebari' => ['ro' => 'întrebări', 'de' => 'Fragen', 'en' => 'questions'],
+        'rezultat' => ['de' => 'Ergebnis', 'en' => 'result'],
+        'rezultate' => ['de' => 'Ergebnisse', 'en' => 'results'],
+        'Deschide toate' => ['de' => 'Alle öffnen', 'en' => 'Open all'],
+        'Inchide toate' => ['ro' => 'Închide toate', 'de' => 'Alle schließen', 'en' => 'Close all'],
+        'Nu am gasit nicio intrebare pentru' => [
+            'ro' => 'Nu am găsit nicio întrebare pentru',
+            'de' => 'Wir haben keine Frage gefunden zu',
+            'en' => 'We could not find any question matching',
+        ],
+        'Sterge cautarea' => ['ro' => 'Șterge căutarea', 'de' => 'Suche zurücksetzen', 'en' => 'Clear search'],
+        'Scrie-ne' => ['de' => 'Schreiben Sie uns', 'en' => 'Write to us'],
+
         // label-uri enum (afisate cu __($enum->label()) — chei create de seeder)
         'Disponibil' => ['de' => 'Verfügbar', 'en' => 'Available'],
         'In curand' => ['ro' => 'În curând', 'de' => 'In Kürze', 'en' => 'Coming soon'],

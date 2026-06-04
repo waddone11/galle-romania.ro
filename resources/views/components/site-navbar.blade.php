@@ -29,6 +29,7 @@
                 <a href="{{ $prefix }}/lemn-de-foc" class="hover:text-mint transition-colors">{{ __('Lemn de foc') }}</a>
                 <a href="{{ $prefix }}/despre" class="hover:text-mint transition-colors">{{ __('Despre') }}</a>
                 <a href="{{ $prefix }}/certificari" class="hover:text-mint transition-colors">{{ __('Certificari') }}</a>
+                <a href="{{ $prefix }}/intrebari-frecvente" class="hover:text-mint transition-colors">{{ __('FAQ') }}</a>
                 <a href="{{ $prefix }}/contact" class="hover:text-mint transition-colors">{{ __('Contact') }}</a>
             </div>
 
@@ -70,6 +71,7 @@
             <a href="{{ $prefix }}/lemn-de-foc" class="block py-2">{{ __('Lemn de foc') }}</a>
             <a href="{{ $prefix }}/despre" class="block py-2">{{ __('Despre') }}</a>
             <a href="{{ $prefix }}/certificari" class="block py-2">{{ __('Certificari') }}</a>
+            <a href="{{ $prefix }}/intrebari-frecvente" class="block py-2">{{ __('Intrebari frecvente') }}</a>
             <a href="{{ $prefix }}/contact" class="block py-2">{{ __('Contact') }}</a>
             <div class="pt-2 border-t border-mist flex items-center justify-end">
                 <a href="{{ $prefix }}/contact" class="rounded-full bg-mint px-4 py-1.5 font-semibold text-forest">{{ __('Cere oferta') }}</a>

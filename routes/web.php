@@ -52,6 +52,9 @@ $siteRoutes = function () {
 
     Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
+    Route::get('/intrebari-frecvente', [SiteController::class, 'faq'])->name('faq');
+    Route::get('/faq', $redirect301('/intrebari-frecvente'))->name('faq.short');
+
     // Auth front-end (Livewire). Numele standard `login` face sa mearga
     // redirectul Laravel pentru rutele protejate.
     Route::get('/autentificare', fn () => view('site.auth.login'))->name('login');

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Paginas\Schemas;
 
 use App\Filament\Concerns\HasTranslatableTabs;
+use App\Models\Faq;
 use App\Models\Recenzie;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
@@ -340,18 +341,15 @@ class PaginaForm
                 ->schema([
                     Select::make('categorie')
                         ->label('Filtreaza FAQ dupa categorie (gol = toate)')
-                        ->options([
-                            'lemn_de_foc' => 'Lemn de foc',
-                            'livrare' => 'Livrare',
-                            'plata' => 'Plata',
-                            'servicii' => 'Servicii',
-                            'exploatare-forestiera' => 'Exploatare forestiera',
-                            'achizitie-masa-lemnoasa' => 'Achizitie masa lemnoasa',
-                            'curatare-terenuri' => 'Curatare terenuri',
-                            'transport-lemn' => 'Transport lemn',
-                            'lucrari-silvice' => 'Lucrari silvice',
-                        ])
+                        ->options(Faq::CATEGORII)
                         ->nullable(),
+                    TextInput::make('limita')
+                        ->label('Numar maxim de intrebari (gol = toate)')
+                        ->numeric()
+                        ->nullable(),
+                    Toggle::make('link_toate')
+                        ->label('Buton „Vezi toate intrebarile” spre /intrebari-frecvente')
+                        ->default(false),
                     HasTranslatableTabs::for(fn (string $loc, string $label) => [
                         TextInput::make("titlu.$loc")->label("Titlu sectiune ($label)"),
                     ]),

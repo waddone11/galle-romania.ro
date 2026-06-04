@@ -328,6 +328,16 @@ class PaginaSeeder extends Seeder
                         ],
                     ],
                     [
+                        // Teaser FAQ — un set scurt despre lemnul de foc + link spre pagina dedicata.
+                        'type' => 'faq',
+                        'data' => [
+                            'titlu' => $t('Întrebări frecvente', 'Häufige Fragen', 'Frequently asked questions'),
+                            'categorie' => 'lemn-de-foc',
+                            'limita' => 6,
+                            'link_toate' => true,
+                        ],
+                    ],
+                    [
                         'type' => 'cta',
                         'data' => [
                             'titlu' => $t(
@@ -1543,6 +1553,29 @@ class PaginaSeeder extends Seeder
                 ],
                 'is_published' => true,
                 'ordine' => 120,
+            ],
+
+            /*
+             * ---------- Intrebari frecvente (/intrebari-frecvente) ----------
+             * Pagina SEO/GEO dedicata: titlu/meta/intro editabile aici; intrebarile
+             * vin din modelul Faq (toate cele publicate, grupate pe categorie).
+             */
+            [
+                'slug' => 'intrebari-frecvente',
+                'titlu' => $t('Întrebări frecvente'),
+                'meta_title' => $t('Întrebări frecvente — lemn de foc, livrare, servicii forestiere | Galle Silva'),
+                'meta_description' => $t('Răspunsuri la cele mai frecvente întrebări despre lemn de foc, livrare, plată, achiziție de masă lemnoasă, exploatare forestieră și curățare de terenuri, în Prahova, Ilfov și București.'),
+                'sectiuni' => [
+                    [
+                        'type' => 'header_pagina',
+                        'data' => [
+                            'titlu' => $t('Întrebări frecvente'),
+                            'intro' => $t('Tot ce trebuie să știi despre lemnul de foc, livrare, plată și serviciile forestiere Galle Silva — în Prahova, Ilfov și București.'),
+                        ],
+                    ],
+                ],
+                'is_published' => true,
+                'ordine' => 130,
             ],
         ];
 

@@ -47,7 +47,7 @@ class SiteController extends Controller
     {
         $species = Specie::where('is_active', true)->orderBy('ordine')->get();
         $zone = ZonaLivrare::where('is_active', true)->orderBy('ordine')->get();
-        $faqs = Faq::where('is_published', true)->where('categorie', 'lemn_de_foc')->orderBy('ordine')->get();
+        $faqs = Faq::where('is_published', true)->where('categorie', 'lemn-de-foc')->orderBy('ordine')->get();
         $pagina = Pagina::where('slug', 'lemn-de-foc')->where('is_published', true)->first();
 
         return compact('species', 'zone', 'faqs', 'pagina');
@@ -215,6 +215,50 @@ class SiteController extends Controller
     public function contact(): View
     {
         return view('site.contact');
+    }
+
+    /**
+     * Pagina dedicata FAQ: toate intrebarile publicate, grupate pe categorie
+     * (in ordinea din Faq::CATEGORII), cu FAQPage JSON-LD pentru intreaga lista.
+     */
+    public function faq(): View
+    {
+        $pagina = Pagina::where('slug', 'intrebari-frecvente')->where('is_published', true)->first();
+        $loc = app()->getLocale();
+
+        $ordineCategorii = array_keys(Faq::CATEGORII);
+        $grupuri = Faq::where('is_published', true)
+            ->orderBy('ordine')
+            ->get()
+            ->groupBy(fn (Faq $faq): string => $faq->categorie ?: 'general')
+            ->sortBy(function ($faqs, string $categorie) use ($ordineCategorii): int {
+                $pozitie = array_search($categorie, $ordineCategorii, true);
+
+                return $pozitie === false ? PHP_INT_MAX : $pozitie;
+            });
+
+        $schemas = [
+            [
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => $grupuri->flatten(1)->map(fn (Faq $faq) => [
+                    '@type' => 'Question',
+                    'name' => $faq->getTranslation('intrebare', $loc) ?: $faq->getTranslation('intrebare', 'ro'),
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $faq->getTranslation('raspuns', $loc) ?: $faq->getTranslation('raspuns', 'ro'),
+                    ],
+                ])->values()->all(),
+            ],
+        ];
+
+        $prefix = $loc === 'ro' ? '' : '/'.$loc;
+        $schemas[] = $this->breadcrumbSchema([
+            ['Acasa', url($prefix.'/')],
+            [($pagina?->getTranslation('titlu', $loc) ?: $pagina?->getTranslation('titlu', 'ro')) ?: 'Intrebari frecvente', url()->current()],
+        ]);
+
+        return view('site.faq', compact('pagina', 'grupuri', 'schemas'));
     }
 
     public function dateFirma(): View

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Faqs\Schemas;
 
 use App\Filament\Concerns\HasTranslatableTabs;
+use App\Models\Faq;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -32,17 +33,7 @@ class FaqForm
                 ->columns(3)
                 ->schema([
                     Select::make('categorie')
-                        ->options([
-                            'lemn_de_foc' => 'Lemn de foc',
-                            'livrare' => 'Livrare',
-                            'plata' => 'Plata',
-                            'servicii' => 'Servicii',
-                            'exploatare-forestiera' => 'Exploatare forestiera',
-                            'achizitie-masa-lemnoasa' => 'Achizitie masa lemnoasa',
-                            'curatare-terenuri' => 'Curatare terenuri',
-                            'transport-lemn' => 'Transport lemn',
-                            'lucrari-silvice' => 'Lucrari silvice',
-                        ]),
+                        ->options(Faq::CATEGORII),
                     TextInput::make('ordine')->numeric()->default(0),
                     Toggle::make('is_published')->default(true),
                 ]),

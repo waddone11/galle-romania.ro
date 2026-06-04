@@ -1,8 +1,13 @@
 @php
     $loc = app()->getLocale();
+    $prefix = $loc === 'ro' ? '' : '/'.$loc;
     $query = \App\Models\Faq::where('is_published', true)->orderBy('ordine');
     if (! empty($data['categorie'])) {
         $query->where('categorie', $data['categorie']);
+    }
+    // Teaser: limiteaza numarul de intrebari (ex. pe home) + link spre pagina dedicata.
+    if (! empty($data['limita'])) {
+        $query->limit((int) $data['limita']);
     }
     $faqs = $query->get();
 @endphp
@@ -12,16 +17,59 @@
         @if($titlu = ($data['titlu'][$loc] ?? $data['titlu']['ro'] ?? null))
             <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ $titlu }}</h2>
         @endif
-        <div class="space-y-4">
+        {{-- Acelasi stil de card acordeon ca pe /intrebari-frecvente (consecventa). --}}
+        <div class="space-y-3">
             @foreach($faqs as $faq)
-                <details class="bg-[#fafaf8] rounded-xl p-4 group">
-                    <summary class="font-medium cursor-pointer flex justify-between items-center">
-                        <span>{{ $faq->getTranslation('intrebare', $loc) ?: $faq->getTranslation('intrebare', 'ro') }}</span>
-                        <span class="text-mint group-open:rotate-180 transition-transform">▾</span>
-                    </summary>
-                    <p class="mt-3 text-sm text-forest-dark/80">{{ $faq->getTranslation('raspuns', $loc) ?: $faq->getTranslation('raspuns', 'ro') }}</p>
-                </details>
+                @php
+                    $intrebare = $faq->getTranslation('intrebare', $loc) ?: $faq->getTranslation('intrebare', 'ro');
+                    $raspuns = $faq->getTranslation('raspuns', $loc) ?: $faq->getTranslation('raspuns', 'ro');
+                    $idRaspuns = 'faq-teaser-raspuns-'.$faq->id;
+                @endphp
+                <article
+                    x-data="{ open: false }"
+                    data-faq-card
+                    class="group rounded-2xl border-l-2 bg-white shadow-sm ring-1 transition motion-safe:hover:-translate-y-0.5 hover:shadow-md"
+                    :class="open ? 'border-mint ring-mint/30' : 'border-transparent ring-forest/10'"
+                >
+                    <h3>
+                        <button
+                            type="button"
+                            @click="open = !open"
+                            aria-expanded="false"
+                            :aria-expanded="open.toString()"
+                            aria-controls="{{ $idRaspuns }}"
+                            class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+                        >
+                            <span class="font-medium text-forest">{{ $intrebare }}</span>
+                            <span
+                                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition motion-safe:duration-300"
+                                :class="open ? 'bg-mint text-white motion-safe:rotate-180' : 'bg-mint/15 text-forest'"
+                            >
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </h3>
+                    <div
+                        id="{{ $idRaspuns }}"
+                        class="grid grid-rows-[0fr] motion-safe:transition-[grid-template-rows] motion-safe:duration-300 motion-safe:ease-out"
+                        :class="open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+                    >
+                        <div class="overflow-hidden">
+                            <p class="px-5 pb-5 text-sm leading-relaxed text-forest-dark/75 sm:px-6 sm:pb-6">{{ $raspuns }}</p>
+                        </div>
+                    </div>
+                </article>
             @endforeach
         </div>
+        @if(! empty($data['link_toate']))
+            <div class="mt-8 text-center">
+                <a href="{{ $prefix }}/intrebari-frecvente"
+                   class="inline-flex items-center rounded-full bg-mint px-6 py-2.5 text-sm font-semibold text-forest hover:brightness-105 transition">
+                    {{ __('Vezi toate intrebarile') }}
+                </a>
+            </div>
+        @endif
     </div>
 </section>

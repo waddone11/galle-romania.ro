@@ -27,7 +27,7 @@ class FaqSeeder extends Seeder
                     'Ab 350 Lei/m³; der Endpreis hängt von Holzart, Menge und Lieferweg ab.',
                     'From 350 Lei/m³; the final price depends on species, quantity and delivery method.',
                 ),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 10,
             ],
             [
@@ -41,7 +41,7 @@ class FaqSeeder extends Seeder
                     'Alle drei sind Harthölzer mit langer Brenndauer; Hainbuche und Eiche haben einen sehr guten Heizwert.',
                     'All three are slow-burning hardwoods; hornbeam and oak have a very good heating value.',
                 ),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 20,
             ],
             [
@@ -55,7 +55,7 @@ class FaqSeeder extends Seeder
                     'Der Festmeter ist massives Holz; der Ster ist gestapeltes Holz mit Zwischenräumen (ca. 0,6–0,65 m³ massives Holz pro Ster).',
                     'A solid cubic meter is solid wood; a ster is stacked wood with air gaps (roughly 0.6–0.65 m³ of solid wood per ster).',
                 ),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 30,
             ],
             [
@@ -69,7 +69,7 @@ class FaqSeeder extends Seeder
                     'Ja, außerdem nach Prahova; wir liefern auch frei Haus.',
                     'Yes, plus Prahova; we also offer home delivery.',
                 ),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 40,
             ],
             [
@@ -79,7 +79,7 @@ class FaqSeeder extends Seeder
                     'Is there a minimum order?',
                 ),
                 'raspuns' => $t('Nu.', 'Nein.', 'No.'),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 50,
             ],
             [
@@ -89,7 +89,7 @@ class FaqSeeder extends Seeder
                     'Do I get an invoice and documents?',
                 ),
                 'raspuns' => $t('Da.', 'Ja.', 'Yes.'),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 60,
             ],
             [
@@ -103,7 +103,7 @@ class FaqSeeder extends Seeder
                     'Für ein Standardhaus von 100 m² mit guter Wärmedämmung rechnen wir mit etwa 5–7 Raummetern (Ster) Hartholz. Wohnungen oder gut gedämmte Häuser benötigen 3–5 Ster. Wir passen die Menge an Ihre Klimazone und Ihren Ofen- bzw. Kesseltyp an.',
                     'For a standard 100 m² house with good insulation, we estimate roughly 5–7 stacked cubic meters (sters) of hardwood. Flats or well-insulated houses use 3–5 sters. We can adjust for your climate zone and type of stove/boiler.',
                 ),
-                'categorie' => 'lemn_de_foc',
+                'categorie' => 'lemn-de-foc',
                 'ordine' => 70,
             ],
 
@@ -514,6 +514,41 @@ class FaqSeeder extends Seeder
             Faq::updateOrCreate(
                 ['intrebare->ro' => $row['intrebare']['ro']],
                 [...$row, 'is_published' => true]
+            );
+        }
+
+        $this->seedFromJson();
+    }
+
+    /**
+     * FAQ-uri suplimentare (SEO/GEO, cercetate extern) — database/seeders/data/faq.json.
+     * Doar RO; DE/EN raman null (de completat din /admin). Idempotent:
+     * cheia stabila e intrebarea RO + categoria.
+     */
+    private function seedFromJson(): void
+    {
+        $path = database_path('seeders/data/faq.json');
+        if (! is_file($path)) {
+            return;
+        }
+
+        /** @var array<int, array{intrebare: string, raspuns: string, categorie: string}> $items */
+        $items = json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+
+        // Ordine incrementala per categorie, deterministic, dupa cele hardcodate de mai sus.
+        $ordine = [];
+        foreach ($items as $item) {
+            $categorie = $item['categorie'];
+            $ordine[$categorie] = ($ordine[$categorie] ?? 500) + 10;
+
+            Faq::updateOrCreate(
+                ['intrebare->ro' => $item['intrebare'], 'categorie' => $categorie],
+                [
+                    'intrebare' => ['ro' => $item['intrebare'], 'de' => null, 'en' => null],
+                    'raspuns' => ['ro' => $item['raspuns'], 'de' => null, 'en' => null],
+                    'ordine' => $ordine[$categorie],
+                    'is_published' => true,
+                ],
             );
         }
     }
