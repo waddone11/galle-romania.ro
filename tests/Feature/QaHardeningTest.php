@@ -150,6 +150,7 @@ it('still saves a valid order-form submission with an empty honeypot', function 
         ->set('specieId', $specie->id)
         ->set('cantitate', 2)
         ->set('unitate', 'ster')
+        ->set('gdpr', true)
         ->call('submit')
         ->assertSet('submitted', true);
 
@@ -171,6 +172,7 @@ it('rate-limits repeated order-form submissions from the same IP', function () {
         ->set('specieId', $specie->id)
         ->set('cantitate', 1)
         ->set('unitate', 'ster')
+        ->set('gdpr', true)
         ->call('submit');
 
     for ($i = 0; $i < 5; $i++) {

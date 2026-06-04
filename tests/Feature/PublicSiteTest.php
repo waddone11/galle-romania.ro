@@ -70,6 +70,7 @@ it('OrderForm Livewire saves a ComandaLemn row with status nou', function () {
         ->set('specieId', $specie->id)
         ->set('cantitate', 3)
         ->set('unitate', 'ster')
+        ->set('gdpr', true)
         ->call('submit')
         ->assertSet('submitted', true);
 
@@ -83,6 +84,7 @@ it('ContactForm Livewire saves a Lead row with status nou', function () {
         ->set('nume', 'Maria Pop')
         ->set('email', 'maria@example.com')
         ->set('mesaj', 'Doresc oferta pentru serviciu de peisagistica.')
+        ->set('gdpr', true)
         ->call('submit')
         ->assertSet('submitted', true);
 
