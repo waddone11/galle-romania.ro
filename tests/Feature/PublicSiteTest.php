@@ -40,8 +40,8 @@ it('renders home page with seeded species in the wheel', function () {
 it('renders lemn-de-foc page with calculator and order form', function () {
     $r = $this->get('/lemn-de-foc');
     $r->assertOk();
-    $r->assertSeeText('Calculator pret');
-    $r->assertSeeText('Comanda lemn');
+    $r->assertSeeText('Calculator preț');
+    $r->assertSeeText('Comandă lemn');
 });
 
 it('renders servicii, despre, certificari, contact, blog, proiecte', function () {
