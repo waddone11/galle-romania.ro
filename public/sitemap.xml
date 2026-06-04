@@ -15,15 +15,23 @@
     <priority>0.8</priority>
             </url>
     <url>
-    <loc>http://localhost/servicii/forestiere</loc>
+    <loc>http://localhost/servicii/exploatare-forestiera</loc>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/servicii/peisagistica</loc>
+    <loc>http://localhost/servicii/achizitie-masa-lemnoasa</loc>
     <priority>0.7</priority>
             </url>
     <url>
-    <loc>http://localhost/servicii/compostare</loc>
+    <loc>http://localhost/servicii/curatare-terenuri</loc>
+    <priority>0.7</priority>
+            </url>
+    <url>
+    <loc>http://localhost/servicii/transport-lemn</loc>
+    <priority>0.7</priority>
+            </url>
+    <url>
+    <loc>http://localhost/servicii/lucrari-silvice</loc>
     <priority>0.7</priority>
             </url>
     <url>
@@ -51,6 +59,10 @@
     <priority>0.5</priority>
             </url>
     <url>
+    <loc>http://localhost/date-firma</loc>
+    <priority>0.4</priority>
+            </url>
+    <url>
     <loc>http://localhost/termeni</loc>
     <priority>0.4</priority>
             </url>
@@ -63,37 +75,81 @@
     <priority>0.4</priority>
             </url>
     <url>
-    <loc>http://localhost/servicii/servicii-forestiere</loc>
+    <loc>http://localhost/lemn-de-foc/ploiesti</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/campina</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/valea-doftanei</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/breaza</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/comarnic</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/baicoi</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/blejoi</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/berceni</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/paulesti</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/boldesti-scaeni</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/bucuresti</loc>
+    <priority>0.6</priority>
+            </url>
+    <url>
+    <loc>http://localhost/lemn-de-foc/ilfov</loc>
     <priority>0.6</priority>
             </url>
     <url>
     <loc>http://localhost/proiecte/parcul-central-buftea-amenajare</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
     <url>
     <loc>http://localhost/proiecte/gestiune-padure-domeniu-prahova</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
     <url>
     <loc>http://localhost/proiecte/platforma-compostare-magurele</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
     <url>
     <loc>http://localhost/blog/cum-alegi-lemnul-de-foc</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
     <url>
     <loc>http://localhost/blog/fsc-pefc-iso-diferente</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
     <url>
     <loc>http://localhost/blog/parteneriat-galle-gmbh</loc>
-    <lastmod>2026-06-02T15:49:07+00:00</lastmod>
+    <lastmod>2026-06-04T14:30:27+00:00</lastmod>
     <priority>0.5</priority>
             </url>
 </urlset>
