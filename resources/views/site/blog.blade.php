@@ -1,11 +1,11 @@
 <x-layouts.app
-    title="Blog — ghiduri despre lemn de foc, pădure și servicii | Galle Silva"
-    metaDescription="Ghiduri, studii și noutăți despre lemn de foc, gestiunea pădurii și servicii forestiere, de la echipa Galle Silva."
+    :title="__('Blog — ghiduri despre lemn de foc, padure si servicii | Galle Silva')"
+    :metaDescription="__('Ghiduri, studii si noutati despre lemn de foc, gestiunea padurii si servicii forestiere, de la echipa Galle Silva.')"
 >
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="font-display text-4xl md:text-5xl font-semibold">Blog</h1>
-            <p class="mt-4 text-lg text-mist">Ghiduri, studii, noutăți despre lemn de foc, pădure și servicii.</p>
+            <p class="mt-4 text-lg text-mist">{{ __('Ghiduri, studii, noutati despre lemn de foc, padure si servicii.') }}</p>
         </div>
     </section>
 

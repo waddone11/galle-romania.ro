@@ -43,7 +43,7 @@
 
     <article class="py-16">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <a href="/blog" class="text-sm text-mint hover:text-forest">← Înapoi la blog</a>
+            <a href="/blog" class="text-sm text-mint hover:text-forest">← {{ __('Inapoi la blog') }}</a>
             <p class="text-xs uppercase tracking-widest text-mint font-medium mt-6 mb-2">{{ $articol->categorie }}</p>
             <h1 class="font-display text-4xl md:text-5xl font-semibold mb-4">{{ $aTitlu }}</h1>
             @if($articol->published_at)

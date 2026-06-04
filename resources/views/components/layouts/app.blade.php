@@ -110,7 +110,7 @@
 </head>
 <body class="min-h-screen bg-[#fafaf8] text-forest-dark antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-forest focus:text-mist-warm focus:px-4 focus:py-2 focus:rounded-lg">
-        Sari la continut
+        {{ __('Sari la continut') }}
     </a>
 
     <x-site-navbar />

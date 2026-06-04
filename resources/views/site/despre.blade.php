@@ -34,19 +34,19 @@
     @if($certificari->count() > 0)
         <section class="bg-mist-warm py-16">
             <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="font-display text-2xl font-semibold mb-8">Standarde și certificări</h2>
+                <h2 class="font-display text-2xl font-semibold mb-8">{{ __('Standarde si certificari') }}</h2>
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                     @foreach($certificari as $cert)
                         <div class="bg-[#fafaf8] rounded-xl p-4 text-left">
                             <p class="text-xs uppercase tracking-widest text-mint font-medium mb-1">{{ $cert->tip->value }}</p>
                             <h3 class="font-semibold text-sm mb-1">{{ $cert->nume }}</h3>
                             <span class="text-xs px-2 py-0.5 rounded-full {{ $cert->status->value === 'activ' ? 'bg-mint/20 text-forest-dark' : 'bg-amber-100 text-amber-800' }}">
-                                {{ $cert->status->label() }}
+                                {{ __($cert->status->label()) }}
                             </span>
                         </div>
                     @endforeach
                 </div>
-                <a href="/certificari" class="inline-block mt-6 text-forest font-semibold hover:text-mint">Vezi toate certificările →</a>
+                <a href="/certificari" class="inline-block mt-6 text-forest font-semibold hover:text-mint">{{ __('Vezi toate certificarile') }} →</a>
             </div>
         </section>
     @endif
