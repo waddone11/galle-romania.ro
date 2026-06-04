@@ -2,6 +2,7 @@
 .DS_Store
 .env
 .env.backup
+.env.prod
 .env.production
 .phpactor.json
 .phpunit.result.cache
@@ -13,6 +14,8 @@
 /.vscode
 /.zed
 /auth.json
+# Dump-uri DB pentru import in phpMyAdmin (contin hash admin + continut) — vezi DEPLOY-CPANEL.md
+/database/dumps/
 /node_modules
 # /public/build is COMMITED — ALL-INKL prod has no Node, deploy = git pull only.
 # See DEPLOY.md §6. To re-build: `npm ci && npm run build` then commit changes.
