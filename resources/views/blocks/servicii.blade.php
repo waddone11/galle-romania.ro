@@ -17,7 +17,7 @@
         ->values();
 @endphp
 
-<section class="bg-white py-6 lg:py-28 px-6">
+<section class="bg-white py-6 lg:py-28 px-4 md:px-0">
     <div class="max-w-7xl mx-auto">
         <div class="text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.25em] text-forest/50">{{ $eyebrow }}</p>

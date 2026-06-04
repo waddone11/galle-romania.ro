@@ -14,7 +14,7 @@
     };
 @endphp
 
-<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+<section class="mx-auto max-w-7xl py-16 px-4 md:px-0">
     @if($titlu)
         <h2 class="font-display text-3xl md:text-4xl font-bold text-forest text-center mb-10">{{ $titlu }}</h2>
     @endif

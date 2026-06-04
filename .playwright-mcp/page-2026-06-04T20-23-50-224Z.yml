@@ -1,0 +1,408 @@
+- generic [ref=e1]:
+  - link "Sari la conținut" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Navigatie principala" [ref=e4]:
+      - generic [ref=e5]:
+        - link "Galle Silva - Acasa" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Galle Silva" [ref=e7]
+        - generic [ref=e495]:
+          - button "Meniu mobil" [expanded] [active] [ref=e496]:
+            - img [ref=e504]
+          - button "RO" [ref=e500]:
+            - generic [ref=e501]: RO
+            - img [ref=e502]
+      - generic [ref=e506]:
+        - link "Acasă" [ref=e507] [cursor=pointer]:
+          - /url: /
+        - link "Servicii" [ref=e508] [cursor=pointer]:
+          - /url: /servicii
+        - link "Lemn de foc" [ref=e509] [cursor=pointer]:
+          - /url: /lemn-de-foc
+        - link "Despre" [ref=e510] [cursor=pointer]:
+          - /url: /despre
+        - link "Certificări" [ref=e511] [cursor=pointer]:
+          - /url: /certificari
+        - link "Contact" [ref=e512] [cursor=pointer]:
+          - /url: /contact
+        - link "Cere ofertă" [ref=e514] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic:
+        - generic:
+          - img
+        - img [ref=e26]
+        - img [ref=e31]
+        - img [ref=e37]
+        - img [ref=e45]
+        - img [ref=e52]
+        - img [ref=e58]
+      - generic [ref=e64]:
+        - link "Servicii forestiere și lemn de foc Vezi serviciile →" [ref=e65] [cursor=pointer]:
+          - /url: /servicii
+          - generic [ref=e66]:
+            - generic [ref=e67]: Servicii forestiere și lemn de foc
+            - generic [ref=e68]: Vezi serviciile →
+        - heading "Pădurea, gestionată cu responsabilitate" [level=1] [ref=e69]
+        - paragraph [ref=e70]: Recoltare durabilă, lemn de foc de calitate și servicii forestiere profesionale în Prahova, Ilfov și București.
+        - link "Cere ofertă" [ref=e72] [cursor=pointer]:
+          - /url: /contact
+    - generic [ref=e74]:
+      - button "Galle Silva" [ref=e76] [cursor=pointer]
+      - paragraph [ref=e77]: GALLE SILVA
+      - heading "Scoatem pădurea din ceață." [level=2] [ref=e78]
+      - paragraph [ref=e79]: Limpede, de la pădure până la tine.
+      - paragraph [ref=e80]: "Suntem partenerul tău forestier din Prahova: recoltăm responsabil, transportăm și livrăm lemn de calitate — cu experiența și standardele grupului german Galle. Fără bătăi de cap, fără surprize."
+      - img [ref=e82]
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - paragraph [ref=e86]: Pentru cine
+        - heading "Două direcții, o singură calitate germană" [level=2] [ref=e87]
+      - generic [ref=e88]:
+        - link "Sunt client privat Lemn de foc Stejar disponibil acum. Fag și carpen — în curând. Preț în metri steri sau tone. Livrare în 2-5 zile. →" [ref=e89] [cursor=pointer]:
+          - /url: /lemn-de-foc
+          - paragraph [ref=e90]: Sunt client privat
+          - heading "Lemn de foc" [level=3] [ref=e91]
+          - paragraph [ref=e92]: Stejar disponibil acum. Fag și carpen — în curând. Preț în metri steri sau tone. Livrare în 2-5 zile.
+          - generic [ref=e93]: →
+        - link "Sunt firmă / instituție Servicii dedicate Exploatare forestieră, transport și curățare terenuri — pentru primării, instituții și companii. Plată la termen, factură. →" [ref=e94] [cursor=pointer]:
+          - /url: /servicii
+          - paragraph [ref=e95]: Sunt firmă / instituție
+          - heading "Servicii dedicate" [level=3] [ref=e96]
+          - paragraph [ref=e97]: Exploatare forestieră, transport și curățare terenuri — pentru primării, instituții și companii. Plată la termen, factură.
+          - generic [ref=e98]: →
+    - generic [ref=e103]:
+      - heading "Cine suntem" [level=2] [ref=e104]
+      - generic [ref=e105]: Galle Silva aduce în România experiența grupului german Galle GmbH — aproape 25 de ani în silvicultură. Lucrăm cu utilaje moderne (harvester și forwarder), echipă specializată și autospeciale proprii, în păduri private și de stat. De la recoltare la livrare, ducem lucrarea cap-coadă, corect și transparent.
+      - link "Despre noi" [ref=e106] [cursor=pointer]:
+        - /url: /despre
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - paragraph [ref=e110]: Ce facem
+        - heading "Servicii forestiere complete" [level=2] [ref=e111]
+      - generic [ref=e112]:
+        - article [ref=e113]:
+          - img "Exploatare forestieră" [ref=e115]
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - img [ref=e119]
+              - heading "Exploatare forestieră" [level=3] [ref=e122]
+            - paragraph [ref=e123]: Recoltăm lemnul cu harvester și forwarder, în păduri private și de stat. Tăiere, fasonare și scos-apropiat — lucrare completă.
+            - link "Detalii" [ref=e124] [cursor=pointer]:
+              - /url: /servicii/exploatare-forestiera
+              - text: Detalii
+              - generic [ref=e125]: →
+        - article [ref=e126]:
+          - img "Achiziție masă lemnoasă" [ref=e128]
+          - generic [ref=e129]:
+            - generic [ref=e130]:
+              - img [ref=e132]
+              - heading "Achiziție masă lemnoasă" [level=3] [ref=e137]
+            - paragraph [ref=e138]: Cumpărăm masă lemnoasă pe picior sau fasonată. Evaluăm corect și plătim transparent. Ai pădure de valorificat? Vorbește cu noi.
+            - link "Detalii" [ref=e139] [cursor=pointer]:
+              - /url: /servicii/achizitie-masa-lemnoasa
+              - text: Detalii
+              - generic [ref=e140]: →
+        - article [ref=e141]:
+          - img "Curățare și defrișare terenuri" [ref=e143]
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - img [ref=e147]
+              - heading "Curățare și defrișare terenuri" [level=3] [ref=e151]
+            - paragraph [ref=e152]: Curățăm terenul de copaci, arbuști și cioate — pentru construcții sau agricultură. Fără suprafață minimă.
+            - link "Detalii" [ref=e153] [cursor=pointer]:
+              - /url: /servicii/curatare-terenuri
+              - text: Detalii
+              - generic [ref=e154]: →
+        - article [ref=e155]:
+          - img "Transport lemn" [ref=e157]
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e161]
+              - heading "Transport lemn" [level=3] [ref=e166]
+            - paragraph [ref=e167]: Transportăm lemnul cu autospeciale proprii, din pădure până la depozit sau la tine.
+            - link "Detalii" [ref=e168] [cursor=pointer]:
+              - /url: /servicii/transport-lemn
+              - text: Detalii
+              - generic [ref=e169]: →
+        - article [ref=e170]:
+          - img "Lemn de foc" [ref=e172]
+          - generic [ref=e173]:
+            - generic [ref=e174]:
+              - img [ref=e176]
+              - heading "Lemn de foc" [level=3] [ref=e178]
+            - paragraph [ref=e179]: Esențe tari — stejar, carpen, fag — livrate în Prahova, Ilfov și București.
+            - link "Detalii" [ref=e180] [cursor=pointer]:
+              - /url: /lemn-de-foc
+              - text: Detalii
+              - generic [ref=e181]: →
+        - article [ref=e182]:
+          - img "Lucrări silvice & documentație" [ref=e184]
+          - generic [ref=e185]:
+            - generic [ref=e186]:
+              - img [ref=e188]
+              - heading "Lucrări silvice & documentație" [level=3] [ref=e191]
+            - paragraph [ref=e192]: Rărituri, curățiri și actele aferente (APV, documente de însoțire). Te ghidăm de la cap la coadă.
+            - link "Detalii" [ref=e193] [cursor=pointer]:
+              - /url: /servicii/lucrari-silvice
+              - text: Detalii
+              - generic [ref=e194]: →
+    - generic [ref=e196]:
+      - paragraph [ref=e197]: De ce Galle
+      - heading "Standarde germane, aplicate local" [level=2] [ref=e198]
+      - generic [ref=e199]:
+        - generic [ref=e200]:
+          - img [ref=e202]
+          - heading "Calitate germană" [level=3] [ref=e204]
+          - paragraph [ref=e205]: Procese și standarde Galle GmbH, aplicate la fiecare comandă și proiect.
+        - generic [ref=e206]:
+          - img [ref=e208]
+          - heading "Recoltare durabilă" [level=3] [ref=e210]
+          - paragraph [ref=e211]: Păduri gestionate responsabil, certificări FSC și PEFC în lucru.
+        - generic [ref=e212]:
+          - img [ref=e214]
+          - heading "Livrare rapidă" [level=3] [ref=e216]
+          - paragraph [ref=e217]: Lemn de foc livrat în 2-5 zile în Prahova, Ilfov și București.
+        - generic [ref=e218]:
+          - img [ref=e220]
+          - heading "Pentru firme și instituții" [level=3] [ref=e222]
+          - paragraph [ref=e223]: Servicii forestiere, transport și curățare terenuri, cu factură și plată la termen.
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - paragraph [ref=e226]: Standarde și certificări
+        - heading "Calitate certificată, responsabilitate dovedită" [level=2] [ref=e227]
+        - paragraph [ref=e228]: Lucrăm după standardele grupului Galle GmbH și suntem în proces de certificare FSC și PEFC.
+      - generic [ref=e230]:
+        - article [ref=e231]:
+          - img "FSC" [ref=e233]
+          - paragraph [ref=e234]: FSC
+          - generic [ref=e235]:
+            - img [ref=e236]
+            - text: În curs de obținere
+        - article [ref=e238]:
+          - img "PEFC" [ref=e240]
+          - paragraph [ref=e241]: PEFC
+          - generic [ref=e242]:
+            - img [ref=e243]
+            - text: În curs de obținere
+        - article [ref=e245]:
+          - img "ISO 9001" [ref=e247]
+          - paragraph [ref=e248]: ISO 9001
+          - generic [ref=e249]:
+            - img [ref=e250]
+            - text: Certificat
+          - generic [ref=e252]: prin Galle GmbH
+        - article [ref=e253]:
+          - img "ISO 14001" [ref=e255]
+          - paragraph [ref=e256]: ISO 14001
+          - generic [ref=e257]:
+            - img [ref=e258]
+            - text: Certificat
+          - generic [ref=e260]: prin Galle GmbH
+        - article [ref=e261]:
+          - img "RAL" [ref=e263]
+          - paragraph [ref=e264]: RAL
+          - generic [ref=e265]:
+            - img [ref=e266]
+            - text: Certificat
+          - generic [ref=e268]: prin Galle GmbH
+        - article [ref=e269]:
+          - img "DEKRA" [ref=e271]
+          - paragraph [ref=e272]: DEKRA
+          - generic [ref=e273]:
+            - img [ref=e274]
+            - text: Certificat
+          - generic [ref=e276]: prin Galle GmbH
+        - article [ref=e277]:
+          - img [ref=e279]
+          - paragraph [ref=e280]: FSC
+          - generic [ref=e281]:
+            - img [ref=e282]
+            - text: În curs de obținere
+        - article [ref=e284]:
+          - img [ref=e286]
+          - paragraph [ref=e287]: PEFC
+          - generic [ref=e288]:
+            - img [ref=e289]
+            - text: În curs de obținere
+        - article [ref=e291]:
+          - img [ref=e293]
+          - paragraph [ref=e294]: ISO 9001
+          - generic [ref=e295]:
+            - img [ref=e296]
+            - text: Certificat
+          - generic [ref=e298]: prin Galle GmbH
+        - article [ref=e299]:
+          - img [ref=e301]
+          - paragraph [ref=e302]: ISO 14001
+          - generic [ref=e303]:
+            - img [ref=e304]
+            - text: Certificat
+          - generic [ref=e306]: prin Galle GmbH
+        - article [ref=e307]:
+          - img [ref=e309]
+          - paragraph [ref=e310]: RAL
+          - generic [ref=e311]:
+            - img [ref=e312]
+            - text: Certificat
+          - generic [ref=e314]: prin Galle GmbH
+        - article [ref=e315]:
+          - img [ref=e317]
+          - paragraph [ref=e318]: DEKRA
+          - generic [ref=e319]:
+            - img [ref=e320]
+            - text: Certificat
+          - generic [ref=e322]: prin Galle GmbH
+        - article [ref=e323]:
+          - img [ref=e325]
+          - paragraph [ref=e326]: FSC
+          - generic [ref=e327]:
+            - img [ref=e328]
+            - text: În curs de obținere
+        - article [ref=e330]:
+          - img [ref=e332]
+          - paragraph [ref=e333]: PEFC
+          - generic [ref=e334]:
+            - img [ref=e335]
+            - text: În curs de obținere
+        - article [ref=e337]:
+          - img [ref=e339]
+          - paragraph [ref=e340]: ISO 9001
+          - generic [ref=e341]:
+            - img [ref=e342]
+            - text: Certificat
+          - generic [ref=e344]: prin Galle GmbH
+        - article [ref=e345]:
+          - img [ref=e347]
+          - paragraph [ref=e348]: ISO 14001
+          - generic [ref=e349]:
+            - img [ref=e350]
+            - text: Certificat
+          - generic [ref=e352]: prin Galle GmbH
+        - article [ref=e353]:
+          - img [ref=e355]
+          - paragraph [ref=e356]: RAL
+          - generic [ref=e357]:
+            - img [ref=e358]
+            - text: Certificat
+          - generic [ref=e360]: prin Galle GmbH
+        - article [ref=e361]:
+          - img [ref=e363]
+          - paragraph [ref=e364]: DEKRA
+          - generic [ref=e365]:
+            - img [ref=e366]
+            - text: Certificat
+          - generic [ref=e368]: prin Galle GmbH
+        - article [ref=e369]:
+          - img [ref=e371]
+          - paragraph [ref=e372]: FSC
+          - generic [ref=e373]:
+            - img [ref=e374]
+            - text: În curs de obținere
+        - article [ref=e376]:
+          - img [ref=e378]
+          - paragraph [ref=e379]: PEFC
+          - generic [ref=e380]:
+            - img [ref=e381]
+            - text: În curs de obținere
+        - article [ref=e383]:
+          - img [ref=e385]
+          - paragraph [ref=e386]: ISO 9001
+          - generic [ref=e387]:
+            - img [ref=e388]
+            - text: Certificat
+          - generic [ref=e390]: prin Galle GmbH
+        - article [ref=e391]:
+          - img [ref=e393]
+          - paragraph [ref=e394]: ISO 14001
+          - generic [ref=e395]:
+            - img [ref=e396]
+            - text: Certificat
+          - generic [ref=e398]: prin Galle GmbH
+        - article [ref=e399]:
+          - img [ref=e401]
+          - paragraph [ref=e402]: RAL
+          - generic [ref=e403]:
+            - img [ref=e404]
+            - text: Certificat
+          - generic [ref=e406]: prin Galle GmbH
+        - article [ref=e407]:
+          - img [ref=e409]
+          - paragraph [ref=e410]: DEKRA
+          - generic [ref=e411]:
+            - img [ref=e412]
+            - text: Certificat
+          - generic [ref=e414]: prin Galle GmbH
+    - heading "De la fața locului" [level=2] [ref=e416]
+    - generic [ref=e430]:
+      - generic [ref=e432]:
+        - heading "Durabil & regenerabil" [level=2] [ref=e433]
+        - paragraph [ref=e434]: Lemnul de foc Galle Silva provine din păduri gestionate responsabil — o resursă regenerabilă. Certificări FSC și PEFC în lucru, în acord cu principalele standarde de sustenabilitate.
+      - generic [ref=e436]:
+        - generic [ref=e437]: 100%
+        - generic [ref=e438]:
+          - generic [ref=e439]: natural
+          - generic [ref=e440]: "& regenerabil"
+      - button "Sus" [ref=e441]:
+        - img [ref=e442]
+    - generic [ref=e446]:
+      - heading "Vrei o ofertă personalizată?" [level=2] [ref=e447]
+      - paragraph [ref=e448]: Pentru lemn de foc, exploatare forestieră sau transport — spune-ne ce ai nevoie și te contactăm în 24h.
+      - link "Cere ofertă" [ref=e449] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=e450]:
+    - generic [ref=e454]:
+      - generic [ref=e455]:
+        - generic [ref=e456]:
+          - img "Galle Silva" [ref=e457]
+          - paragraph [ref=e458]: Servicii forestiere și lemn de foc, cu grijă pentru pădure și mediu. Partener local Galle GmbH Germania.
+        - generic [ref=e459]:
+          - heading "Companie" [level=4] [ref=e460]
+          - list [ref=e461]:
+            - listitem [ref=e462]:
+              - link "Despre" [ref=e463] [cursor=pointer]:
+                - /url: /despre
+            - listitem [ref=e464]:
+              - link "Servicii" [ref=e465] [cursor=pointer]:
+                - /url: /servicii
+            - listitem [ref=e466]:
+              - link "Lemn de foc" [ref=e467] [cursor=pointer]:
+                - /url: /lemn-de-foc
+            - listitem [ref=e468]:
+              - link "Certificări" [ref=e469] [cursor=pointer]:
+                - /url: /certificari
+            - listitem [ref=e470]:
+              - link "Proiecte" [ref=e471] [cursor=pointer]:
+                - /url: /proiecte
+        - generic [ref=e472]:
+          - heading "Contact" [level=4] [ref=e473]
+          - list [ref=e474]:
+            - listitem [ref=e475]: Romania
+            - listitem [ref=e476]:
+              - link "contact@galle-silva.ro" [ref=e477] [cursor=pointer]:
+                - /url: mailto:contact@galle-silva.ro
+            - listitem [ref=e478]:
+              - link "+40 700 000 000" [ref=e479] [cursor=pointer]:
+                - /url: tel:+40700000000
+            - listitem [ref=e480]: Luni - Vineri, 09:00 - 18:00
+          - generic [ref=e481]:
+            - link "Termeni" [ref=e482] [cursor=pointer]:
+              - /url: /termeni
+            - link "Confidențialitate" [ref=e483] [cursor=pointer]:
+              - /url: /confidentialitate
+            - link "Cookies" [ref=e484] [cursor=pointer]:
+              - /url: /cookies
+            - link "Date firmă" [ref=e485] [cursor=pointer]:
+              - /url: /date-firma
+            - button "Setări cookies" [ref=e486]
+      - generic [ref=e487]:
+        - generic [ref=e488]: © 2026 Galle Silva SRL. Toate drepturile rezervate.
+        - generic [ref=e489]:
+          - text: Partener local
+          - link "Galle GmbH Germania" [ref=e490] [cursor=pointer]:
+            - /url: https://www.galle-gmbh.de
+  - link "Scrie-ne pe WhatsApp" [ref=e491] [cursor=pointer]:
+    - /url: https://wa.me/40700000000
+    - img [ref=e492]

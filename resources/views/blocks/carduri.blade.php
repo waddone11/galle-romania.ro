@@ -5,7 +5,7 @@
     $cols = count($items) === 4 ? 'lg:grid-cols-4' : (count($items) === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2');
 @endphp
 
-<section class="bg-mist/40 py-20 lg:py-28 px-6">
+<section class="bg-mist/40 py-20 lg:py-28 px-4 md:px-0">
     <div class="max-w-7xl mx-auto">
         @if($eyebrow = $t('eyebrow'))
             <p class="text-sm uppercase tracking-[0.2em] text-forest/50 text-center">{{ $eyebrow }}</p>
@@ -20,7 +20,7 @@
                     $cTitlu = $card['titlu'][$loc] ?? $card['titlu']['ro'] ?? null;
                     $cText  = $card['text'][$loc] ?? $card['text']['ro'] ?? null;
                 @endphp
-                <div class="rounded-2xl bg-white border border-mist p-7 hover:border-mint transition">
+                <div class="rounded-2xl bg-white border border-forest p-7 hover:border-mint transition shadow-lg shadow-forest/10">
                     <span class="grid place-items-center size-12 rounded-2xl bg-mint/15 text-forest mb-5" aria-hidden="true">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12l5 5L20 7"/>

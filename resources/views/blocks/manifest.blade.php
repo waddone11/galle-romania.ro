@@ -3,8 +3,8 @@
     $t = fn (string $key) => $data[$key][$loc] ?? $data[$key]['ro'] ?? null;
 
     $eyebrow   = $t('eyebrow') ?? 'GALLE SILVA';
-    $titluMare = $t('titlu_mare') ?? 'Scoatem padurea din ceata.';
-    $tagline   = $t('tagline') ?? 'Limpede, de la padure pana la tine.';
+    $titluMare = $t('titlu_mare') ?? 'Claritate, control și responsabilitate în fiecare lucrare forestieră.';
+    $tagline   = $t('tagline');
     $intro     = $t('intro');
 @endphp
 
@@ -32,13 +32,15 @@
 
         <p class="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-forest">{{ $eyebrow }}</p>
 
-        <h2 class="mt-6 font-display font-extrabold leading-[0.95] text-forest text-6xl sm:text-7xl lg:text-8xl">
+        <h2 class="mt-6 font-display font-extrabold leading-[1.05] text-forest text-4xl sm:text-5xl lg:text-6xl">
             {{ $titluMare }}
         </h2>
 
-        <p class="mt-6 font-display text-2xl sm:text-3xl font-semibold text-orange-500">
-            {{ $tagline }}
-        </p>
+        @if($tagline)
+            <p class="mt-6 font-display text-2xl sm:text-3xl font-semibold text-orange-500">
+                {{ $tagline }}
+            </p>
+        @endif
 
         @if($intro)
             <p class="mt-8 mx-auto max-w-2xl text-base sm:text-lg font-light text-forest">

@@ -1,4 +1,4 @@
-<section class="mx-auto max-w-7xl px-6 py-6 lg:py-12">
+<section class="mx-auto max-w-7xl px-4 md:px-0 py-6 lg:py-12">
     <div class="text-center mb-12">
         <p class="text-sm uppercase tracking-[0.2em] text-forest/50">{{ __('Pentru cine') }}</p>
         <h2 class="mt-3 font-display text-3xl lg:text-4xl font-bold text-forest">

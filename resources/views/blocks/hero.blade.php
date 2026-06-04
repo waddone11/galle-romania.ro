@@ -60,8 +60,8 @@
     <div class="wheel" aria-hidden="true">
         <div class="rotor">
             <svg viewBox="0 0 760 760" class="absolute inset-0 w-full h-full">
-                <circle cx="380" cy="380" r="358" fill="none" stroke="#024846" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="2 8"/>
-                <circle cx="380" cy="380" r="358" fill="none" stroke="#024846" stroke-opacity="0.25" stroke-width="1"/>
+                <circle cx="380" cy="380" r="358" fill="none" stroke="#f97316" stroke-opacity="0.45" stroke-width="6" stroke-dasharray="2 8"/>
+                <circle cx="380" cy="380" r="358" fill="none" stroke="#f97316" stroke-opacity="0.25" stroke-width="3"/>
             </svg>
         </div>
 
@@ -101,7 +101,7 @@
     {{-- INTRO --}}
     {{-- pointer-events-none: the container spans the banner and would block hover on the wheel (z-1) --}}
     <div class="pointer-events-none relative z-10 w-[90%] max-w-7xl mx-auto flex flex-col lg:flex-row items-start pt-24">
-        <div class="pointer-events-auto max-w-xl pt-6 md:pt-24">
+        <div class="pointer-events-auto max-w-xl pt-6 md:pt-12">
             <a href="{{ $badgeUrl }}" class="pill inline-flex">
                 <span class="pill-inner inline-flex items-center gap-3 px-4 py-1.5 text-sm">
                     <span class="text-forest/80">{{ $badge }}</span>
@@ -112,7 +112,7 @@
             <h1 class="mt-7 font-display font-extrabold leading-[0.95] text-forest text-5xl sm:text-6xl lg:text-7xl">
                 {{ $titlu }}
             </h1>
-            <p class="mt-6 text-base sm:text-lg font-light text-forest/70 max-w-md">
+            <p class="mt-6 text-base sm:text-lg font-bold text-orange-500 max-w-md">
                 {{ $subtitlu }}
             </p>
             <div class="mt-9">

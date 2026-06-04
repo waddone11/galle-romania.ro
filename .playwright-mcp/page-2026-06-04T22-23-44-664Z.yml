@@ -1,0 +1,546 @@
+- generic [ref=e1]:
+  - link "Sari la conținut" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Navigatie principala" [ref=e4]:
+      - generic [ref=e5]:
+        - link "Galle Silva - Acasa" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Galle Silva" [ref=e7]
+        - generic [ref=e8]:
+          - link "Acasă" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Servicii" [ref=e10] [cursor=pointer]:
+            - /url: /servicii
+          - link "Lemn de foc" [ref=e11] [cursor=pointer]:
+            - /url: /lemn-de-foc
+          - link "Despre" [ref=e12] [cursor=pointer]:
+            - /url: /despre
+          - link "Certificări" [ref=e13] [cursor=pointer]:
+            - /url: /certificari
+          - link "FAQ" [ref=e14] [cursor=pointer]:
+            - /url: /intrebari-frecvente
+          - link "Contact" [ref=e15] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e16]:
+          - button "RO" [ref=e18]:
+            - generic [ref=e19]: RO
+            - img [ref=e20]
+          - link "Cere ofertă" [ref=e22] [cursor=pointer]:
+            - /url: /contact
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - heading "Întrebări frecvente" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Tot ce trebuie să știi despre lemnul de foc, livrare, plată și serviciile forestiere Galle Silva — în Prahova, Ilfov și București.
+      - generic [ref=e29]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Caută o întrebare…
+          - generic [ref=e33]:
+            - img
+            - searchbox "Caută o întrebare…" [ref=e34]
+          - paragraph [ref=e35]: 52 întrebări
+        - generic [ref=e36]:
+          - complementary [ref=e37]:
+            - navigation "Categorii de întrebări" [ref=e38]:
+              - link "Lemn de foc 16" [ref=e39] [cursor=pointer]:
+                - /url: "#cat-lemn-de-foc"
+                - img [ref=e41]
+                - generic [ref=e43]: Lemn de foc
+                - generic [ref=e44]: "16"
+              - link "Livrare 4" [ref=e45] [cursor=pointer]:
+                - /url: "#cat-livrare"
+                - img [ref=e47]
+                - generic [ref=e52]: Livrare
+                - generic [ref=e53]: "4"
+              - link "Plată 2" [ref=e54] [cursor=pointer]:
+                - /url: "#cat-plata"
+                - img [ref=e56]
+                - generic [ref=e58]: Plată
+                - generic [ref=e59]: "2"
+              - link "Exploatare forestieră 6" [ref=e60] [cursor=pointer]:
+                - /url: "#cat-exploatare-forestiera"
+                - img [ref=e62]
+                - generic [ref=e65]: Exploatare forestieră
+                - generic [ref=e66]: "6"
+              - link "Achiziție masă lemnoasă 7" [ref=e67] [cursor=pointer]:
+                - /url: "#cat-achizitie-masa-lemnoasa"
+                - img [ref=e69]
+                - generic [ref=e74]: Achiziție masă lemnoasă
+                - generic [ref=e75]: "7"
+              - link "Curățare terenuri 6" [ref=e76] [cursor=pointer]:
+                - /url: "#cat-curatare-terenuri"
+                - img [ref=e78]
+                - generic [ref=e82]: Curățare terenuri
+                - generic [ref=e83]: "6"
+              - link "Transport lemn 4" [ref=e84] [cursor=pointer]:
+                - /url: "#cat-transport-lemn"
+                - img [ref=e86]
+                - generic [ref=e92]: Transport lemn
+                - generic [ref=e93]: "4"
+              - link "Lucrări silvice 4" [ref=e94] [cursor=pointer]:
+                - /url: "#cat-lucrari-silvice"
+                - img [ref=e96]
+                - generic [ref=e99]: Lucrări silvice
+                - generic [ref=e100]: "4"
+              - link "Servicii 2" [ref=e101] [cursor=pointer]:
+                - /url: "#cat-servicii"
+                - img [ref=e103]
+                - generic [ref=e106]: Servicii
+                - generic [ref=e107]: "2"
+              - link "Întrebări generale 1" [ref=e108] [cursor=pointer]:
+                - /url: "#cat-general"
+                - img [ref=e110]
+                - generic [ref=e113]: Întrebări generale
+                - generic [ref=e114]: "1"
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - button "Deschide toate" [ref=e117]
+              - generic [ref=e118]: ·
+              - button "Închide toate" [ref=e119]
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - img [ref=e123]
+                - heading "Lemn de foc" [level=2] [ref=e125]
+                - generic [ref=e126]: 16 întrebări
+              - generic [ref=e127]:
+                - article [ref=e128]:
+                  - heading "Cât costă un metru cub de lemn de foc?" [level=3] [ref=e129]:
+                    - button "Cât costă un metru cub de lemn de foc?" [expanded] [active] [ref=e130]:
+                      - generic [ref=e131]: Cât costă un metru cub de lemn de foc?
+                      - img [ref=e133]
+                  - paragraph [ref=e135]: De la 350 lei/m³; prețul final depinde de esență, cantitate și modul de livrare.
+                - article [ref=e136]:
+                  - 'heading "Care e mai bun: fag, stejar sau carpen?" [level=3] [ref=e137]':
+                    - 'button "Care e mai bun: fag, stejar sau carpen?" [ref=e138]':
+                      - generic [ref=e139]: "Care e mai bun: fag, stejar sau carpen?"
+                      - img [ref=e141]
+                  - paragraph [ref=e143]: Toate trei sunt esențe tari, cu ardere lungă; carpenul și stejarul au putere calorică foarte bună.
+                - article [ref=e144]:
+                  - heading "Care e diferența dintre metru ster și metru cub?" [level=3] [ref=e145]:
+                    - button "Care e diferența dintre metru ster și metru cub?" [ref=e146]:
+                      - generic [ref=e147]: Care e diferența dintre metru ster și metru cub?
+                      - img [ref=e149]
+                  - paragraph [ref=e151]: Metrul cub e lemn plin; sterul e lemn stivuit, cu spații (aprox. 0,6–0,65 m³ lemn plin la un ster).
+                - article [ref=e152]:
+                  - heading "Livrați în București și Ilfov?" [level=3] [ref=e153]:
+                    - button "Livrați în București și Ilfov?" [ref=e154]:
+                      - generic [ref=e155]: Livrați în București și Ilfov?
+                      - img [ref=e157]
+                  - paragraph [ref=e159]: Da, plus Prahova; oferim și livrare la domiciliu.
+                - article [ref=e160]:
+                  - heading "Există cantitate minimă?" [level=3] [ref=e161]:
+                    - button "Există cantitate minimă?" [ref=e162]:
+                      - generic [ref=e163]: Există cantitate minimă?
+                      - img [ref=e165]
+                  - paragraph [ref=e167]: Nu.
+                - article [ref=e168]:
+                  - heading "Primesc factură și acte?" [level=3] [ref=e169]:
+                    - button "Primesc factură și acte?" [ref=e170]:
+                      - generic [ref=e171]: Primesc factură și acte?
+                      - img [ref=e173]
+                  - paragraph [ref=e175]: Da.
+                - article [ref=e176]:
+                  - heading "Cât lemn de foc îmi trebuie pentru o iarnă?" [level=3] [ref=e177]:
+                    - button "Cât lemn de foc îmi trebuie pentru o iarnă?" [ref=e178]:
+                      - generic [ref=e179]: Cât lemn de foc îmi trebuie pentru o iarnă?
+                      - img [ref=e181]
+                  - paragraph [ref=e183]: Pentru o casă standard de 100 m² cu termoizolație bună, calculăm aproximativ 5–7 metri steri de esență tare. Apartamentele sau casele bine izolate consumă 3–5 steri. Putem ajusta în funcție de zona ta climatică și tipul de sobă/cazan.
+                - article [ref=e184]:
+                  - heading "Lemnul de foc este uscat sau trebuie lăsat la uscat?" [level=3] [ref=e185]:
+                    - button "Lemnul de foc este uscat sau trebuie lăsat la uscat?" [ref=e186]:
+                      - generic [ref=e187]: Lemnul de foc este uscat sau trebuie lăsat la uscat?
+                      - img [ref=e189]
+                  - paragraph [ref=e191]: Lemnul de foc poate fi livrat în stadii diferite de uscare, iar acest lucru trebuie confirmat înainte de comandă. Galle Silva livrează lemn de foc de esență tare — stejar, carpen și fag — în Prahova, Ilfov și București, iar la ofertare îți spunem clar ce tip de lemn este disponibil.
+                - article [ref=e192]:
+                  - heading "Pot arde lemn proaspăt tăiat în sobă sau centrală?" [level=3] [ref=e193]:
+                    - button "Pot arde lemn proaspăt tăiat în sobă sau centrală?" [ref=e194]:
+                      - generic [ref=e195]: Pot arde lemn proaspăt tăiat în sobă sau centrală?
+                      - img [ref=e197]
+                  - paragraph [ref=e199]: Lemnul proaspăt tăiat nu este ideal pentru ardere imediată, deoarece conține mai multă umiditate, pornește mai greu și poate produce mai mult fum. Pentru randament mai bun, lemnul trebuie crăpat, depozitat aerisit și lăsat să se usuce înainte de folosire.
+                - article [ref=e200]:
+                  - heading "De ce scoate lemnul mult fum când îl bag pe foc?" [level=3] [ref=e201]:
+                    - button "De ce scoate lemnul mult fum când îl bag pe foc?" [ref=e202]:
+                      - generic [ref=e203]: De ce scoate lemnul mult fum când îl bag pe foc?
+                      - img [ref=e205]
+                  - paragraph [ref=e207]: Lemnul scoate mult fum de obicei când este prea umed, când focarul nu are tiraj bun sau când lemnul este așezat prea compact. Lemnul de esență tare arde bine doar dacă este depozitat corect și are suficient aer în timpul arderii.
+                - article [ref=e208]:
+                  - heading "Cum depozitez lemnul de foc afară fără să mucegăiască?" [level=3] [ref=e209]:
+                    - button "Cum depozitez lemnul de foc afară fără să mucegăiască?" [ref=e210]:
+                      - generic [ref=e211]: Cum depozitez lemnul de foc afară fără să mucegăiască?
+                      - img [ref=e213]
+                  - paragraph [ref=e215]: Lemnul de foc se depozitează ridicat de la sol, acoperit deasupra și lăsat deschis lateral pentru aerisire. Nu este recomandat să fie învelit complet în folie, deoarece umezeala rămâne blocată și poate apărea mucegai.
+                - article [ref=e216]:
+                  - heading "Lemnul de foc se cumpără mai bine la volum sau la greutate?" [level=3] [ref=e217]:
+                    - button "Lemnul de foc se cumpără mai bine la volum sau la greutate?" [ref=e218]:
+                      - generic [ref=e219]: Lemnul de foc se cumpără mai bine la volum sau la greutate?
+                      - img [ref=e221]
+                  - paragraph [ref=e223]: Pentru lemnul de foc, volumul este de obicei mai relevant decât greutatea, deoarece lemnul verde cântărește mai mult din cauza apei. Când compari oferte, cere clar unitatea de măsură, forma de livrare și dacă transportul este inclus.
+                - article [ref=e224]:
+                  - heading "Cât ține un metru cub de lemn de foc?" [level=3] [ref=e225]:
+                    - button "Cât ține un metru cub de lemn de foc?" [ref=e226]:
+                      - generic [ref=e227]: Cât ține un metru cub de lemn de foc?
+                      - img [ref=e229]
+                  - paragraph [ref=e231]: Un metru cub de lemn poate ține foarte diferit în funcție de casă, izolație, sobă sau centrală, temperatură și cât de uscat este lemnul. Galle Silva poate livra fără cantitate minimă, astfel încât poți comanda gradual în funcție de consum.
+                - article [ref=e232]:
+                  - heading "Câte lăzi sau paleți înseamnă un metru cub de lemn?" [level=3] [ref=e233]:
+                    - button "Câte lăzi sau paleți înseamnă un metru cub de lemn?" [ref=e234]:
+                      - generic [ref=e235]: Câte lăzi sau paleți înseamnă un metru cub de lemn?
+                      - img [ref=e237]
+                  - paragraph [ref=e239]: Numărul de lăzi sau paleți depinde de dimensiunea ambalajului și de modul în care este așezat lemnul. Cel mai corect este să verifici volumul declarat pentru fiecare ladă/palet, nu doar numărul de bucăți sau greutatea.
+                - article [ref=e240]:
+                  - heading "Care este diferența dintre lemn de foc și lemn pentru construcții?" [level=3] [ref=e241]:
+                    - button "Care este diferența dintre lemn de foc și lemn pentru construcții?" [ref=e242]:
+                      - generic [ref=e243]: Care este diferența dintre lemn de foc și lemn pentru construcții?
+                      - img [ref=e245]
+                  - paragraph [ref=e247]: Lemnul de foc este destinat arderii și se vinde pentru putere calorică, esență, dimensiune și grad de uscare. Lemnul pentru construcții trebuie să respecte alte cerințe de calitate, uscare, debitare și rezistență, deci nu trebuie confundat cu lemnul de foc.
+                - article [ref=e248]:
+                  - heading "Pot comanda lemn de foc și cantitate mică?" [level=3] [ref=e249]:
+                    - button "Pot comanda lemn de foc și cantitate mică?" [ref=e250]:
+                      - generic [ref=e251]: Pot comanda lemn de foc și cantitate mică?
+                      - img [ref=e253]
+                  - paragraph [ref=e255]: Da, Galle Silva nu impune cantitate minimă pentru lemnul de foc. Livrăm în Prahova, Ilfov și București, iar prețul pornește de la 350 lei/m³, în funcție de comandă, disponibilitate și transport.
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - img [ref=e259]
+                - heading "Livrare" [level=2] [ref=e264]
+                - generic [ref=e265]: 4 întrebări
+              - generic [ref=e266]:
+                - article [ref=e267]:
+                  - heading "Când livrați?" [level=3] [ref=e268]:
+                    - button "Când livrați?" [ref=e269]:
+                      - generic [ref=e270]: Când livrați?
+                      - img [ref=e272]
+                  - paragraph [ref=e274]: De regulă în 1–3 zile de la confirmare, în funcție de zonă — maximum 7 zile în perioadele aglomerate (octombrie–decembrie).
+                - article [ref=e275]:
+                  - heading "Pot ridica lemnele direct de la pădure?" [level=3] [ref=e276]:
+                    - button "Pot ridica lemnele direct de la pădure?" [ref=e277]:
+                      - generic [ref=e278]: Pot ridica lemnele direct de la pădure?
+                      - img [ref=e280]
+                  - paragraph [ref=e282]: "Da, oferim și ridicare din platforma primară, la un preț redus față de livrarea la domiciliu. Necesar: mijloc propriu de transport."
+                - article [ref=e283]:
+                  - heading "În cât timp se poate livra lemnul de foc?" [level=3] [ref=e284]:
+                    - button "În cât timp se poate livra lemnul de foc?" [ref=e285]:
+                      - generic [ref=e286]: În cât timp se poate livra lemnul de foc?
+                      - img [ref=e288]
+                  - paragraph [ref=e290]: Timpul de livrare depinde de stoc, localitate, cantitate și traseul de transport. Galle Silva oferă livrare pentru lemn de foc în Prahova, Ilfov și București, iar termenul concret se confirmă la comandă.
+                - article [ref=e291]:
+                  - heading "Se poate descărca lemnul direct în curte?" [level=3] [ref=e292]:
+                    - button "Se poate descărca lemnul direct în curte?" [ref=e293]:
+                      - generic [ref=e294]: Se poate descărca lemnul direct în curte?
+                      - img [ref=e296]
+                  - paragraph [ref=e298]: Descărcarea în curte depinde de acces, spațiul disponibil, tipul mașinii și condițiile terenului. Galle Silva poate discuta aceste detalii înainte de livrare, ca să evităm blocaje la poartă, drum îngust sau teren moale.
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - img [ref=e302]
+                - heading "Plată" [level=2] [ref=e304]
+                - generic [ref=e305]: 2 întrebări
+              - generic [ref=e306]:
+                - article [ref=e307]:
+                  - heading "Pot plăti la livrare?" [level=3] [ref=e308]:
+                    - button "Pot plăti la livrare?" [ref=e309]:
+                      - generic [ref=e310]: Pot plăti la livrare?
+                      - img [ref=e312]
+                  - paragraph [ref=e314]: Da. Plata la livrare — cash sau POS — ori prin transfer bancar. Pentru instituții și companii emitem factură cu plată la termen.
+                - article [ref=e315]:
+                  - heading "Primesc factură pentru lemnul de foc?" [level=3] [ref=e316]:
+                    - button "Primesc factură pentru lemnul de foc?" [ref=e317]:
+                      - generic [ref=e318]: Primesc factură pentru lemnul de foc?
+                      - img [ref=e320]
+                  - paragraph [ref=e322]: Da, pentru comenzile de lemn de foc se poate emite factură. Este recomandat să ceri factura și documentele aferente livrării, mai ales când comanzi cantități mai mari sau cumperi pentru firmă.
+            - generic [ref=e323]:
+              - generic [ref=e324]:
+                - img [ref=e326]
+                - heading "Exploatare forestieră" [level=2] [ref=e329]
+                - generic [ref=e330]: 6 întrebări
+              - generic [ref=e331]:
+                - article [ref=e332]:
+                  - heading "Ce acte sunt necesare pentru exploatarea unei păduri private?" [level=3] [ref=e333]:
+                    - button "Ce acte sunt necesare pentru exploatarea unei păduri private?" [ref=e334]:
+                      - generic [ref=e335]: Ce acte sunt necesare pentru exploatarea unei păduri private?
+                      - img [ref=e337]
+                  - paragraph [ref=e339]: "Pe scurt: un APV (act de punere în valoare) și autorizația de exploatare, prin ocolul silvic care administrează pădurea. Te ghidăm prin tot procesul."
+                - article [ref=e340]:
+                  - heading "Ce înseamnă exploatare cu harvester?" [level=3] [ref=e341]:
+                    - button "Ce înseamnă exploatare cu harvester?" [ref=e342]:
+                      - generic [ref=e343]: Ce înseamnă exploatare cu harvester?
+                      - img [ref=e345]
+                  - paragraph [ref=e347]: "Recoltare mecanizată: utilajul doboară, curăță de crengi și secționează arborele, rapid și cu impact redus asupra solului."
+                - article [ref=e348]:
+                  - heading "Se poate exploata fără APV?" [level=3] [ref=e349]:
+                    - button "Se poate exploata fără APV?" [ref=e350]:
+                      - generic [ref=e351]: Se poate exploata fără APV?
+                      - img [ref=e353]
+                  - paragraph [ref=e355]: Nu. Recoltarea legală se face doar pe baza APV și a autorizației de exploatare.
+                - article [ref=e356]:
+                  - heading "Cât durează exploatarea unei partizi?" [level=3] [ref=e357]:
+                    - button "Cât durează exploatarea unei partizi?" [ref=e358]:
+                      - generic [ref=e359]: Cât durează exploatarea unei partizi?
+                      - img [ref=e361]
+                  - paragraph [ref=e363]: Depinde de volum și teren; cu utilaje mecanizate, semnificativ mai repede decât manual. Îți dăm un termen după evaluare.
+                - article [ref=e364]:
+                  - heading "Faceți și transportul după exploatare?" [level=3] [ref=e365]:
+                    - button "Faceți și transportul după exploatare?" [ref=e366]:
+                      - generic [ref=e367]: Faceți și transportul după exploatare?
+                      - img [ref=e369]
+                  - paragraph [ref=e371]: Da, avem autospeciale proprii pentru transport.
+                - article [ref=e372]:
+                  - heading "Ce este o partidă sau un parchet de exploatare?" [level=3] [ref=e373]:
+                    - button "Ce este o partidă sau un parchet de exploatare?" [ref=e374]:
+                      - generic [ref=e375]: Ce este o partidă sau un parchet de exploatare?
+                      - img [ref=e377]
+                  - paragraph [ref=e379]: O partidă este un lot de masă lemnoasă identificat pentru exploatare, iar parchetul este zona de pădure în care se face recoltarea. În practică, acești termeni apar în documentele silvice și ajută la organizarea legală a lucrării.
+            - generic [ref=e380]:
+              - generic [ref=e381]:
+                - img [ref=e383]
+                - heading "Achiziție masă lemnoasă" [level=2] [ref=e388]
+                - generic [ref=e389]: 7 întrebări
+              - generic [ref=e390]:
+                - article [ref=e391]:
+                  - heading "Vreau să vând pădure. De unde încep?" [level=3] [ref=e392]:
+                    - button "Vreau să vând pădure. De unde încep?" [ref=e393]:
+                      - generic [ref=e394]: Vreau să vând pădure. De unde încep?
+                      - img [ref=e396]
+                  - paragraph [ref=e398]: Ne contactezi, venim la evaluare și îți facem o ofertă. Ne ocupăm de partea tehnică.
+                - article [ref=e399]:
+                  - heading "Ce înseamnă masă lemnoasă pe picior?" [level=3] [ref=e400]:
+                    - button "Ce înseamnă masă lemnoasă pe picior?" [ref=e401]:
+                      - generic [ref=e402]: Ce înseamnă masă lemnoasă pe picior?
+                      - img [ref=e404]
+                  - paragraph [ref=e406]: Lemnul aflat încă în pădure, nerecoltat, evaluat într-o partidă/APV.
+                - article [ref=e407]:
+                  - heading "Cumpărați și lemn deja fasonat?" [level=3] [ref=e408]:
+                    - button "Cumpărați și lemn deja fasonat?" [ref=e409]:
+                      - generic [ref=e410]: Cumpărați și lemn deja fasonat?
+                      - img [ref=e412]
+                  - paragraph [ref=e414]: Da, atât pe picior, cât și fasonat (din platformă sau depozit).
+                - article [ref=e415]:
+                  - heading "Cum se stabilește prețul?" [level=3] [ref=e416]:
+                    - button "Cum se stabilește prețul?" [ref=e417]:
+                      - generic [ref=e418]: Cum se stabilește prețul?
+                      - img [ref=e420]
+                  - paragraph [ref=e422]: După specie, volum, calitate și accesibilitate, în urma evaluării la fața locului.
+                - article [ref=e423]:
+                  - heading "Am nevoie de APV?" [level=3] [ref=e424]:
+                    - button "Am nevoie de APV?" [ref=e425]:
+                      - generic [ref=e426]: Am nevoie de APV?
+                      - img [ref=e428]
+                  - paragraph [ref=e430]: Pentru recoltare, da; te ajutăm cu pașii și documentele.
+                - article [ref=e431]:
+                  - heading "Cumpărați și lemn fasonat, nu doar masă lemnoasă pe picior?" [level=3] [ref=e432]:
+                    - button "Cumpărați și lemn fasonat, nu doar masă lemnoasă pe picior?" [ref=e433]:
+                      - generic [ref=e434]: Cumpărați și lemn fasonat, nu doar masă lemnoasă pe picior?
+                      - img [ref=e436]
+                  - paragraph [ref=e438]: Da, Galle Silva poate analiza atât masă lemnoasă pe picior, cât și lemn fasonat, în funcție de specie, volum, calitate, locație și documente. Pentru o evaluare corectă sunt necesare detalii despre lemn, acte și accesul pentru transport.
+                - article [ref=e439]:
+                  - heading "Am pădure privată. Am nevoie de ocol silvic?" [level=3] [ref=e440]:
+                    - button "Am pădure privată. Am nevoie de ocol silvic?" [ref=e441]:
+                      - generic [ref=e442]: Am pădure privată. Am nevoie de ocol silvic?
+                      - img [ref=e444]
+                  - paragraph [ref=e446]: Da, pentru terenurile forestiere private este necesară administrare sau prestare de servicii silvice printr-un ocol silvic autorizat. Exploatarea masei lemnoase se face cu documente și marcări corespunzătoare, nu doar prin înțelegere directă cu o firmă de tăiere.
+            - generic [ref=e447]:
+              - generic [ref=e448]:
+                - img [ref=e450]
+                - heading "Curățare terenuri" [level=2] [ref=e454]
+                - generic [ref=e455]: 6 întrebări
+              - generic [ref=e456]:
+                - article [ref=e457]:
+                  - heading "Cât costă curățarea unui teren?" [level=3] [ref=e458]:
+                    - button "Cât costă curățarea unui teren?" [ref=e459]:
+                      - generic [ref=e460]: Cât costă curățarea unui teren?
+                      - img [ref=e462]
+                  - paragraph [ref=e464]: Depinde de suprafață, densitatea vegetației și acces; cere o ofertă cu poze/video din teren.
+                - article [ref=e465]:
+                  - heading "Scoateți și cioatele?" [level=3] [ref=e466]:
+                    - button "Scoateți și cioatele?" [ref=e467]:
+                      - generic [ref=e468]: Scoateți și cioatele?
+                      - img [ref=e470]
+                  - paragraph [ref=e472]: Da, scoatem și/sau frezăm cioatele.
+                - article [ref=e473]:
+                  - heading "Lucrați în București și Ilfov?" [level=3] [ref=e474]:
+                    - button "Lucrați în București și Ilfov?" [ref=e475]:
+                      - generic [ref=e476]: Lucrați în București și Ilfov?
+                      - img [ref=e478]
+                  - paragraph [ref=e480]: Da, plus Prahova.
+                - article [ref=e481]:
+                  - heading "Am nevoie de autorizație pentru tăierea copacilor?" [level=3] [ref=e482]:
+                    - button "Am nevoie de autorizație pentru tăierea copacilor?" [ref=e483]:
+                      - generic [ref=e484]: Am nevoie de autorizație pentru tăierea copacilor?
+                      - img [ref=e486]
+                  - paragraph [ref=e488]: Pentru terenuri neforestiere, de regulă nu; pentru fond forestier, da. Îți spunem clar pentru situația ta.
+                - article [ref=e489]:
+                  - heading "Luați și resturile vegetale?" [level=3] [ref=e490]:
+                    - button "Luați și resturile vegetale?" [ref=e491]:
+                      - generic [ref=e492]: Luați și resturile vegetale?
+                      - img [ref=e494]
+                  - paragraph [ref=e496]: Da, putem prelua și toca/transporta resturile.
+                - article [ref=e497]:
+                  - heading "Faceți și toaletare de copaci în curți sau doar defrișări?" [level=3] [ref=e498]:
+                    - button "Faceți și toaletare de copaci în curți sau doar defrișări?" [ref=e499]:
+                      - generic [ref=e500]: Faceți și toaletare de copaci în curți sau doar defrișări?
+                      - img [ref=e502]
+                  - paragraph [ref=e504]: Galle Silva poate analiza lucrări de curățare terenuri, tăiere vegetație și intervenții asupra arborilor, dar în zone urbane pot fi necesare avize locale. Pentru București, Ilfov și Prahova, este bine să verifici înainte dacă arborele este pe proprietate privată, spațiu verde public sau teren cu regim special.
+            - generic [ref=e505]:
+              - generic [ref=e506]:
+                - img [ref=e508]
+                - heading "Transport lemn" [level=2] [ref=e514]
+                - generic [ref=e515]: 4 întrebări
+              - generic [ref=e516]:
+                - article [ref=e517]:
+                  - heading "Transportați bușteni sau doar lemn de foc?" [level=3] [ref=e518]:
+                    - button "Transportați bușteni sau doar lemn de foc?" [ref=e519]:
+                      - generic [ref=e520]: Transportați bușteni sau doar lemn de foc?
+                      - img [ref=e522]
+                  - paragraph [ref=e524]: Ambele, plus lemn fasonat.
+                - article [ref=e525]:
+                  - heading "Aveți camion cu macara?" [level=3] [ref=e526]:
+                    - button "Aveți camion cu macara?" [ref=e527]:
+                      - generic [ref=e528]: Aveți camion cu macara?
+                      - img [ref=e530]
+                  - paragraph [ref=e532]: Da.
+                - article [ref=e533]:
+                  - heading "Ce acte însoțesc transportul?" [level=3] [ref=e534]:
+                    - button "Ce acte însoțesc transportul?" [ref=e535]:
+                      - generic [ref=e536]: Ce acte însoțesc transportul?
+                      - img [ref=e538]
+                  - paragraph [ref=e540]: Documente de însoțire conform legislației și sistemului SUMAL.
+                - article [ref=e541]:
+                  - heading "Cât costă transportul?" [level=3] [ref=e542]:
+                    - button "Cât costă transportul?" [ref=e543]:
+                      - generic [ref=e544]: Cât costă transportul?
+                      - img [ref=e546]
+                  - paragraph [ref=e548]: După distanță și volum; detalii la telefon.
+            - generic [ref=e549]:
+              - generic [ref=e550]:
+                - img [ref=e552]
+                - heading "Lucrări silvice" [level=2] [ref=e555]
+                - generic [ref=e556]: 4 întrebări
+              - generic [ref=e557]:
+                - article [ref=e558]:
+                  - heading "Ce sunt răriturile?" [level=3] [ref=e559]:
+                    - button "Ce sunt răriturile?" [ref=e560]:
+                      - generic [ref=e561]: Ce sunt răriturile?
+                      - img [ref=e563]
+                  - paragraph [ref=e565]: Lucrări prin care se extrag o parte din arbori, ca să crească sănătos arboretul rămas.
+                - article [ref=e566]:
+                  - heading "Ce sunt curățirile?" [level=3] [ref=e567]:
+                    - button "Ce sunt curățirile?" [ref=e568]:
+                      - generic [ref=e569]: Ce sunt curățirile?
+                      - img [ref=e571]
+                  - paragraph [ref=e573]: Intervenții de îngrijire în arboretele tinere.
+                - article [ref=e574]:
+                  - heading "Cine decide ce arbori se taie?" [level=3] [ref=e575]:
+                    - button "Cine decide ce arbori se taie?" [ref=e576]:
+                      - generic [ref=e577]: Cine decide ce arbori se taie?
+                      - img [ref=e579]
+                  - paragraph [ref=e581]: Se stabilește prin amenajament și marcaj, împreună cu ocolul silvic.
+                - article [ref=e582]:
+                  - heading "Se poate face fără ocol silvic?" [level=3] [ref=e583]:
+                    - button "Se poate face fără ocol silvic?" [ref=e584]:
+                      - generic [ref=e585]: Se poate face fără ocol silvic?
+                      - img [ref=e587]
+                  - paragraph [ref=e589]: Lucrările în fond forestier se fac cu servicii silvice asigurate; te ghidăm.
+            - generic [ref=e590]:
+              - generic [ref=e591]:
+                - img [ref=e593]
+                - heading "Servicii" [level=2] [ref=e596]
+                - generic [ref=e597]: 2 întrebări
+              - generic [ref=e598]:
+                - article [ref=e599]:
+                  - heading "Aveți certificate FSC / PEFC?" [level=3] [ref=e600]:
+                    - button "Aveți certificate FSC / PEFC?" [ref=e601]:
+                      - generic [ref=e602]: Aveți certificate FSC / PEFC?
+                      - img [ref=e604]
+                  - paragraph [ref=e606]: Suntem în proces de certificare FSC și PEFC. Galle GmbH, grupul nostru din Germania, are certificările ISO 9001, ISO 14001, RAL și DEKRA. Pe pagina /certificari găsiți detalii actualizate.
+                - article [ref=e607]:
+                  - heading "Faceți lucrări pe terenuri în pantă sau greu accesibile?" [level=3] [ref=e608]:
+                    - button "Faceți lucrări pe terenuri în pantă sau greu accesibile?" [ref=e609]:
+                      - generic [ref=e610]: Faceți lucrări pe terenuri în pantă sau greu accesibile?
+                      - img [ref=e612]
+                  - paragraph [ref=e614]: Da, dar lucrările pe terenuri în pantă sau cu acces dificil trebuie evaluate înainte. Galle Silva verifică accesul, tipul terenului, volumul de lemn și utilajele potrivite înainte de a confirma exploatarea, curățarea sau transportul.
+            - generic [ref=e615]:
+              - generic [ref=e616]:
+                - img [ref=e618]
+                - heading "Întrebări generale" [level=2] [ref=e621]
+                - generic [ref=e622]: 1 întrebare
+              - article [ref=e624]:
+                - heading "Lucrați și cu firme sau instituții publice?" [level=3] [ref=e625]:
+                  - button "Lucrați și cu firme sau instituții publice?" [ref=e626]:
+                    - generic [ref=e627]: Lucrați și cu firme sau instituții publice?
+                    - img [ref=e629]
+                - paragraph [ref=e631]: Da, serviciile Galle Silva pot fi discutate și pentru firme, dezvoltatori, administratori de terenuri sau instituții, în funcție de lucrare și documentație. Pentru instituții publice, procedura poate depinde de achiziție, ofertare sau platforme de tip SEAP/SICAP.
+            - generic [ref=e632]:
+              - generic [ref=e633]:
+                - paragraph [ref=e634]: Nu ai găsit răspunsul?
+                - paragraph [ref=e635]: Scrie-ne și te contactăm în 24h.
+              - generic [ref=e636]:
+                - link "Scrie-ne" [ref=e637] [cursor=pointer]:
+                  - /url: /contact
+                - link "Cere ofertă" [ref=e638] [cursor=pointer]:
+                  - /url: /contact
+  - contentinfo [ref=e639]:
+    - generic [ref=e643]:
+      - generic [ref=e644]:
+        - generic [ref=e645]:
+          - img "Galle Silva" [ref=e646]
+          - paragraph [ref=e647]: Servicii forestiere și lemn de foc, cu grijă pentru pădure și mediu. Partener local Galle GmbH Germania.
+        - generic [ref=e648]:
+          - heading "Companie" [level=4] [ref=e649]
+          - list [ref=e650]:
+            - listitem [ref=e651]:
+              - link "Despre" [ref=e652] [cursor=pointer]:
+                - /url: /despre
+            - listitem [ref=e653]:
+              - link "Servicii" [ref=e654] [cursor=pointer]:
+                - /url: /servicii
+            - listitem [ref=e655]:
+              - link "Lemn de foc" [ref=e656] [cursor=pointer]:
+                - /url: /lemn-de-foc
+            - listitem [ref=e657]:
+              - link "Certificări" [ref=e658] [cursor=pointer]:
+                - /url: /certificari
+            - listitem [ref=e659]:
+              - link "Proiecte" [ref=e660] [cursor=pointer]:
+                - /url: /proiecte
+            - listitem [ref=e661]:
+              - link "Întrebări frecvente" [ref=e662] [cursor=pointer]:
+                - /url: /intrebari-frecvente
+        - generic [ref=e663]:
+          - heading "Contact" [level=4] [ref=e664]
+          - list [ref=e665]:
+            - listitem [ref=e666]: Sat Manesti, Com. Manesti, Str. Principala nr. 302, jud. Prahova
+            - listitem [ref=e667]:
+              - link "info@galle-silva.ro" [ref=e668] [cursor=pointer]:
+                - /url: mailto:info@galle-silva.ro
+            - listitem [ref=e669]:
+              - link "+40 729 961 082" [ref=e670] [cursor=pointer]:
+                - /url: tel:+40729961082
+            - listitem [ref=e671]: Luni - Vineri, 09:00 - 18:00
+          - generic [ref=e672]:
+            - link "Termeni" [ref=e673] [cursor=pointer]:
+              - /url: /termeni
+            - link "Confidențialitate" [ref=e674] [cursor=pointer]:
+              - /url: /confidentialitate
+            - link "Cookies" [ref=e675] [cursor=pointer]:
+              - /url: /cookies
+            - link "Date firmă" [ref=e676] [cursor=pointer]:
+              - /url: /date-firma
+            - link "Autentificare" [ref=e677] [cursor=pointer]:
+              - /url: /autentificare
+            - link "Cont nou" [ref=e678] [cursor=pointer]:
+              - /url: /inregistrare
+            - button "Setări cookies" [ref=e679]
+      - generic [ref=e680]:
+        - generic [ref=e681]: © 2026 Galle Silva SRL. Toate drepturile rezervate.
+        - generic [ref=e682]:
+          - text: Partener local
+          - link "Galle GmbH Germania" [ref=e683] [cursor=pointer]:
+            - /url: https://www.galle-gmbh.de
+      - paragraph [ref=e684]:
+        - text: GALLE SILVA SRL · CUI 52771440 · Reg. Com. J2025081738000 ·
+        - link "Date firmă" [ref=e685] [cursor=pointer]:
+          - /url: /date-firma
+  - link "Scrie-ne pe WhatsApp" [ref=e686] [cursor=pointer]:
+    - /url: https://wa.me/40729961082
+    - img [ref=e687]
+    - generic [ref=e689]: WhatsApp

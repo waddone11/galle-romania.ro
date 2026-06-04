@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - link "Sari la conținut" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Navigatie principala" [ref=e4]:
+      - generic [ref=e5]:
+        - link "Galle Silva - Acasa" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Galle Silva" [ref=e7]
+        - generic [ref=e8]:
+          - link "Acasă" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Servicii" [ref=e10] [cursor=pointer]:
+            - /url: /servicii
+          - link "Lemn de foc" [ref=e11] [cursor=pointer]:
+            - /url: /lemn-de-foc
+          - link "Despre" [ref=e12] [cursor=pointer]:
+            - /url: /despre
+          - link "Certificări" [ref=e13] [cursor=pointer]:
+            - /url: /certificari
+          - link "FAQ" [ref=e14] [cursor=pointer]:
+            - /url: /intrebari-frecvente
+          - link "Contact" [ref=e15] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e16]:
+          - button "RO" [ref=e18]:
+            - generic [ref=e19]: RO
+            - img [ref=e20]
+          - link "Cere ofertă" [ref=e22] [cursor=pointer]:
+            - /url: /contact
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - heading "Întrebări frecvente" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Răspunsuri despre lemn de foc, servicii forestiere, livrare și documente.
+      - generic [ref=e29]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Caută o întrebare…
+          - generic [ref=e33]:
+            - img
+            - searchbox "Caută o întrebare…" [ref=e34]
+          - paragraph [ref=e35]: 0 întrebări
+        - generic [ref=e36]:
+          - complementary:
+            - navigation "Categorii de întrebări"
+          - generic [ref=e37]:
+            - generic [ref=e38]:
+              - button "Deschide toate" [ref=e39]
+              - generic [ref=e40]: ·
+              - button "Închide toate" [ref=e41]
+            - generic [ref=e42]:
+              - generic [ref=e43]:
+                - paragraph [ref=e44]: Nu ai găsit răspunsul?
+                - paragraph [ref=e45]: Scrie-ne și te contactăm în 24h.
+              - generic [ref=e46]:
+                - link "Scrie-ne" [ref=e47] [cursor=pointer]:
+                  - /url: /contact
+                - link "Cere ofertă" [ref=e48] [cursor=pointer]:
+                  - /url: /contact
+  - contentinfo [ref=e49]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - img "Galle Silva" [ref=e56]
+          - paragraph [ref=e57]: Servicii forestiere și lemn de foc, cu grijă pentru pădure și mediu. Partener local Galle GmbH Germania.
+        - generic [ref=e58]:
+          - heading "Companie" [level=4] [ref=e59]
+          - list [ref=e60]:
+            - listitem [ref=e61]:
+              - link "Despre" [ref=e62] [cursor=pointer]:
+                - /url: /despre
+            - listitem [ref=e63]:
+              - link "Servicii" [ref=e64] [cursor=pointer]:
+                - /url: /servicii
+            - listitem [ref=e65]:
+              - link "Lemn de foc" [ref=e66] [cursor=pointer]:
+                - /url: /lemn-de-foc
+            - listitem [ref=e67]:
+              - link "Certificări" [ref=e68] [cursor=pointer]:
+                - /url: /certificari
+            - listitem [ref=e69]:
+              - link "Proiecte" [ref=e70] [cursor=pointer]:
+                - /url: /proiecte
+            - listitem [ref=e71]:
+              - link "Întrebări frecvente" [ref=e72] [cursor=pointer]:
+                - /url: /intrebari-frecvente
+        - generic [ref=e73]:
+          - heading "Contact" [level=4] [ref=e74]
+          - list [ref=e75]:
+            - listitem [ref=e76]: Sat Manesti, Com. Manesti, Str. Principala nr. 302, jud. Prahova
+            - listitem [ref=e77]:
+              - link "info@galle-silva.ro" [ref=e78] [cursor=pointer]:
+                - /url: mailto:info@galle-silva.ro
+            - listitem [ref=e79]:
+              - link "+40 729 961 082" [ref=e80] [cursor=pointer]:
+                - /url: tel:+40729961082
+            - listitem [ref=e81]: Luni - Vineri, 09:00 - 18:00
+          - generic [ref=e82]:
+            - link "Termeni" [ref=e83] [cursor=pointer]:
+              - /url: /termeni
+            - link "Confidențialitate" [ref=e84] [cursor=pointer]:
+              - /url: /confidentialitate
+            - link "Cookies" [ref=e85] [cursor=pointer]:
+              - /url: /cookies
+            - link "Date firmă" [ref=e86] [cursor=pointer]:
+              - /url: /date-firma
+            - link "Autentificare" [ref=e87] [cursor=pointer]:
+              - /url: /autentificare
+            - link "Cont nou" [ref=e88] [cursor=pointer]:
+              - /url: /inregistrare
+            - button "Setări cookies" [ref=e89]
+      - generic [ref=e90]:
+        - generic [ref=e91]: © 2026 Galle Silva SRL. Toate drepturile rezervate.
+        - generic [ref=e92]:
+          - text: Partener local
+          - link "Galle GmbH Germania" [ref=e93] [cursor=pointer]:
+            - /url: https://www.galle-gmbh.de
+      - paragraph [ref=e94]:
+        - text: GALLE SILVA SRL · CUI 52771440 · Reg. Com. J2025081738000 ·
+        - link "Date firmă" [ref=e95] [cursor=pointer]:
+          - /url: /date-firma
+  - link "Scrie-ne pe WhatsApp" [ref=e96] [cursor=pointer]:
+    - /url: https://wa.me/40729961082
+    - img [ref=e97]
+    - generic [ref=e99]: WhatsApp

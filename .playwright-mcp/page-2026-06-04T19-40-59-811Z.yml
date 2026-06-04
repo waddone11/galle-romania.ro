@@ -1,0 +1,258 @@
+- generic [active] [ref=e1]:
+  - link "Sari la continut" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Navigatie principala" [ref=e4]:
+      - generic [ref=e5]:
+        - link "Galle Silva - Acasa" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Galle Silva" [ref=e7]
+        - generic [ref=e8]:
+          - link "Acasă" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Servicii" [ref=e10] [cursor=pointer]:
+            - /url: /servicii
+          - link "Lemn de foc" [ref=e11] [cursor=pointer]:
+            - /url: /lemn-de-foc
+          - link "Despre" [ref=e12] [cursor=pointer]:
+            - /url: /despre
+          - link "Certificări" [ref=e13] [cursor=pointer]:
+            - /url: /certificari
+          - link "Contact" [ref=e14] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e15]:
+          - button "RO" [ref=e17]:
+            - generic [ref=e18]: RO
+            - img [ref=e19]
+          - link "Cere ofertă" [ref=e21] [cursor=pointer]:
+            - /url: /contact
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic:
+        - generic:
+          - img
+        - generic [ref=e24]:
+          - img [ref=e26]
+          - generic [ref=e28]: Lemn de foc
+          - generic: Esențe tari (stejar, carpen, fag), livrate acasă.
+        - generic [ref=e29]:
+          - img [ref=e31]
+          - generic [ref=e34]: Exploatare forestieră
+          - generic: Prestări servicii în păduri private și de stat.
+        - generic [ref=e35]:
+          - img [ref=e37]
+          - generic [ref=e42]: Achiziție masă lemnoasă
+          - generic: Pe picior sau fasonată — evaluare corectă.
+        - generic [ref=e43]:
+          - img [ref=e45]
+          - generic [ref=e49]: Curățare terenuri
+          - generic: Defrișare controlată, fără suprafață minimă.
+        - generic [ref=e50]:
+          - img [ref=e52]
+          - generic [ref=e55]: Certificare FSC & PEFC
+          - generic: Surse responsabile, în proces de certificare.
+        - generic [ref=e56]:
+          - img [ref=e58]
+          - generic [ref=e63]: Livrare locală
+          - generic: Prahova, Ilfov, București · 1-3 zile.
+      - generic [ref=e64]:
+        - link "Servicii forestiere și lemn de foc Vezi serviciile →" [ref=e65] [cursor=pointer]:
+          - /url: /servicii
+          - generic [ref=e66]:
+            - generic [ref=e67]: Servicii forestiere și lemn de foc
+            - generic [ref=e68]: Vezi serviciile →
+        - heading "Pădurea, gestionată cu responsabilitate" [level=1] [ref=e69]
+        - paragraph [ref=e70]: Recoltare durabilă, lemn de foc de calitate și servicii forestiere profesionale în Prahova, Ilfov și București.
+        - link "Cere ofertă" [ref=e72] [cursor=pointer]:
+          - /url: /contact
+    - generic [ref=e74]:
+      - paragraph [ref=e75]: GALLE SILVA
+      - heading "Scoatem pădurea din ceață." [level=2] [ref=e76]
+      - paragraph [ref=e77]: Limpede, de la pădure până la tine.
+      - paragraph [ref=e78]: "Suntem partenerul tău forestier din Prahova: recoltăm responsabil, transportăm și livrăm lemn de calitate — cu experiența și standardele grupului german Galle. Fără bătăi de cap, fără surprize."
+      - img [ref=e80]
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - paragraph [ref=e84]: Pentru cine
+        - heading "Două direcții, o singură calitate germană" [level=2] [ref=e85]
+      - generic [ref=e86]:
+        - link "Sunt client privat Lemn de foc Stejar disponibil acum. Fag și carpen — în curând. Preț în metri steri sau tone. Livrare în 2-5 zile. →" [ref=e87] [cursor=pointer]:
+          - /url: /lemn-de-foc
+          - paragraph [ref=e88]: Sunt client privat
+          - heading "Lemn de foc" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Stejar disponibil acum. Fag și carpen — în curând. Preț în metri steri sau tone. Livrare în 2-5 zile.
+          - generic [ref=e91]: →
+        - link "Sunt firmă / instituție Servicii dedicate Exploatare forestieră, transport și curățare terenuri — pentru primării, instituții și companii. Plată la termen, factură. →" [ref=e92] [cursor=pointer]:
+          - /url: /servicii
+          - paragraph [ref=e93]: Sunt firmă / instituție
+          - heading "Servicii dedicate" [level=3] [ref=e94]
+          - paragraph [ref=e95]: Exploatare forestieră, transport și curățare terenuri — pentru primării, instituții și companii. Plată la termen, factură.
+          - generic [ref=e96]: →
+    - generic [ref=e101]:
+      - heading "Cine suntem" [level=2] [ref=e102]
+      - generic [ref=e103]: Galle Silva aduce în România experiența grupului german Galle GmbH — aproape 25 de ani în silvicultură. Lucrăm cu utilaje moderne (harvester și forwarder), echipă specializată și autospeciale proprii, în păduri private și de stat. De la recoltare la livrare, ducem lucrarea cap-coadă, corect și transparent.
+      - link "Despre noi" [ref=e104] [cursor=pointer]:
+        - /url: /despre
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - paragraph [ref=e108]: Ce facem
+        - heading "Servicii forestiere complete" [level=2] [ref=e109]
+      - generic [ref=e110]:
+        - article [ref=e111]:
+          - img "Exploatare forestieră" [ref=e113]
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - img [ref=e117]
+              - heading "Exploatare forestieră" [level=3] [ref=e120]
+            - paragraph [ref=e121]: Recoltăm lemnul cu harvester și forwarder, în păduri private și de stat. Tăiere, fasonare și scos-apropiat — lucrare completă.
+            - link "Detalii" [ref=e122] [cursor=pointer]:
+              - /url: /servicii/exploatare-forestiera
+              - text: Detalii
+              - generic [ref=e123]: →
+        - article [ref=e124]:
+          - img "Achiziție masă lemnoasă" [ref=e126]
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - img [ref=e130]
+              - heading "Achiziție masă lemnoasă" [level=3] [ref=e135]
+            - paragraph [ref=e136]: Cumpărăm masă lemnoasă pe picior sau fasonată. Evaluăm corect și plătim transparent. Ai pădure de valorificat? Vorbește cu noi.
+            - link "Detalii" [ref=e137] [cursor=pointer]:
+              - /url: /servicii/achizitie-masa-lemnoasa
+              - text: Detalii
+              - generic [ref=e138]: →
+        - article [ref=e139]:
+          - img "Curățare și defrișare terenuri" [ref=e141]
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - img [ref=e145]
+              - heading "Curățare și defrișare terenuri" [level=3] [ref=e149]
+            - paragraph [ref=e150]: Curățăm terenul de copaci, arbuști și cioate — pentru construcții sau agricultură. Fără suprafață minimă.
+            - link "Detalii" [ref=e151] [cursor=pointer]:
+              - /url: /servicii/curatare-terenuri
+              - text: Detalii
+              - generic [ref=e152]: →
+        - article [ref=e153]:
+          - img "Transport lemn" [ref=e155]
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - img [ref=e159]
+              - heading "Transport lemn" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Transportăm lemnul cu autospeciale proprii, din pădure până la depozit sau la tine.
+            - link "Detalii" [ref=e166] [cursor=pointer]:
+              - /url: /servicii/transport-lemn
+              - text: Detalii
+              - generic [ref=e167]: →
+        - article [ref=e168]:
+          - img "Lemn de foc" [ref=e170]
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - img [ref=e174]
+              - heading "Lemn de foc" [level=3] [ref=e176]
+            - paragraph [ref=e177]: Esențe tari — stejar, carpen, fag — livrate în Prahova, Ilfov și București.
+            - link "Detalii" [ref=e178] [cursor=pointer]:
+              - /url: /lemn-de-foc
+              - text: Detalii
+              - generic [ref=e179]: →
+        - article [ref=e180]:
+          - img "Lucrări silvice & documentație" [ref=e182]
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - img [ref=e186]
+              - heading "Lucrări silvice & documentație" [level=3] [ref=e189]
+            - paragraph [ref=e190]: Rărituri, curățiri și actele aferente (APV, documente de însoțire). Te ghidăm de la cap la coadă.
+            - link "Detalii" [ref=e191] [cursor=pointer]:
+              - /url: /servicii/lucrari-silvice
+              - text: Detalii
+              - generic [ref=e192]: →
+    - generic [ref=e194]:
+      - paragraph [ref=e195]: De ce Galle
+      - heading "Standarde germane, aplicate local" [level=2] [ref=e196]
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - img [ref=e200]
+          - heading "Calitate germană" [level=3] [ref=e202]
+          - paragraph [ref=e203]: Procese și standarde Galle GmbH, aplicate la fiecare comandă și proiect.
+        - generic [ref=e204]:
+          - img [ref=e206]
+          - heading "Recoltare durabilă" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Păduri gestionate responsabil, certificări FSC și PEFC în lucru.
+        - generic [ref=e210]:
+          - img [ref=e212]
+          - heading "Livrare rapidă" [level=3] [ref=e214]
+          - paragraph [ref=e215]: Lemn de foc livrat în 2-5 zile în Prahova, Ilfov și București.
+        - generic [ref=e216]:
+          - img [ref=e218]
+          - heading "Pentru firme și instituții" [level=3] [ref=e220]
+          - paragraph [ref=e221]: Servicii forestiere, transport și curățare terenuri, cu factură și plată la termen.
+    - heading "De la fața locului" [level=2] [ref=e223]
+    - generic [ref=e237]:
+      - generic [ref=e239]:
+        - heading "Durabil & regenerabil" [level=2] [ref=e240]
+        - paragraph [ref=e241]: Lemnul de foc Galle Silva provine din păduri gestionate responsabil — o resursă regenerabilă. Certificări FSC și PEFC în lucru, în acord cu principalele standarde de sustenabilitate.
+      - generic [ref=e243]:
+        - generic [ref=e244]: 100%
+        - generic [ref=e245]:
+          - generic [ref=e246]: natural
+          - generic [ref=e247]: "& regenerabil"
+      - button "Sus" [ref=e248]:
+        - img [ref=e249]
+    - generic [ref=e253]:
+      - heading "Vrei o ofertă personalizată?" [level=2] [ref=e254]
+      - paragraph [ref=e255]: Pentru lemn de foc, exploatare forestieră sau transport — spune-ne ce ai nevoie și te contactăm în 24h.
+      - link "Cere ofertă" [ref=e256] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=e257]:
+    - generic [ref=e261]:
+      - generic [ref=e262]:
+        - generic [ref=e263]:
+          - generic [ref=e264]: Galle Silva
+          - paragraph [ref=e265]: Servicii forestiere și lemn de foc, cu grijă pentru pădure și mediu. Partener local Galle GmbH Germania.
+        - generic [ref=e266]:
+          - heading "Companie" [level=4] [ref=e267]
+          - list [ref=e268]:
+            - listitem [ref=e269]:
+              - link "Despre" [ref=e270] [cursor=pointer]:
+                - /url: /despre
+            - listitem [ref=e271]:
+              - link "Servicii" [ref=e272] [cursor=pointer]:
+                - /url: /servicii
+            - listitem [ref=e273]:
+              - link "Lemn de foc" [ref=e274] [cursor=pointer]:
+                - /url: /lemn-de-foc
+            - listitem [ref=e275]:
+              - link "Certificări" [ref=e276] [cursor=pointer]:
+                - /url: /certificari
+            - listitem [ref=e277]:
+              - link "Proiecte" [ref=e278] [cursor=pointer]:
+                - /url: /proiecte
+        - generic [ref=e279]:
+          - heading "Contact" [level=4] [ref=e280]
+          - list [ref=e281]:
+            - listitem [ref=e282]: Romania
+            - listitem [ref=e283]:
+              - link "contact@galle-silva.ro" [ref=e284] [cursor=pointer]:
+                - /url: mailto:contact@galle-silva.ro
+            - listitem [ref=e285]:
+              - link "+40 700 000 000" [ref=e286] [cursor=pointer]:
+                - /url: tel:+40700000000
+            - listitem [ref=e287]: Luni - Vineri, 09:00 - 18:00
+          - generic [ref=e288]:
+            - link "Termeni" [ref=e289] [cursor=pointer]:
+              - /url: /termeni
+            - link "Confidențialitate" [ref=e290] [cursor=pointer]:
+              - /url: /confidentialitate
+            - link "Cookies" [ref=e291] [cursor=pointer]:
+              - /url: /cookies
+            - link "Date firmă" [ref=e292] [cursor=pointer]:
+              - /url: /date-firma
+            - button "Setări cookies" [ref=e293]
+      - generic [ref=e294]:
+        - generic [ref=e295]: © 2026 Galle Silva SRL. Toate drepturile rezervate.
+        - generic [ref=e296]:
+          - text: Partener local
+          - link "Galle GmbH Germania" [ref=e297] [cursor=pointer]:
+            - /url: https://www.galle-gmbh.de
+  - link "Scrie-ne pe WhatsApp" [ref=e298] [cursor=pointer]:
+    - /url: https://wa.me/40700000000
+    - img [ref=e299]
+    - generic [ref=e301]: WhatsApp

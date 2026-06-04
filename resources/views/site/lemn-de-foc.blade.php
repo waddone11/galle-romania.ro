@@ -101,9 +101,9 @@
 
     {{-- Specii --}}
     <section class="py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6 border border-forest rounded-2xl bg-[#fafaf8] p-6">
             @foreach($species as $sp)
-                <div class="bg-mist-warm rounded-2xl p-6">
+                <div class="bg-mist-warm rounded-2xl p-6 border border-forest shadow-lg shadow-forest/10">
                     <div class="flex justify-between items-start mb-3">
                         <h3 class="font-display text-xl font-semibold">{{ $sp->getTranslation('nume', $loc) ?: $sp->getTranslation('nume', 'ro') }}</h3>
                         <span class="text-xs px-2 py-1 rounded-full {{ $sp->status->value === 'disponibil' ? 'bg-mint/20 text-forest-dark' : 'bg-amber-100 text-amber-800' }}">
@@ -111,7 +111,7 @@
                         </span>
                     </div>
                     <p class="text-sm text-forest-dark/80 mb-4">{{ $sp->getTranslation('descriere', $loc) ?: $sp->getTranslation('descriere', 'ro') }}</p>
-                    <dl class="grid grid-cols-2 gap-2 text-sm pt-4 border-t border-forest/10">
+                    <dl class="grid grid-cols-2 gap-2 text-sm pt-4 border-t border-forest">
                         <div>
                             <dt class="text-forest-dark/60 text-xs">{{ __('Pret pornire') }}</dt>
                             <dd class="font-semibold">{{ number_format($sp->pret_pornire, 0) }} lei</dd>
