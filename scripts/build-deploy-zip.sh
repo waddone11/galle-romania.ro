@@ -27,7 +27,7 @@ rsync -a \
   --exclude='/.git/' --exclude='/.github/' --exclude='/node_modules/' --exclude='/tests/' \
   --exclude='/dist/' --exclude='/database/dumps/' --exclude='/public/hot' --exclude='/public/storage' \
   --exclude='/.playwright-mcp/' --exclude='/.idea/' --exclude='/.claude/' --exclude='/scripts/' \
-  --exclude='/.env' --exclude='/.env.prod' --exclude='/certificari/' \
+  --exclude='/.env' --exclude='/.env.prod' --exclude='/certificari/' --exclude='/*.zip' \
   --exclude='/galle_logo.png' --exclude='/galle_logos.png' --exclude='/lemne_de_foc.png' \
   --exclude='/logo_favicon.png' --exclude='/logo_nav.png' --exclude='/navbar-logo.png' \
   --exclude='.DS_Store' \
