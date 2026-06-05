@@ -131,9 +131,9 @@ class PaginaSeeder extends Seeder
                         'data' => [
                             'eyebrow' => $t('GALLE SILVA', 'GALLE SILVA', 'GALLE SILVA'),
                             'titlu_mare' => $t(
-                                'Scoatem pădurea din ceață.',
-                                'Wir bringen Klarheit in den Wald.',
-                                'We bring clarity to the forest.',
+                                'Claritate, control și responsabilitate în fiecare lucrare forestieră.',
+                                'Klarheit, Kontrolle und Verantwortung bei jeder forstwirtschaftlichen Arbeit.',
+                                'Clarity, control and responsibility in every forestry operation.',
                             ),
                             'tagline' => $t(
                                 'Limpede, de la pădure până la tine.',
@@ -141,9 +141,9 @@ class PaginaSeeder extends Seeder
                                 'Clear and transparent — from the forest to you.',
                             ),
                             'intro' => $t(
-                                'Suntem partenerul tău forestier din Prahova: recoltăm responsabil, transportăm și livrăm lemn de calitate — cu experiența și standardele grupului german Galle. Fără bătăi de cap, fără surprize.',
-                                'Wir sind Ihr Forstpartner in Prahova: Wir ernten verantwortungsvoll, transportieren und liefern Holz in bester Qualität — mit der Erfahrung und den Standards der deutschen Galle-Gruppe. Ohne Aufwand, ohne Überraschungen.',
-                                'We are your forestry partner in Prahova: we harvest responsibly, transport and deliver quality wood — backed by the experience and standards of the German Galle group. No hassle, no surprises.',
+                                'De la evaluarea masei lemnoase până la exploatare, transport și livrare, lucrăm cu procese transparente și echipamente profesionale.',
+                                'Von der Bewertung der Holzmasse bis zur Holzernte, zum Transport und zur Lieferung arbeiten wir mit transparenten Prozessen und professioneller Ausrüstung.',
+                                'From timber assessment to harvesting, transport and delivery, we work with transparent processes and professional equipment.',
                             ),
                         ],
                     ],

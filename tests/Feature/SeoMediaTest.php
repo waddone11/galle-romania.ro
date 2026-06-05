@@ -144,6 +144,6 @@ it('serves the home content with Romanian diacritics', function () {
     $this->get('/')
         ->assertOk()
         ->assertSee('Pădurea, gestionată cu responsabilitate')
-        ->assertSee('Scoatem pădurea din ceață.')
+        ->assertSee('Claritate, control și responsabilitate în fiecare lucrare forestieră.')
         ->assertSee('Exploatare forestieră');
 });
