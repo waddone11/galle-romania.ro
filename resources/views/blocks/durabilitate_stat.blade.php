@@ -31,9 +31,4 @@
         </div>
     </div>
 
-    <button type="button" data-scroll-to-top
-            class="absolute bottom-6 right-6 grid place-items-center h-12 w-12 border-2 border-mint text-mint hover:bg-mint hover:text-forest transition"
-            aria-label="{{ __('Sus') }}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 15l6-6 6 6"/></svg>
-    </button>
 </section>

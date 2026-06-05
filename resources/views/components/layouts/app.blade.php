@@ -132,6 +132,14 @@
     <x-whatsapp-cta />
     <x-cookie-consent />
 
+    {{-- Scroll-to-top global: fixed, vizibil dupa ~400px scroll (JS in app.js).
+         bottom-24 ca sa nu acopere pill-ul WhatsApp (bottom-5). --}}
+    <button type="button" data-scroll-to-top
+            class="fixed bottom-24 right-5 z-50 grid place-items-center h-12 w-12 border-2 border-mint text-mint bg-forest/80 backdrop-blur hover:bg-mint hover:text-forest transition-[opacity,background-color,color] opacity-0 pointer-events-none data-visible:opacity-100 data-visible:pointer-events-auto"
+            aria-label="{{ __('Sus') }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 15l6-6 6 6"/></svg>
+    </button>
+
     @livewireScripts
 </body>
 </html>
