@@ -111,19 +111,29 @@ Apoi **inchide rutele de deploy**:
 
 HTTPS: activeaza Let's Encrypt din KAS pentru `galle-silva.com` + `www`.
 
-## 10. Update-uri viitoare (re-deploy)
+## 10. Update incremental (`scripts/make_zip.sh`)
 
-1. Local: build + zip ca la pasul 1 (fara dump nou!).
-2. Urca si dezarhiveaza peste fisierele existente, **DAR**:
-   - **NU suprascrie subfolderele de upload din `public/images/`** (`proiecte/`, `membri/`,
-     `recenzii/`, `og/`) — acolo ajung pozele urcate din admin (disk `public_images`).
-     Restul `public/images/` (asset-urile statice din git) se poate suprascrie linistit.
-   - **NU urca `.env`** peste cel de pe server (are parolele si secretul schimbat).
-   - **NU rula** `/__ops/migrate-fresh-seed` si **NU re-importa dump-ul** — ai pierde datele de productie.
+Pentru modificari de cod/view-uri/CSS/seedere (fara dependinte composer noi):
+
+1. Local: `./scripts/make_zip.sh` → produce `dist/galle-update.zip` (~40 MB).
+   Scriptul face `npm run build` (sari cu `--no-build`) si **exclude automat** tot ce nu
+   trebuie atins pe prod: `vendor/`, `.env`/`.env.*`, `storage/` integral, symlink-ul
+   `public/storage` si pozele urcate din admin (`public/images/{proiecte,membri,recenzii,og}`).
+2. WebFTP → upload `dist/galle-update.zip` in `/galle-silva.com/` → bifeaza
+   **„Unpack archives after uploading"** — suprascrie codul, NU atinge `.env`/`storage`/`vendor`/upload-uri.
 3. In `.env` pune temporar `DEPLOY_OPS_ENABLED=true` + sterge manual `bootstrap/cache/config.php`
-   din WebFTP (config-ul e cache-uit; stergerea il re-citeste din `.env`).
-4. Ruleaza: `/__ops/migrate?secret=…` (schema noua, aditiv) apoi `/__ops/config-cache?secret=…`.
+   din WebFTP (config-ul e cache-uit; stergerea il re-citeste din `.env`), daca rutele erau inchise.
+4. Browser: `/__ops/cache-clear?secret=…`, apoi `/__ops/migrate?secret=…` **doar daca ai migratii noi**,
+   apoi `/__ops/config-cache?secret=…`.
 5. La final: `DEPLOY_OPS_ENABLED=false` + `/__ops/config-cache?secret=…`.
+
+**Cand s-au schimbat dependintele composer** (`composer.json`/`composer.lock`):
+`docker compose exec laravel.test composer install --no-dev --optimize-autoloader`, apoi
+`./scripts/make_zip.sh --with-vendor` (zip complet cu `vendor/`), apoi local `composer install`
+ca sa-ti recapeti pachetele de dev. Restul pasilor identici.
+
+**Niciodata la update:** `/__ops/migrate-fresh-seed` sau re-importul dump-ului — ai pierde
+datele de productie (comenzi, lead-uri, editari din admin).
 
 ## Securitate (OBLIGATORIU de citit)
 
