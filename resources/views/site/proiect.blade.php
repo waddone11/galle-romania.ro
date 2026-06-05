@@ -27,10 +27,10 @@
             @if($proiect->locatie)
                 <p class="text-forest-dark/60 mb-8">{{ $proiect->locatie }}</p>
             @endif
-            @php $galerie = $proiect->getMedia('galerie'); @endphp
-            @if($galerie->isNotEmpty())
+            @php $galerie = $proiect->galerieUrls(); @endphp
+            @if($galerie !== [])
                 <div class="aspect-video rounded-2xl bg-forest/10 mb-8 overflow-hidden">
-                    <img src="{{ $galerie->first()->getUrl('mare') }}"
+                    <img src="{{ $galerie[0] }}"
                          alt="{{ $pTitlu }}"
                          width="1600" height="900" fetchpriority="high" decoding="async"
                          class="w-full h-full object-cover">
@@ -47,11 +47,11 @@
                 {!! nl2br(e($proiect->getTranslation('continut', $loc) ?: $proiect->getTranslation('continut', 'ro'))) !!}
             </div>
 
-            @if($galerie->count() > 1)
+            @if(count($galerie) > 1)
                 <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    @foreach($galerie->slice(1) as $media)
+                    @foreach(array_slice($galerie, 1) as $imgUrl)
                         <div class="aspect-square rounded-xl overflow-hidden bg-forest/10">
-                            <img src="{{ $media->getUrl('card') }}"
+                            <img src="{{ $imgUrl }}"
                                  alt="{{ $pTitlu }} — {{ $loop->iteration }}"
                                  width="800" height="450" loading="lazy" decoding="async"
                                  class="w-full h-full object-cover">

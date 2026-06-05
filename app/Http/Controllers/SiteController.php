@@ -186,7 +186,7 @@ class SiteController extends Controller
 
     public function proiecte(): View
     {
-        $proiecte = Proiect::with('media')->where('is_published', true)->orderBy('ordine')->get();
+        $proiecte = Proiect::where('is_published', true)->orderBy('ordine')->get();
 
         return view('site.proiecte', compact('proiecte'));
     }

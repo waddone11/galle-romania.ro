@@ -22,7 +22,7 @@
             @foreach($membri as $membru)
                 <div class="rounded-2xl bg-white border border-forest/15 p-7 text-center shadow-lg shadow-forest/10">
                     @if($membru->imagine)
-                        <img src="{{ str_starts_with($membru->imagine, 'http') || str_starts_with($membru->imagine, '/') ? $membru->imagine : asset('storage/'.$membru->imagine) }}"
+                        <img src="{{ str_starts_with($membru->imagine, 'http') || str_starts_with($membru->imagine, '/') ? $membru->imagine : asset('images/'.$membru->imagine) }}"
                              alt="{{ $membru->nume }}"
                              width="112" height="112" loading="lazy" decoding="async"
                              class="mx-auto h-28 w-28 rounded-full object-cover">

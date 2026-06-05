@@ -53,16 +53,17 @@ it('renders the proiecte and blog teasers on home', function () {
     $r->assertSeeText('Vezi blogul');
 });
 
-it('seeds medialibrary covers and renders them on /proiecte', function () {
+it('seeds static gallery paths and renders them on /proiecte', function () {
     $this->seed(ProiectSeeder::class);
 
-    expect(Proiect::where('slug', 'gestiune-padure-domeniu-prahova')->first()->getMedia('galerie'))
+    expect(Proiect::where('slug', 'gestiune-padure-domeniu-prahova')->first()->galerie)
         ->not->toBeEmpty();
 
     $r = $this->get('/proiecte');
     $r->assertOk();
-    // Cover-urile medialibrary se servesc de pe discul public (/storage/...).
-    $r->assertSee('/storage/');
+    // Cover-urile sunt fisiere statice din public/images — fara /storage (symlink).
+    $r->assertSee('/images/galle/proiecte/', false);
+    $r->assertDontSee('/storage/');
 });
 
 it('renders the project gallery on the project detail page', function () {
@@ -70,7 +71,8 @@ it('renders the project gallery on the project detail page', function () {
 
     $r = $this->get('/proiecte/gestiune-padure-domeniu-prahova');
     $r->assertOk();
-    $r->assertSee('/storage/');
+    $r->assertSee('/images/galle/proiecte/harvester-lucru.webp', false);
+    $r->assertDontSee('/storage/');
 });
 
 it('seeds the team idempotently', function () {

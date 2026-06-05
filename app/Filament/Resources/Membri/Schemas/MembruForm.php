@@ -25,6 +25,7 @@ class MembruForm
                         ->label('Poza (optional — altfel initiale)')
                         ->image()
                         ->avatar()
+                        ->disk('public_images')
                         ->directory('membri'),
                     HasTranslatableTabs::for(fn (string $loc, string $label) => [
                         TextInput::make("rol.$loc")

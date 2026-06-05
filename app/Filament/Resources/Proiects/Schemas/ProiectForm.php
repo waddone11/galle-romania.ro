@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Proiects\Schemas;
 
 use App\Filament\Concerns\HasTranslatableTabs;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -36,9 +36,10 @@ class ProiectForm
             Section::make('Galerie')
                 ->description('Prima imagine este folosita drept cover in lista de proiecte si in teaserul de pe home.')
                 ->schema([
-                    SpatieMediaLibraryFileUpload::make('galerie')
+                    FileUpload::make('galerie')
                         ->label('Imagini')
-                        ->collection('galerie')
+                        ->disk('public_images')
+                        ->directory('proiecte')
                         ->multiple()
                         ->reorderable()
                         ->image()

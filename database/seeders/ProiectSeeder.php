@@ -7,11 +7,16 @@ use Illuminate\Database\Seeder;
 
 class ProiectSeeder extends Seeder
 {
+    /*
+     * `galerie` = cai statice sub public/images (servite cu asset(), fara
+     * Media Library / symlink storage — prod fara SSH nu poate crea symlinkul).
+     */
     public function run(): void
     {
         $rows = [
             [
                 'slug' => 'parcul-central-buftea-amenajare',
+                'galerie' => ['galle/proiecte/forwarder-drum.webp', 'galle/proiecte/gramada-busteni.webp'],
                 'titlu' => [
                     'ro' => 'Amenajare parcul central Buftea',
                     'de' => 'Gestaltung des Zentralparks Buftea',
@@ -35,6 +40,7 @@ class ProiectSeeder extends Seeder
             ],
             [
                 'slug' => 'gestiune-padure-domeniu-prahova',
+                'galerie' => ['galle/proiecte/harvester-lucru.webp', 'galle/proiecte/busteni-marcati.webp', 'galle/proiecte/harvester-galle.webp'],
                 'titlu' => [
                     'ro' => 'Plan de gestiune padure privata — domeniu Prahova',
                     'de' => 'Bewirtschaftungsplan für einen Privatwald — Gut in Prahova',
@@ -58,6 +64,7 @@ class ProiectSeeder extends Seeder
             ],
             [
                 'slug' => 'platforma-compostare-magurele',
+                'galerie' => ['galle/proiecte/depozit-utilaj.webp', 'galle/proiecte/depozit-amurg.webp', 'galle/proiecte/camion-incarcat.webp'],
                 'titlu' => [
                     'ro' => 'Platforma de compostare Magurele',
                     'de' => 'Kompostieranlage Magurele',
@@ -85,36 +92,5 @@ class ProiectSeeder extends Seeder
             Proiect::updateOrCreate(['slug' => $row['slug']], $row);
         }
 
-        $this->attachGalerie();
-    }
-
-    /**
-     * Ataseaza idempotent poze reale (din public/images/galle/proiecte) la colectia
-     * medialibrary `galerie`. `preservingOriginal` pastreaza fisierele sursa in git;
-     * copiile medialibrary ajung pe discul `public` (storage/app/public).
-     */
-    private function attachGalerie(): void
-    {
-        $galerii = [
-            'parcul-central-buftea-amenajare' => ['forwarder-drum.jpg', 'gramada-busteni.jpg'],
-            'gestiune-padure-domeniu-prahova' => ['harvester-lucru.jpg', 'busteni-marcati.jpg', 'harvester-galle.jpg'],
-            'platforma-compostare-magurele' => ['depozit-utilaj.jpg', 'depozit-amurg.jpg', 'camion-incarcat.jpg'],
-        ];
-
-        foreach ($galerii as $slug => $fisiere) {
-            $proiect = Proiect::where('slug', $slug)->first();
-
-            if (! $proiect || $proiect->getMedia('galerie')->isNotEmpty()) {
-                continue;
-            }
-
-            foreach ($fisiere as $fisier) {
-                $cale = public_path('images/galle/proiecte/'.$fisier);
-
-                if (is_file($cale)) {
-                    $proiect->addMedia($cale)->preservingOriginal()->toMediaCollection('galerie');
-                }
-            }
-        }
     }
 }

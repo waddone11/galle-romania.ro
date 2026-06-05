@@ -28,15 +28,15 @@ docker compose exec laravel.test npm run build
 rm -f public/hot
 
 # 4. Zip-ul de deploy (continut FARA folder de top; include vendor/, public/build,
-#    storage/ cu media 1-8 + structura goala, si .env-ul de prod copiat din .env.prod)
-#    — vezi istoricul comenzilor / sesiunea Claude pentru scriptul de staging complet.
+#    structura storage/ goala si .env-ul de prod copiat din .env.prod):
+bash scripts/build-deploy-zip.sh
 
 # 5. La final, restaureaza pachetele de dev local:
 docker compose exec laravel.test composer install
 ```
 
-**Continutul zip-ului:** tot codul + `vendor/` + `public/build/` + `public/images/` +
-`storage/` (media proiectelor `app/public/1..8` + structura goala cu `.gitignore`-uri) +
+**Continutul zip-ului:** tot codul + `vendor/` + `public/build/` + `public/images/` (toate
+imaginile, inclusiv galeriile proiectelor — statice) + structura `storage/` goala (cu `.gitignore`-uri) +
 `.env` **gata completat** (copia `.env.prod`, inclusiv parolele DB/SMTP). **Exclus:** `node_modules`,
 `.git`, `tests`, `database/dumps`, `public/hot`, simlink-ul `public/storage` (il creeaza `/__ops/storage-link`),
 loguri, cache-uri compilate, sursele de logo din root.
@@ -75,9 +75,12 @@ suficient pe KAS (PHP ruleaza ca userul tau); daca apar erori de scriere, pune *
 Ruleaza in ordine, in browser:
 
 ```
-https://galle-silva.com/__ops/storage-link?secret=waddone11
 https://galle-silva.com/__ops/config-cache?secret=waddone11
 ```
+
+> `storage-link` NU mai e necesar: toate imaginile (galerii proiecte, poze echipa/recenzii,
+> upload-uri din admin) sunt fisiere statice in `public/images/` (disk `public_images`).
+> Ruta `/__ops/storage-link` ramane disponibila, dar nu o folosesti.
 
 - **NU rula** `/__ops/migrate-fresh-seed` — datele sunt deja in dump! Acea ruta STERGE baza de date
   (de aceea cere si `&confirm=RESET-GALLE`).
@@ -112,8 +115,9 @@ HTTPS: activeaza Let's Encrypt din KAS pentru `galle-silva.com` + `www`.
 
 1. Local: build + zip ca la pasul 1 (fara dump nou!).
 2. Urca si dezarhiveaza peste fisierele existente, **DAR**:
-   - **NU suprascrie `storage/`** — `storage/app/public/` contine pozele urcate din admin!
-     (cel mai sigur: scoate `storage/` din zip-ul de update).
+   - **NU suprascrie subfolderele de upload din `public/images/`** (`proiecte/`, `membri/`,
+     `recenzii/`, `og/`) — acolo ajung pozele urcate din admin (disk `public_images`).
+     Restul `public/images/` (asset-urile statice din git) se poate suprascrie linistit.
    - **NU urca `.env`** peste cel de pe server (are parolele si secretul schimbat).
    - **NU rula** `/__ops/migrate-fresh-seed` si **NU re-importa dump-ul** — ai pierde datele de productie.
 3. In `.env` pune temporar `DEPLOY_OPS_ENABLED=true` + sterge manual `bootstrap/cache/config.php`

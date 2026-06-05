@@ -38,13 +38,10 @@ find dist/stage/storage/framework -type f ! -name .gitignore -delete
 find dist/stage/storage/logs -type f ! -name .gitignore -delete
 rm -rf dist/stage/storage/pail
 
-# media seed-uita: pastreaza doar dir-urile 1-8 (cele referite de seed/dump); orfanele afara
-(
-  cd dist/stage/storage/app/public
-  for d in */; do
-    case "${d%/}" in 1|2|3|4|5|6|7|8) ;; *) rm -rf "$d" ;; esac
-  done
-)
+# storage/app/public: gol — toate imaginile sunt statice in public/images
+# (galeria proiectelor + upload-urile Filament merg pe disk-ul public_images).
+find dist/stage/storage/app/public -mindepth 1 ! -name .gitignore -delete 2>/dev/null || true
+(cd dist/stage/storage/app/public && find . -mindepth 1 -type d -empty -delete)
 
 # bootstrap/cache: gol (writable), pastreaza .gitignore
 find dist/stage/bootstrap/cache -type f ! -name .gitignore -delete

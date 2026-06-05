@@ -47,6 +47,8 @@ class RecenzieForm
                     FileUpload::make('imagine')
                         ->label('Avatar (optional — altfel initiale)')
                         ->image()
+                        ->disk('public_images')
+                        ->directory('recenzii')
                         ->columnSpanFull(),
                 ]),
 

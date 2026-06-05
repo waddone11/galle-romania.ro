@@ -31,7 +31,7 @@ class PaginaForm
                         ->live(onBlur: true)
                         ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug((string) $state))),
                     Toggle::make('is_published')->default(true),
-                    FileUpload::make('og_image')->image()->columnSpanFull(),
+                    FileUpload::make('og_image')->image()->disk('public_images')->directory('og')->columnSpanFull(),
                     TextInput::make('ordine')->numeric()->default(0),
                 ]),
 

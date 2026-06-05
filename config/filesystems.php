@@ -47,6 +47,18 @@ return [
             'report' => false,
         ],
 
+        // Upload-uri direct in public/images — servite static cu asset('images/...'),
+        // fara symlink storage (prod fara SSH nu il poate crea). Folosit de
+        // FileUpload-urile Filament (proiecte, echipa, recenzii, og).
+        'public_images' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/images',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -20,7 +20,9 @@
         }
     }
     if ($ogImage) {
-        $ogImage = asset(ltrim((string) preg_replace('/\.webp$/', '.jpg', $ogImage), '/'));
+        $ogImage = ltrim((string) preg_replace('/\.webp$/', '.jpg', $ogImage), '/');
+        // Upload-urile Filament (disk public_images) stocheaza cai fara prefixul images/.
+        $ogImage = asset(str_starts_with($ogImage, 'images/') ? $ogImage : 'images/'.$ogImage);
     }
 @endphp
 <x-layouts.app

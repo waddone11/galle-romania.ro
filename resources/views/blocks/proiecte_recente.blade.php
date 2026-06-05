@@ -4,7 +4,7 @@
     $t = fn (string $key) => $data[$key][$loc] ?? $data[$key]['ro'] ?? null;
 
     // Datele vin din modelul Proiect (publicate, ordonate), nu din block.
-    $proiecte = \App\Models\Proiect::with('media')
+    $proiecte = \App\Models\Proiect::query()
         ->where('is_published', true)
         ->orderBy('ordine')
         ->limit(3)
@@ -24,13 +24,13 @@
         <div class="mt-12 grid md:grid-cols-3 gap-6">
             @foreach($proiecte as $p)
                 @php
-                    $cover = $p->getFirstMedia('galerie');
+                    $cover = $p->coverUrl();
                     $pTitlu = $p->getTranslation('titlu', $loc) ?: $p->getTranslation('titlu', 'ro');
                 @endphp
                 <a href="{{ $prefix }}/proiecte/{{ $p->slug }}" class="block group">
                     <div class="aspect-video rounded-xl bg-forest/10 mb-3 overflow-hidden @unless($cover) grid place-items-center @endunless">
                         @if($cover)
-                            <img src="{{ $cover->getUrl('card') }}"
+                            <img src="{{ $cover }}"
                                  alt="{{ $pTitlu }}"
                                  width="800" height="450" loading="lazy" decoding="async"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">

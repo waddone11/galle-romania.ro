@@ -11,11 +11,11 @@
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($proiecte as $p)
-                @php $cover = $p->getFirstMedia('galerie'); @endphp
+                @php $cover = $p->coverUrl(); @endphp
                 <a href="/proiecte/{{ $p->slug }}" class="block group">
                     @if($cover)
                         <div class="aspect-video rounded-xl bg-forest/10 mb-3 overflow-hidden">
-                            <img src="{{ $cover->getUrl('card') }}"
+                            <img src="{{ $cover }}"
                                  alt="{{ $p->getTranslation('titlu', app()->getLocale()) ?: $p->getTranslation('titlu', 'ro') }}"
                                  width="800" height="450" loading="lazy" decoding="async"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">

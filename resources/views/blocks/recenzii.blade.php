@@ -80,7 +80,7 @@
 
                         <figcaption class="mt-6 flex items-center gap-3">
                             @if($recenzie->imagine)
-                                <img src="{{ str_starts_with($recenzie->imagine, 'http') || str_starts_with($recenzie->imagine, '/') ? $recenzie->imagine : asset('storage/'.$recenzie->imagine) }}"
+                                <img src="{{ str_starts_with($recenzie->imagine, 'http') || str_starts_with($recenzie->imagine, '/') ? $recenzie->imagine : asset('images/'.$recenzie->imagine) }}"
                                      alt="{{ $recenzie->nume_client }}"
                                      class="h-10 w-10 rounded-full object-cover" loading="lazy">
                             @else
