@@ -31,7 +31,7 @@
 
         {{-- text --}}
         <div class="lg:col-span-5 order-1 lg:order-2">
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-forest leading-tight">{{ $titlu }}</h2>
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-forest leading-tight text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             <p class="mt-6 text-lg font-light text-forest/70 leading-relaxed max-w-md">{{ $text }}</p>
             <div class="mt-10">
                 <p class="text-sm uppercase tracking-[0.2em] text-forest/50">{{ $eyebrow }}</p>

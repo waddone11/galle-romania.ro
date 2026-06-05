@@ -1,7 +1,7 @@
 <section class="mx-auto max-w-7xl px-4 md:px-0 py-6 lg:py-12">
     <div class="text-center mb-12">
         <p class="text-sm uppercase tracking-[0.2em] text-forest/50">{{ __('Pentru cine') }}</p>
-        <h2 class="mt-3 font-display text-3xl lg:text-4xl font-bold text-forest">
+        <h2 class="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-bold text-forest text-balance break-words hyphens-auto">
             {{ __('Doua flow-uri, o singura calitate germana') }}
         </h2>
     </div>

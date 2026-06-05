@@ -21,7 +21,7 @@
     {{-- Impressum (cerinta DSGVO/TMG pentru owner german): datele de identificare ale firmei. --}}
     <article class="py-16">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold mb-8">{{ $titlu }}</h1>
+            <h1 class="font-display text-3xl md:text-5xl font-semibold mb-8 text-balance break-words hyphens-auto">{{ $titlu }}</h1>
 
             <div class="prose prose-stone max-w-none text-forest-dark/80">
                 <h2 class="font-display text-forest">{{ __('Identificarea societatii') }}</h2>

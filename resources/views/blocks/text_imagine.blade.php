@@ -29,7 +29,7 @@
         </div>
         <div class="{{ $imgRight ? 'lg:order-2' : 'lg:order-1' }}">
             @if($titlu = ($data['titlu'][$loc] ?? $data['titlu']['ro'] ?? null))
-                <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4">{{ $titlu }}</h2>
+                <h2 class="font-display text-2xl md:text-4xl font-semibold mb-4 text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             @endif
             @if($continut = ($data['continut'][$loc] ?? $data['continut']['ro'] ?? null))
                 <div class="prose prose-stone max-w-none text-forest-dark/80">
@@ -62,7 +62,7 @@
         </div>
         <div class="{{ $imgRight ? 'lg:order-2' : 'lg:order-1' }}">
             @if($titlu = ($data['titlu'][$loc] ?? $data['titlu']['ro'] ?? null))
-                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-5">{{ $titlu }}</h2>
+                <h2 class="font-display text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-5 text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             @endif
             @if($continut = ($data['continut'][$loc] ?? $data['continut']['ro'] ?? null))
                 <div class="prose prose-invert max-w-none text-mist/75 leading-relaxed">

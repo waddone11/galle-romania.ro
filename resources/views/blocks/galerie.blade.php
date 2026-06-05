@@ -16,7 +16,7 @@
 
 <section class="mx-auto max-w-7xl py-16 px-4 md:px-0">
     @if($titlu)
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-forest text-center mb-10">{{ $titlu }}</h2>
+        <h2 class="font-display text-2xl md:text-4xl font-bold text-forest text-center mb-10 text-balance break-words hyphens-auto">{{ $titlu }}</h2>
     @endif
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

@@ -76,7 +76,7 @@
         {{-- Hero forest cu aer; search-ul flotant se suprapune pe marginea de jos --}}
         <section class="bg-forest text-mist-warm pt-16 pb-20 lg:pt-20 lg:pb-24">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ $titlu }}</h1>
+                <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">{{ $titlu }}</h1>
                 <p class="mt-4 text-lg text-mist max-w-2xl mx-auto">{{ $intro }}</p>
             </div>
         </section>
@@ -162,7 +162,7 @@
                                 <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mint/15 text-forest">
                                     <x-galle-icon :icon="$icoane[$categorie] ?? 'frunza'" :size="20" />
                                 </span>
-                                <h2 class="font-display text-2xl font-semibold text-forest">{{ $eticheta($categorie) }}</h2>
+                                <h2 class="font-display text-2xl font-semibold text-forest text-balance break-words hyphens-auto">{{ $eticheta($categorie) }}</h2>
                                 <span class="text-sm text-forest-dark/50">{{ $faqs->count() }} {{ $faqs->count() === 1 ? __('intrebare') : __('intrebari') }}</span>
                             </div>
 

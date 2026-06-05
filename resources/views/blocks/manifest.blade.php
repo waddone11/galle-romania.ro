@@ -32,7 +32,7 @@
 
         <p class="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-forest">{{ $eyebrow }}</p>
 
-        <h2 class="mt-6 font-display font-extrabold leading-[1.05] text-forest text-4xl sm:text-5xl lg:text-6xl">
+        <h2 class="mt-6 font-display font-extrabold leading-[1.05] text-forest text-3xl sm:text-5xl lg:text-6xl text-balance break-words hyphens-auto">
             {{ $titluMare }}
         </h2>
 

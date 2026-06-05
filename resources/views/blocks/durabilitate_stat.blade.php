@@ -13,7 +13,7 @@
     {{-- left: text on dark forest --}}
     <div class="bg-forest text-mist px-6 lg:px-16 py-20 lg:py-28 flex items-center">
         <div class="max-w-md">
-            <h2 class="font-display text-5xl lg:text-6xl font-extrabold leading-[0.95]">{{ $titlu }}</h2>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[0.95] text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             <p class="mt-8 text-lg font-light text-mist/75 leading-relaxed">{{ $text }}</p>
         </div>
     </div>
@@ -25,7 +25,7 @@
                 {{ $statNumber }}
             </span>
             <div class="flex flex-col leading-none">
-                <span class="font-display font-extrabold text-mint text-4xl sm:text-5xl lg:text-6xl">{{ $statTop }}</span>
+                <span class="font-display font-extrabold text-mint text-3xl sm:text-5xl lg:text-6xl">{{ $statTop }}</span>
                 <span class="font-display font-bold text-forest text-base sm:text-lg lg:text-2xl mt-2">{{ $statBottom }}</span>
             </div>
         </div>

@@ -28,7 +28,7 @@
             <p class="font-display font-extrabold leading-[0.9] tracking-tight text-7xl sm:text-8xl lg:text-[10rem] uppercase" aria-hidden="true">
                 Blog<span class="text-mint">.</span>
             </p>
-            <h2 class="mt-4 font-display font-extrabold text-mint text-3xl sm:text-4xl leading-tight">
+            <h2 class="mt-4 font-display font-extrabold text-mint text-2xl sm:text-4xl leading-tight text-balance break-words hyphens-auto">
                 {{ $t('titlu') ?? 'Ghiduri & noutăți' }}
             </h2>
             <p class="mt-5 text-lg font-light text-mist/75 leading-relaxed">

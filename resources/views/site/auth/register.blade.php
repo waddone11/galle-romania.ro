@@ -4,7 +4,7 @@
 >
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ __('Cont nou') }}</h1>
+            <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">{{ __('Cont nou') }}</h1>
             <p class="mt-4 text-lg text-mist">{{ __('Creeaza-ti un cont Galle Silva.') }}</p>
         </div>
     </section>

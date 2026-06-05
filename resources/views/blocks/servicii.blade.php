@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto">
         <div class="text-center">
             <p class="text-sm font-semibold uppercase tracking-[0.25em] text-forest/50">{{ $eyebrow }}</p>
-            <h2 class="mt-3 font-display text-4xl lg:text-5xl font-bold text-forest">{{ $titlu }}</h2>
+            <h2 class="mt-3 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-forest text-balance break-words hyphens-auto">{{ $titlu }}</h2>
         </div>
 
         <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -19,7 +19,7 @@
     <section class="py-8">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             @if($titlu)
-                <h2 class="font-display text-2xl md:text-3xl font-semibold mb-4">{{ $titlu }}</h2>
+                <h2 class="font-display text-2xl md:text-3xl font-semibold mb-4 text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             @endif
             @if($html)
                 <div class="text-forest-dark/80 leading-relaxed space-y-3">{!! $html !!}</div>

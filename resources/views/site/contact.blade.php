@@ -8,7 +8,7 @@
 
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ __('Contact') }}</h1>
+            <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">{{ __('Contact') }}</h1>
             <p class="mt-4 text-lg text-mist">{{ __('Spune-ne de ce ai nevoie. Te contactam in 24h.') }}</p>
         </div>
     </section>
@@ -16,7 +16,7 @@
     <section class="py-16">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
             <div>
-                <h2 class="font-display text-2xl font-semibold mb-6">{{ __('Date contact') }}</h2>
+                <h2 class="font-display text-2xl font-semibold mb-6 text-balance break-words hyphens-auto">{{ __('Date contact') }}</h2>
                 <dl class="space-y-4 text-sm">
                     <div>
                         <dt class="text-forest-dark/60 text-xs uppercase tracking-widest mb-1">Email</dt>
@@ -44,7 +44,7 @@
             </div>
 
             <div>
-                <h2 class="font-display text-2xl font-semibold mb-6">{{ __('Cere oferta') }}</h2>
+                <h2 class="font-display text-2xl font-semibold mb-6 text-balance break-words hyphens-auto">{{ __('Cere oferta') }}</h2>
                 <livewire:contact-form />
             </div>
         </div>

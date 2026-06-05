@@ -18,7 +18,7 @@
 <section class="bg-mist-warm py-16 lg:py-20 overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.25em] text-forest/50">{{ $eyebrow }}</p>
-        <h2 class="mt-3 font-display text-4xl lg:text-5xl font-bold text-forest">{{ $titlu }}</h2>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-forest text-balance break-words hyphens-auto">{{ $titlu }}</h2>
         @if($subtitlu)
             <p class="mt-4 text-base lg:text-lg text-forest-dark/70 max-w-2xl mx-auto">{{ $subtitlu }}</p>
         @endif

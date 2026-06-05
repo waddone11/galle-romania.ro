@@ -12,7 +12,7 @@
 <section class="bg-white py-20 lg:py-28 px-6">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
-            <h2 class="font-display text-4xl lg:text-5xl font-bold text-forest leading-tight">{{ $titlu }}</h2>
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-forest leading-tight text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             <p class="mt-6 text-lg font-light text-forest/70 max-w-md">{{ $text }}</p>
             <div class="mt-10">
                 <p class="text-sm uppercase tracking-[0.2em] text-forest/50">{{ $eyebrow }}</p>

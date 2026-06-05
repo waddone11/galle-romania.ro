@@ -23,7 +23,7 @@
     @else
         <section class="bg-forest text-mist-warm py-16">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="font-display text-4xl md:text-5xl font-semibold">Despre Galle Silva</h1>
+                <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">Despre Galle Silva</h1>
                 <p class="mt-4 text-lg text-mist max-w-2xl mx-auto">
                     Reprezentanța în România a grupului german Galle GmbH — standarde germane în gestiunea pădurii.
                 </p>
@@ -35,7 +35,7 @@
     @if($certificari->count() > 0)
         <section class="bg-mist-warm py-12">
             <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="font-display text-2xl font-semibold text-forest mb-6">{{ __('Standarde si certificari') }}</h2>
+                <h2 class="font-display text-2xl font-semibold text-forest mb-6 text-balance break-words hyphens-auto">{{ __('Standarde si certificari') }}</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                     @foreach($certificari as $cert)
                         <x-certificare-card :cert="$cert" variant="compact" />

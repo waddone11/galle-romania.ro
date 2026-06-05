@@ -4,7 +4,7 @@
 >
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold">
+            <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">
                 @if($pagina)
                     {{ $pagina->getTranslation('titlu', app()->getLocale()) ?: $pagina->getTranslation('titlu', 'ro') }}
                 @else
@@ -19,7 +19,7 @@
 
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ __('Servicii dedicate') }}</h2>
+            <h2 class="font-display text-3xl font-semibold mb-8 text-center text-balance break-words hyphens-auto">{{ __('Servicii dedicate') }}</h2>
             <div class="grid md:grid-cols-3 gap-6 mb-12">
                 @foreach($servicii as $serv)
                     <article class="bg-mist-warm rounded-2xl p-6">

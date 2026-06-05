@@ -59,7 +59,7 @@
             @if($eyebrow)
                 <p class="text-sm uppercase tracking-[0.2em] text-forest/50 text-center">{{ $eyebrow }}</p>
             @endif
-            <h2 class="mt-3 text-center font-display text-3xl lg:text-4xl font-bold text-forest">{{ $titlu }}</h2>
+            <h2 class="mt-3 text-center font-display text-2xl md:text-3xl lg:text-4xl font-bold text-forest text-balance break-words hyphens-auto">{{ $titlu }}</h2>
 
             <div class="mt-12 grid gap-6 sm:grid-cols-2 {{ $recenzii->count() >= 3 ? 'lg:grid-cols-3' : '' }}">
                 @foreach($recenzii as $recenzie)

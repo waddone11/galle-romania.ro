@@ -48,7 +48,7 @@
 <section class="bg-mist-warm py-16">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         @if($titlu = $t('titlu'))
-            <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ $titlu }}</h2>
+            <h2 class="font-display text-3xl font-semibold mb-8 text-center text-balance break-words hyphens-auto">{{ $titlu }}</h2>
         @endif
         {{-- Acelasi stil de card acordeon ca pe /intrebari-frecvente (consecventa). --}}
         <div class="space-y-3">

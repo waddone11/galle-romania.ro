@@ -86,7 +86,7 @@
     @endphp
     <section class="bg-forest text-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold">{{ $h1 }}</h1>
+            <h1 class="font-display text-3xl md:text-5xl font-semibold text-balance break-words hyphens-auto">{{ $h1 }}</h1>
             <p class="mt-4 text-lg text-mist max-w-3xl mx-auto">{{ $intro }}</p>
 
             <picture>
@@ -148,12 +148,12 @@
     <section class="bg-mist-warm py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
             <div>
-                <h2 class="font-display text-3xl font-semibold mb-3">{{ __('Calculator pret') }}</h2>
+                <h2 class="font-display text-3xl font-semibold mb-3 text-balance break-words hyphens-auto">{{ __('Calculator pret') }}</h2>
                 <p class="text-forest-dark/70 mb-6">{{ __('Estimam in timp real costul total. Comanda direct sau pe WhatsApp.') }}</p>
                 <livewire:firewood.price-calculator />
             </div>
             <div>
-                <h2 class="font-display text-3xl font-semibold mb-3">{{ __('Comanda lemn') }}</h2>
+                <h2 class="font-display text-3xl font-semibold mb-3 text-balance break-words hyphens-auto">{{ __('Comanda lemn') }}</h2>
                 <p class="text-forest-dark/70 mb-6">{{ __('Trimite-ne datele tale si te contactam in cel mult 24h pentru confirmare.') }}</p>
                 <livewire:firewood.order-form />
             </div>
@@ -163,7 +163,7 @@
     {{-- Zone livrare --}}
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ __('Unde livram') }}</h2>
+            <h2 class="font-display text-3xl font-semibold mb-8 text-center text-balance break-words hyphens-auto">{{ __('Unde livram') }}</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 @foreach($zone as $z)
                     <div class="bg-[#fafaf8] border border-mist rounded-2xl p-6">
@@ -182,7 +182,7 @@
     @if($faqs->count() > 0)
         <section class="bg-mist-warm py-16">
             <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-                <h2 class="font-display text-3xl font-semibold mb-8 text-center">{{ __('Intrebari frecvente') }}</h2>
+                <h2 class="font-display text-3xl font-semibold mb-8 text-center text-balance break-words hyphens-auto">{{ __('Intrebari frecvente') }}</h2>
                 <div class="space-y-4">
                     @foreach($faqs as $faq)
                         <details class="bg-[#fafaf8] rounded-xl p-4 group">

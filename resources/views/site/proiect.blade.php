@@ -23,7 +23,7 @@
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <a href="/proiecte" class="text-sm text-mint hover:text-forest">← {{ __('Toate proiectele') }}</a>
             <p class="text-xs uppercase tracking-widest text-mint font-medium mt-6 mb-2">{{ $proiect->categorie }} · {{ $proiect->an }}</p>
-            <h1 class="font-display text-4xl md:text-5xl font-semibold mb-4">{{ $pTitlu }}</h1>
+            <h1 class="font-display text-3xl md:text-5xl font-semibold mb-4 text-balance break-words hyphens-auto">{{ $pTitlu }}</h1>
             @if($proiect->locatie)
                 <p class="text-forest-dark/60 mb-8">{{ $proiect->locatie }}</p>
             @endif

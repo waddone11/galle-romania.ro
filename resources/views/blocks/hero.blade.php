@@ -109,7 +109,7 @@
                 </span>
             </a>
 
-            <h1 class="mt-7 font-display font-extrabold leading-[0.95] text-forest text-5xl sm:text-6xl lg:text-7xl">
+            <h1 class="mt-7 font-display font-extrabold leading-[0.95] text-forest text-4xl sm:text-6xl lg:text-7xl text-balance break-words hyphens-auto">
                 {{ $titlu }}
             </h1>
             <p class="mt-6 text-base sm:text-lg font-bold text-orange-500 max-w-md">

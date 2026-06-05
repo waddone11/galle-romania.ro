@@ -4,7 +4,7 @@
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="bg-forest text-mist-warm rounded-3xl p-8 md:p-14 text-center">
             @if($titlu = ($data['titlu'][$loc] ?? $data['titlu']['ro'] ?? null))
-                <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-3">{{ $titlu }}</h2>
+                <h2 class="font-display text-2xl md:text-4xl font-extrabold mb-3 text-balance break-words hyphens-auto">{{ $titlu }}</h2>
             @endif
             @if($text = ($data['text'][$loc] ?? $data['text']['ro'] ?? null))
                 <p class="text-mist mb-6 max-w-2xl mx-auto">{{ $text }}</p>
